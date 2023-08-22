@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">Robot_Teaching_Pendant_App</string>
+
+    //Main Menu String
+
+    <string name="main_title_text">MAIN</string>
+    <string name="main_dark_bt_text">Dark</string>
+    <string name="main_white_bt_text">White</string>
+
+    <string name="main_make_bt_text">작업 환경</string>
+    <string name="main_play_bt_text">실행</string>
+    <string name="main_setup_bt_text">환경 설정</string>
+
+    // -----------------
+
+
+
+
+
+
+
+
+
+
 </resources>
