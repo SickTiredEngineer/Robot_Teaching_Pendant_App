@@ -4,23 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CD323232"
+
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/main_white_bt"
+
         android:layout_width="218dp"
         android:layout_height="81dp"
         android:layout_marginEnd="50dp"
         android:layout_marginBottom="42dp"
+
+        app:layout_constraintBottom_toTopOf="@+id/main_make_bt"
+        app:layout_constraintEnd_toEndOf="parent"
+
         android:backgroundTint="@color/Gray"
         android:text="@string/main_white_bt_text"
         android:textSize="30sp"
         app:cornerRadius="0sp"
-        app:layout_constraintBottom_toTopOf="@+id/main_make_bt"
-        app:layout_constraintEnd_toEndOf="parent"
+
         app:strokeColor="#C8C8C8"
-        app:strokeWidth="2sp" />
+        app:strokeWidth="2sp"
+
+        />
 
     <Button
         android:id="@+id/main_dark_bt"
@@ -44,18 +50,25 @@
         android:layout_marginStart="730dp"
         android:layout_marginTop="211dp"
         android:layout_marginEnd="4dp"
-        android:backgroundTint="@color/MainDark"
+
         android:text="@string/main_make_bt_text"
+
+        app:cornerRadius="0sp"
         android:textSize="30sp"
         android:visibility="visible"
-        app:cornerRadius="0sp"
+
+        app:strokeWidth="2sp"
+
         app:layout_constraintBottom_toTopOf="@+id/main_play_bt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+
+        android:backgroundTint="@color/MainDark"
         app:strokeColor="#C8C8C8"
-        app:strokeWidth="2sp" />
+        android:textColor="#FFFFFF"
+        />
 
     <Button
         android:id="@+id/main_play_bt"
