@@ -101,7 +101,7 @@
         android:layout_width="460dp"
         android:layout_height="86dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="408dp"
+        android:layout_marginEnd="396dp"
         android:gravity="center"
         android:text="@string/main_title_text"
         android:textColor="@color/white"

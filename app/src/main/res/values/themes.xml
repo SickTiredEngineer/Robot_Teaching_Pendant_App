@@ -3,7 +3,16 @@
     <style name="Base.Theme.Robot_Teaching_Pendant_App" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
     </style>
+
+
+
+
 
     <style name="Theme.Robot_Teaching_Pendant_App" parent="Base.Theme.Robot_Teaching_Pendant_App" />
 </resources>

@@ -7,6 +7,13 @@ android {
     namespace = "com.example.robot_teaching_pendant_app"
     compileSdk = 33
 
+    //View Binding
+    buildFeatures{
+        viewBinding = true
+    }
+
+
+
     defaultConfig {
         applicationId = "com.example.robot_teaching_pendant_app"
         minSdk = 24
@@ -26,6 +33,7 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
