@@ -28,7 +28,6 @@
 
     <Button
         android:id="@+id/main_dark_bt"
-        style="@style/DARK_BUTTON"
 
         android:layout_width="218dp"
         android:layout_height="81dp"

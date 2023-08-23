@@ -11,16 +11,16 @@
 
     <!-- WHITE Mode Style -->
     <style name = "WHITE_BG">
-        <item name = "android:background">WHITE</item>
+        <item name = "android:background">@color/WHITE</item>
     </style>
 
     <style name = "WHITE_TEXT">
-        <item name = "android:textColor">BLACK</item>
+        <item name = "android:textColor">@color/BLACK</item>
     </style>
 
     <style name = "WHITE_BUTTON">
-        <item name = "android:background">WHITE</item>
-        <item name = "android:textColor">BLACK</item>
+        <item name = "android:background">@color/WHITE</item>
+        <item name = "android:textColor">@color/BLACK</item>
     </style>
 
     <style name="Theme.Robot_Teaching_Pendant_App" parent="Base.Theme.Robot_Teaching_Pendant_App" />
