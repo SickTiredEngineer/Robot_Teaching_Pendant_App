@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    style = "@style/DARK_BG"
     tools:context=".MainActivity">
 
     <Button
@@ -18,27 +18,30 @@
         app:layout_constraintBottom_toTopOf="@+id/main_make_bt"
         app:layout_constraintEnd_toEndOf="parent"
 
-        android:backgroundTint="@color/Gray"
         android:text="@string/main_white_bt_text"
         android:textSize="30sp"
         app:cornerRadius="0sp"
 
+        android:backgroundTint="@color/MainDark"
         app:strokeColor="#C8C8C8"
-        app:strokeWidth="2sp"
-
-        />
+        app:strokeWidth="2sp" />
 
     <Button
         android:id="@+id/main_dark_bt"
+        style="@style/DARK_BUTTON"
+
         android:layout_width="218dp"
         android:layout_height="81dp"
         android:layout_marginEnd="64dp"
         android:layout_marginBottom="42dp"
+
         android:backgroundTint="@color/MainDark"
         android:text="@string/main_dark_bt_text"
+
         android:textSize="30sp"
         app:cornerRadius="0sp"
         app:layout_constraintBottom_toTopOf="@+id/main_make_bt"
+
         app:layout_constraintEnd_toStartOf="@+id/main_white_bt"
         app:strokeColor="#C8C8C8"
         app:strokeWidth="2sp" />
@@ -55,8 +58,6 @@
 
         app:cornerRadius="0sp"
         android:textSize="30sp"
-        android:visibility="visible"
-
         app:strokeWidth="2sp"
 
         app:layout_constraintBottom_toTopOf="@+id/main_play_bt"
@@ -72,54 +73,63 @@
 
     <Button
         android:id="@+id/main_play_bt"
+
         android:layout_width="500dp"
         android:layout_height="150dp"
         android:layout_marginStart="730dp"
         android:layout_marginEnd="4dp"
-        android:backgroundTint="@color/MainDark"
-        android:text="@string/main_play_bt_text"
-        android:textSize="30sp"
-        android:visibility="visible"
-        app:cornerRadius="0sp"
+
         app:layout_constraintBottom_toTopOf="@+id/main_setup_bt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main_make_bt"
+
+        android:backgroundTint="@color/MainDark"
+        android:text="@string/main_play_bt_text"
+        android:textSize="30sp"
+        app:cornerRadius="0sp"
+
         app:strokeColor="#C8C8C8"
         app:strokeWidth="2sp" />
 
     <Button
         android:id="@+id/main_setup_bt"
+
         android:layout_width="500dp"
         android:layout_height="150dp"
         android:layout_marginStart="730dp"
         android:layout_marginEnd="4dp"
         android:layout_marginBottom="10dp"
-        android:backgroundTint="@color/MainDark"
-        android:text="@string/main_setup_bt_text"
-        android:textSize="30sp"
-        android:visibility="visible"
-        app:cornerRadius="0sp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main_play_bt"
+
+        android:backgroundTint="@color/MainDark"
+        android:text="@string/main_setup_bt_text"
+        android:textSize="30sp"
+        app:cornerRadius="0sp"
+
         app:strokeColor="#C8C8C8"
         app:strokeWidth="2sp" />
 
     <TextView
         android:id="@+id/main_title"
+
+        android:gravity="center"
         android:layout_width="460dp"
         android:layout_height="86dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="396dp"
-        android:gravity="center"
-        android:text="@string/main_title_text"
-        android:textColor="@color/white"
-        android:textSize="50sp"
+
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+
+        android:text="@string/main_title_text"
+        android:textColor="@color/WHITE"
+        android:textSize="50sp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
