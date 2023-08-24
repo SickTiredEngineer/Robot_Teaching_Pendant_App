@@ -9,6 +9,8 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+        <!-- White Mode Style -->
+
         <style name = "WHITE_BG">
             <item name = "android:background">@color/WHITE</item>
         </style>

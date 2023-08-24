@@ -16,15 +16,15 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
         android:text="@string/main_make_bt_text"
-        android:textSize="30sp"
+        android:textSize="30dp"
 
-        app:cornerRadius="0sp"
+        app:cornerRadius="0dp"
 
         app:layout_constraintBottom_toTopOf="@+id/main_play_bt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:strokeColor="#C8C8C8"
-        app:strokeWidth="2sp" />
+        app:strokeWidth="2dp" />
 
     <Button
         android:id="@+id/main_play_bt"
@@ -38,14 +38,14 @@
         android:layout_marginBottom="3dp"
 
         android:text="@string/main_play_bt_text"
-        android:textSize="30sp"
+        android:textSize="30dp"
 
-        app:cornerRadius="0sp"
+        app:cornerRadius="0dp"
         app:layout_constraintBottom_toTopOf="@+id/main_setup_bt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main_make_bt"
         app:strokeColor="#C8C8C8"
-        app:strokeWidth="2sp" />
+        app:strokeWidth="2dp" />
 
     <Button
         android:id="@+id/main_setup_bt"
@@ -59,14 +59,14 @@
         android:layout_marginBottom="150dp"
 
         android:text="@string/main_setup_bt_text"
-        android:textSize="30sp"
-        app:cornerRadius="0sp"
+        android:textSize="30dp"
+        app:cornerRadius="0dp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/main_play_bt"
         app:strokeColor="#C8C8C8"
-        app:strokeWidth="2sp" />
+        app:strokeWidth="2dp" />
 
     <TextView
         android:id="@+id/main_title"
@@ -80,7 +80,7 @@
         android:text="@string/main_title_text"
         android:textColor="@color/BLACK"
 
-        android:textSize="50sp"
+        android:textSize="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -98,8 +98,8 @@
 
     <ImageButton
         android:id="@+id/main_power_bt"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
+        android:layout_width="85dp"
+        android:layout_height="85dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_lock_power_off" />
