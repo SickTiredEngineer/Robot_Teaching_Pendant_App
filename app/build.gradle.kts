@@ -13,7 +13,6 @@ android {
     }
 
 
-
     defaultConfig {
         applicationId = "com.example.robot_teaching_pendant_app"
         minSdk = 24

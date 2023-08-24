@@ -4,131 +4,104 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style = "@style/DARK_BG"
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/main_white_bt"
-
-        android:layout_width="218dp"
-        android:layout_height="81dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="42dp"
-
-        app:layout_constraintBottom_toTopOf="@+id/main_make_bt"
-        app:layout_constraintEnd_toEndOf="parent"
-
-        android:text="@string/main_white_bt_text"
-        android:textSize="30sp"
-        app:cornerRadius="0sp"
-
-        android:backgroundTint="@color/MainDark"
-        app:strokeColor="#C8C8C8"
-        app:strokeWidth="2sp" />
-
-    <Button
-        android:id="@+id/main_dark_bt"
-
-        android:layout_width="218dp"
-        android:layout_height="81dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginBottom="42dp"
-
-        android:backgroundTint="@color/MainDark"
-        android:text="@string/main_dark_bt_text"
-
-        android:textSize="30sp"
-        app:cornerRadius="0sp"
-        app:layout_constraintBottom_toTopOf="@+id/main_make_bt"
-
-        app:layout_constraintEnd_toStartOf="@+id/main_white_bt"
-        app:strokeColor="#C8C8C8"
-        app:strokeWidth="2sp" />
-
-    <Button
         android:id="@+id/main_make_bt"
+        style="@style/WHITE_BUTTON"
         android:layout_width="500dp"
         android:layout_height="150dp"
-        android:layout_marginStart="730dp"
-        android:layout_marginTop="211dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginTop="220dp"
 
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
         android:text="@string/main_make_bt_text"
+        android:textSize="30sp"
 
         app:cornerRadius="0sp"
-        android:textSize="30sp"
-        app:strokeWidth="2sp"
 
         app:layout_constraintBottom_toTopOf="@+id/main_play_bt"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-
-        android:backgroundTint="@color/MainDark"
         app:strokeColor="#C8C8C8"
-        android:textColor="#FFFFFF"
-        />
+        app:strokeWidth="2sp" />
 
     <Button
         android:id="@+id/main_play_bt"
 
+        style="@style/WHITE_BUTTON"
         android:layout_width="500dp"
         android:layout_height="150dp"
-        android:layout_marginStart="730dp"
-        android:layout_marginEnd="4dp"
 
-        app:layout_constraintBottom_toTopOf="@+id/main_setup_bt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_make_bt"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="3dp"
 
-        android:backgroundTint="@color/MainDark"
         android:text="@string/main_play_bt_text"
         android:textSize="30sp"
-        app:cornerRadius="0sp"
 
+        app:cornerRadius="0sp"
+        app:layout_constraintBottom_toTopOf="@+id/main_setup_bt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_make_bt"
         app:strokeColor="#C8C8C8"
         app:strokeWidth="2sp" />
 
     <Button
         android:id="@+id/main_setup_bt"
 
+        style="@style/WHITE_BUTTON"
         android:layout_width="500dp"
         android:layout_height="150dp"
-        android:layout_marginStart="730dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_play_bt"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="150dp"
 
-        android:backgroundTint="@color/MainDark"
         android:text="@string/main_setup_bt_text"
         android:textSize="30sp"
         app:cornerRadius="0sp"
 
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_play_bt"
         app:strokeColor="#C8C8C8"
         app:strokeWidth="2sp" />
 
     <TextView
         android:id="@+id/main_title"
 
-        android:gravity="center"
         android:layout_width="460dp"
         android:layout_height="86dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="396dp"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"
 
         android:text="@string/main_title_text"
-        android:textColor="@color/WHITE"
-        android:textSize="50sp" />
+        android:textColor="@color/BLACK"
+
+        android:textSize="50sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Switch
+        android:id="@+id/main_dark_bt"
+        android:layout_width="133dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="150dp"
+        android:scaleX="2"
+        android:scaleY="2"
+        android:text="@string/dark_mode_switch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/main_power_bt"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_lock_power_off" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

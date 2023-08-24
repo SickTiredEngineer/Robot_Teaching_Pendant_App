@@ -21,8 +21,7 @@ class MainActivity : AppCompatActivity() {
 
 
         //Main 화면의 버튼 연결
-        val mainDarkBt = binding.mainDarkBt
-        val mainWhiteBt = binding.mainWhiteBt
+        val mainPowerBt = binding.mainPowerBt
         val mainMakeBt = binding.mainMakeBt
         val mainPlayBt = binding.mainPlayBt
         val mainSetupBt = binding.mainSetupBt
@@ -30,13 +29,6 @@ class MainActivity : AppCompatActivity() {
 
         //버튼 동작
 
-        mainDarkBt.setOnClickListener{
-            Toast.makeText(this@MainActivity, "Dark 모드 확인", Toast.LENGTH_SHORT ).show()
-        }
-
-        mainWhiteBt.setOnClickListener{
-            Toast.makeText(this@MainActivity, "White 모드 확인", Toast.LENGTH_SHORT ).show()
-        }
 
         mainMakeBt.setOnClickListener{
             Toast.makeText(this@MainActivity, "작업 환경 선택 확인", Toast.LENGTH_SHORT ).show()
@@ -50,7 +42,9 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this@MainActivity, "환경설정 선택 확인", Toast.LENGTH_SHORT ).show()
         }
 
-
+        mainPowerBt.setOnClickListener{
+            Toast.makeText(this@MainActivity,"전원 버튼 클릭",Toast.LENGTH_SHORT).show()
+        }
 
 
 

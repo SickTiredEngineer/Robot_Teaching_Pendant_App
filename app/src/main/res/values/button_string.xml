@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    //Main Menu String
+
+    <string name="main_title_text">MAIN</string>
+    <string name="dark_mode_switch">Dark Mode</string>
+
+    <string name="main_make_bt_text">작업 환경</string>
+    <string name="main_play_bt_text">실행</string>
+    <string name="main_setup_bt_text">환경 설정</string>
+
+    // Menu Choose
+
+    <string name="main_bt_text">메인 화면</string>
+    <string name="make_bt_text">작업 환경</string>
+    <string name="play_bt_text">실행</string>
+    <string name="setup_bt_text">환경 설정</string>
+
+
+
+
+
+</resources>

@@ -9,18 +9,17 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <!-- DARK Mode Style -->
-        <style name = "DARK_BG">
-            <item name = "android:background">#5C5A5A</item>
+        <style name = "WHITE_BG">
+            <item name = "android:background">@color/WHITE</item>
         </style>
 
-        <style name = "DARK_TEXT">
-            <item name = "android:textColor">@color/WHITE</item>
+        <style name = "WHITE_TEXT">
+            <item name = "android:textColor">@color/BLACK</item>
         </style>
 
-        <style name = "DARK_BUTTON">
-            <item name = "android:background">@color/MainDark</item>
-            <item name = "android:textColor">@color/WHITE</item>
+        <style name = "WHITE_BUTTON">
+            <item name = "android:textColor">@color/BLACK</item>
+            <item name = "android:backgroundTint">@color/WHITE</item>
         </style>
 
     <style name="Theme.Robot_Teaching_Pendant_App" parent="Base.Theme.Robot_Teaching_Pendant_App" />

@@ -5,13 +5,7 @@
     <color name="WHITE">#FFFFFFFF</color>
 
     //자주 사용할 색상
-
     <color name="MainDark">#5C5A5A</color>
     <color name="Gray">#3D3D3D</color>
-
-
-
-
-
 
 </resources>
