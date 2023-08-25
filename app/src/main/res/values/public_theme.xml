@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name = "public_enable_bt">
+        <item name="android:backgroundTint">#00ff00</item>
+        <item name="android:textColor">@color/BLACK</item>
+    </style>
+
+    <style name = "public_disable_bt">
+        <item name="android:backgroundTint">#848484</item>
+        <item name="android:textColor">@color/BLACK</item>
+    </style>
+
+
+
+</resources>

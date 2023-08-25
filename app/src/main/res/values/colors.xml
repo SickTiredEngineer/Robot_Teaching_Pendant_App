@@ -8,4 +8,6 @@
     <color name="MainDark">#5C5A5A</color>
     <color name="Gray">#3D3D3D</color>
 
+    <color name = "SetButtonColor">#00ff00</color>
+
 </resources>

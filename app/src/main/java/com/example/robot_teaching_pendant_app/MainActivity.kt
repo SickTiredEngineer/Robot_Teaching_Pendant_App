@@ -25,10 +25,11 @@ class MainActivity : AppCompatActivity() {
         val mainMakeBt = binding.mainMakeBt
         val mainPlayBt = binding.mainPlayBt
         val mainSetupBt = binding.mainSetupBt
+        val mainConnectBt = binding.mainConnectBt
+        val mainDisconnectBt = binding.mainDisconnectBt
 
 
         //버튼 동작
-
 
         mainMakeBt.setOnClickListener{
             Toast.makeText(this@MainActivity, "작업 환경 선택 확인", Toast.LENGTH_SHORT ).show()
@@ -44,6 +45,14 @@ class MainActivity : AppCompatActivity() {
 
         mainPowerBt.setOnClickListener{
             Toast.makeText(this@MainActivity,"전원 버튼 클릭",Toast.LENGTH_SHORT).show()
+        }
+
+        mainConnectBt.setOnClickListener{
+            Toast.makeText(this@MainActivity,"연결 선택",Toast.LENGTH_SHORT).show()
+        }
+
+        mainDisconnectBt.setOnClickListener{
+            Toast.makeText(this@MainActivity,"연결 끊기 선택",Toast.LENGTH_SHORT).show()
         }
 
 
