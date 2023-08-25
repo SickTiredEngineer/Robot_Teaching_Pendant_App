@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    //Main Menu String
+    //Login Menu Button String
+    <string name = "login_bt_text">로그인</string>
 
-    <string name="main_title_text">MAIN</string>
+
+
+    //Main Menu Button String
     <string name="dark_mode_switch">Dark Mode</string>
 
     <string name="main_make_bt_text">작업 환경</string>
@@ -14,8 +17,7 @@
 
     <string name="power_bt">파워 버튼</string>
 
-    // Menu Choose
-
+    // Menu Choose Button String
     <string name="main_bt_text">메인 화면</string>
     <string name="make_bt_text">작업 환경</string>
     <string name="play_bt_text">실행</string>

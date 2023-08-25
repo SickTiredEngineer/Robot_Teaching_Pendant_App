@@ -1,5 +1,6 @@
 package com.example.robot_teaching_pendant_app
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Window
@@ -9,6 +10,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.robot_teaching_pendant_app.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -21,6 +23,7 @@ class MainActivity : AppCompatActivity() {
 
 
         //Main 화면의 버튼 연결
+        val mainDarkSwitch = binding.mainDarkSwitch
         val mainPowerBt = binding.mainPowerBt
         val mainMakeBt = binding.mainMakeBt
         val mainPlayBt = binding.mainPlayBt

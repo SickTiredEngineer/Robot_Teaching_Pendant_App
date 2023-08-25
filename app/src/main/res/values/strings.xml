@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">Robot_Teaching_Pendant_App</string>
 
+    <!-- Login Menu String -->
+    <string name = "login_title_text">암호</string>
+
+
+
+    <!-- Main Menu String-->
+    <string name="main_title_text">MAIN</string>
+
+
 </resources>
