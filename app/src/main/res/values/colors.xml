@@ -2,7 +2,7 @@
 <resources>
 
     <color name="BLACK">#FF000000</color>
-    <color name="WHITE">#FFFFFFFF</color>
+    <color name="WHITE">#EBE5E5</color>
 
     //자주 사용할 색상
     <color name="MainDark">#5C5A5A</color>

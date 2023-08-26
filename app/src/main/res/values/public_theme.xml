@@ -6,6 +6,11 @@
         <item name="android:textColor">@color/BLACK</item>
     </style>
 
+    <style name = "public_enable_bt2">
+        <item name="android:backgroundTint">#FFFFFF</item>
+        <item name="android:textColor">@color/BLACK</item>
+    </style>
+
     <style name = "public_disable_bt">
         <item name="android:backgroundTint">#848484</item>
         <item name="android:textColor">@color/BLACK</item>

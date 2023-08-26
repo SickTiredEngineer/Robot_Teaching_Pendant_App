@@ -3,11 +3,12 @@ package com.example.robot_teaching_pendant_app
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.example.robot_teaching_pendant_app.databinding.ActivityMainBinding
+import com.example.robot_teaching_pendant_app.databinding.MainActivityBinding
 
 class MainActivity : AppCompatActivity() {
     @SuppressLint("UseSwitchCompatOrMaterialCode")
@@ -15,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         //바인딩 설정
-        val binding = ActivityMainBinding.inflate(layoutInflater)
+        val binding = MainActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         //상단 바 제거

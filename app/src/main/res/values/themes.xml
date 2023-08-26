@@ -7,19 +7,20 @@
         <item name="android:windowTranslucentNavigation">true</item>
         <item name="android:windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+
     </style>
 
         <!-- White Mode Style -->
 
-        <style name = "WHITE_BG">
+        <style name = "BG">
             <item name = "android:background">@color/WHITE</item>
         </style>
 
-        <style name = "WHITE_TEXT">
+        <style name = "TEXT">
             <item name = "android:textColor">@color/BLACK</item>
         </style>
 
-        <style name = "WHITE_BUTTON">
+        <style name = "BUTTON">
             <item name = "android:textColor">@color/BLACK</item>
             <item name = "android:backgroundTint">@color/WHITE</item>
         </style>
