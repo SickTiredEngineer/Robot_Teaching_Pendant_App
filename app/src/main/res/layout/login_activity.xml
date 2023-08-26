@@ -11,10 +11,19 @@
         android:id="@+id/login_line1"
         android:layout_width="match_parent"
         android:layout_height="3dp"
-        android:background="@color/MainDark"
+        android:background="@color/Gray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <View
+        android:id="@+id/login_line3"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/Gray"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ProgressBar
         android:id="@+id/login_loading_bar"
@@ -96,7 +105,7 @@
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:layout_marginBottom="50dp"
-        android:background="@color/MainDark"
+        android:background="@color/Gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

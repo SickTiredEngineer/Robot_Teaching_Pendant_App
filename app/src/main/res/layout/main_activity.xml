@@ -78,23 +78,23 @@
         android:layout_width="400dp"
         android:layout_height="70dp"
 
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="328dp"
         android:layout_marginBottom="150dp"
 
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/main_setup_bt"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_connect_bt"
-        app:layout_constraintVertical_bias="0.312"
-
+        android:enabled="false"
         android:text="@string/main_disconnect_bt_text"
         android:textSize="20sp"
-
-        android:enabled="false"
         app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/main_setup_bt"
+
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+
+        app:layout_constraintTop_toBottomOf="@+id/main_connect_bt"
+        app:layout_constraintVertical_bias="0.312"
         app:strokeColor="#C8C8C8"
         app:strokeWidth="2dp" />
 
@@ -105,7 +105,7 @@
         android:layout_width="400dp"
         android:layout_height="70dp"
 
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="20dp"
 
         android:layout_marginTop="584dp"
         android:layout_marginEnd="328dp"
@@ -127,15 +127,17 @@
 
         android:layout_width="460dp"
         android:layout_height="86dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="396dp"
-        android:gravity="center"
+        android:layout_marginStart="410dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="410dp"
 
+        android:gravity="center"
         android:text="@string/main_title_text"
-        android:textColor="@color/BLACK"
 
         android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Switch

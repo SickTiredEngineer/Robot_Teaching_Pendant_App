@@ -1,6 +1,8 @@
 package com.example.robot_teaching_pendant_app
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -11,6 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.robot_teaching_pendant_app.databinding.MainActivityBinding
 
 class MainActivity : AppCompatActivity() {
+
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +25,6 @@ class MainActivity : AppCompatActivity() {
         //상단 바 제거
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
-
         //Main 화면의 버튼 연결
         val mainDarkSwitch = binding.mainDarkSwitch
         val mainPowerBt = binding.mainPowerBt
@@ -31,6 +33,15 @@ class MainActivity : AppCompatActivity() {
         val mainSetupBt = binding.mainSetupBt
         val mainConnectBt = binding.mainConnectBt
         val mainDisconnectBt = binding.mainDisconnectBt
+
+        val sharedPreferences = getSharedPreferences("MODE", Context.MODE_PRIVATE)
+
+
+
+
+        mainDarkSwitch
+
+
 
 
         //버튼 동작
