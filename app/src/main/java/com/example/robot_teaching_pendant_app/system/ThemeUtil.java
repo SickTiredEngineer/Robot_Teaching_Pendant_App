@@ -7,10 +7,11 @@
 //public class ThemeUtil {
 //    public static final String DEFAULT_MODE = "default";
 //    public static final String DARK_MODE = "dark";
+//    public static final String LIGHT_MODE = "light";
 //
 //    public static void applyTheme(String themeColor){
 //        switch(themeColor){
-//            case DEFAULT_MODE:
+//            case LIGHT_MODE:
 //                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 //                break;
 //
@@ -26,6 +27,17 @@
 //                else{
 //                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY);
 //                }
+//                break;
 //        }
 //    }
 //}
+
+////                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+////                val editor = sharedPreferences.edit()
+////                editor.putBoolean("night",false)
+//
+//
+////
+//////              AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+////                val editor = sharedPreferences.edit()
+////                editor.putBoolean("night",true)

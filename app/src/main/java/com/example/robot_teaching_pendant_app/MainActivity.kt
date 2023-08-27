@@ -2,17 +2,20 @@ package com.example.robot_teaching_pendant_app
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.SharedPreferences
+//import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.view.Window
-import android.view.WindowManager
+//import android.view.View
+//import android.view.Window
+//import android.view.WindowManager
+//import android.widget.CompoundButton
 import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.appcompat.app.AppCompatDelegate
+//import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.robot_teaching_pendant_app.databinding.MainActivityBinding
 
 class MainActivity : AppCompatActivity() {
+
 
     @SuppressLint("UseSwitchCompatOrMaterialCode")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +26,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //상단 바 제거
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
         //Main 화면의 버튼 연결
         val mainDarkSwitch = binding.mainDarkSwitch
@@ -35,14 +37,28 @@ class MainActivity : AppCompatActivity() {
         val mainDisconnectBt = binding.mainDisconnectBt
 
         val sharedPreferences = getSharedPreferences("MODE", Context.MODE_PRIVATE)
+        sharedPreferences.getBoolean("night", false) //light mode is the default
+
+        //이미 Dark 모드일 경우 Switch 를 On 합니다.
+        val isNightModeOn = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES
+        mainDarkSwitch.isChecked = isNightModeOn
 
 
-
-
-        mainDarkSwitch
-
-
-
+        //Dark Mode 스위치 작동
+        mainDarkSwitch.setOnCheckedChangeListener{_, isChecked->
+            if(isChecked){
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                val editor = sharedPreferences.edit()
+                editor.putBoolean("night",true)
+                editor.apply()
+            }
+            else{
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                val editor = sharedPreferences.edit()
+                editor.putBoolean("night",false)
+                editor.apply()
+            }
+        }
 
         //버튼 동작
 
@@ -55,7 +71,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         mainSetupBt.setOnClickListener{
-            Toast.makeText(this@MainActivity, "환경설정 선택 확인", Toast.LENGTH_SHORT ).show()
+            Toast.makeText(this@MainActivity, "환경 설정 선택 확인", Toast.LENGTH_SHORT ).show()
         }
 
         mainPowerBt.setOnClickListener{
