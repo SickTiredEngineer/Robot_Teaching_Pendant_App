@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <!-- Login String -->
+    <string name = "login_title">로그인</string>
+
+    //Login Menu Button String
+    <string name ="login_bt">로그인</string>
+    <string name ="login_icon">로그인 아이콘</string>
+
+
+</resources>

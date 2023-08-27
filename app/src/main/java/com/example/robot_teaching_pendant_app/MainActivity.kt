@@ -2,6 +2,7 @@ package com.example.robot_teaching_pendant_app
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 //import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -13,6 +14,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 //import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.robot_teaching_pendant_app.databinding.MainActivityBinding
+import com.example.robot_teaching_pendant_app.setup.SetupActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -71,7 +73,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         mainSetupBt.setOnClickListener{
-            Toast.makeText(this@MainActivity, "환경 설정 선택 확인", Toast.LENGTH_SHORT ).show()
+            val nextIntent = Intent(this, SetupActivity::class.java)
+
+            startActivity(nextIntent)
+            Toast.makeText(this@MainActivity, "로그인 완료", Toast.LENGTH_SHORT ).show()
         }
 
         mainPowerBt.setOnClickListener{

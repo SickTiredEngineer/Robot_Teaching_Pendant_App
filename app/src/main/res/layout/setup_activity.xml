@@ -7,26 +7,27 @@
     style = "@style/BG">
 
     <View
-        android:id="@+id/view1"
+        android:id="@+id/setup_line2"
         android:layout_width="2dp"
         android:layout_height="0dp"
         android:layout_marginStart="350dp"
         android:background="@color/MainDark"
-        app:layout_constraintBottom_toTopOf="@+id/login_line2"
+        app:layout_constraintBottom_toTopOf="@+id/setup_line1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view2" />
+        app:layout_constraintTop_toBottomOf="@+id/setup_line3" />
 
     <View
-        android:id="@+id/view2"
+        android:id="@+id/setup_line3"
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:layout_marginTop="50dp"
         android:background="@color/MainDark"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="0dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
-        android:id="@+id/login_line2"
+        android:id="@+id/setup_line1"
         android:layout_width="match_parent"
         android:layout_height="3dp"
         android:layout_marginBottom="50dp"
@@ -34,6 +35,198 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ScrollView
+        android:layout_width="348dp"
+        android:layout_height="792dp"
+        app:layout_constraintBottom_toTopOf="@+id/setup_line1"
+        app:layout_constraintEnd_toStartOf="@+id/setup_line2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setup_line3">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/setup_cobot_bt"
+                style = "@style/BUTTON"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/setup_cobot_bt"
+                app:strokeColor="#C8C8C8"
+                app:strokeWidth="2dp"
+                app:cornerRadius="0dp"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/setup_tool_bt"
+                style = "@style/BUTTON"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/setup_tool_bt"
+                app:strokeColor="#C8C8C8"
+                app:strokeWidth="2dp"
+                app:cornerRadius="0dp"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/setup_system_bt"
+                style = "@style/BUTTON"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/setup_system_bt"
+                app:strokeColor="#C8C8C8"
+                app:strokeWidth="2dp"
+                app:cornerRadius="0dp"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/setup_log_bt"
+                style = "@style/BUTTON"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/setup_log_bt"
+                app:strokeColor="#C8C8C8"
+                app:strokeWidth="2dp"
+                app:cornerRadius="0dp"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/setup_utility_bt"
+                style = "@style/BUTTON"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/setup_utility_bt"
+                app:strokeColor="#C8C8C8"
+                app:strokeWidth="2dp"
+                app:cornerRadius="0dp"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/setup_serial_bt"
+                style = "@style/BUTTON"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/setup_serial_bt"
+                app:strokeColor="#C8C8C8"
+                app:strokeWidth="2dp"
+                app:cornerRadius="0dp"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/setup_io1_bt"
+                style = "@style/BUTTON"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/setup_io1_bt"
+                app:strokeColor="#C8C8C8"
+                app:strokeWidth="2dp"
+                app:cornerRadius="0dp"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/setup_io2_bt"
+                style = "@style/BUTTON"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/setup_io2_bt"
+                app:strokeColor="#C8C8C8"
+                app:strokeWidth="2dp"
+                app:cornerRadius="0dp"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/setup_inbox_bt"
+                style = "@style/BUTTON"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/setup_inbox_bt"
+                app:strokeColor="#C8C8C8"
+                app:strokeWidth="2dp"
+                app:cornerRadius="0dp"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/setup_interface_bt"
+                style = "@style/BUTTON"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/setup_interface_bt"
+                app:strokeColor="#C8C8C8"
+                app:strokeWidth="2dp"
+                app:cornerRadius="0dp"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/setup_coord_bt"
+                style = "@style/BUTTON"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/setup_coord_bt"
+                app:strokeColor="#C8C8C8"
+                app:strokeWidth="2dp"
+                app:cornerRadius="0dp"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/setup_security_bt"
+                style = "@style/BUTTON"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/setup_security_bt"
+                app:strokeColor="#C8C8C8"
+                app:strokeWidth="2dp"
+                app:cornerRadius="0dp"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/setup_devices_bt"
+                style = "@style/BUTTON"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/setup_devices_bt"
+                app:strokeColor="#C8C8C8"
+                app:strokeWidth="2dp"
+                app:cornerRadius="0dp"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/setup_tool_list_bt"
+                style = "@style/BUTTON"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/setup_tool_list_bt"
+                app:strokeColor="#C8C8C8"
+                app:strokeWidth="2dp"
+                app:cornerRadius="0dp"
+                android:textSize="20sp"/>
+
+            <Button
+                android:id="@+id/setup_program_table_bt"
+                style = "@style/BUTTON"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="@string/setup_programtable_bt"
+                app:strokeColor="#C8C8C8"
+                app:strokeWidth="2dp"
+                app:cornerRadius="0dp"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+    <ImageButton
+        android:id="@+id/setup_power_bt"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/power_bt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setup_line1"
+        app:srcCompat="@android:drawable/ic_lock_power_off" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

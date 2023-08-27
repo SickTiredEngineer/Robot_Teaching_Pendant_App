@@ -3,30 +3,10 @@
     //Public Button String
     <string name="power_bt">파워 버튼</string>
 
-
-    //Login Menu Button String
-    <string name = "login_bt_text">로그인</string>
-    <string name="login_icon_text">로그인 아이콘</string>
-
-    //Main Menu Button String
-    <string name="dark_mode_switch">Dark Mode</string>
-
-    <string name="main_make_bt_text">작업 환경</string>
-    <string name="main_play_bt_text">실행</string>
-    <string name="main_setup_bt_text">환경 설정</string>
-
-    <string name="main_connect_bt_text">연결</string>
-    <string name="main_disconnect_bt_text">연결 끊기</string>
-
-
     // Menu Choose Button String
-    <string name="main_bt_text">메인 화면</string>
-    <string name="make_bt_text">작업 환경</string>
-    <string name="play_bt_text">실행</string>
-    <string name="setup_bt_text">환경 설정</string>
-
-
-
-
+    <string name="menu_main_bt">메인 화면</string>
+    <string name="menu_make_bt">작업 환경</string>
+    <string name="menu_play_bt">실행</string>
+    <string name="menu_setup_bt">환경 설정</string>
 
 </resources>

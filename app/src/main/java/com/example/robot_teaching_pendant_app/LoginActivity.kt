@@ -36,6 +36,7 @@ class LoginActivity : AppCompatActivity() {
             startActivity(nextIntent)
             Toast.makeText(this@LoginActivity, "로그인 완료", Toast.LENGTH_SHORT ).show()
             //로그인 화면 종료
+            finish()
 
         }
 

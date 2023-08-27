@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    //Setup Button String
+    <string name="setup_cobot_bt">COBOT</string>
+    <string name="setup_tool_bt">TOOL</string>
+    <string name="setup_system_bt">SYSTEM</string>
+    <string name="setup_log_bt">LOG</string>
+    <string name="setup_utility_bt">UTILITY</string>
+    <string name="setup_serial_bt">SERIAL</string>
+    <string name="setup_io1_bt">I/O1</string>
+    <string name="setup_io2_bt">I/O2</string>
+    <string name="setup_inbox_bt">INBOX</string>
+    <string name="setup_interface_bt">INTERFACE</string>
+    <string name="setup_coord_bt">COORDINATE</string>
+    <string name="setup_security_bt">SECURITY</string>
+    <string name="setup_devices_bt">DEVICES</string>
+    <string name="setup_tool_list_bt">TOOL LIST</string>
+    <string name="setup_programtable_bt">PROGRAM TABLE</string>
+
+
+
+</resources>

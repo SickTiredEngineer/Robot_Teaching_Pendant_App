@@ -16,7 +16,7 @@
 
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="10dp"
-        android:text="@string/main_make_bt_text"
+        android:text="@string/main_make_bt"
         android:textSize="30sp"
 
         app:cornerRadius="0dp"
@@ -38,7 +38,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="3dp"
 
-        android:text="@string/main_play_bt_text"
+        android:text="@string/main_play_bt"
         android:textSize="30sp"
         app:cornerRadius="0dp"
 
@@ -60,7 +60,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="150dp"
 
-        android:text="@string/main_setup_bt_text"
+        android:text="@string/main_setup_bt"
         android:textSize="30sp"
         app:cornerRadius="0dp"
 
@@ -84,7 +84,7 @@
         android:layout_marginBottom="150dp"
 
         android:enabled="false"
-        android:text="@string/main_disconnect_bt_text"
+        android:text="@string/main_disconnect_bt"
         android:textSize="20sp"
         app:cornerRadius="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -110,7 +110,7 @@
         android:layout_marginTop="584dp"
         android:layout_marginEnd="328dp"
         android:layout_marginBottom="2dp"
-        android:text="@string/main_connect_bt_text"
+        android:text="@string/main_connect_bt"
         android:textSize="20sp"
         app:cornerRadius="0dp"
         app:layout_constraintBottom_toTopOf="@+id/main_disconnect_bt"
@@ -132,7 +132,7 @@
         android:layout_marginEnd="410dp"
 
         android:gravity="center"
-        android:text="@string/main_title_text"
+        android:text="@string/main_title"
 
         android:textSize="50sp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -5,8 +5,8 @@ package com.example.robot_teaching_pendant_app.setup
 //import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-//import android.view.View
-//import android.view.Window
+import android.view.View
+import android.view.Window
 //import android.view.WindowManager
 //import android.widget.CompoundButton
 //import android.widget.Toast
