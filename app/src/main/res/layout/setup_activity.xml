@@ -6,6 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     style = "@style/BG">
 
+
     <View
         android:id="@+id/setup_line2"
         android:layout_width="2dp"
@@ -227,6 +228,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/setup_line1"
         app:srcCompat="@android:drawable/ic_lock_power_off" />
+
+    <Button
+        android:id="@+id/setup_menu"
+        style="@style/BUTTON"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="@string/menu_bt"
+        android:textSize="20sp"
+        app:cornerRadius="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="#C8C8C8"
+        app:strokeWidth="2dp" />
+
+    <LinearLayout
+        android:id="@+id/setup_viewer"
+        android:layout_width="926dp"
+        android:layout_height="792dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/setup_line1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/setup_line2"
+        app:layout_constraintTop_toBottomOf="@+id/setup_line3"></LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

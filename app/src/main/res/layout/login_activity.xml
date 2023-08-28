@@ -44,7 +44,7 @@
         android:layout_marginTop="100dp"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="@string/login_title_text"
+        android:text="@string/login_title"
         android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

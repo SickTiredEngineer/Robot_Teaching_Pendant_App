@@ -2,6 +2,12 @@
 <resources>
     //Public Button String
     <string name="power_bt">파워 버튼</string>
+    <string name="menu_bt">메뉴</string>
+    <string name="save_bt">저장</string>
+    <string name="set_bt">설정</string>
+
+
+
 
     // Menu Choose Button String
     <string name="menu_main_bt">메인 화면</string>

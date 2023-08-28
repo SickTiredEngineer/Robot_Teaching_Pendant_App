@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.example.robot_teaching_pendant_app.databinding.MainActivityBinding
 import com.example.robot_teaching_pendant_app.setup.SetupActivity
 
+
 class MainActivity : AppCompatActivity() {
 
 
