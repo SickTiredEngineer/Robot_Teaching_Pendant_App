@@ -3,17 +3,19 @@
 
     <style name = "public_enable_bt">
         <item name="android:backgroundTint">#00ff00</item>
-        <item name="android:textColor">@color/BLACK</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name = "public_enable_bt2">
+
         <item name="android:backgroundTint">#FFFFFF</item>
-        <item name="android:textColor">@color/BLACK</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
     <style name = "public_disable_bt">
+
         <item name="android:backgroundTint">#848484</item>
-        <item name="android:textColor">@color/BLACK</item>
+        <item name="android:textColor">@color/black</item>
     </style>
 
 

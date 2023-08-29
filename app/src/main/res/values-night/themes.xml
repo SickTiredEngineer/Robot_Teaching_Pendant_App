@@ -10,21 +10,21 @@
     </style>
 
         <!-- DARK Mode Style -->
-        <style name = "BG">
-            <item name = "android:background">@color/MainDark</item>
+        <style name = "bg">
+            <item name = "android:background">@color/main_dark</item>
         </style>
 
-        <style name = "TEXT">
-            <item name = "android:textColor">@color/WHITE</item>
+        <style name = "text">
+            <item name = "android:textColor">@color/white</item>
         </style>
 
-        <style name = "LINE">
-            <item name = "android:background">@color/WHITE</item>
+        <style name = "line">
+            <item name = "android:background">@color/white</item>
         </style>
 
-        <style name = "BUTTON">
-            <item name = "android:textColor">@color/WHITE</item>
-            <item name = "android:backgroundTint">@color/MainDark</item>
+        <style name = "button">
+            <item name = "android:textColor">@color/white</item>
+            <item name = "android:backgroundTint">@color/main_dark</item>
         </style>
 
     <style name="Theme.Robot_Teaching_Pendant_App" parent="Base.Theme.Robot_Teaching_Pendant_App" />

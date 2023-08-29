@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style = "@style/BG">
+    style = "@style/bg">
 
     <Button
         android:id="@+id/inbox_save_bt"
-        style = "@style/BUTTON"
+        style = "@style/button"
         app:strokeColor="#C8C8C8"
         app:strokeWidth="2dp"
         android:layout_width="match_parent"

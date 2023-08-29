@@ -12,17 +12,23 @@
 
         <!-- White Mode Style -->
 
-        <style name = "BG">
-            <item name = "android:background">@color/WHITE</item>
+        <style name = "bg">
+            <item name = "android:background">@color/white</item>
         </style>
 
-        <style name = "TEXT">
-            <item name = "android:textColor">@color/BLACK</item>
+        <style name = "text">
+            <item name = "android:textColor">@color/black</item>
         </style>
 
-        <style name = "BUTTON">
-            <item name = "android:textColor">@color/BLACK</item>
-            <item name = "android:backgroundTint">@color/WHITE</item>
+        <style name = "line">
+            <item name = "android:background">@color/main_dark</item>
+        </style>
+
+
+
+        <style name = "button">
+            <item name = "android:textColor">@color/black</item>
+            <item name = "android:backgroundTint">@color/white</item>
         </style>
 
     <style name="Theme.Robot_Teaching_Pendant_App" parent="Base.Theme.Robot_Teaching_Pendant_App" />
