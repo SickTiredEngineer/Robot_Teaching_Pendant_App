@@ -7,7 +7,7 @@
     style = "@style/BG">
 
     <Button
-        android:id="@+id/cobot_save_bt"
+        android:id="@+id/tool_save_bt"
         style = "@style/BUTTON"
         app:strokeColor="#C8C8C8"
         app:strokeWidth="2dp"
@@ -17,4 +17,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
