@@ -14,6 +14,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 //import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.robot_teaching_pendant_app.databinding.MainActivityBinding
+import com.example.robot_teaching_pendant_app.make.MakeActivity
+import com.example.robot_teaching_pendant_app.play.PlayActivity
 import com.example.robot_teaching_pendant_app.setup.SetupActivity
 
 
@@ -66,10 +68,16 @@ class MainActivity : AppCompatActivity() {
         //버튼 동작
 
         mainMakeBt.setOnClickListener{
+            val nextIntent = Intent(this, MakeActivity::class.java)
+
+            startActivity(nextIntent)
             Toast.makeText(this@MainActivity, "작업 환경 선택 확인", Toast.LENGTH_SHORT ).show()
         }
 
         mainPlayBt.setOnClickListener{
+            val nextIntent = Intent(this, PlayActivity::class.java)
+
+            startActivity(nextIntent)
             Toast.makeText(this@MainActivity, "실행 선택 확인", Toast.LENGTH_SHORT ).show()
         }
 

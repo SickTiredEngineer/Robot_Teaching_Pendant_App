@@ -7,6 +7,16 @@
     style= "@style/bg"
     tools:context=".MainActivity">
 
+    <View
+        android:id="@+id/setup_line6"
+        style="@style/line"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Button
         android:id="@+id/main_make_bt"
         style="@style/button"
@@ -157,13 +167,11 @@
 
     <ImageButton
         android:id="@+id/main_power_bt"
-        android:layout_width="85dp"
-        android:layout_height="85dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="4dp"
+        android:layout_width="40dp"
+        android:layout_height="42dp"
+        android:contentDescription="@string/power_bt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_lock_power_off"
-        android:contentDescription="@string/power_bt"/>
+        app:srcCompat="@android:drawable/ic_lock_power_off" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

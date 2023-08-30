@@ -231,17 +231,17 @@
         app:srcCompat="@android:drawable/ic_lock_power_off" />
 
     <Button
-        android:id="@+id/setup_menu"
-        style="@style/button"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:text="@string/menu_bt"
-        android:textSize="20sp"
-        app:cornerRadius="0dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="#C8C8C8"
-        app:strokeWidth="2dp" />
+    android:id="@+id/setup_menu_bt"
+    style="@style/button"
+    android:layout_width="100dp"
+    android:layout_height="50dp"
+    android:text="@string/menu_bt"
+    android:textSize="20sp"
+    app:cornerRadius="0dp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:strokeColor="#C8C8C8"
+    app:strokeWidth="2dp" />
 
     <LinearLayout
         android:id="@+id/setup_viewer"

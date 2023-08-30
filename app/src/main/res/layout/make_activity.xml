@@ -5,4 +5,47 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <View
+        android:id="@+id/make_line1"
+        style="@style/line"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/make_line2"
+        style = "@style/line"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/make_menu_bt"
+        style="@style/button"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="@string/menu_bt"
+        android:textSize="20sp"
+        app:cornerRadius="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="#C8C8C8"
+        app:strokeWidth="2dp"
+        />
+
+    <ImageButton
+        android:id="@+id/make_power_bt3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/power_bt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/make_line1"
+        app:srcCompat="@android:drawable/ic_lock_power_off" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -39,144 +39,129 @@ class SetupActivity : AppCompatActivity() {
         val setupProgramTableBt = binding.setupProgramTableBt
 
         //좌측 상단 메뉴 버튼
-        val setupMenu = binding.setupMenu
+        val setupMenu = binding.setupMenuBt
 
 
 
         //Cobot 버튼 클릭, 설정
-        setupCobotBt.setOnClickListener(View.OnClickListener {
+        setupCobotBt.setOnClickListener{
             val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             val inflaterView = inflater.inflate(R.layout.setup_cobot_activity, setupViewer, false )
             setupViewer.removeAllViews()
             setupViewer.addView(inflaterView)
-
-        })
+        }
 
         //Tool 버튼 클릭, 설정
-        setupToolBt.setOnClickListener(View.OnClickListener {
+        setupToolBt.setOnClickListener{
             val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             val inflaterView = inflater.inflate(R.layout.setup_tool_activity, setupViewer, false)
             setupViewer.removeAllViews()
             setupViewer.addView(inflaterView)
-
-        })
+        }
 
         //System 버튼 클릭, 설정
-        setupSystemBt.setOnClickListener(View.OnClickListener {
+        setupSystemBt.setOnClickListener{
             val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             val inflaterView = inflater.inflate(R.layout.setup_system_activity, setupViewer, false)
             setupViewer.removeAllViews()
             setupViewer.addView(inflaterView)
-
-        })
+        }
 
         //Log 버튼 클릭, 설정
-        setupLogBt.setOnClickListener(View.OnClickListener {
+        setupLogBt.setOnClickListener{
             val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             val inflaterView = inflater.inflate(R.layout.setup_log_activity, setupViewer, false)
             setupViewer.removeAllViews()
             setupViewer.addView(inflaterView)
-
-        })
+        }
 
         //Utility 버튼 클릭, 설정
-        setupUtilityBt.setOnClickListener(View.OnClickListener {
+        setupUtilityBt.setOnClickListener{
             val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             val inflaterView = inflater.inflate(R.layout.setup_utility_activity, setupViewer, false)
             setupViewer.removeAllViews()
             setupViewer.addView(inflaterView)
-
-        })
+        }
 
         //Serial 버튼 클릭, 설정
-        setupSerialBt.setOnClickListener(View.OnClickListener {
+        setupSerialBt.setOnClickListener{
             val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             val inflaterView = inflater.inflate(R.layout.setup_serial_activity, setupViewer, false)
             setupViewer.removeAllViews()
             setupViewer.addView(inflaterView)
-
-        })
+        }
 
         //I/O1 버튼 클릭, 설정
-        setupIo1Bt.setOnClickListener(View.OnClickListener {
+        setupIo1Bt.setOnClickListener{
             val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             val inflaterView = inflater.inflate(R.layout.setup_io1_activity, setupViewer, false)
             setupViewer.removeAllViews()
             setupViewer.addView(inflaterView)
-
-        })
+        }
 
         //I/O2 버튼 클릭, 설정
-        setupIo2Bt.setOnClickListener(View.OnClickListener {
+        setupIo2Bt.setOnClickListener{
             val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             val inflaterView = inflater.inflate(R.layout.setup_io2_activity, setupViewer, false)
             setupViewer.removeAllViews()
             setupViewer.addView(inflaterView)
-
-        })
+        }
 
         //Inbox 버튼 클릭, 설정
-        setupInboxBt.setOnClickListener(View.OnClickListener {
+        setupInboxBt.setOnClickListener{
             val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             val inflaterView = inflater.inflate(R.layout.setup_inbox_activity, setupViewer, false)
             setupViewer.removeAllViews()
             setupViewer.addView(inflaterView)
-
-        })
+        }
 
         //Interface 버튼 클릭, 설정
-        setupInterfaceBt.setOnClickListener(View.OnClickListener {
+        setupInterfaceBt.setOnClickListener{
             val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             val inflaterView = inflater.inflate(R.layout.setup_interface_activity, setupViewer, false)
             setupViewer.removeAllViews()
             setupViewer.addView(inflaterView)
-
-        })
+        }
 
         //Coordinate 버튼 클릭, 설정
-        setupCoordBt.setOnClickListener(View.OnClickListener {
+        setupCoordBt.setOnClickListener{
             val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             val inflaterView = inflater.inflate(R.layout.setup_coord_activity, setupViewer, false)
             setupViewer.removeAllViews()
             setupViewer.addView(inflaterView)
-
-        })
+        }
 
         //Security 버튼 클릭, 설정
-        setupSecurityBt.setOnClickListener(View.OnClickListener {
+        setupSecurityBt.setOnClickListener{
             val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             val inflaterView = inflater.inflate(R.layout.setup_security_activity, setupViewer, false)
             setupViewer.removeAllViews()
             setupViewer.addView(inflaterView)
-
-        })
+        }
 
         //Devices 버튼 클릭, 설정
-        setupDevicesBt.setOnClickListener(View.OnClickListener {
+        setupDevicesBt.setOnClickListener{
             val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             val inflaterView = inflater.inflate(R.layout.setup_devices_activity, setupViewer, false)
             setupViewer.removeAllViews()
             setupViewer.addView(inflaterView)
-
-        })
+        }
 
         //Tool List 버튼 클릭, 설정
-        setupToolListBt.setOnClickListener(View.OnClickListener {
+        setupToolListBt.setOnClickListener{
             val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             val inflaterView = inflater.inflate(R.layout.setup_tool_list_activity, setupViewer, false)
             setupViewer.removeAllViews()
             setupViewer.addView(inflaterView)
-
-        })
+        }
 
         //ProgramTable 버튼 클릭, 설정
-        setupProgramTableBt.setOnClickListener(View.OnClickListener {
+        setupProgramTableBt.setOnClickListener{
             val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
             val inflaterView = inflater.inflate(R.layout.setup_prog_table_activity, setupViewer, false)
             setupViewer.removeAllViews()
             setupViewer.addView(inflaterView)
-
-        })
+        }
 
 
     }

@@ -2,7 +2,7 @@
 <resources>
 
     <style name = "public_enable_bt">
-        <item name="android:backgroundTint">#00ff00</item>
+        <item name="android:backgroundTint">#AFF3AF</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
