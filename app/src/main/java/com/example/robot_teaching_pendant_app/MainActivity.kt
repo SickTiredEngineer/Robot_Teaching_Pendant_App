@@ -71,6 +71,7 @@ class MainActivity : AppCompatActivity() {
             val nextIntent = Intent(this, MakeActivity::class.java)
 
             startActivity(nextIntent)
+            finish()
             Toast.makeText(this@MainActivity, "작업 환경 선택 확인", Toast.LENGTH_SHORT ).show()
         }
 
@@ -78,6 +79,7 @@ class MainActivity : AppCompatActivity() {
             val nextIntent = Intent(this, PlayActivity::class.java)
 
             startActivity(nextIntent)
+            finish()
             Toast.makeText(this@MainActivity, "실행 선택 확인", Toast.LENGTH_SHORT ).show()
         }
 
@@ -85,6 +87,7 @@ class MainActivity : AppCompatActivity() {
             val nextIntent = Intent(this, SetupActivity::class.java)
 
             startActivity(nextIntent)
+            finish()
             Toast.makeText(this@MainActivity, "로그인 완료", Toast.LENGTH_SHORT ).show()
         }
 

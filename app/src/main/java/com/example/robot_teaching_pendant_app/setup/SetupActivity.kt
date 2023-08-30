@@ -1,13 +1,18 @@
 package com.example.robot_teaching_pendant_app.setup
 import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
 //import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import androidx.appcompat.app.AlertDialog
+import com.example.robot_teaching_pendant_app.MainActivity
 import com.example.robot_teaching_pendant_app.R
 import com.example.robot_teaching_pendant_app.databinding.SetupActivityBinding
-
+import com.example.robot_teaching_pendant_app.make.MakeActivity
+import com.example.robot_teaching_pendant_app.play.PlayActivity
 
 
 class SetupActivity : AppCompatActivity() {
@@ -21,7 +26,6 @@ class SetupActivity : AppCompatActivity() {
         val setupViewer = binding.setupViewer
 
         //버튼 변수 등록
-
         val setupCobotBt = binding.setupCobotBt
         val setupToolBt = binding.setupToolBt
         val setupSystemBt = binding.setupSystemBt
@@ -40,6 +44,35 @@ class SetupActivity : AppCompatActivity() {
 
         //좌측 상단 메뉴 버튼
         val setupMenu = binding.setupMenuBt
+        setupMenu.setOnClickListener{
+            val menuDialog = AlertDialog.Builder(this)
+            val menuArray = arrayOf("작업 환경", "실행", "메인 화면")
+            menuDialog.setCancelable(true)
+            menuDialog.setItems(menuArray, object: DialogInterface.OnClickListener{
+                override fun onClick(p0: DialogInterface?, p1: Int) {
+                    when("${menuArray[p1]}"){
+                        "작업 환경" ->{
+                            val nextIntent = Intent(this@SetupActivity, MakeActivity::class.java)
+                            startActivity(nextIntent)
+                            finish()
+                        }
+
+                        "실행" ->{
+                            val nextIntent = Intent(this@SetupActivity, PlayActivity::class.java)
+                            startActivity(nextIntent)
+                            finish()
+                        }
+
+                        "메인 화면" ->{
+                            val nextIntent = Intent(this@SetupActivity, MainActivity::class.java)
+                            startActivity(nextIntent)
+                            finish()
+                        }
+                    }
+                }
+            })
+            menuDialog.show()
+        }
 
 
 
