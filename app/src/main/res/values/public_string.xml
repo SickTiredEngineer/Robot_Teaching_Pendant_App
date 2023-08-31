@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    //Public Button String
+    //Public Button String     string name="save_bt">메뉴
     <string name="power_bt">파워 버튼</string>
     <string name="menu_bt">메뉴</string>
-    <string name="save_bt">저장</string>
     <string name="set_bt">설정</string>
-
-
 
 
     // Menu Choose Button String
@@ -14,5 +11,15 @@
     <string name="menu_make_bt">작업 환경</string>
     <string name="menu_play_bt">실행</string>
     <string name="menu_setup_bt">환경 설정</string>
+
+
+    //Project 관리 관련
+    <string name="load_bt">Load</string>
+    <string name="save_bt">Save</string>
+    <string name="save_as_bt">Save as</string>
+    <string name="new_bt">New</string>
+
+
+
 
 </resources>

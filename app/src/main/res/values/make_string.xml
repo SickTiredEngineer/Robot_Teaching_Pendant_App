@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    //우측 상단 기능 분류 탭 String
+    <string name ="make_all">전체</string>
+    <string name ="make_move">이동</string>
+    <string name ="make_func">기능</string>
+    <string name ="make_end_ef">엔드 이펙트</string>
+    <string name ="make_other">기타</string>
+    <string name ="make_search">검색</string>
+
+    <string name = "make_project_name">불러온 프로젝트가 존재하지 않습니다.</string>
+
+
+
+</resources>

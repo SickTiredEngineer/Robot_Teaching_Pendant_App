@@ -39,8 +39,8 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ScrollView
-        android:layout_width="348dp"
-        android:layout_height="792dp"
+        android:layout_width="340dp"
+        android:layout_height="684dp"
         app:layout_constraintBottom_toTopOf="@+id/setup_line1"
         app:layout_constraintEnd_toStartOf="@+id/setup_line2"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,173 +48,173 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <Button
                 android:id="@+id/setup_cobot_bt"
-                style = "@style/button"
+                style="@style/button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/setup_cobot_bt"
-                app:strokeColor="#C8C8C8"
-                app:strokeWidth="2dp"
+                android:textSize="20sp"
                 app:cornerRadius="0dp"
-                android:textSize="20sp"/>
+                app:strokeColor="#C8C8C8"
+                app:strokeWidth="2dp" />
 
             <Button
                 android:id="@+id/setup_tool_bt"
-                style = "@style/button"
+                style="@style/button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/setup_tool_bt"
-                app:strokeColor="#C8C8C8"
-                app:strokeWidth="2dp"
+                android:textSize="20sp"
                 app:cornerRadius="0dp"
-                android:textSize="20sp"/>
+                app:strokeColor="#C8C8C8"
+                app:strokeWidth="2dp" />
 
             <Button
                 android:id="@+id/setup_system_bt"
-                style = "@style/button"
+                style="@style/button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/setup_system_bt"
-                app:strokeColor="#C8C8C8"
-                app:strokeWidth="2dp"
+                android:textSize="20sp"
                 app:cornerRadius="0dp"
-                android:textSize="20sp"/>
+                app:strokeColor="#C8C8C8"
+                app:strokeWidth="2dp" />
 
             <Button
                 android:id="@+id/setup_log_bt"
-                style = "@style/button"
+                style="@style/button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/setup_log_bt"
-                app:strokeColor="#C8C8C8"
-                app:strokeWidth="2dp"
+                android:textSize="20sp"
                 app:cornerRadius="0dp"
-                android:textSize="20sp"/>
+                app:strokeColor="#C8C8C8"
+                app:strokeWidth="2dp" />
 
             <Button
                 android:id="@+id/setup_utility_bt"
-                style = "@style/button"
+                style="@style/button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/setup_utility_bt"
-                app:strokeColor="#C8C8C8"
-                app:strokeWidth="2dp"
+                android:textSize="20sp"
                 app:cornerRadius="0dp"
-                android:textSize="20sp"/>
+                app:strokeColor="#C8C8C8"
+                app:strokeWidth="2dp" />
 
             <Button
                 android:id="@+id/setup_serial_bt"
-                style = "@style/button"
+                style="@style/button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/setup_serial_bt"
-                app:strokeColor="#C8C8C8"
-                app:strokeWidth="2dp"
+                android:textSize="20sp"
                 app:cornerRadius="0dp"
-                android:textSize="20sp"/>
+                app:strokeColor="#C8C8C8"
+                app:strokeWidth="2dp" />
 
             <Button
                 android:id="@+id/setup_io1_bt"
-                style = "@style/button"
+                style="@style/button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/setup_io1_bt"
-                app:strokeColor="#C8C8C8"
-                app:strokeWidth="2dp"
+                android:textSize="20sp"
                 app:cornerRadius="0dp"
-                android:textSize="20sp"/>
+                app:strokeColor="#C8C8C8"
+                app:strokeWidth="2dp" />
 
             <Button
                 android:id="@+id/setup_io2_bt"
-                style = "@style/button"
+                style="@style/button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/setup_io2_bt"
-                app:strokeColor="#C8C8C8"
-                app:strokeWidth="2dp"
+                android:textSize="20sp"
                 app:cornerRadius="0dp"
-                android:textSize="20sp"/>
+                app:strokeColor="#C8C8C8"
+                app:strokeWidth="2dp" />
 
             <Button
                 android:id="@+id/setup_inbox_bt"
-                style = "@style/button"
+                style="@style/button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/setup_inbox_bt"
-                app:strokeColor="#C8C8C8"
-                app:strokeWidth="2dp"
+                android:textSize="20sp"
                 app:cornerRadius="0dp"
-                android:textSize="20sp"/>
+                app:strokeColor="#C8C8C8"
+                app:strokeWidth="2dp" />
 
             <Button
                 android:id="@+id/setup_interface_bt"
-                style = "@style/button"
+                style="@style/button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/setup_interface_bt"
-                app:strokeColor="#C8C8C8"
-                app:strokeWidth="2dp"
+                android:textSize="20sp"
                 app:cornerRadius="0dp"
-                android:textSize="20sp"/>
+                app:strokeColor="#C8C8C8"
+                app:strokeWidth="2dp" />
 
             <Button
                 android:id="@+id/setup_coord_bt"
-                style = "@style/button"
+                style="@style/button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/setup_coord_bt"
-                app:strokeColor="#C8C8C8"
-                app:strokeWidth="2dp"
+                android:textSize="20sp"
                 app:cornerRadius="0dp"
-                android:textSize="20sp"/>
+                app:strokeColor="#C8C8C8"
+                app:strokeWidth="2dp" />
 
             <Button
                 android:id="@+id/setup_security_bt"
-                style = "@style/button"
+                style="@style/button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/setup_security_bt"
-                app:strokeColor="#C8C8C8"
-                app:strokeWidth="2dp"
+                android:textSize="20sp"
                 app:cornerRadius="0dp"
-                android:textSize="20sp"/>
+                app:strokeColor="#C8C8C8"
+                app:strokeWidth="2dp" />
 
             <Button
                 android:id="@+id/setup_devices_bt"
-                style = "@style/button"
+                style="@style/button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/setup_devices_bt"
-                app:strokeColor="#C8C8C8"
-                app:strokeWidth="2dp"
+                android:textSize="20sp"
                 app:cornerRadius="0dp"
-                android:textSize="20sp"/>
+                app:strokeColor="#C8C8C8"
+                app:strokeWidth="2dp" />
 
             <Button
                 android:id="@+id/setup_tool_list_bt"
-                style = "@style/button"
+                style="@style/button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/setup_tool_list_bt"
-                app:strokeColor="#C8C8C8"
-                app:strokeWidth="2dp"
+                android:textSize="20sp"
                 app:cornerRadius="0dp"
-                android:textSize="20sp"/>
+                app:strokeColor="#C8C8C8"
+                app:strokeWidth="2dp" />
 
             <Button
                 android:id="@+id/setup_program_table_bt"
-                style = "@style/button"
+                style="@style/button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/setup_programtable_bt"
-                app:strokeColor="#C8C8C8"
-                app:strokeWidth="2dp"
+                android:textSize="20sp"
                 app:cornerRadius="0dp"
-                android:textSize="20sp"/>
+                app:strokeColor="#C8C8C8"
+                app:strokeWidth="2dp" />
 
         </LinearLayout>
     </ScrollView>

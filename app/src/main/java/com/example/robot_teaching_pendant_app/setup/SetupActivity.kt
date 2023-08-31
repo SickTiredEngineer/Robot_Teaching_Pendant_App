@@ -74,8 +74,6 @@ class SetupActivity : AppCompatActivity() {
             menuDialog.show()
         }
 
-
-
         //Cobot 버튼 클릭, 설정
         setupCobotBt.setOnClickListener{
             val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
