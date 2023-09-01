@@ -97,7 +97,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/make_power_bt3"
+        android:id="@+id/make_power_bt"
         style = "@style/button"
         android:layout_width="50dp"
         android:layout_height="50dp"

@@ -4,6 +4,7 @@ import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.robot_teaching_pendant_app.MainActivity
 import com.example.robot_teaching_pendant_app.R
@@ -18,7 +19,10 @@ class MakeActivity : AppCompatActivity() {
         val binding = MakeActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //좌측 상단의 메뉴 버튼
+        val makePowerBt = binding.makePowerBt
+
+
+        //좌측 상단에 위치한 Menu 버튼 동작, Dialog 형식으로 해당 화면으로 이동할 수 있는 기능
         val makeMenu = binding.makeMenuBt
         makeMenu.setOnClickListener{
             val menuDialog = AlertDialog.Builder(this)
@@ -46,6 +50,11 @@ class MakeActivity : AppCompatActivity() {
                 }
             }
             menuDialog.show()
+        }
+
+        //우측 하단에 위치한 파워 버튼을 클릭 시 동작입니다.
+        makePowerBt.setOnClickListener{
+            Toast.makeText(this@MakeActivity,"전원 버튼 클릭", Toast.LENGTH_SHORT).show()
         }
     }
 }

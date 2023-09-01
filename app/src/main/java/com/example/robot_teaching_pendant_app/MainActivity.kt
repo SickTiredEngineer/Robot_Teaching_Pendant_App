@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         mainDarkSwitch.isChecked = isNightModeOn
 
 
-        //Dark Mode 스위치 작동
+        //Dark Mode 스위치 작동 코드로, 현재 Mode에 관련된 사항을 Boolean 형식으로 SharedPreference에 저장합니다.
         mainDarkSwitch.setOnCheckedChangeListener{_, isChecked->
             if(isChecked){
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
@@ -65,8 +65,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        //버튼 동작
 
+        //작업 화면 버튼을 클릭 시 동작으로, 해당 화면으로 이동합니다.
         mainMakeBt.setOnClickListener{
             val nextIntent = Intent(this, MakeActivity::class.java)
 
@@ -75,6 +75,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this@MainActivity, "작업 환경 선택 확인", Toast.LENGTH_SHORT ).show()
         }
 
+        //실행 화면 버튼을 클릭 시 동작으로, 해당 화면으로 이동합니다.
         mainPlayBt.setOnClickListener{
             val nextIntent = Intent(this, PlayActivity::class.java)
 
@@ -83,6 +84,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this@MainActivity, "실행 선택 확인", Toast.LENGTH_SHORT ).show()
         }
 
+        //환경 설정 버튼을 클릭 시 동작으로, 해당 화면으로 이동합니다.
         mainSetupBt.setOnClickListener{
             val nextIntent = Intent(this, SetupActivity::class.java)
 
@@ -91,14 +93,18 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this@MainActivity, "로그인 완료", Toast.LENGTH_SHORT ).show()
         }
 
+        //우측 하단에 위치한 파워 버튼을 클릭 시 동작입니다.
         mainPowerBt.setOnClickListener{
             Toast.makeText(this@MainActivity,"전원 버튼 클릭",Toast.LENGTH_SHORT).show()
         }
 
+
+        //Connect 버튼을 클릭 시 진행되는 코드입니다.
         mainConnectBt.setOnClickListener{
             Toast.makeText(this@MainActivity,"연결 선택",Toast.LENGTH_SHORT).show()
         }
 
+        //Disconnect 버튼을 클릭 시 진행되는 코드입니다.
         mainDisconnectBt.setOnClickListener{
             Toast.makeText(this@MainActivity,"연결 끊기 선택",Toast.LENGTH_SHORT).show()
         }

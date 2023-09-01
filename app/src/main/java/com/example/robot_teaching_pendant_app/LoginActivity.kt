@@ -17,10 +17,14 @@ class LoginActivity : AppCompatActivity() {
         val binding = LoginActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+        //변수에 버튼 연결
         val loginBt = binding.loginBt
         val loginPowerBt = binding.loginPowerBt
 //        val loginIcon = binding.loginIcon
         val loginLoadingBar = binding.loginLoadingBar
+
+
 
         loginPowerBt.setOnClickListener{
             Toast.makeText(this@LoginActivity,"전원 버튼 클릭",Toast.LENGTH_SHORT).show()

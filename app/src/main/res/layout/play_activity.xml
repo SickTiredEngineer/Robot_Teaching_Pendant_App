@@ -39,7 +39,7 @@
         app:strokeWidth="2dp" />
 
     <ImageButton
-        android:id="@+id/setup_power_bt2"
+        android:id="@+id/play_power_bt"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:contentDescription="@string/power_bt"
