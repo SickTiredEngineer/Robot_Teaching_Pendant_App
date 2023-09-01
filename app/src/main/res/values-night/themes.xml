@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.Robot_Teaching_Pendant_App" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.Robot_Teaching_Pendant_App" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="android:windowTranslucentStatus">true</item>
@@ -22,10 +22,6 @@
             <item name = "android:background">@color/white</item>
         </style>
 
-        <style name = "button">
-            <item name = "android:textColor">@color/white</item>
-            <item name = "android:backgroundTint">@color/main_dark</item>
-        </style>
 
     <style name="Theme.Robot_Teaching_Pendant_App" parent="Base.Theme.Robot_Teaching_Pendant_App" />
 </resources>

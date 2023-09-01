@@ -53,15 +53,17 @@
 
     <ImageView
         android:id="@+id/login_icon"
-        android:padding="2dp"
         android:background="@drawable/square_background_border_black"
+
         android:layout_width="161dp"
-        android:layout_height="122dp"
+        android:layout_height="120dp"
         android:layout_marginStart="73dp"
         android:layout_marginTop="138dp"
         android:layout_marginBottom="268dp"
         android:layout_weight="1"
+
         android:contentDescription="@string/login_icon"
+        android:padding="2dp"
         app:layout_constraintBottom_toTopOf="@+id/setup_line1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
@@ -71,23 +73,19 @@
     <Button
         android:id="@+id/login_bt"
         style="@style/button"
+        android:textSize="30sp"
+        android:text="@string/login_bt"
+
         android:layout_width="400dp"
         android:layout_height="144dp"
         android:layout_marginStart="400dp"
-        android:gravity="center"
 
         android:layout_marginEnd="400dp"
         android:layout_marginBottom="30dp"
 
-        android:text="@string/login_bt"
-
         app:layout_constraintBottom_toTopOf="@+id/setup_line1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:strokeColor="#C8C8C8"
-        app:strokeWidth="2dp"
-        app:cornerRadius="0dp"
-        android:textSize="30sp"
         tools:ignore="VisualLintButtonSize" />
 
     <ImageButton
@@ -110,5 +108,64 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:layout_width="658dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="77dp"
+        android:layout_marginTop="154dp"
+        android:layout_marginEnd="311dp"
+        android:layout_marginBottom="113dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/login_bt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/login_icon"
+        app:layout_constraintTop_toBottomOf="@+id/login_line1">
+
+        <EditText
+            android:id="@+id/login_pw1"
+            style = "@style/login_text_box"
+
+            android:background="@drawable/square_background_border_black"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPassword|number"
+            tools:ignore="Autofill,LabelFor" />
+
+        <EditText
+            android:id="@+id/login_pw2"
+            style = "@style/login_text_box"
+            android:background="@drawable/square_background_border_black"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPassword|number"
+            tools:ignore="Autofill,LabelFor" />
+
+        <EditText
+            android:id="@+id/login_pw3"
+            style = "@style/login_text_box"
+            android:background="@drawable/square_background_border_black"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPassword|number"
+            tools:ignore="Autofill,LabelFor" />
+
+        <EditText
+            android:id="@+id/login_pw4"
+            style = "@style/login_text_box"
+            android:background="@drawable/square_background_border_black"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="textPassword|number"
+            tools:ignore="Autofill,LabelFor" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

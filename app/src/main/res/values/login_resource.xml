@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name = "login_text_box">
+        <item name = "android:gravity">center</item>
+        <item name = "android:textColor">@color/black</item>
+        <item name = "android:textSize">50sp</item>
+        <item name = "android:hint">*</item>
+    </style>
+
+<!--    <string name = "login_pass1">pass1</string>-->
+<!--    <string name = "login_pass2">pass2</string>-->
+<!--    <string name = "login_pass3">pass3</string>-->
+<!--    <string name = "login_pass4">pass4</string>-->
+
+
+    <!-- Login String -->
+    <string name = "login_title">로그인</string>
+
+    //Login Menu Button String
+    <string name ="login_bt">로그인</string>
+    <string name ="login_icon">로그인 아이콘</string>
+
+
+</resources>

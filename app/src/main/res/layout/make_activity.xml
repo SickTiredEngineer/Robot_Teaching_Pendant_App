@@ -29,82 +29,76 @@
     <Button
         android:id="@+id/make_menu_bt"
         style="@style/button"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
         android:text="@string/menu_bt"
         android:textSize="20sp"
-        app:cornerRadius="0dp"
+
+        android:layout_width="100dp"
+        android:layout_height="50dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="#C8C8C8"
-        app:strokeWidth="2dp"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/make_save_bt"
         style="@style/button"
+        android:text="@string/save_bt"
+        android:textSize="20sp"
+
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_marginEnd="5dp"
-        android:text="@string/save_bt"
-        android:textSize="20sp"
-        app:cornerRadius="0dp"
+
         app:layout_constraintBottom_toTopOf="@+id/make_line2"
         app:layout_constraintEnd_toStartOf="@+id/make_save_as_bt"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:strokeColor="#C8C8C8"
-        app:strokeWidth="2dp" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/make_load_bt"
         style="@style/button"
+        android:text="@string/load_bt"
+        android:textSize="20sp"
+
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_marginEnd="5dp"
-        android:text="@string/load_bt"
-        android:textSize="20sp"
-        app:cornerRadius="0dp"
+
         app:layout_constraintBottom_toTopOf="@+id/make_line2"
         app:layout_constraintEnd_toStartOf="@+id/make_save_bt"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:strokeColor="#C8C8C8"
-        app:strokeWidth="2dp" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/make_save_as_bt"
         style="@style/button"
+        android:text="@string/save_as_bt"
+        android:textSize="20sp"
+
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_marginEnd="5dp"
-        android:text="@string/save_as_bt"
-        android:textSize="20sp"
-        app:cornerRadius="0dp"
+
         app:layout_constraintBottom_toTopOf="@+id/make_line2"
         app:layout_constraintEnd_toStartOf="@+id/make_new_bt"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:strokeColor="#C8C8C8"
-        app:strokeWidth="2dp" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/make_new_bt"
         style="@style/button"
+        android:text="@string/new_bt"
+        android:textSize="20sp"
+
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_marginEnd="30dp"
-        android:text="@string/new_bt"
-        android:textSize="20sp"
-        app:cornerRadius="0dp"
+
         app:layout_constraintBottom_toTopOf="@+id/make_line2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="#C8C8C8"
-        app:strokeWidth="2dp" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/make_power_bt3"
+        style = "@style/button"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:contentDescription="@string/power_bt"
@@ -113,61 +107,10 @@
         app:layout_constraintTop_toBottomOf="@+id/make_line1"
         app:srcCompat="@android:drawable/ic_lock_power_off" />
 
-    <com.google.android.material.tabs.TabLayout
-        style="@style/button"
-        android:layout_width="606dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="30dp"
-        android:background="@color/white"
-        android:scrollbarThumbHorizontal="@color/white"
-        android:scrollbarThumbVertical="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/make_line2"
-        app:tabIconTint="@color/black"
-        app:tabIndicator="@color/gray"
-        app:tabIndicatorAnimationDuration="3"
-        app:tabIndicatorAnimationMode="linear"
-        app:tabIndicatorColor="@color/gray"
-        app:tabIndicatorFullWidth="true"
-        app:tabIndicatorGravity="bottom"
-        app:tabIndicatorHeight="3dp"
-        app:tabTextColor="@color/black">
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/make_all" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/make_move" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/make_func" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/make_end_ef" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/make_other" />
-
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/make_search" />
-    </com.google.android.material.tabs.TabLayout>
-
     <TextView
-        android:background="@drawable/square_background_border_black"
         android:id="@+id/textView2"
+        style = "@style/textview"
+
         android:layout_width="440dp"
         android:layout_height="45dp"
         android:layout_marginStart="25dp"
