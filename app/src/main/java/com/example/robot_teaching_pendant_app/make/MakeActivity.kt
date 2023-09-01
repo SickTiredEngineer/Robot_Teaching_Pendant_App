@@ -24,29 +24,27 @@ class MakeActivity : AppCompatActivity() {
             val menuDialog = AlertDialog.Builder(this)
             val menuArray = arrayOf("메인 화면", "실행", "환경 설정")
             menuDialog.setCancelable(true)
-            menuDialog.setItems(menuArray, object: DialogInterface.OnClickListener{
-                override fun onClick(p0: DialogInterface?, p1: Int) {
-                    when("${menuArray[p1]}"){
-                        "메인 화면" ->{
-                            val nextIntent = Intent(this@MakeActivity, MainActivity::class.java)
-                            startActivity(nextIntent)
-                            finish()
-                        }
+            menuDialog.setItems(menuArray) { _, p1 ->
+                when (menuArray[p1]) {
+                    "메인 화면" -> {
+                        val nextIntent = Intent(this@MakeActivity, MainActivity::class.java)
+                        startActivity(nextIntent)
+                        finish()
+                    }
 
-                        "실행" ->{
-                            val nextIntent = Intent(this@MakeActivity, PlayActivity::class.java)
-                            startActivity(nextIntent)
-                            finish()
-                        }
+                    "실행" -> {
+                        val nextIntent = Intent(this@MakeActivity, PlayActivity::class.java)
+                        startActivity(nextIntent)
+                        finish()
+                    }
 
-                        "환경 설정" ->{
-                            val nextIntent = Intent(this@MakeActivity, SetupActivity::class.java)
-                            startActivity(nextIntent)
-                            finish()
-                        }
+                    "환경 설정" -> {
+                        val nextIntent = Intent(this@MakeActivity, SetupActivity::class.java)
+                        startActivity(nextIntent)
+                        finish()
                     }
                 }
-            })
+            }
             menuDialog.show()
         }
     }

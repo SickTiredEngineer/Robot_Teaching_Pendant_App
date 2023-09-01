@@ -17,7 +17,7 @@
         <!-- White Mode Style -->
 
         <style name = "bg">
-            <item name = "android:background">@color/white</item>
+            <item name = "android:background">@color/main_white</item>
         </style>
 
         <style name = "text">
@@ -25,7 +25,7 @@
         </style>
 
         <style name = "line">
-            <item name = "android:background">@color/black</item>
+            <item name = "android:background">@color/main_black</item>
         </style>
 
     <style name="Theme.Robot_Teaching_Pendant_App" parent="Base.Theme.Robot_Teaching_Pendant_App" />

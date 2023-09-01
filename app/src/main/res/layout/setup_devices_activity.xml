@@ -9,11 +9,10 @@
     <Button
         android:id="@+id/devices_save_bt"
         style = "@style/button"
-        app:strokeColor="#C8C8C8"
-        app:strokeWidth="2dp"
+        android:text="@string/save_bt"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/save_bt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
