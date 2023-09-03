@@ -36,13 +36,11 @@ class PlayActivity : AppCompatActivity() {
                         startActivity(nextIntent)
                         finish()
                     }
-
                     "메인 화면" -> {
                         val nextIntent = Intent(this@PlayActivity, MainActivity::class.java)
                         startActivity(nextIntent)
                         finish()
                     }
-
                     "환경 설정" -> {
                         val nextIntent = Intent(this@PlayActivity, SetupActivity::class.java)
                         startActivity(nextIntent)

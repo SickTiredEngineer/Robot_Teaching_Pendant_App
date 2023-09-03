@@ -5,6 +5,7 @@ import android.content.Intent
 //import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
@@ -12,6 +13,21 @@ import androidx.appcompat.app.AlertDialog
 import com.example.robot_teaching_pendant_app.MainActivity
 import com.example.robot_teaching_pendant_app.R
 import com.example.robot_teaching_pendant_app.databinding.SetupActivityBinding
+import com.example.robot_teaching_pendant_app.databinding.SetupCobotActivityBinding
+import com.example.robot_teaching_pendant_app.databinding.SetupCoordActivityBinding
+import com.example.robot_teaching_pendant_app.databinding.SetupDevicesActivityBinding
+import com.example.robot_teaching_pendant_app.databinding.SetupInboxActivityBinding
+import com.example.robot_teaching_pendant_app.databinding.SetupInterfaceActivityBinding
+import com.example.robot_teaching_pendant_app.databinding.SetupIo1ActivityBinding
+import com.example.robot_teaching_pendant_app.databinding.SetupIo2ActivityBinding
+import com.example.robot_teaching_pendant_app.databinding.SetupLogActivityBinding
+import com.example.robot_teaching_pendant_app.databinding.SetupProgTableActivityBinding
+import com.example.robot_teaching_pendant_app.databinding.SetupSecurityActivityBinding
+import com.example.robot_teaching_pendant_app.databinding.SetupSerialActivityBinding
+import com.example.robot_teaching_pendant_app.databinding.SetupSystemActivityBinding
+import com.example.robot_teaching_pendant_app.databinding.SetupToolActivityBinding
+import com.example.robot_teaching_pendant_app.databinding.SetupToolListActivityBinding
+import com.example.robot_teaching_pendant_app.databinding.SetupUtilityActivityBinding
 import com.example.robot_teaching_pendant_app.make.MakeActivity
 import com.example.robot_teaching_pendant_app.play.PlayActivity
 
@@ -58,13 +74,11 @@ class SetupActivity : AppCompatActivity() {
                         startActivity(nextIntent)
                         finish()
                     }
-
                     "실행" -> {
                         val nextIntent = Intent(this@SetupActivity, PlayActivity::class.java)
                         startActivity(nextIntent)
                         finish()
                     }
-
                     "메인 화면" -> {
                         val nextIntent = Intent(this@SetupActivity, MainActivity::class.java)
                         startActivity(nextIntent)
@@ -78,122 +92,113 @@ class SetupActivity : AppCompatActivity() {
 
         //Cobot 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
         setupCobotBt.setOnClickListener{
-            val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val inflaterView = inflater.inflate(R.layout.setup_cobot_activity, setupViewer, false )
+            val cobotBinding = SetupCobotActivityBinding.inflate(layoutInflater)
             setupViewer.removeAllViews()
-            setupViewer.addView(inflaterView)
+            setupViewer.addView(cobotBinding.root)
+
+            val saveBt = cobotBinding.cobotSaveBt
+            saveBt.setOnClickListener{
+                Toast.makeText(this@SetupActivity,"Save 버튼 클릭",Toast.LENGTH_SHORT).show()
+            }
         }
 
         //Tool 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
         setupToolBt.setOnClickListener{
-            val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val inflaterView = inflater.inflate(R.layout.setup_tool_activity, setupViewer, false)
+            val toolBinding = SetupToolActivityBinding.inflate(layoutInflater)
             setupViewer.removeAllViews()
-            setupViewer.addView(inflaterView)
+            setupViewer.addView(toolBinding.root)
         }
 
         //System 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
         setupSystemBt.setOnClickListener{
-            val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val inflaterView = inflater.inflate(R.layout.setup_system_activity, setupViewer, false)
+            val systemBinding = SetupSystemActivityBinding.inflate(layoutInflater)
             setupViewer.removeAllViews()
-            setupViewer.addView(inflaterView)
+            setupViewer.addView(systemBinding.root)
         }
 
         //Log 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
         setupLogBt.setOnClickListener{
-            val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val inflaterView = inflater.inflate(R.layout.setup_log_activity, setupViewer, false)
+            val logBinding = SetupLogActivityBinding.inflate(layoutInflater)
             setupViewer.removeAllViews()
-            setupViewer.addView(inflaterView)
+            setupViewer.addView(logBinding.root)
         }
 
         //Utility 버튼 클릭, 설정
         setupUtilityBt.setOnClickListener{
-            val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val inflaterView = inflater.inflate(R.layout.setup_utility_activity, setupViewer, false)
+            val utilBinding = SetupUtilityActivityBinding.inflate(layoutInflater)
             setupViewer.removeAllViews()
-            setupViewer.addView(inflaterView)
+            setupViewer.addView(utilBinding.root)
         }
 
         //Serial 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
         setupSerialBt.setOnClickListener{
-            val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val inflaterView = inflater.inflate(R.layout.setup_serial_activity, setupViewer, false)
+            val serialBinding = SetupSerialActivityBinding.inflate(layoutInflater)
             setupViewer.removeAllViews()
-            setupViewer.addView(inflaterView)
+            setupViewer.addView(serialBinding.root)
         }
 
         //I/O1 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
         setupIo1Bt.setOnClickListener{
-            val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val inflaterView = inflater.inflate(R.layout.setup_io1_activity, setupViewer, false)
+           val io1Binding = SetupIo1ActivityBinding.inflate(layoutInflater)
             setupViewer.removeAllViews()
-            setupViewer.addView(inflaterView)
+            setupViewer.addView(io1Binding.root)
         }
 
         //I/O2 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
         setupIo2Bt.setOnClickListener{
-            val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val inflaterView = inflater.inflate(R.layout.setup_io2_activity, setupViewer, false)
+            val io2Binding = SetupIo2ActivityBinding.inflate(layoutInflater)
             setupViewer.removeAllViews()
-            setupViewer.addView(inflaterView)
+            setupViewer.addView(io2Binding.root)
         }
 
         //Inbox 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
         setupInboxBt.setOnClickListener{
-            val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val inflaterView = inflater.inflate(R.layout.setup_inbox_activity, setupViewer, false)
+            val inboxBinding = SetupInboxActivityBinding.inflate(layoutInflater)
             setupViewer.removeAllViews()
-            setupViewer.addView(inflaterView)
+            setupViewer.addView(inboxBinding.root)
         }
 
         //Interface 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
         setupInterfaceBt.setOnClickListener{
-            val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val inflaterView = inflater.inflate(R.layout.setup_interface_activity, setupViewer, false)
+            val interBinding = SetupInterfaceActivityBinding.inflate(layoutInflater)
             setupViewer.removeAllViews()
-            setupViewer.addView(inflaterView)
+            setupViewer.addView(interBinding.root)
         }
 
         //Coordinate 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
         setupCoordBt.setOnClickListener{
-            val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val inflaterView = inflater.inflate(R.layout.setup_coord_activity, setupViewer, false)
+            val coordBinding = SetupCoordActivityBinding.inflate(layoutInflater)
             setupViewer.removeAllViews()
-            setupViewer.addView(inflaterView)
+            setupViewer.addView(coordBinding.root)
         }
 
         //Security 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
         setupSecurityBt.setOnClickListener{
-            val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val inflaterView = inflater.inflate(R.layout.setup_security_activity, setupViewer, false)
+            val secuBinding = SetupSecurityActivityBinding.inflate(layoutInflater)
             setupViewer.removeAllViews()
-            setupViewer.addView(inflaterView)
+            setupViewer.addView(secuBinding.root)
         }
 
         //Devices 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
         setupDevicesBt.setOnClickListener{
-            val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val inflaterView = inflater.inflate(R.layout.setup_devices_activity, setupViewer, false)
+            val deviceBinding = SetupDevicesActivityBinding.inflate(layoutInflater)
             setupViewer.removeAllViews()
-            setupViewer.addView(inflaterView)
+            setupViewer.addView(deviceBinding.root)
         }
 
         //Tool List 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
         setupToolListBt.setOnClickListener{
-            val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val inflaterView = inflater.inflate(R.layout.setup_tool_list_activity, setupViewer, false)
+            val tlistBinding = SetupToolListActivityBinding.inflate(layoutInflater)
+
             setupViewer.removeAllViews()
-            setupViewer.addView(inflaterView)
+            setupViewer.addView(tlistBinding.root)
         }
 
         //ProgramTable 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
         setupProgramTableBt.setOnClickListener{
-            val inflater = getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            val inflaterView = inflater.inflate(R.layout.setup_prog_table_activity, setupViewer, false)
+            val prgtableBinding = SetupProgTableActivityBinding.inflate(layoutInflater)
             setupViewer.removeAllViews()
-            setupViewer.addView(inflaterView)
+            setupViewer.addView(prgtableBinding.root)
         }
 
 
@@ -201,7 +206,6 @@ class SetupActivity : AppCompatActivity() {
         setupPowerBt.setOnClickListener{
             Toast.makeText(this@SetupActivity,"전원 버튼 클릭", Toast.LENGTH_SHORT).show()
         }
-
 
     }
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    //About Connect String
+    <string name="connect_bt">Connect</string>
+    <string name="disconnect_bt">Disconnect</string>
+
+
+
+    <string name = "state_disconnect">Network Disconnected</string>
+    <string name = "state_connect">Network Connected</string>
+
+    <string name = "state_power_off">Power Off</string>
+    <string name = "state_power_on">Power On</string>
+
+    <string name = "state_device_off">Device Off</string>
+    <string name = "state_device_on">Device On</string>
+
+    <string name = "state_system_off">System Off</string>
+    <string name = "state_system_on">System On</string>
+
+    <string name = "state_robot_operation">Robot Operation</string>
+
+
+
+
+
+
+
+</resources>

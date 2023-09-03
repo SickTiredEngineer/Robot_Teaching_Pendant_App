@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    //로그인 숫자 박스 디자인
     <style name = "login_text_box">
         <item name = "android:gravity">center</item>
         <item name = "android:textColor">@color/black</item>

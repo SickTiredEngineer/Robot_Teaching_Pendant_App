@@ -8,9 +8,8 @@
 
     <View
         android:id="@+id/make_line1"
-        style="@style/line"
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
+        style="@style/line_horizon"
+
         android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,9 +17,8 @@
 
     <View
         android:id="@+id/make_line2"
-        style = "@style/line"
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
+        style = "@style/line_horizon"
+
         android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,9 +26,7 @@
 
     <Button
         android:id="@+id/make_menu_bt"
-        style="@style/button"
-        android:text="@string/menu_bt"
-        android:textSize="20sp"
+        style="@style/public_menu_bt"
 
         android:layout_width="100dp"
         android:layout_height="50dp"
@@ -109,14 +105,15 @@
 
     <TextView
         android:id="@+id/textView2"
-        style = "@style/textview"
+        style = "@style/textview_center"
+        android:text="@string/make_project_name"
 
         android:layout_width="440dp"
         android:layout_height="45dp"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="180dp"
-        android:gravity="center"
-        android:text="@string/make_project_name"
+
+
         app:layout_constraintBottom_toTopOf="@+id/make_line2"
         app:layout_constraintEnd_toStartOf="@+id/make_load_bt"
         app:layout_constraintStart_toEndOf="@+id/make_menu_bt"

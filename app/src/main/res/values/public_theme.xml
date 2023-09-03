@@ -1,22 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    //Button 스타일
+    <style name = "button">
+        <item name = "android:background">@drawable/public_button</item>
+        <item name = "android:textColor">@color/black</item>
+        <item name = "android:gravity">center</item>
+    </style>
+
+    //TextView 스타일-> center은 글자가 중앙,
+    <style name = "textview_center">
+        <item name = "android:background">@drawable/square_background_border</item>
+        <item name = "android:textColor">@color/black</item>
+        <item name = "android:gravity">center</item>
+    </style>
+
+    <style name = "textview">
+        <item name = "android:background">@drawable/square_background_border</item>
+        <item name = "android:textColor">@color/black</item>
+    </style>
+
+    //테두리 없는 Text View, center
+    <style name = "textview_2">
+        <item name = "android:textColor">@color/black</item>
+    </style>
+
+    <style name = "textview_center_2">
+        <item name = "android:gravity">center</item>
+        <item name = "android:textColor">@color/black</item>
+    </style>
+
+
+    //배경색
+    <style name = "bg">
+        <item name = "android:background">@color/main_white</item>
+    </style>
+
+    //텍스트 색
+    <style name = "text">
+        <item name = "android:textColor">@color/black</item>
+    </style>
+
+    //enable, disable 버튼은 Night 모드 구현할 필요가 없어서 아직 추가하지 않음
+
     <style name = "public_enable_bt">
-        <item name="android:backgroundTint">#AFF3AF</item>
+        <item name="android:background">@drawable/color_green_box</item>
         <item name="android:textColor">@color/black</item>
+        <item name = "android:gravity">center</item>
     </style>
 
-    <style name = "public_enable_bt2">
+<!--    <style name = "public_enable_bt2">-->
 
-        <item name="android:backgroundTint">#FFFFFF</item>
-        <item name="android:textColor">@color/black</item>
-    </style>
+<!--        <item name="android:backgroundTint">#FFFFFF</item>-->
+<!--        <item name="android:textColor">@color/black</item>-->
+<!--    </style>-->
 
     <style name = "public_disable_bt">
-
-        <item name="android:backgroundTint">#848484</item>
+        <item name="android:background">@drawable/color_gray_box</item>
         <item name="android:textColor">@color/black</item>
+        <item name = "android:gravity">center</item>
     </style>
+
+    //좌측 상단 공용 메뉴 버튼 디자인
+    <style name = "public_menu_bt">
+        <item name = "android:textSize">20sp</item>
+        <item name = "android:text">@string/menu_bt</item>
+        <item name = "android:layout_width">100dp</item>
+        <item name = "android:layout_height">50dp</item>
+        <item name = "android:background">@drawable/square_background_border</item>
+    </style>
+
+    //우측 하단 공용 파워 버튼 디자인
+    <style name = "public_power_bt">
+        <item name = "android:layout_width">50dp</item>
+        <item name = "android:layout_height">50dp</item>
+        <item name = "android:background">@drawable/square_background_border</item>
+    </style>
+
+    // 가로 선 디자인
+    <style name = "line_horizon">
+        <item name = "android:background">@color/main_black</item>
+        <item name = "android:layout_width">match_parent</item>
+        <item name = "android:layout_height">3dp</item>
+    </style>
+
+    //세로 선 디자인
+    <style name = "line_vertical">
+        <item name = "android:background">@color/main_black</item>
+        <item name = "android:layout_width">3dp</item>
+        <item name = "android:layout_height">0dp</item>
+    </style>
+
+
+
+
+
 
 
 

@@ -8,21 +8,18 @@
 
 
     <View
-        android:id="@+id/setup_line2"
-        style = "@style/line"
-        android:layout_width="2dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="350dp"
+        android:id="@+id/connect_line"
+        style = "@style/line_vertical"
 
+        android:layout_marginStart="350dp"
         app:layout_constraintBottom_toTopOf="@+id/setup_line1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/setup_line3" />
 
     <View
         android:id="@+id/setup_line3"
-        style = "@style/line"
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
+        style = "@style/line_horizon"
+
         android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,25 +27,25 @@
 
     <View
         android:id="@+id/setup_line1"
-        style = "@style/line"
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
+        style = "@style/line_horizon"
+
         android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ScrollView
+        android:id="@+id/scrollView3"
         android:layout_width="340dp"
         android:layout_height="684dp"
         app:layout_constraintBottom_toTopOf="@+id/setup_line1"
-        app:layout_constraintEnd_toStartOf="@+id/setup_line2"
+        app:layout_constraintEnd_toStartOf="@+id/connect_line"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/setup_line3">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <Button
@@ -57,7 +54,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/setup_cobot_bt"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                tools:ignore="VisualLintButtonSize" />
 
             <Button
                 android:id="@+id/setup_tool_bt"
@@ -65,7 +63,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/setup_tool_bt"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                tools:ignore="VisualLintButtonSize" />
 
             <Button
                 android:id="@+id/setup_system_bt"
@@ -73,7 +72,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/setup_system_bt"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                tools:ignore="VisualLintButtonSize" />
 
             <Button
                 android:id="@+id/setup_log_bt"
@@ -81,7 +81,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/setup_log_bt"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                tools:ignore="VisualLintButtonSize" />
 
             <Button
                 android:id="@+id/setup_utility_bt"
@@ -89,7 +90,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/setup_utility_bt"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                tools:ignore="VisualLintButtonSize" />
 
             <Button
                 android:id="@+id/setup_serial_bt"
@@ -97,7 +99,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/setup_serial_bt"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                tools:ignore="VisualLintButtonSize" />
 
             <Button
                 android:id="@+id/setup_io1_bt"
@@ -105,7 +108,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/setup_io1_bt"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                tools:ignore="VisualLintButtonSize" />
 
             <Button
                 android:id="@+id/setup_io2_bt"
@@ -113,7 +117,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/setup_io2_bt"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                tools:ignore="VisualLintButtonSize" />
 
             <Button
                 android:id="@+id/setup_inbox_bt"
@@ -121,7 +126,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/setup_inbox_bt"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                tools:ignore="VisualLintButtonSize" />
 
             <Button
                 android:id="@+id/setup_interface_bt"
@@ -129,7 +135,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/setup_interface_bt"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                tools:ignore="VisualLintButtonSize" />
 
             <Button
                 android:id="@+id/setup_coord_bt"
@@ -137,7 +144,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/setup_coord_bt"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                tools:ignore="VisualLintButtonSize" />
 
             <Button
                 android:id="@+id/setup_security_bt"
@@ -145,7 +153,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/setup_security_bt"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                tools:ignore="VisualLintButtonSize" />
 
             <Button
                 android:id="@+id/setup_devices_bt"
@@ -153,7 +162,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/setup_devices_bt"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                tools:ignore="VisualLintButtonSize" />
 
             <Button
                 android:id="@+id/setup_tool_list_bt"
@@ -161,24 +171,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/setup_tool_list_bt"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                tools:ignore="VisualLintButtonSize" />
 
             <Button
                 android:id="@+id/setup_program_table_bt"
                 style="@style/button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+
                 android:text="@string/setup_programtable_bt"
-                android:textSize="20sp"/>
+                android:textSize="20sp"
+                tools:ignore="VisualLintButtonSize" />
         </LinearLayout>
     </ScrollView>
 
     <ImageButton
         android:id="@+id/setup_power_bt"
-        style="@style/button"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        style = "@style/public_power_bt"
         android:contentDescription="@string/power_bt"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/setup_line1"
@@ -186,11 +198,10 @@
 
     <Button
     android:id="@+id/setup_menu_bt"
-    style="@style/button"
+    style = "@style/public_menu_bt"
+
     android:layout_width="100dp"
     android:layout_height="50dp"
-    android:text="@string/menu_bt"
-    android:textSize="20sp"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"/>
 
@@ -198,15 +209,17 @@
         android:id="@+id/setup_viewer"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
+        android:gravity="bottom|center"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/setup_line1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/setup_line2"
-        app:layout_constraintTop_toBottomOf="@+id/setup_line3"></LinearLayout>
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/connect_line"
+        app:layout_constraintTop_toBottomOf="@+id/setup_line3"
+        app:layout_constraintVertical_bias="0.0"></LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -35,13 +35,11 @@ class MakeActivity : AppCompatActivity() {
                         startActivity(nextIntent)
                         finish()
                     }
-
                     "실행" -> {
                         val nextIntent = Intent(this@MakeActivity, PlayActivity::class.java)
                         startActivity(nextIntent)
                         finish()
                     }
-
                     "환경 설정" -> {
                         val nextIntent = Intent(this@MakeActivity, SetupActivity::class.java)
                         startActivity(nextIntent)
@@ -51,6 +49,8 @@ class MakeActivity : AppCompatActivity() {
             }
             menuDialog.show()
         }
+
+
 
         //우측 하단에 위치한 파워 버튼을 클릭 시 동작입니다.
         makePowerBt.setOnClickListener{

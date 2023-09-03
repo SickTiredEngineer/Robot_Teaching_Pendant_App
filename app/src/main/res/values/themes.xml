@@ -13,20 +13,7 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-
         <!-- White Mode Style -->
-
-        <style name = "bg">
-            <item name = "android:background">@color/main_white</item>
-        </style>
-
-        <style name = "text">
-            <item name = "android:textColor">@color/black</item>
-        </style>
-
-        <style name = "line">
-            <item name = "android:background">@color/main_black</item>
-        </style>
 
     <style name="Theme.Robot_Teaching_Pendant_App" parent="Base.Theme.Robot_Teaching_Pendant_App" />
 </resources>
