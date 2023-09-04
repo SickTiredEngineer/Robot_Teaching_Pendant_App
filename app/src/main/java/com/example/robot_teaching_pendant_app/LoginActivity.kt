@@ -21,15 +21,11 @@ class LoginActivity : AppCompatActivity() {
         //변수에 버튼 연결
         val loginBt = binding.loginBt
         val loginPowerBt = binding.loginPowerBt
-//        val loginIcon = binding.loginIcon
         val loginLoadingBar = binding.loginLoadingBar
-
-
 
         loginPowerBt.setOnClickListener{
             Toast.makeText(this@LoginActivity,"전원 버튼 클릭",Toast.LENGTH_SHORT).show()
         }
-
 
         // 메인 메뉴로 이동
         loginBt.setOnClickListener{
