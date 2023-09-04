@@ -65,8 +65,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
-
         //Connect를 위한 UI 동작 구현 부분 입니다.
         //연결 UI를 표시하기 위한 Layout 선언 및 Connect Activity 삽입
 
@@ -78,7 +76,9 @@ class MainActivity : AppCompatActivity() {
         연걸전 Disconnect 버튼은 FALSE 상태로 맞춘 후 , 연결이 되면 true로 변경합니다. */
         var conCount:Int = 0
         val connectBt = conBinding.connectBt
+
         val disconnectBt = conBinding.disconnectBt
+        disconnectBt.isEnabled = false
 
         //연결 상태를 문자로 표시해주는 Textview 바인딩
         val stateConnect = conBinding.stateConnect
@@ -96,14 +96,10 @@ class MainActivity : AppCompatActivity() {
         val stateSystemBox = conBinding.stateSystemBox
         val stateRobOperBox = conBinding.stateRobOperBox
 
-        disconnectBt.isEnabled = false
-
         //연결 버튼 동작
         connectBt.setOnClickListener{
-
             when(conCount){
                 0 -> {
-
                     stateConnect.setText(R.string.state_connecting)
                     stateConBox.setBackgroundResource(R.drawable.color_yellow_box)
 
@@ -115,9 +111,7 @@ class MainActivity : AppCompatActivity() {
                         connectBt.setText(R.string.control_bt)
                         disconnectBt.setBackgroundResource(R.drawable.color_red_box)
                         disconnectBt.isEnabled = true
-
                     }, 3000L)
-
                     conCount += 1
                 }
 
@@ -143,17 +137,14 @@ class MainActivity : AppCompatActivity() {
                     }, 2500L)
 
                     mHandler.postDelayed({
-
                         connectBt.setText(R.string.power_down_bt)
                         connectBt.setBackgroundResource(R.drawable.color_yellow_box)
-
                         conCount += 1
 
                     }, 3000L)
                 }
 
                 2 -> {
-
                     stateConnect.setText(R.string.state_disconnected)
                     stateConBox.setBackgroundResource(R.drawable.color_red_box)
 
@@ -198,7 +189,6 @@ class MainActivity : AppCompatActivity() {
 
             stateRobOperBox.setBackgroundResource(R.drawable.square_background_border)
 
-
             connectBt.setText(R.string.connect_bt)
             connectBt.setBackgroundResource(R.drawable.color_green_box)
 
@@ -208,9 +198,6 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this@MainActivity, "Disconnect->Enable", Toast.LENGTH_SHORT ).show()
             conCount = 0
         }
-
-
-
 
         //작업 화면 버튼을 클릭 시 동작으로, 해당 화면으로 이동합니다.
         mainMakeBt.setOnClickListener{
