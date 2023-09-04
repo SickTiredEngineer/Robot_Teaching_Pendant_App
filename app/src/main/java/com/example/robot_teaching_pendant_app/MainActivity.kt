@@ -72,25 +72,54 @@ class MainActivity : AppCompatActivity() {
         val connectViewer = binding.connectViewer
         connectViewer.addView(conBinding.root)
 
+        var conCount:Int = 0
+
         //Connect Activity 의 동작을 구현하는 부분입니다.
         val connectBt = conBinding.connectBt
         val disconnectBt = conBinding.disconnectBt
         disconnectBt.isEnabled = false
 
         connectBt.setOnClickListener{
-            connectBt.isEnabled = false
-            disconnectBt.setBackgroundResource(R.drawable.color_red_box)
+            when(conCount){
+                0 -> {
+                    connectBt.setText(R.string.control_bt)
+                    disconnectBt.setBackgroundResource(R.drawable.color_red_box)
 
-            disconnectBt.isEnabled = true
-            Toast.makeText(this@MainActivity, "Connecting Click", Toast.LENGTH_SHORT ).show()
+                    disconnectBt.isEnabled = true
+                    Toast.makeText(this@MainActivity, "Connecting Click", Toast.LENGTH_SHORT ).show()
+                    conCount += 1
+
+                }
+                1 -> {
+                    connectBt.setText(R.string.power_down_bt)
+                    connectBt.setBackgroundResource(R.drawable.color_yellow_box)
+
+                    conCount += 1
+                }
+
+                2->{
+                    connectBt.setText(R.string.connect_bt)
+                    connectBt.setBackgroundResource(R.drawable.color_green_box)
+
+                    disconnectBt.setBackgroundResource(R.drawable.color_gray_box)
+                    disconnectBt.isEnabled = false
+                    conCount = 0
+                }
+
+            }
+
         }
 
         disconnectBt.setOnClickListener{
+
+            connectBt.setText(R.string.connect_bt)
+            connectBt.setBackgroundResource(R.drawable.color_green_box)
+
             disconnectBt.isEnabled = false
             disconnectBt.setBackgroundResource(R.drawable.color_gray_box)
 
-            connectBt.isEnabled = true
             Toast.makeText(this@MainActivity, "Disconnect->Enable", Toast.LENGTH_SHORT ).show()
+            conCount = 0
         }
 
 

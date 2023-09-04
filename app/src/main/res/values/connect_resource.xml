@@ -3,6 +3,7 @@
     //About Connect String
     <string name="connect_bt">Connect</string>
     <string name="disconnect_bt">Disconnect</string>
+    <string name="power_down_bt">Power Down</string>
 
 
 
