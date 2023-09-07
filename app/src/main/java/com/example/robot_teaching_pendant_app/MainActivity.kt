@@ -139,9 +139,11 @@ class MainActivity : AppCompatActivity() {
                     mHandler.postDelayed({
                         connectBt.setText(R.string.power_down_bt)
                         connectBt.setBackgroundResource(R.drawable.color_yellow_box)
-                        conCount += 1
+
 
                     }, 3000L)
+                    conCount += 1
+
                 }
 
                 2 -> {

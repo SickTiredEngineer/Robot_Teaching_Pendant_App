@@ -10,10 +10,11 @@
         android:id="@+id/make_line1"
         style="@style/line_horizon"
 
-        android:layout_marginBottom="50dp"
+        android:layout_width="0dp"
+        android:layout_marginBottom="44dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/connect_line" />
 
     <View
         android:id="@+id/make_line2"
@@ -23,6 +24,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/connect_line"
+        style="@style/line_vertical"
+
+        android:layout_width="3dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="21dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tree_ext_bt"
+        app:layout_constraintTop_toBottomOf="@+id/make_line2" />
 
     <Button
         android:id="@+id/make_menu_bt"
@@ -104,18 +116,147 @@
         app:srcCompat="@android:drawable/ic_lock_power_off" />
 
     <TextView
-        android:id="@+id/textView2"
-        style = "@style/textview_center"
-        android:text="@string/make_project_name"
+        android:id="@+id/project_name_view"
+        style="@style/textview_center"
+        android:layout_width="450dp"
 
-        android:layout_width="440dp"
         android:layout_height="45dp"
-        android:layout_marginStart="25dp"
+        android:layout_marginStart="40dp"
         android:layout_marginEnd="180dp"
+        android:text="@string/make_project_name"
 
 
         app:layout_constraintBottom_toTopOf="@+id/make_line2"
         app:layout_constraintEnd_toStartOf="@+id/make_load_bt"
         app:layout_constraintStart_toEndOf="@+id/make_menu_bt"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/tree_refresh_bt"
+        style="@style/button"
+        android:layout_width="130dp"
+        android:layout_height="80dp"
+        android:text="@string/tree_refresh"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/make_line2" />
+
+    <Button
+        android:id="@+id/tree_undo_bt"
+        style="@style/button"
+        android:layout_width="130dp"
+        android:layout_height="80dp"
+        android:text="@string/tree_undo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tree_refresh_bt" />
+
+    <Button
+        android:id="@+id/tree_redo_bt"
+        style="@style/button"
+        android:layout_width="130dp"
+        android:layout_height="80dp"
+        android:text="@string/tree_redo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tree_undo_bt" />
+
+    <Button
+        android:id="@+id/tree_up_bt"
+        style="@style/button"
+        android:layout_width="130dp"
+        android:layout_height="80dp"
+        android:text="@string/tree_up"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tree_redo_bt" />
+
+    <Button
+        android:id="@+id/tree_down_bt"
+        style="@style/button"
+        android:layout_width="130dp"
+        android:layout_height="80dp"
+        android:text="@string/tree_down"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tree_up_bt" />
+
+    <Button
+        android:id="@+id/tree_disable_bt"
+        style="@style/button"
+        android:layout_width="130dp"
+        android:layout_height="80dp"
+        android:text="@string/tree_disable"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tree_down_bt" />
+
+    <Button
+        android:id="@+id/tree_marking_bt"
+        style="@style/button"
+        android:layout_width="130dp"
+        android:layout_height="80dp"
+        android:text="@string/tree_marking"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tree_disable_bt" />
+
+    <Button
+        android:id="@+id/tree_search_bt"
+        style="@style/button"
+        android:layout_width="130dp"
+        android:layout_height="80dp"
+        android:text="@string/tree_search"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tree_marking_bt" />
+
+    <Button
+        android:id="@+id/tree_copy_bt"
+        style="@style/button"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="3dp"
+        android:text="@string/tree_copy"
+        app:layout_constraintStart_toEndOf="@+id/tree_search_bt"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <Button
+        android:id="@+id/tree_paste_bt"
+        style="@style/button"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        android:text="@string/tree_paste"
+        app:layout_constraintStart_toEndOf="@+id/tree_copy_bt"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <Button
+        android:id="@+id/tree_cut_bt"
+        style="@style/button"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        android:text="@string/tree_cut"
+        app:layout_constraintStart_toEndOf="@+id/tree_paste_bt"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <Button
+        android:id="@+id/tree_del_bt"
+        style="@style/button"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        android:text="@string/tree_del"
+        app:layout_constraintStart_toEndOf="@+id/tree_cut_bt"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <Button
+        android:id="@+id/tree_ext_bt"
+        style="@style/button"
+        android:layout_width="90dp"
+        android:layout_height="80dp"
+        android:text="@string/tree_ext"
+        app:layout_constraintStart_toEndOf="@+id/tree_del_bt"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="450dp"
+        android:layout_height="560dp"
+        android:layout_marginStart="3dp"
+        android:background="@drawable/square_background_border"
+        android:orientation="vertical"
+        app:layout_constraintStart_toEndOf="@+id/tree_refresh_bt"
+        app:layout_constraintTop_toBottomOf="@+id/make_line2"></LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

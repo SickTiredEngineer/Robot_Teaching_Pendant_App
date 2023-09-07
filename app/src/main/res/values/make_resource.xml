@@ -12,4 +12,28 @@
 
 
 
+    //TREE 관련 임시 String Resource, 추후 아이콘이 생기면 대체될 수 있음
+
+    <string name ="tree_refresh">새로고침</string>
+    <string name ="tree_undo">실행취소</string>
+    <string name ="tree_redo">다시실행</string>
+    <string name ="tree_up">위로</string>
+    <string name ="tree_down">아래로</string>
+    <string name ="tree_disable">비활성화</string>
+    <string name ="tree_marking">마킹</string>
+    <string name ="tree_search">검색</string>
+
+    <string name ="tree_copy">Copy</string>
+    <string name ="tree_paste">Paste</string>
+    <string name ="tree_cut">Cut</string>
+    <string name ="tree_del">Del</string>
+    <string name ="tree_ext">Ext</string>
+
+
+
+
+
+
+
+
 </resources>
