@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import com.example.robot_teaching_pendant_app.MainActivity
 import com.example.robot_teaching_pendant_app.R
 import com.example.robot_teaching_pendant_app.databinding.MakeActivityBinding
+import com.example.robot_teaching_pendant_app.databinding.MakeDefaultActivityBinding
 import com.example.robot_teaching_pendant_app.play.PlayActivity
 import com.example.robot_teaching_pendant_app.setup.SetupActivity
 
@@ -20,6 +21,15 @@ class MakeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val makePowerBt = binding.makePowerBt
+        val defBinding = MakeDefaultActivityBinding.inflate(layoutInflater)
+
+
+        /* TREE를 제외한 우측에 요소들을 표시해주는 View 와 기본적으로 보여지는 화면(Default) 설정으로 확장 버튼 클릭 시, ext Activity로 교체합니다. */
+        val sideViewer = binding.sideView
+        sideViewer.removeAllViews()
+        sideViewer.addView(defBinding.root)
+
+
 
 
         //좌측 상단에 위치한 Menu 버튼 동작, Dialog 형식으로 해당 화면으로 이동할 수 있는 기능

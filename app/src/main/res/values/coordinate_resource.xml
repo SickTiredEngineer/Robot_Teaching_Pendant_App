@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name ="coord_x">X</string>
+    <string name ="coord_y">Y</string>
+    <string name ="coord_z">Z</string>
+    <string name ="coord_Rx">Rx</string>
+    <string name ="coord_Ry">Ry</string>
+    <string name ="coord_Rz">Rz</string>
+
+</resources>

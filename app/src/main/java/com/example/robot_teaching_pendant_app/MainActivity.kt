@@ -41,13 +41,43 @@ class MainActivity : AppCompatActivity() {
         val mainPlayBt = binding.mainPlayBt
         val mainSetupBt = binding.mainSetupBt
 
+        //Connect를 위한 UI 동작 구현 부분 입니다.
+        //연결 UI를 표시하기 위한 Layout 선언 및 Connect Activity 삽입
+        val conBinding = ConnectActivityBinding.inflate(layoutInflater)
+        val connectViewer = binding.connectViewer
+        connectViewer.addView(conBinding.root)
+
+        /* conCount 변수는 현재 연결 진행 단계를 나타냅니다. 이 변수를 가준으로 UI 동작을 수행하게 됩니다.
+        연걸전 Disconnect 버튼은 FALSE 상태로 맞춘 후 , 연결이 되면 true로 변경합니다. */
+        var conCount:Int = 0
+        val connectBt = conBinding.connectBt
+
+        val disconnectBt = conBinding.disconnectBt
+        disconnectBt.isEnabled = false
+        //연결 상태를 문자로 표시해주는 Textview 바인딩
+        val stateConnect = conBinding.stateConnect
+        val statePower = conBinding.statePower
+        val stateDevice = conBinding.stateDevice
+        val stateSystem = conBinding.stateSystem
+        val stateRobOper = conBinding.stateRobotOperation
+
+        //연결 상태를 색으로 표현해주는 TextView 바인딩
+        val stateConBox = conBinding.stateConBox
+        stateConBox.setBackgroundResource(R.drawable.color_red_box)
+
+        val statePowerBox = conBinding.statePowerBox
+        val stateDeviceBox = conBinding.stateDeviceBox
+        val stateSystemBox = conBinding.stateSystemBox
+        val stateRobOperBox = conBinding.stateRobOperBox
+
+
+        //Night Mode 구현 부분
         val sharedPreferences = getSharedPreferences("MODE", Context.MODE_PRIVATE)
         sharedPreferences.getBoolean("night", false) //light mode is the default
 
         //이미 Dark 모드일 경우 Switch 를 On 합니다.
         val isNightModeOn = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES
         mainDarkSwitch.isChecked = isNightModeOn
-
 
         //Dark Mode 스위치 작동 코드로, 현재 Mode에 관련된 사항을 Boolean 형식으로 SharedPreference에 저장합니다.
         mainDarkSwitch.setOnCheckedChangeListener{_, isChecked->
@@ -65,36 +95,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        //Connect를 위한 UI 동작 구현 부분 입니다.
-        //연결 UI를 표시하기 위한 Layout 선언 및 Connect Activity 삽입
 
-        val conBinding = ConnectActivityBinding.inflate(layoutInflater)
-        val connectViewer = binding.connectViewer
-        connectViewer.addView(conBinding.root)
-
-        /* conCount 변수는 현재 연결 진행 단계를 나타냅니다. 이 변수를 가준으로 UI 동작을 수행하게 됩니다.
-        연걸전 Disconnect 버튼은 FALSE 상태로 맞춘 후 , 연결이 되면 true로 변경합니다. */
-        var conCount:Int = 0
-        val connectBt = conBinding.connectBt
-
-        val disconnectBt = conBinding.disconnectBt
-        disconnectBt.isEnabled = false
-
-        //연결 상태를 문자로 표시해주는 Textview 바인딩
-        val stateConnect = conBinding.stateConnect
-        val statePower = conBinding.statePower
-        val stateDevice = conBinding.stateDevice
-        val stateSystem = conBinding.stateSystem
-        val stateRobOper = conBinding.stateRobotOperation
-
-        //연결 상태를 색으로 표현해주는 TextView 바인딩
-        val stateConBox = conBinding.stateConBox
-        stateConBox.setBackgroundResource(R.drawable.color_red_box)
-
-        val statePowerBox = conBinding.statePowerBox
-        val stateDeviceBox = conBinding.stateDeviceBox
-        val stateSystemBox = conBinding.stateSystemBox
-        val stateRobOperBox = conBinding.stateRobOperBox
 
         //연결 버튼 동작
         connectBt.setOnClickListener{
@@ -197,7 +198,6 @@ class MainActivity : AppCompatActivity() {
             disconnectBt.isEnabled = false
             disconnectBt.setBackgroundResource(R.drawable.color_gray_box)
 
-            Toast.makeText(this@MainActivity, "Disconnect->Enable", Toast.LENGTH_SHORT ).show()
             conCount = 0
         }
 
@@ -225,7 +225,7 @@ class MainActivity : AppCompatActivity() {
 
             startActivity(nextIntent)
             finish()
-            Toast.makeText(this@MainActivity, "로그인 완료", Toast.LENGTH_SHORT ).show()
+            Toast.makeText(this@MainActivity, "환경 설정 선택 확인", Toast.LENGTH_SHORT ).show()
         }
 
         //우측 하단에 위치한 파워 버튼을 클릭 시 동작입니다.

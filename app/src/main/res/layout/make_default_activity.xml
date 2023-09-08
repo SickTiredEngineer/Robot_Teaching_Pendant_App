@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="670dp"
+    android:layout_height="600dp"
+    style = "@style/bg">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="668dp"
+        android:layout_height="298dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:background="@drawable/square_background_border"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/square_background_border"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/def_all_bt"
+                style="@style/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/def_all" />
+
+            <Button
+                android:id="@+id/def_move_bt"
+                style="@style/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/def_move" />
+
+            <Button
+                android:id="@+id/def_func_bt"
+                style="@style/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/def_func" />
+
+            <Button
+                android:id="@+id/def_end_eff_bt"
+                style="@style/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/def_end_eff" />
+
+            <Button
+                android:id="@+id/def_other_bt"
+                style="@style/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/def_other" />
+
+            <Button
+                android:id="@+id/def_search_bt"
+                style="@style/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/def_search" />
+        </LinearLayout>
+
+        <ScrollView
+            android:id="@+id/icon_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ScrollView>
+
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/jog_view"
+        android:layout_width="668dp"
+        android:layout_height="300dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:background="@drawable/square_background_border"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <LinearLayout
+            android:id="@+id/jog_mode_layout"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/jog_global_bt"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:text="@string/jog_global" />
+
+            <Button
+                android:id="@+id/jog_local_bt"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:text="@string/jog_local" />
+
+            <Button
+                android:id="@+id/jog_user_bt"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:text="@string/jog_user" />
+
+            <Button
+                android:id="@+id/jog_joint_bt"
+                android:layout_width="match_parent"
+                android:layout_height="75dp"
+                android:text="@string/jog_joint" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/jog_3d_view"
+            android:layout_width="190dp"
+            android:layout_height="300dp"
+            android:layout_marginStart="1dp"
+            android:background="@drawable/square_background_border"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/jog_mode_layout"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/jog_controller_view"
+            android:layout_width="190dp"
+            android:layout_height="300dp"
+            android:background="@drawable/square_background_border"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/jog_3d_view"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout3"
+            android:layout_width="185dp"
+            android:layout_height="150dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="1dp"
+            android:background="@drawable/square_background_border"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/jog_controller_view"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:id="@+id/linearLayout2"
+            android:layout_width="185dp"
+            android:layout_height="147dp"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="1dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="1dp"
+            android:background="@drawable/square_background_border"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/jog_controller_view"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"></LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

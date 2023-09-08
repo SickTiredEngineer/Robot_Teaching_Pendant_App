@@ -20,6 +20,11 @@
     <string name="save_as_bt">Save as</string>
     <string name="new_bt">New</string>
 
+    <string name="plus_bt">+</string>
+    <string name="minus_bt">_</string>
+
+
+
 
 
 </resources>
