@@ -7,4 +7,11 @@
     <string name ="coord_Ry">Ry</string>
     <string name ="coord_Rz">Rz</string>
 
+    <string name ="joint_base">Base</string>
+    <string name ="joint_should">Shoulder</string>
+    <string name ="joint_elbow">Elbow</string>
+    <string name ="joint_wrist1">Wrist1</string>
+    <string name ="joint_wrist2">Wrist2</string>
+    <string name ="joint_wrist3">Wrist3</string>
+
 </resources>

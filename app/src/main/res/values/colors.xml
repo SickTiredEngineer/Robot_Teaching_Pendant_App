@@ -5,15 +5,19 @@
 
     <color name="black">#FF000000</color>
     <color name="white">#EBE5E5</color>
+    <color name="gray">#3D3D3D</color>
+    <color name = "yellow">#FFE500</color>
+    <color name = "green">#3AFB04</color>
+    <color name = "blue">#0223F6</color>
+    <color name ="red">#FB050C</color>
 
     <color name="main_black">#5C5A5A</color>
     <color name="main_white">#EBE5E5</color>
-    <color name="gray">#3D3D3D</color>
 
     <color name="disable_color">#848484</color>
     <color name="able_color">#AFF3AF</color>
-    <color name ="red">#FB050C</color>
-    <color name = "yellow">#FFE500</color>
+
+
 
 
 

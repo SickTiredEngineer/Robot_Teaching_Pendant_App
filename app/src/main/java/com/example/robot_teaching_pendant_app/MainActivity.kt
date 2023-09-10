@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity() {
         val binding = MainActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         //Main 화면의 버튼 연결
         val mainDarkSwitch = binding.mainDarkSwitch
         val mainPowerBt = binding.mainPowerBt
@@ -101,9 +100,16 @@ class MainActivity : AppCompatActivity() {
         connectBt.setOnClickListener{
             when(conCount){
                 0 -> {
+                    //중복 클릭을 방지하기 위해 과정이 끝나기 전 까지 connect 버튼을 비활성화 합니다.
+                    connectBt.isEnabled = false
+
+                    //첫번째 클릭 시, Connect state 의 텍스트와 상태 상자 색깔을 변경합니다.
                     stateConnect.setText(R.string.state_connecting)
                     stateConBox.setBackgroundResource(R.drawable.color_yellow_box)
 
+
+
+                    //연결 과정 표현 (딜레이)
                     val mHandler = Handler(Looper.getMainLooper())
                     mHandler.postDelayed({
                         stateConnect.setText(R.string.state_connected)
@@ -112,11 +118,18 @@ class MainActivity : AppCompatActivity() {
                         connectBt.setText(R.string.control_bt)
                         disconnectBt.setBackgroundResource(R.drawable.color_red_box)
                         disconnectBt.isEnabled = true
+
+                        //Connect 버튼을 다시 활성화 시킵니다.
+                        connectBt.isEnabled = true
+
                     }, 3000L)
                     conCount += 1
                 }
 
                 1 -> {
+                    //중복 클릭을 방지하기 위해 과정이 끝나기 전 까지 connect 버튼을 비활성화 합니다.
+                    connectBt.isEnabled = false
+
                     val mHandler = Handler(Looper.getMainLooper())
                     mHandler.postDelayed({
                         statePower.setText(R.string.state_power_on)
@@ -141,6 +154,8 @@ class MainActivity : AppCompatActivity() {
                         connectBt.setText(R.string.power_down_bt)
                         connectBt.setBackgroundResource(R.drawable.color_yellow_box)
 
+                        //Connect 버튼을 다시 활성화 시킵니다.
+                        connectBt.isEnabled = true
 
                     }, 3000L)
                     conCount += 1
