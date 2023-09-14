@@ -35,9 +35,9 @@
         tools:layout_editor_absoluteX="12dp" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/login_title"
         style = "@style/textview_center"
-        android:text="@string/login_title"
+        android:text="@string/str_login"
         android:textSize="48sp"
 
         android:layout_width="match_parent"
@@ -60,11 +60,11 @@
         android:layout_marginBottom="268dp"
         android:layout_weight="1"
 
-        android:contentDescription="@string/login_icon"
+        android:contentDescription="@string/str_login_ic"
         android:padding="2dp"
         app:layout_constraintBottom_toTopOf="@+id/login_line2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/login_title"
         app:srcCompat="@android:drawable/ic_lock_idle_lock"
         tools:ignore="ImageContrastCheck" />
 
@@ -72,7 +72,7 @@
         android:id="@+id/login_bt"
         style="@style/button"
         android:textSize="30sp"
-        android:text="@string/login_bt_text"
+        android:text="@string/str_login"
 
         android:layout_width="400dp"
         android:layout_height="144dp"

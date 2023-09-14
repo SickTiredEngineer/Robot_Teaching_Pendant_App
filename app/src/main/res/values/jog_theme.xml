@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    button_
 
+    //Jog Increase Button
+    <style name = "style_jog_inc">
+        <item name = "android:text">+</item>
+        <item name = "android:layout_width">50dp</item>
+        <item name = "android:layout_height">25dp</item>
+        <item name = "android:background">@drawable/public_button</item>
+        <item name = "android:textColor">@color/black</item>
+        <item name = "android:gravity">center</item>
+    </style>
 
+    //Jog Decrease Button
+    <style name = "style_jog_dec">
+        <item name = "android:text">-</item>
+        <item name = "android:layout_width">50dp</item>
+        <item name = "android:layout_height">25dp</item>
+        <item name = "android:background">@drawable/public_button</item>
+        <item name = "android:textColor">@color/black</item>
+        <item name = "android:gravity">center|top</item>
+    </style>
 
 </resources>

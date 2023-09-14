@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name ="coord_x">X</string>
-    <string name ="coord_y">Y</string>
-    <string name ="coord_z">Z</string>
-    <string name ="coord_Rx">Rx</string>
-    <string name ="coord_Ry">Ry</string>
-    <string name ="coord_Rz">Rz</string>
+    <string name ="str_x">X</string>
+    <string name ="str_y">Y</string>
+    <string name ="str_z">Z</string>
+    <string name ="str_rx">Rx</string>
+    <string name ="str_ry">Ry</string>
+    <string name ="str_rz">Rz</string>
 
-    <string name ="joint_base">Base</string>
-    <string name ="joint_should">Shoulder</string>
-    <string name ="joint_elbow">Elbow</string>
-    <string name ="joint_wrist1">Wrist1</string>
-    <string name ="joint_wrist2">Wrist2</string>
-    <string name ="joint_wrist3">Wrist3</string>
+    <string name ="str_base">Base</string>
+    <string name ="str_should">Shoulder</string>
+    <string name ="str_elbow">Elbow</string>
+    <string name ="str_wrist1">Wrist1</string>
+    <string name ="str_wrist2">Wrist2</string>
+    <string name ="str_wrist3">Wrist3</string>
 
 </resources>

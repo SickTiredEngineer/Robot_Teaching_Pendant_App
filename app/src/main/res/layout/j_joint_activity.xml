@@ -8,54 +8,39 @@
 
         <Button
             android:id="@+id/j_wrist3_dec"
-            style="@style/minus_button"
-            android:layout_width="50dp"
-            android:layout_height="25dp"
+            style = "@style/style_jog_dec"
 
-            android:text="@string/minus_bt"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/j_wrist3_view"
             app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
         <Button
             android:id="@+id/j_wrist1_dec"
-            style="@style/minus_button"
-            android:layout_width="50dp"
-            android:layout_height="25dp"
+            style = "@style/style_jog_dec"
 
-            android:text="@string/minus_bt"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/j_wrist1_view"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
         <Button
             android:id="@+id/j_wrist2_dec"
-            style="@style/minus_button"
-            android:layout_width="50dp"
-            android:layout_height="25dp"
+            style = "@style/style_jog_dec"
 
-            android:text="@string/minus_bt"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/j_wrist2_view"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
         <Button
             android:id="@+id/j_wrist2_inc"
-            style="@style/plus_button"
+            style = "@style/style_jog_inc"
 
-            android:layout_width="50dp"
-            android:layout_height="25dp"
-            android:text="@string/plus_bt"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
         <Button
             android:id="@+id/j_wrist3_inc"
-            style="@style/plus_button"
+            style = "@style/style_jog_inc"
 
-            android:layout_width="50dp"
-            android:layout_height="25dp"
-            android:text="@string/plus_bt"
             app:layout_constraintEnd_toStartOf="@+id/j_wrist3_view"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView7" />
@@ -65,7 +50,7 @@
             style="@style/textview_center_2"
             android:layout_width="match_parent"
             android:layout_height="25dp"
-            android:text="@string/joint_base"
+            android:text="@string/str_base"
 
             android:textColor="@color/red"
             android:textSize="11sp"
@@ -112,54 +97,39 @@
 
         <Button
             android:id="@+id/j_base_inc"
-            style="@style/plus_button"
+            style = "@style/style_jog_inc"
 
-            android:layout_width="50dp"
-            android:layout_height="25dp"
-            android:text="@string/plus_bt"
             app:layout_constraintEnd_toStartOf="@+id/j_base_view"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView1" />
 
         <Button
             android:id="@+id/j_shd_inc"
-            style="@style/plus_button"
+            style = "@style/style_jog_inc"
 
-            android:layout_width="50dp"
-            android:layout_height="25dp"
-            android:text="@string/plus_bt"
             app:layout_constraintEnd_toStartOf="@+id/j_shd_view"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <Button
             android:id="@+id/j_elbow_inc"
-            style="@style/plus_button"
+            style = "@style/style_jog_inc"
 
-            android:layout_width="50dp"
-            android:layout_height="25dp"
-            android:text="@string/plus_bt"
             app:layout_constraintEnd_toStartOf="@+id/j_elbow_view"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <Button
             android:id="@+id/j_wrist1_inc"
-            style="@style/plus_button"
+            style = "@style/style_jog_inc"
 
-            android:layout_width="50dp"
-            android:layout_height="25dp"
-            android:text="@string/plus_bt"
             app:layout_constraintEnd_toStartOf="@+id/j_wrist1_view"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
         <Button
             android:id="@+id/j_base_dec"
-            style="@style/minus_button"
-            android:layout_width="50dp"
-            android:layout_height="25dp"
-            android:text="@string/minus_bt"
+            style = "@style/style_jog_dec"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/j_base_view"
@@ -167,22 +137,16 @@
 
         <Button
             android:id="@+id/j_shd_dec"
-            style="@style/minus_button"
-            android:layout_width="50dp"
-            android:layout_height="25dp"
+            style = "@style/style_jog_dec"
 
-            android:text="@string/minus_bt"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/j_shd_view"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <Button
             android:id="@+id/j_elbow_dec"
-            style="@style/minus_button"
-            android:layout_width="50dp"
-            android:layout_height="25dp"
+            style = "@style/style_jog_dec"
 
-            android:text="@string/minus_bt"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/j_elbow_view"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -193,7 +157,7 @@
             android:layout_width="match_parent"
             android:layout_height="25dp"
 
-            android:text="@string/joint_should"
+            android:text="@string/str_should"
             android:textColor="@color/green"
             android:textSize="11sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -206,7 +170,7 @@
             android:layout_width="match_parent"
             android:layout_height="25dp"
 
-            android:text="@string/joint_elbow"
+            android:text="@string/str_elbow"
             android:textColor="@color/blue"
             android:textSize="11sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -219,7 +183,7 @@
             android:layout_width="match_parent"
             android:layout_height="25dp"
 
-            android:text="@string/joint_wrist1"
+            android:text="@string/str_wrist1"
             android:textColor="@color/red"
             android:textSize="11sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -232,7 +196,7 @@
             android:layout_width="match_parent"
             android:layout_height="25dp"
 
-            android:text="@string/joint_wrist2"
+            android:text="@string/str_wrist2"
             android:textColor="@color/green"
             android:textSize="11sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -245,7 +209,7 @@
             android:layout_width="match_parent"
             android:layout_height="25dp"
 
-            android:text="@string/joint_wrist3"
+            android:text="@string/str_wrist3"
             android:textColor="@color/blue"
             android:textSize="11sp"
             app:layout_constraintEnd_toEndOf="parent"

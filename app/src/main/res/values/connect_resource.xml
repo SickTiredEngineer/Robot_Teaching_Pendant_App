@@ -5,8 +5,6 @@
     <string name="disconnect_bt">Disconnect</string>
     <string name="power_down_bt">Power Down</string>
 
-
-
     <string name = "state_disconnected">Network Disconnected</string>
     <string name = "state_connecting">Network Connecting</string>
     <string name = "state_connected">Network Connected</string>

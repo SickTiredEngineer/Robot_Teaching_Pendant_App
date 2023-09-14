@@ -3,13 +3,13 @@
 
 
     <!-- Main Menu String-->
-    <string name="main_title">MAIN</string>
+    <string name="str_main_t">MAIN</string>
 
     //Main Menu Button String
-    <string name="dark_mode_switch">Dark Mode</string>
+    <string name="str_dark_mode">Dark Mode</string>
 
-    <string name="main_make_bt">작업 환경</string>
-    <string name="main_play_bt">실행</string>
-    <string name="main_setup_bt">환경 설정</string>
+    <string name="str_main_make">작업 환경</string>
+    <string name="str_main_play">실행</string>
+    <string name="str_main_setup">환경 설정</string>
 
 </resources>
