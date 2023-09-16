@@ -4,11 +4,11 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/bg">
+    style="@style/style_bg">
 
     <View
         android:id="@+id/make_line1"
-        style="@style/line_horizon"
+        style="@style/style_line_h"
 
         android:layout_width="0dp"
         android:layout_marginBottom="68dp"
@@ -17,7 +17,7 @@
 
     <View
         android:id="@+id/make_line2"
-        style = "@style/line_horizon"
+        style="@style/style_line_h"
 
         android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,7 +26,7 @@
 
     <Button
         android:id="@+id/make_menu_bt"
-        style="@style/public_menu_bt"
+        style="@style/style_menu_bt"
 
         android:layout_width="100dp"
         android:layout_height="50dp"
@@ -79,33 +79,33 @@
 
     <ImageButton
         android:id="@+id/make_power_bt"
-        style="@style/button"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:contentDescription="@string/power_bt"
+        style="@style/style_power_bt"
+
+        android:contentDescription="@string/str_power_bt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_lock_power_off" />
 
     <TextView
         android:id="@+id/project_name_view"
-        style="@style/textview_center"
+        style="@style/style_tvc"
         android:layout_width="450dp"
 
         android:layout_height="45dp"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="32dp"
 
 
-        android:layout_marginEnd="120dp"
+        android:layout_marginEnd="128dp"
         android:text="@string/make_project_name"
         app:layout_constraintBottom_toTopOf="@+id/make_line2"
         app:layout_constraintEnd_toStartOf="@+id/make_load_bt"
         app:layout_constraintStart_toEndOf="@+id/make_menu_bt"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/tree_refresh_bt"
-        style="@style/button"
+        style="@style/style_button"
         android:layout_width="130dp"
         android:layout_height="75dp"
         android:text="@string/tree_refresh"
@@ -114,7 +114,7 @@
 
     <Button
         android:id="@+id/tree_undo_bt"
-        style="@style/button"
+        style="@style/style_button"
         android:layout_width="130dp"
         android:layout_height="75dp"
         android:text="@string/tree_undo"
@@ -123,7 +123,7 @@
 
     <Button
         android:id="@+id/tree_redo_bt"
-        style="@style/button"
+        style="@style/style_button"
         android:layout_width="130dp"
         android:layout_height="75dp"
         android:text="@string/tree_redo"
@@ -132,7 +132,7 @@
 
     <Button
         android:id="@+id/tree_up_bt"
-        style="@style/button"
+        style="@style/style_button"
         android:layout_width="130dp"
         android:layout_height="75dp"
         android:text="@string/tree_up"
@@ -141,7 +141,7 @@
 
     <Button
         android:id="@+id/tree_down_bt"
-        style="@style/button"
+        style="@style/style_button"
         android:layout_width="130dp"
         android:layout_height="75dp"
         android:text="@string/tree_down"
@@ -150,7 +150,7 @@
 
     <Button
         android:id="@+id/tree_disable_bt"
-        style="@style/button"
+        style="@style/style_button"
         android:layout_width="130dp"
         android:layout_height="75dp"
         android:text="@string/tree_disable"
@@ -159,7 +159,7 @@
 
     <Button
         android:id="@+id/tree_marking_bt"
-        style="@style/button"
+        style="@style/style_button"
         android:layout_width="130dp"
         android:layout_height="75dp"
         android:text="@string/tree_marking"
@@ -168,7 +168,7 @@
 
     <Button
         android:id="@+id/tree_search_bt"
-        style="@style/button"
+        style="@style/style_button"
         android:layout_width="130dp"
         android:layout_height="75dp"
         android:text="@string/tree_search"
@@ -177,7 +177,7 @@
 
     <Button
         android:id="@+id/tree_copy_bt"
-        style="@style/button"
+        style="@style/style_button"
         android:layout_width="90dp"
         android:layout_height="75dp"
         android:layout_marginStart="3dp"
@@ -187,7 +187,7 @@
 
     <Button
         android:id="@+id/tree_paste_bt"
-        style="@style/button"
+        style="@style/style_button"
         android:layout_width="90dp"
         android:layout_height="75dp"
         android:text="@string/tree_paste"
@@ -196,7 +196,7 @@
 
     <Button
         android:id="@+id/tree_cut_bt"
-        style="@style/button"
+        style="@style/style_button"
         android:layout_width="90dp"
         android:layout_height="75dp"
         android:text="@string/tree_cut"
@@ -205,7 +205,7 @@
 
     <Button
         android:id="@+id/tree_del_bt"
-        style="@style/button"
+        style="@style/style_button"
         android:layout_width="90dp"
         android:layout_height="75dp"
         android:text="@string/tree_del"
@@ -214,12 +214,12 @@
 
     <ToggleButton
         android:id="@+id/tree_ext_bt"
-        style="@style/button"
+        style="@style/style_button"
         android:layout_width="90dp"
         android:layout_height="75dp"
         android:text="@string/tree_ext"
-        android:textOff="@string/tree_ext"
-        android:textOn="@string/tree_ext"
+        android:textOff="@string/str_ext_off"
+        android:textOn="@string/str_ext_on"
         app:layout_constraintStart_toEndOf="@+id/tree_del_bt"
         app:layout_constraintTop_toBottomOf="@+id/tree_view" />
 

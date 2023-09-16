@@ -7,7 +7,9 @@ import android.os.Bundle
 //import android.view.WindowManager
 //import android.widget.Button
 import android.widget.Toast
+import com.example.robot_teaching_pendant_app.MainActivity
 import com.example.robot_teaching_pendant_app.databinding.LoginActivityBinding
+
 
 
 class LoginActivity : AppCompatActivity() {

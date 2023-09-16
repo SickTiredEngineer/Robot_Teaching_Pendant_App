@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style = "@style/bg">
+    style = "@style/style_bg">
 
     <Button
         android:id="@+id/cobot_save_bt"
-        style="@style/button"
+        style="@style/style_button"
         android:layout_width="match_parent"
 
         android:layout_height="50dp"
         android:layout_marginBottom="1dp"
-        android:text="@string/save_bt"
+        android:text="@string/str_save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

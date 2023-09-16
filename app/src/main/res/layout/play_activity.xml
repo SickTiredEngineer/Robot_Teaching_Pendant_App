@@ -4,20 +4,21 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style = "@style/bg">
+    style = "@style/style_bg">
 
     <View
         android:id="@+id/play_line1"
-        style="@style/line_horizon"
+        style="@style/style_line_h"
 
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <View
         android:id="@+id/play_line2"
-        style = "@style/line_horizon"
+        style = "@style/style_line_h"
 
         android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,7 +27,7 @@
 
     <Button
         android:id="@+id/play_menu_bt"
-        style="@style/public_menu_bt"
+        style="@style/style_menu_bt"
 
         android:layout_width="100dp"
         android:layout_height="50dp"
@@ -35,8 +36,8 @@
 
     <ImageButton
         android:id="@+id/play_power_bt"
-        style = "@style/public_power_bt"
-        android:contentDescription="@string/power_bt"
+        style = "@style/style_power_bt"
+        android:contentDescription="@string/str_power_bt"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

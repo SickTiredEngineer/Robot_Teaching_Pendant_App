@@ -2,7 +2,8 @@
 <resources>
 
     //로그인 숫자 박스 디자인
-    <style name = "login_text_box">
+    <style name = "style_pwbox">
+        <item name = "android:background">@drawable/square_background_border</item>
         <item name = "android:gravity">center</item>
         <item name = "android:textColor">@color/black</item>
         <item name = "android:textSize">50sp</item>

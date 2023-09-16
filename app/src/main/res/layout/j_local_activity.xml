@@ -48,7 +48,7 @@
 
         <TextView
             android:id="@+id/textView1"
-            style="@style/textview_center_2"
+            style="@style/style_tvc2"
             android:layout_width="match_parent"
             android:layout_height="25dp"
             android:text="@string/str_x"
@@ -61,36 +61,24 @@
 
         <TextView
             android:id="@+id/l_x_view"
-            style="@style/textview_center"
-            android:layout_width="90dp"
+            style="@style/style_jog_view"
 
-            android:layout_height="25dp"
-
-            android:textSize="11sp"
             app:layout_constraintEnd_toStartOf="@+id/l_x_dec"
             app:layout_constraintStart_toEndOf="@+id/l_x_inc"
             app:layout_constraintTop_toBottomOf="@+id/textView1" />
 
         <TextView
             android:id="@+id/l_y_view"
-            style="@style/textview_center"
-            android:layout_width="90dp"
+            style="@style/style_jog_view"
 
-            android:layout_height="25dp"
-
-            android:textSize="11sp"
             app:layout_constraintEnd_toStartOf="@+id/l_y_dec"
             app:layout_constraintStart_toEndOf="@+id/l_y_inc"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <TextView
             android:id="@+id/l_rx_view"
-            style="@style/textview_center"
-            android:layout_width="90dp"
+            style="@style/style_jog_view"
 
-            android:layout_height="25dp"
-
-            android:textSize="11sp"
             app:layout_constraintEnd_toStartOf="@+id/l_rx_dec"
             app:layout_constraintStart_toEndOf="@+id/l_rx_inc"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
@@ -153,7 +141,7 @@
 
         <TextView
             android:id="@+id/textView2"
-            style="@style/textview_center_2"
+            style="@style/style_tvc2"
             android:layout_width="match_parent"
             android:layout_height="25dp"
 
@@ -166,7 +154,7 @@
 
         <TextView
             android:id="@+id/textView4"
-            style="@style/textview_center_2"
+            style="@style/style_tvc2"
             android:layout_width="match_parent"
             android:layout_height="25dp"
 
@@ -179,7 +167,7 @@
 
         <TextView
             android:id="@+id/textView5"
-            style="@style/textview_center_2"
+            style="@style/style_tvc2"
             android:layout_width="match_parent"
             android:layout_height="25dp"
 
@@ -192,7 +180,7 @@
 
         <TextView
             android:id="@+id/textView6"
-            style="@style/textview_center_2"
+            style="@style/style_tvc2"
             android:layout_width="match_parent"
             android:layout_height="25dp"
 
@@ -205,7 +193,7 @@
 
         <TextView
             android:id="@+id/textView7"
-            style="@style/textview_center_2"
+            style="@style/style_tvc2"
             android:layout_width="match_parent"
             android:layout_height="25dp"
 
@@ -218,36 +206,24 @@
 
         <TextView
             android:id="@+id/l_z_view"
-            style="@style/textview_center"
-            android:layout_width="90dp"
+            style="@style/style_jog_view"
 
-            android:layout_height="25dp"
-
-            android:textSize="11sp"
             app:layout_constraintEnd_toStartOf="@+id/l_z_dec"
             app:layout_constraintStart_toEndOf="@+id/l_z_inc"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
         <TextView
             android:id="@+id/l_ry_view"
-            style="@style/textview_center"
-            android:layout_width="90dp"
+            style="@style/style_jog_view"
 
-            android:layout_height="25dp"
-
-            android:textSize="11sp"
             app:layout_constraintEnd_toStartOf="@+id/l_ry_dec"
             app:layout_constraintStart_toEndOf="@+id/l_ry_inc"
             app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
         <TextView
             android:id="@+id/l_rz_view"
-            style="@style/textview_center"
-            android:layout_width="90dp"
+            style="@style/style_jog_view"
 
-            android:layout_height="25dp"
-
-            android:textSize="11sp"
             app:layout_constraintEnd_toStartOf="@+id/l_rz_dec"
             app:layout_constraintStart_toEndOf="@+id/l_rz_inc"
             app:layout_constraintTop_toBottomOf="@+id/textView7" />

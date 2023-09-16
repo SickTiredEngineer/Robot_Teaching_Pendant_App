@@ -2,22 +2,22 @@
 
 <resources>
 
-    //Setup Button String
-    <string name="setup_cobot_bt">COBOT</string>
-    <string name="setup_tool_bt">TOOL</string>
-    <string name="setup_system_bt">SYSTEM</string>
-    <string name="setup_log_bt">LOG</string>
-    <string name="setup_utility_bt">UTILITY</string>
-    <string name="setup_serial_bt">SERIAL</string>
-    <string name="setup_io1_bt">I/O1</string>
-    <string name="setup_io2_bt">I/O2</string>
-    <string name="setup_inbox_bt">INBOX</string>
-    <string name="setup_interface_bt">INTERFACE</string>
-    <string name="setup_coord_bt">COORDINATE</string>
-    <string name="setup_security_bt">SECURITY</string>
-    <string name="setup_devices_bt">DEVICES</string>
-    <string name="setup_tool_list_bt">TOOL LIST</string>
-    <string name="setup_programtable_bt">PROGRAM TABLE</string>
+    //Setup 화면의 설정 버튼에 들어갈 String
+    <string name="str_cobot">COBOT</string>
+    <string name="str_tool">TOOL</string>
+    <string name="str_system">SYSTEM</string>
+    <string name="str_log">LOG</string>
+    <string name="str_utility">UTILITY</string>
+    <string name="str_serial">SERIAL</string>
+    <string name="str_io1">I/O1</string>
+    <string name="str_io2">I/O2</string>
+    <string name="str_inbox">INBOX</string>
+    <string name="str_interface">INTERFACE</string>
+    <string name="str_coord">COORDINATE</string>
+    <string name="str_security">SECURITY</string>
+    <string name="str_devices">DEVICES</string>
+    <string name="str_tool_list">TOOL LIST</string>
+    <string name="str_program_table">PROGRAM TABLE</string>
 
 
 

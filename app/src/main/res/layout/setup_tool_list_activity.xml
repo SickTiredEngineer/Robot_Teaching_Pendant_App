@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style = "@style/bg">
+    style = "@style/style_bg">
 
     <Button
         android:id="@+id/tool_list_save_bt"
-        style = "@style/button"
-        android:text="@string/save_bt"
+        style = "@style/style_button"
+        android:text="@string/str_save"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

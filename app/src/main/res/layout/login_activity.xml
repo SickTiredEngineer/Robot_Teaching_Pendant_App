@@ -5,21 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    style = "@style/bg">
+    style = "@style/style_bg">
 
     <View
         android:id="@+id/login_line1"
-        style = "@style/line_horizon"
+        style = "@style/style_line_h"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/login_title" />
 
     <View
         android:id="@+id/login_line3"
-        style = "@style/line_horizon"
+        style = "@style/style_line_h"
 
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/login_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -36,17 +36,17 @@
 
     <TextView
         android:id="@+id/login_title"
-        style = "@style/textview_center"
-        android:text="@string/str_login"
-        android:textSize="48sp"
-
+        style="@style/style_tvc2"
         android:layout_width="match_parent"
         android:layout_height="83dp"
-        android:layout_marginTop="100dp"
+
+        android:layout_marginTop="50dp"
         android:layout_weight="1"
+        android:text="@string/str_login"
+        android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/login_loading_bar"
+        app:layout_constraintTop_toBottomOf="@+id/login_loading_bar"
         tools:ignore="TextSizeCheck" />
 
     <ImageView
@@ -70,7 +70,7 @@
 
     <Button
         android:id="@+id/login_bt"
-        style="@style/button"
+        style="@style/style_button"
         android:textSize="30sp"
         android:text="@string/str_login"
 
@@ -88,8 +88,8 @@
 
     <ImageButton
         android:id="@+id/login_power_bt"
-        style = "@style/public_power_bt"
-        android:contentDescription = "@string/power_bt"
+        style = "@style/style_power_bt"
+        android:contentDescription = "@string/str_power_bt"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -120,9 +120,8 @@
 
         <EditText
             android:id="@+id/login_pw1"
-            style = "@style/login_text_box"
+            style = "@style/style_pwbox"
 
-            android:background="@drawable/square_background_border"
             android:layout_width="150dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -132,8 +131,8 @@
 
         <EditText
             android:id="@+id/login_pw2"
-            style = "@style/login_text_box"
-            android:background="@drawable/square_background_border"
+            style = "@style/style_pwbox"
+
             android:layout_width="150dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -143,8 +142,8 @@
 
         <EditText
             android:id="@+id/login_pw3"
-            style = "@style/login_text_box"
-            android:background="@drawable/square_background_border"
+            style = "@style/style_pwbox"
+
             android:layout_width="150dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -154,8 +153,8 @@
 
         <EditText
             android:id="@+id/login_pw4"
-            style = "@style/login_text_box"
-            android:background="@drawable/square_background_border"
+            style = "@style/style_pwbox"
+
             android:layout_width="150dp"
             android:layout_height="match_parent"
             android:layout_weight="1"

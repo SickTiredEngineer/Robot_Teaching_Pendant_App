@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="670dp"
     android:layout_height="600dp"
-    style = "@style/bg">
+    style = "@style/style_bg">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -28,51 +28,51 @@
 
             <Button
                 android:id="@+id/def_all_bt"
-                style="@style/button"
+                style="@style/style_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/def_all" />
+                android:text="@string/str_all" />
 
             <Button
                 android:id="@+id/def_move_bt"
-                style="@style/button"
+                style="@style/style_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/def_move" />
+                android:text="@string/str_move" />
 
             <Button
                 android:id="@+id/def_func_bt"
-                style="@style/button"
+                style="@style/style_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/def_func" />
+                android:text="@string/str_func" />
 
             <Button
                 android:id="@+id/def_end_eff_bt"
-                style="@style/button"
+                style="@style/style_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/def_end_eff" />
+                android:text="@string/str_end_eff" />
 
             <Button
                 android:id="@+id/def_other_bt"
-                style="@style/button"
+                style="@style/style_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/def_other" />
+                android:text="@string/str_other" />
 
             <Button
                 android:id="@+id/def_search_bt"
-                style="@style/button"
+                style="@style/style_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/def_search" />
+                android:text="@string/str_search" />
         </LinearLayout>
 
         <ScrollView
@@ -112,25 +112,25 @@
                 android:id="@+id/jog_global_bt"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
-                android:text="@string/jog_global" />
+                android:text="@string/str_global" />
 
             <Button
                 android:id="@+id/jog_local_bt"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
-                android:text="@string/jog_local" />
+                android:text="@string/str_local" />
 
             <Button
                 android:id="@+id/jog_user_bt"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
-                android:text="@string/jog_user" />
+                android:text="@string/str_user" />
 
             <Button
                 android:id="@+id/jog_joint_bt"
                 android:layout_width="match_parent"
                 android:layout_height="75dp"
-                android:text="@string/jog_joint" />
+                android:text="@string/str_joint" />
 
         </LinearLayout>
 

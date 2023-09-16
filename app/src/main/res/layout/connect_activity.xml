@@ -2,23 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/bg"
+    style="@style/style_bg"
     android:layout_width="800dp"
     android:layout_height="480dp">
 
-    <View
-        android:id="@+id/connect_line"
-        style="@style/line_vertical"
-
-        android:layout_marginStart="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/connect_bt"
-        app:layout_constraintStart_toEndOf="@+id/state_connect"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/state_connect"
-        style="@style/textview_center"
+        style="@style/style_tv"
         android:layout_width="300dp"
 
         android:layout_height="60dp"
@@ -29,7 +20,7 @@
 
     <TextView
         android:id="@+id/state_power"
-        style="@style/textview_center"
+        style="@style/style_tv"
         android:layout_width="300dp"
 
         android:layout_height="60dp"
@@ -41,7 +32,7 @@
 
     <TextView
         android:id="@+id/state_device"
-        style="@style/textview_center"
+        style="@style/style_tv"
         android:layout_width="300dp"
 
         android:layout_height="60dp"
@@ -51,7 +42,7 @@
 
     <TextView
         android:id="@+id/state_system"
-        style="@style/textview_center"
+        style="@style/style_tv"
         android:layout_width="300dp"
 
         android:layout_height="60dp"
@@ -62,7 +53,7 @@
 
     <TextView
         android:id="@+id/state_robot_operation"
-        style="@style/textview_center"
+        style="@style/style_tv"
         android:layout_width="300dp"
 
         android:layout_height="60dp"
@@ -75,22 +66,22 @@
     <Button
         android:id="@+id/connect_bt"
 
-        style="@style/public_enable_bt"
+        style="@style/style_enable_bt"
         android:layout_width="400dp"
         android:layout_height="65dp"
 
-        android:text="@string/connect_bt"
+        android:text="@string/str_connect"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/disconnect_bt"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/disconnect_bt"
-        style="@style/public_disable_bt"
+        style="@style/style_disable_bt"
         android:layout_width="400dp"
         android:layout_height="65dp"
 
-        android:text="@string/disconnect_bt"
+        android:text="@string/str_disconnect"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -99,7 +90,7 @@
         android:id="@+id/connect_list"
         android:layout_width="350dp"
         android:layout_height="344dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="5dp"
         android:background="@drawable/square_background_border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -112,13 +103,12 @@
 
     <TextView
         android:id="@+id/textView3"
-        style="@style/textview_center"
-        android:text="TextView"
+        style="@style/style_tvc"
 
         android:layout_width="350dp"
         android:layout_height="120dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginEnd="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/connect_list" />
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="670dp"
     android:layout_height="600dp"
-    style = "@style/bg">
+    style = "@style/style_bg">
 
 
     <LinearLayout

@@ -48,11 +48,12 @@ class MainActivity : AppCompatActivity() {
 
         /* conCount 변수는 현재 연결 진행 단계를 나타냅니다. 이 변수를 가준으로 UI 동작을 수행하게 됩니다.
         연걸전 Disconnect 버튼은 FALSE 상태로 맞춘 후 , 연결이 되면 true로 변경합니다. */
-        var conCount:Int = 0
+        var conCount: Int = 0
         val connectBt = conBinding.connectBt
 
         val disconnectBt = conBinding.disconnectBt
         disconnectBt.isEnabled = false
+
         //연결 상태를 문자로 표시해주는 Textview 바인딩
         val stateConnect = conBinding.stateConnect
         val statePower = conBinding.statePower
@@ -108,14 +109,13 @@ class MainActivity : AppCompatActivity() {
                     stateConBox.setBackgroundResource(R.drawable.color_yellow_box)
 
 
-
                     //연결 과정 표현 (딜레이)
                     val mHandler = Handler(Looper.getMainLooper())
                     mHandler.postDelayed({
                         stateConnect.setText(R.string.state_connected)
                         stateConBox.setBackgroundResource(R.drawable.color_green_box)
 
-                        connectBt.setText(R.string.control_bt)
+                        connectBt.setText(R.string.str_control)
                         disconnectBt.setBackgroundResource(R.drawable.color_red_box)
                         disconnectBt.isEnabled = true
 
@@ -151,7 +151,7 @@ class MainActivity : AppCompatActivity() {
                     }, 2500L)
 
                     mHandler.postDelayed({
-                        connectBt.setText(R.string.power_down_bt)
+                        connectBt.setText(R.string.str_power_down)
                         connectBt.setBackgroundResource(R.drawable.color_yellow_box)
 
                         //Connect 버튼을 다시 활성화 시킵니다.
@@ -177,7 +177,7 @@ class MainActivity : AppCompatActivity() {
 
                     stateRobOperBox.setBackgroundResource(R.drawable.square_background_border)
 
-                    connectBt.setText(R.string.connect_bt)
+                    connectBt.setText(R.string.str_connect)
                     connectBt.setBackgroundResource(R.drawable.color_green_box)
 
                     disconnectBt.setBackgroundResource(R.drawable.color_gray_box)
@@ -207,7 +207,7 @@ class MainActivity : AppCompatActivity() {
 
             stateRobOperBox.setBackgroundResource(R.drawable.square_background_border)
 
-            connectBt.setText(R.string.connect_bt)
+            connectBt.setText(R.string.str_connect)
             connectBt.setBackgroundResource(R.drawable.color_green_box)
 
             disconnectBt.isEnabled = false

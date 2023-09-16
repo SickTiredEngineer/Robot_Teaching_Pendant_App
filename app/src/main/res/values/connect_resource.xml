@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     //About Connect String
-    <string name="connect_bt">Connect</string>
-    <string name="disconnect_bt">Disconnect</string>
-    <string name="power_down_bt">Power Down</string>
+    <string name="str_connect">Connect</string>
+    <string name="str_disconnect">Disconnect</string>
+    <string name="str_power_down">Power Down</string>
 
     <string name = "state_disconnected">Network Disconnected</string>
     <string name = "state_connecting">Network Connecting</string>

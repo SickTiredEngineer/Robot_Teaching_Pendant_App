@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    //임시 배치
-    <string name="control_bt">Control</string>
+    //임시 배치 (string control)
+    <string name="str_control">Control</string>
 
-    //Public Button String     string name="save_bt">메뉴
-    <string name="power_bt">파워 버튼</string>
-    <string name="menu_bt">메뉴</string>
-    <string name="set_bt">설정</string>
+    //공통적으로 사용하는 버튼에 들어갈 string 입니다.
+    <string name="str_power_bt">파워 버튼</string>
+    <string name="str_menu">메뉴</string>
+    <string name="str_setup">설정</string>
 
-    // Menu Choose Button String
-    <string name="menu_main_bt">메인 화면</string>
-    <string name="menu_make_bt">작업 환경</string>
-    <string name="menu_play_bt">실행</string>
-    <string name="menu_setup_bt">환경 설정</string>
+    //좌측 상단에 위치한 Menu 버튼 클릭 시 나오는 아이템들에 들어갈 String 입니다. 아직까진 사용하지 않았습니다.
+    <string name="str_m_main">메인 화면</string>
+    <string name="str_m_make">작업 환경</string>
+    <string name="str_m_play">실행</string>
+    <string name="str_m_setup">환경 설정</string>
 
-    //Project 관리 관련
+    //Load, save 기능 등의 Project 관리 관련 버튼에 삽입 할 string 입니다.
     <string name="str_load">Load</string>
     <string name="str_save">Save</string>
     <string name="str_save_as">Save as</string>
@@ -24,5 +24,6 @@
     <string name="str_minus">_</string>
 
     <string name = "str_mode">Mode</string>
+
 
 </resources>

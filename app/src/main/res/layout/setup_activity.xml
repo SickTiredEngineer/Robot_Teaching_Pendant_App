@@ -4,12 +4,12 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style = "@style/bg">
+    style = "@style/style_bg">
 
 
     <View
         android:id="@+id/connect_line"
-        style = "@style/line_vertical"
+        style = "@style/style_line_v"
 
         android:layout_marginStart="350dp"
         app:layout_constraintBottom_toTopOf="@+id/setup_line1"
@@ -18,7 +18,7 @@
 
     <View
         android:id="@+id/setup_line3"
-        style = "@style/line_horizon"
+        style = "@style/style_line_h"
 
         android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +27,7 @@
 
     <View
         android:id="@+id/setup_line1"
-        style = "@style/line_horizon"
+        style = "@style/style_line_h"
 
         android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -50,137 +50,137 @@
 
             <Button
                 android:id="@+id/setup_cobot_bt"
-                style="@style/button"
+                style="@style/style_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/setup_cobot_bt"
+                android:text="@string/str_cobot"
                 android:textSize="20sp"
                 tools:ignore="VisualLintButtonSize" />
 
             <Button
                 android:id="@+id/setup_tool_bt"
-                style="@style/button"
+                style="@style/style_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/setup_tool_bt"
+                android:text="@string/str_tool"
                 android:textSize="20sp"
                 tools:ignore="VisualLintButtonSize" />
 
             <Button
                 android:id="@+id/setup_system_bt"
-                style="@style/button"
+                style="@style/style_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/setup_system_bt"
+                android:text="@string/str_system"
                 android:textSize="20sp"
                 tools:ignore="VisualLintButtonSize" />
 
             <Button
                 android:id="@+id/setup_log_bt"
-                style="@style/button"
+                style="@style/style_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/setup_log_bt"
+                android:text="@string/str_log"
                 android:textSize="20sp"
                 tools:ignore="VisualLintButtonSize" />
 
             <Button
                 android:id="@+id/setup_utility_bt"
-                style="@style/button"
+                style="@style/style_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/setup_utility_bt"
+                android:text="@string/str_utility"
                 android:textSize="20sp"
                 tools:ignore="VisualLintButtonSize" />
 
             <Button
                 android:id="@+id/setup_serial_bt"
-                style="@style/button"
+                style="@style/style_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/setup_serial_bt"
+                android:text="@string/str_serial"
                 android:textSize="20sp"
                 tools:ignore="VisualLintButtonSize" />
 
             <Button
                 android:id="@+id/setup_io1_bt"
-                style="@style/button"
+                style="@style/style_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/setup_io1_bt"
+                android:text="@string/str_io1"
                 android:textSize="20sp"
                 tools:ignore="VisualLintButtonSize" />
 
             <Button
                 android:id="@+id/setup_io2_bt"
-                style="@style/button"
+                style="@style/style_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/setup_io2_bt"
+                android:text="@string/str_io2"
                 android:textSize="20sp"
                 tools:ignore="VisualLintButtonSize" />
 
             <Button
                 android:id="@+id/setup_inbox_bt"
-                style="@style/button"
+                style="@style/style_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/setup_inbox_bt"
+                android:text="@string/str_inbox"
                 android:textSize="20sp"
                 tools:ignore="VisualLintButtonSize" />
 
             <Button
                 android:id="@+id/setup_interface_bt"
-                style="@style/button"
+                style="@style/style_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/setup_interface_bt"
+                android:text="@string/str_interface"
                 android:textSize="20sp"
                 tools:ignore="VisualLintButtonSize" />
 
             <Button
                 android:id="@+id/setup_coord_bt"
-                style="@style/button"
+                style="@style/style_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/setup_coord_bt"
+                android:text="@string/str_coord"
                 android:textSize="20sp"
                 tools:ignore="VisualLintButtonSize" />
 
             <Button
                 android:id="@+id/setup_security_bt"
-                style="@style/button"
+                style="@style/style_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/setup_security_bt"
+                android:text="@string/str_security"
                 android:textSize="20sp"
                 tools:ignore="VisualLintButtonSize" />
 
             <Button
                 android:id="@+id/setup_devices_bt"
-                style="@style/button"
+                style="@style/style_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/setup_devices_bt"
+                android:text="@string/str_devices"
                 android:textSize="20sp"
                 tools:ignore="VisualLintButtonSize" />
 
             <Button
                 android:id="@+id/setup_tool_list_bt"
-                style="@style/button"
+                style="@style/style_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="@string/setup_tool_list_bt"
+                android:text="@string/str_tool_list"
                 android:textSize="20sp"
                 tools:ignore="VisualLintButtonSize" />
 
             <Button
                 android:id="@+id/setup_program_table_bt"
-                style="@style/button"
+                style="@style/style_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
 
-                android:text="@string/setup_programtable_bt"
+                android:text="@string/str_program_table"
                 android:textSize="20sp"
                 tools:ignore="VisualLintButtonSize" />
         </LinearLayout>
@@ -188,8 +188,8 @@
 
     <ImageButton
         android:id="@+id/setup_power_bt"
-        style = "@style/public_power_bt"
-        android:contentDescription="@string/power_bt"
+        style = "@style/style_power_bt"
+        android:contentDescription="@string/str_power_bt"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -198,7 +198,7 @@
 
     <Button
     android:id="@+id/setup_menu_bt"
-    style = "@style/public_menu_bt"
+    style = "@style/style_menu_bt"
 
     android:layout_width="100dp"
     android:layout_height="50dp"

@@ -14,4 +14,9 @@
     <string name ="str_wrist2">Wrist2</string>
     <string name ="str_wrist3">Wrist3</string>
 
+    <string name = "str_global">Global</string>
+    <string name = "str_local">Local</string>
+    <string name = "str_user">User</string>
+    <string name = "str_joint">Joint</string>
+
 </resources>
