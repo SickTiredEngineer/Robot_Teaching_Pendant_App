@@ -20,7 +20,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        //변수에 버튼 연결
+        //변수에 위젯 초기화
         val loginBt = binding.loginBt
         val loginPowerBt = binding.loginPowerBt
         val loginLoadingBar = binding.loginLoadingBar

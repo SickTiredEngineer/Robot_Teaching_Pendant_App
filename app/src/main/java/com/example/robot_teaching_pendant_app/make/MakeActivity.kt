@@ -26,6 +26,9 @@ class MakeActivity : AppCompatActivity() {
         val binding = MakeActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //좌측 상단에 위치한 화면 이동 메뉴 버튼
+        val makeMenuBt = binding.makeMenuBt
+
         //우측에 나타나는 전체적인 화면 Binding 입니다/
         val defBinding = MakeDefaultActivityBinding.inflate(layoutInflater)
 
@@ -74,6 +77,7 @@ class MakeActivity : AppCompatActivity() {
         }
 
 
+        //Jog Mode(Global, Local, User, Joint)를 선택하기 위한 버튼 동작을 정의
         jogGlobalBt.setOnClickListener{
             //다중 클릭 방지를 위해 한 번 클릭된 본인은 다른 버튼을 클릭 하기 전 까지 disable 시킵니다.
             jogGlobalBt.isEnabled = false
@@ -102,36 +106,36 @@ class MakeActivity : AppCompatActivity() {
         }
 
         jogUserBt.setOnClickListener{
+            //다중 클릭 방지를 위해 한 번 클릭된 본인은 다른 버튼을 클릭 하기 전 까지 disable 시킵니다.
             jogUserBt.isEnabled = false
-
+            //자신을 제외한 다른 버튼을 활성화 시킵니다.
             jogGlobalBt.isEnabled = true
             jogLocalBt.isEnabled = true
             jogJointBt.isEnabled = true
 
             jogViewer.removeAllViews()
             jogViewer.addView(jUbinding.root)
-
         }
 
         jogJointBt.setOnClickListener{
+            //다중 클릭 방지를 위해 한 번 클릭된 본인은 다른 버튼을 클릭 하기 전 까지 disable 시킵니다.
             jogJointBt.isEnabled = false
-
+            //자신을 제외한 다른 버튼을 활성화 시킵니다.
             jogGlobalBt.isEnabled = true
             jogLocalBt.isEnabled = true
             jogUserBt.isEnabled = true
 
             jogViewer.removeAllViews()
             jogViewer.addView(jJbinding.root)
-
         }
 
 
-
         //좌측 상단에 위치한 Menu 버튼 동작, Dialog 형식으로 해당 화면으로 이동할 수 있는 기능
-        val makeMenu = binding.makeMenuBt
-        makeMenu.setOnClickListener{
+        makeMenuBt.setOnClickListener{
             val menuDialog = AlertDialog.Builder(this)
             val menuArray = arrayOf("메인 화면", "실행", "환경 설정")
+
+            //바깥 화면을 클릭 하여 창을 닫을 수 있습니다.
             menuDialog.setCancelable(true)
             menuDialog.setItems(menuArray) { _, p1 ->
                 when (menuArray[p1]) {

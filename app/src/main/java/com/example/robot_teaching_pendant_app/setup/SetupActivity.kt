@@ -45,6 +45,7 @@ class SetupActivity : AppCompatActivity() {
         //버튼 변수 등록
         val setupPowerBt = binding.setupPowerBt
 
+        //좌측에 위치한 설정 종류 버튼으로, 클릭 시 해당 설정을 위한 화면을 setupViewer에 출력합니다.
         val setupCobotBt = binding.setupCobotBt
         val setupToolBt = binding.setupToolBt
         val setupSystemBt = binding.setupSystemBt
@@ -61,11 +62,15 @@ class SetupActivity : AppCompatActivity() {
         val setupToolListBt = binding.setupToolListBt
         val setupProgramTableBt = binding.setupProgramTableBt
 
+        //좌측 상단에 위치한 화면 이동 메뉴 버튼
+        val setupMenuBt = binding.setupMenuBt
+
         //좌측 상단에 위치한 Menu 버튼 동작, Dialog 형식으로 해당 화면으로 이동할 수 있는 기능
-        val setupMenu = binding.setupMenuBt
-        setupMenu.setOnClickListener{
+        setupMenuBt.setOnClickListener{
             val menuDialog = AlertDialog.Builder(this)
             val menuArray = arrayOf("작업 환경", "실행", "메인 화면")
+
+            //바깥 화면을 클릭 하여 창을 닫을 수 있습니다.
             menuDialog.setCancelable(true)
             menuDialog.setItems(menuArray) { _, p1 ->
                 when (menuArray[p1]) {

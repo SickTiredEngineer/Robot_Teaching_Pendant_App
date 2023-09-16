@@ -10,15 +10,27 @@
         android:id="@+id/play_line1"
         style="@style/style_line_h"
 
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <View
-        android:id="@+id/play_line2"
-        style = "@style/style_line_h"
+        android:id="@+id/play_line"
+        style="@style/style_line_v"
+
+        android:layout_width="3dp"
+        android:layout_height="700dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="639dp" />
+
+    <View
+        android:id="@+id/play_line3"
+        style="@style/style_line_h"
 
         android:layout_marginTop="50dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +44,7 @@
         android:layout_width="100dp"
         android:layout_height="50dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/play_power_bt"
@@ -43,4 +55,52 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/play_line1"
         app:srcCompat="@android:drawable/ic_lock_power_off" />
+
+    <Button
+        android:id="@+id/play_new_bt"
+        style="@style/style_file_menu"
+        android:layout_marginEnd="90dp"
+        android:text="@string/str_new"
+        app:layout_constraintBottom_toTopOf="@+id/play_line3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/play_save_as_bt"
+        style="@style/style_file_menu"
+        android:text="@string/str_save_as"
+        app:layout_constraintBottom_toTopOf="@+id/play_line3"
+        app:layout_constraintEnd_toStartOf="@+id/play_new_bt"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/play_save_bt"
+        style="@style/style_file_menu"
+        android:text="@string/str_save"
+        app:layout_constraintBottom_toTopOf="@+id/play_line3"
+        app:layout_constraintEnd_toStartOf="@+id/play_save_as_bt"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/play_load_bt"
+        style="@style/style_file_menu"
+        android:text="@string/str_load"
+        app:layout_constraintBottom_toTopOf="@+id/play_line3"
+        app:layout_constraintEnd_toStartOf="@+id/play_save_bt"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/play_pname_view"
+        style="@style/style_tvc"
+        android:layout_width="450dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="32dp"
+
+        android:layout_marginEnd="128dp"
+        android:layout_marginBottom="2dp"
+        android:text="@string/str_project_name"
+        app:layout_constraintBottom_toTopOf="@+id/play_line3"
+        app:layout_constraintEnd_toStartOf="@+id/play_load_bt"
+        app:layout_constraintStart_toEndOf="@+id/play_menu_bt" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

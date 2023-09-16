@@ -22,12 +22,16 @@ class PlayActivity : AppCompatActivity() {
 
         val playPowerBt = binding.playPowerBt
 
+        //좌측 상단에 위치한 화면 이동 메뉴 버튼
+        val playMenuBt = binding.playMenuBt
+
 
         //좌측 상단에 위치한 Menu 버튼 동작, Dialog 형식으로 해당 화면으로 이동할 수 있는 기능
-        val playMenu = binding.playMenuBt
-        playMenu.setOnClickListener{
+        playMenuBt.setOnClickListener{
             val menuDialog = AlertDialog.Builder(this)
             val menuArray = arrayOf("작업 환경", "메인 화면", "환경 설정")
+
+            //바깥 화면을 클릭 하여 창을 닫을 수 있습니다.
             menuDialog.setCancelable(true)
             menuDialog.setItems(menuArray) { _, p1 ->
                 when (menuArray[p1]) {

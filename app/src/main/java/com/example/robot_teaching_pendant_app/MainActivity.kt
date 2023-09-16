@@ -97,9 +97,10 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        //연결 버튼 동작
+        //Connect 버튼 동작 설정, conCount 변수에 있는 카운트 값을 기반으로 동작이 분기합니다.
         connectBt.setOnClickListener{
             when(conCount){
+                // 첫 번째 동작 (Connect) -> Connect 를 진행하며 동작이 끝나면 Connect 버튼을 Control 로 변환합니다.
                 0 -> {
                     //중복 클릭을 방지하기 위해 과정이 끝나기 전 까지 connect 버튼을 비활성화 합니다.
                     connectBt.isEnabled = false
@@ -108,8 +109,7 @@ class MainActivity : AppCompatActivity() {
                     stateConnect.setText(R.string.state_connecting)
                     stateConBox.setBackgroundResource(R.drawable.color_yellow_box)
 
-
-                    //연결 과정 표현 (딜레이)
+                    //연결 과정 표현 (딜레이 이용)
                     val mHandler = Handler(Looper.getMainLooper())
                     mHandler.postDelayed({
                         stateConnect.setText(R.string.state_connected)
@@ -126,6 +126,7 @@ class MainActivity : AppCompatActivity() {
                     conCount += 1
                 }
 
+                //두 번째 동작 (Control) -> 나머지 요소들에 대한 작업을 진행하고 동작이 끝나면 Connect 버튼을 Power Down 으로 변경합니다.
                 1 -> {
                     //중복 클릭을 방지하기 위해 과정이 끝나기 전 까지 connect 버튼을 비활성화 합니다.
                     connectBt.isEnabled = false
@@ -159,9 +160,9 @@ class MainActivity : AppCompatActivity() {
 
                     }, 3000L)
                     conCount += 1
-
                 }
 
+                //세 번째 동작(Power Down) -> 초기 상태로 연결 UI를 되돌립니다.
                 2 -> {
                     stateConnect.setText(R.string.state_disconnected)
                     stateConBox.setBackgroundResource(R.drawable.color_red_box)
@@ -183,14 +184,11 @@ class MainActivity : AppCompatActivity() {
                     disconnectBt.setBackgroundResource(R.drawable.color_gray_box)
                     disconnectBt.isEnabled = false
                     conCount = 0
-
                 }
-
             }
-
         }
 
-        //연결 끊기 버튼은 conCount를 즉시 0으로 맞추고 초기 상태로 돌려놓습니다.
+        //연결 끊기 버튼은 conCount를 즉시 0으로 초기화 시키고 연결 UI를 초기 상태로 돌려놓습니다.
         disconnectBt.setOnClickListener{
 
             stateConnect.setText(R.string.state_disconnected)
