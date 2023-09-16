@@ -96,7 +96,8 @@
 
 
         android:layout_marginEnd="128dp"
-        android:text="@string/make_project_name"
+        android:layout_marginBottom="2dp"
+        android:text="@string/str_project_name"
         app:layout_constraintBottom_toTopOf="@+id/make_line2"
         app:layout_constraintEnd_toStartOf="@+id/make_load_bt"
         app:layout_constraintStart_toEndOf="@+id/make_menu_bt"
@@ -105,121 +106,108 @@
 
     <Button
         android:id="@+id/tree_refresh_bt"
-        style="@style/style_button"
-        android:layout_width="130dp"
-        android:layout_height="75dp"
-        android:text="@string/tree_refresh"
+        style="@style/style_tree_bt"
+        android:text="@string/str_refresh"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/make_line2" />
 
     <Button
         android:id="@+id/tree_undo_bt"
-        style="@style/style_button"
-        android:layout_width="130dp"
-        android:layout_height="75dp"
-        android:text="@string/tree_undo"
+        style="@style/style_tree_bt"
+        android:text="@string/str_undo"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tree_refresh_bt" />
 
     <Button
         android:id="@+id/tree_redo_bt"
-        style="@style/style_button"
-        android:layout_width="130dp"
-        android:layout_height="75dp"
-        android:text="@string/tree_redo"
+        style="@style/style_tree_bt"
+        android:text="@string/str_redo"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tree_undo_bt" />
 
     <Button
         android:id="@+id/tree_up_bt"
-        style="@style/style_button"
-        android:layout_width="130dp"
-        android:layout_height="75dp"
-        android:text="@string/tree_up"
+        style="@style/style_tree_bt"
+        android:text="@string/str_up"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tree_redo_bt" />
 
     <Button
         android:id="@+id/tree_down_bt"
-        style="@style/style_button"
-        android:layout_width="130dp"
-        android:layout_height="75dp"
-        android:text="@string/tree_down"
+        style="@style/style_tree_bt"
+        android:text="@string/str_down"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tree_up_bt" />
 
     <Button
         android:id="@+id/tree_disable_bt"
-        style="@style/style_button"
-        android:layout_width="130dp"
-        android:layout_height="75dp"
-        android:text="@string/tree_disable"
+        style="@style/style_tree_bt"
+        android:text="@string/str_disable"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tree_down_bt" />
 
     <Button
         android:id="@+id/tree_marking_bt"
-        style="@style/style_button"
-        android:layout_width="130dp"
-        android:layout_height="75dp"
-        android:text="@string/tree_marking"
+        style="@style/style_tree_bt"
+        android:text="@string/str_marking"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tree_disable_bt" />
 
     <Button
         android:id="@+id/tree_search_bt"
-        style="@style/style_button"
-        android:layout_width="130dp"
-        android:layout_height="75dp"
-        android:text="@string/tree_search"
+        style="@style/style_tree_bt"
+        android:text="@string/str_search"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tree_marking_bt" />
 
     <Button
         android:id="@+id/tree_copy_bt"
-        style="@style/style_button"
-        android:layout_width="90dp"
-        android:layout_height="75dp"
+        style="@style/style_tree_bt2"
         android:layout_marginStart="3dp"
-        android:text="@string/tree_copy"
+
+        android:text="@string/str_copy"
         app:layout_constraintStart_toEndOf="@+id/tree_search_bt"
-        app:layout_constraintTop_toBottomOf="@+id/side_view" />
+        app:layout_constraintTop_toBottomOf="@+id/tree_view" />
 
     <Button
         android:id="@+id/tree_paste_bt"
-        style="@style/style_button"
-        android:layout_width="90dp"
-        android:layout_height="75dp"
-        android:text="@string/tree_paste"
+        style="@style/style_tree_bt2"
+        android:text="@string/str_paste"
+
         app:layout_constraintStart_toEndOf="@+id/tree_copy_bt"
         app:layout_constraintTop_toBottomOf="@+id/side_view" />
 
     <Button
         android:id="@+id/tree_cut_bt"
-        style="@style/style_button"
-        android:layout_width="90dp"
-        android:layout_height="75dp"
-        android:text="@string/tree_cut"
+        style="@style/style_tree_bt2"
+        android:text="@string/str_cut"
+
         app:layout_constraintStart_toEndOf="@+id/tree_paste_bt"
         app:layout_constraintTop_toBottomOf="@+id/side_view" />
 
     <Button
         android:id="@+id/tree_del_bt"
-        style="@style/style_button"
-        android:layout_width="90dp"
-        android:layout_height="75dp"
-        android:text="@string/tree_del"
+        style="@style/style_tree_bt2"
+        android:text="@string/str_del"
+
         app:layout_constraintStart_toEndOf="@+id/tree_cut_bt"
         app:layout_constraintTop_toBottomOf="@+id/side_view" />
 
     <ToggleButton
         android:id="@+id/tree_ext_bt"
-        style="@style/style_button"
-        android:layout_width="90dp"
-        android:layout_height="75dp"
-        android:text="@string/tree_ext"
+        style="@style/style_tree_bt2"
+        android:text="@string/str_ext"
         android:textOff="@string/str_ext_off"
         android:textOn="@string/str_ext_on"
+
         app:layout_constraintStart_toEndOf="@+id/tree_del_bt"
         app:layout_constraintTop_toBottomOf="@+id/tree_view" />
 

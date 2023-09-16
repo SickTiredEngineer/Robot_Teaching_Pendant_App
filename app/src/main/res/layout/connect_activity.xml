@@ -9,9 +9,8 @@
 
     <TextView
         android:id="@+id/state_connect"
-        style="@style/style_tv"
+        style="@style/style_tvc"
         android:layout_width="300dp"
-
         android:layout_height="60dp"
         android:text="@string/state_disconnected"
         app:layout_constraintBottom_toTopOf="@+id/state_power"
@@ -20,7 +19,7 @@
 
     <TextView
         android:id="@+id/state_power"
-        style="@style/style_tv"
+        style="@style/style_tvc"
         android:layout_width="300dp"
 
         android:layout_height="60dp"
@@ -32,7 +31,7 @@
 
     <TextView
         android:id="@+id/state_device"
-        style="@style/style_tv"
+        style="@style/style_tvc"
         android:layout_width="300dp"
 
         android:layout_height="60dp"
@@ -42,7 +41,7 @@
 
     <TextView
         android:id="@+id/state_system"
-        style="@style/style_tv"
+        style="@style/style_tvc"
         android:layout_width="300dp"
 
         android:layout_height="60dp"
@@ -53,7 +52,7 @@
 
     <TextView
         android:id="@+id/state_robot_operation"
-        style="@style/style_tv"
+        style="@style/style_tvc"
         android:layout_width="300dp"
 
         android:layout_height="60dp"

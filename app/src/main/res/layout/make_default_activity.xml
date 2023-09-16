@@ -110,26 +110,22 @@
 
             <Button
                 android:id="@+id/jog_global_bt"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
+                style = "@style/style_jog_choice"
                 android:text="@string/str_global" />
 
             <Button
                 android:id="@+id/jog_local_bt"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
+                style = "@style/style_jog_choice"
                 android:text="@string/str_local" />
 
             <Button
                 android:id="@+id/jog_user_bt"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
+                style = "@style/style_jog_choice"
                 android:text="@string/str_user" />
 
             <Button
                 android:id="@+id/jog_joint_bt"
-                android:layout_width="match_parent"
-                android:layout_height="75dp"
+                style = "@style/style_jog_choice"
                 android:text="@string/str_joint" />
 
         </LinearLayout>

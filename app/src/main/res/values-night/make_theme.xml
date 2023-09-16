@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    //프로그램 트리 좌측에 위치한 버튼의 스타일
+    <style name = "style_tree_bt">
+        <item name = "android:layout_width">130dp</item>
+        <item name = "android:layout_height">75dp</item>
+        <item name = "android:background">@drawable/public_button</item>
+        <item name = "android:textColor">@color/white</item>
+        <item name = "android:gravity">center</item>
+    </style>
+
+    //프로그램 트리 하단에 위치한 버튼의 스타일
+    <style name = "style_tree_bt2">
+        <item name = "android:layout_width">90dp</item>
+        <item name = "android:layout_height">75dp</item>
+        <item name = "android:background">@drawable/public_button</item>
+        <item name = "android:textColor">@color/white</item>
+        <item name = "android:gravity">center</item>
+    </style>
+
+
+
+
+
+</resources>

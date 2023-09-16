@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     //우측 상단 기능 분류 탭 String
-    <string name ="make_all">전체</string>
-    <string name ="make_move">이동</string>
-    <string name ="make_func">기능</string>
-    <string name ="make_end_ef">엔드 이펙트</string>
-    <string name ="make_other">기타</string>
-    <string name ="make_search">검색</string>
+    <string name ="str_all">전체</string>
+    <string name ="str_move">이동</string>
+    <string name ="str_func">기능</string>
+    <string name ="str_end_ef">엔드 이펙트</string>
+    <string name ="str_other">기타</string>
+    <string name ="str_search">검색</string>
 
-    <string name = "make_project_name">불러온 프로젝트가 존재하지 않습니다.</string>
+    <string name = "str_project_name">불러온 프로젝트가 존재하지 않습니다.</string>
 
 
     <string name ="str_ext_off">Off</string>
@@ -16,19 +16,19 @@
 
     //TREE 관련 임시 String Resource, 추후 아이콘이 생기면 대체될 수 있습니다.
 
-    <string name ="tree_refresh">새로고침</string>
-    <string name ="tree_undo">실행취소</string>
-    <string name ="tree_redo">다시실행</string>
-    <string name ="tree_up">위로</string>
-    <string name ="tree_down">아래로</string>
-    <string name ="tree_disable">비활성화</string>
-    <string name ="tree_marking">마킹</string>
-    <string name ="tree_search">검색</string>
+    <string name ="str_refresh">새로고침</string>
+    <string name ="str_undo">실행취소</string>
+    <string name ="str_redo">다시실행</string>
+    <string name ="str_up">위로</string>
+    <string name ="str_down">아래로</string>
+    <string name ="str_disable">비활성화</string>
+    <string name ="str_marking">마킹</string>
+<!--    <string name ="str_search">검색</string>  search 존재로 인해 주석으로 표현만 함 -->
 
-    <string name ="tree_copy">Copy</string>
-    <string name ="tree_paste">Paste</string>
-    <string name ="tree_cut">Cut</string>
-    <string name ="tree_del">Del</string>
-    <string name ="tree_ext">Ext</string>
+    <string name ="str_copy">Copy</string>
+    <string name ="str_paste">Paste</string>
+    <string name ="str_cut">Cut</string>
+    <string name ="str_del">Del</string>
+    <string name ="str_ext">Ext</string>
 
 </resources>

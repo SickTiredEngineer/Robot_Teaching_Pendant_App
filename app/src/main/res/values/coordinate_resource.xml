@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    //좌표계 string
     <string name ="str_x">X</string>
     <string name ="str_y">Y</string>
     <string name ="str_z">Z</string>
@@ -7,6 +9,7 @@
     <string name ="str_ry">Ry</string>
     <string name ="str_rz">Rz</string>
 
+    //Joint 계 string
     <string name ="str_base">Base</string>
     <string name ="str_should">Shoulder</string>
     <string name ="str_elbow">Elbow</string>
@@ -14,6 +17,7 @@
     <string name ="str_wrist2">Wrist2</string>
     <string name ="str_wrist3">Wrist3</string>
 
+    //좌표계 종류 string
     <string name = "str_global">Global</string>
     <string name = "str_local">Local</string>
     <string name = "str_user">User</string>

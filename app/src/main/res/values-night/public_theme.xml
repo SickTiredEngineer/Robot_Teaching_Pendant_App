@@ -90,7 +90,7 @@
 
     // 가로 선 디자인
     <style name = "style_line_h">
-        <item name = "android:background">@color/main_white</item>
+        <item name = "android:background">@color/white</item>
         <item name = "android:layout_width">match_parent</item>
         <item name = "android:layout_height">3dp</item>
     </style>
