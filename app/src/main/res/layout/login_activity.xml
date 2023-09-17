@@ -120,9 +120,9 @@
 
         <EditText
             android:id="@+id/login_pw1"
-            style = "@style/style_pwbox"
+            style="@style/style_pwbox"
 
-            android:layout_width="150dp"
+            android:layout_width="153dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:ems="10"

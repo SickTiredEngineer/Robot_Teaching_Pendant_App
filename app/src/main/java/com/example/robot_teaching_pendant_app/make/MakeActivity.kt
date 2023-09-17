@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import com.example.robot_teaching_pendant_app.MainActivity
 import com.example.robot_teaching_pendant_app.R
 import com.example.robot_teaching_pendant_app.databinding.JGlobalActivityBinding
@@ -29,11 +31,34 @@ class MakeActivity : AppCompatActivity() {
         //좌측 상단에 위치한 화면 이동 메뉴 버튼
         val makeMenuBt = binding.makeMenuBt
 
-        //우측에 나타나는 전체적인 화면 Binding 입니다/
+        //우측에 나타나는 전체적인 화면 Binding 입니다.
         val defBinding = MakeDefaultActivityBinding.inflate(layoutInflater)
 
 
-        //조그를 선택하는 버튼들을 변수에 초기화 시킵니다.
+        //Jog Mode -> Smooth , Tick 을 선택할 때 사용하는 버튼입니다.
+        val makeSmoothBt = defBinding.makeSmoothBt
+        val makeTickBt = defBinding.makeTickBt
+
+        //Tick 모드 활성화 시 나오는 EditText 입니다.
+        val tickJoint = defBinding.tickJoint
+        val tickOri = defBinding.tickOri
+        val tickDist = defBinding.tickDist
+
+        //Tick 모드 활성화 시 나오는 EditText 설명 TextView 입니다.
+        val jogModeTv1 = defBinding.jogModeTv1
+        val jogModeTv2 = defBinding.jogModeTv2
+        val jogModeTv3 = defBinding.jogModeTv3
+
+        //기본적으로 Tick 모드에서 사용하는 요소들은 가려지게 설정합니다.
+        tickDist.isInvisible = true
+        tickJoint.isInvisible = true
+        tickOri.isInvisible = true
+        jogModeTv1.isInvisible = true
+        jogModeTv2.isInvisible = true
+        jogModeTv3.isInvisible = true
+
+
+        //조그(Global, Local, User, Joint) 를 선택하는 버튼들을 변수에 초기화 시킵니다.
         val jogGlobalBt = defBinding.jogGlobalBt
         val jogLocalBt = defBinding.jogLocalBt
         val jogUserBt = defBinding.jogUserBt
@@ -127,6 +152,41 @@ class MakeActivity : AppCompatActivity() {
 
             jogViewer.removeAllViews()
             jogViewer.addView(jJbinding.root)
+        }
+
+
+        makeSmoothBt.setOnClickListener{
+            //중복 클릭 방지를 위해 본인 버튼을 비활성화 시킵니다.
+            makeSmoothBt.isEnabled = false
+            makeSmoothBt.setBackgroundResource(R.drawable.color_red_box)
+
+            makeTickBt.isEnabled = true
+            makeTickBt.setBackgroundResource(R.drawable.square_background_border)
+
+            //Tick에 관련된 요소들이 보이지 않게 가립니다.
+            tickDist.isInvisible = true
+            tickJoint.isInvisible = true
+            tickOri.isInvisible = true
+            jogModeTv1.isInvisible = true
+            jogModeTv2.isInvisible = true
+            jogModeTv3.isInvisible = true
+        }
+
+        makeTickBt.setOnClickListener{
+            //중복 클릭 방지를 위해 본인 버튼을 비활성화 시킵니다.
+            makeTickBt.isEnabled = false
+            makeTickBt.setBackgroundResource(R.drawable.color_red_box)
+
+            makeSmoothBt.isEnabled = true
+            makeSmoothBt.setBackgroundResource(R.drawable.square_background_border)
+
+            //Tick에 관련된 요소들을 활성화 시킵니다.
+            tickDist.isVisible = true
+            tickJoint.isVisible = true
+            tickOri.isVisible = true
+            jogModeTv1.isVisible = true
+            jogModeTv2.isVisible= true
+            jogModeTv3.isVisible = true
         }
 
 

@@ -33,7 +33,7 @@
 
     //4가지 조그 모드(Global, User, Local, Joint) 를 선택할 때 사용하는 버튼의 스타일
     <style name = "style_jog_choice">
-        <item name = "android:layout_height">75dp</item>
+        <item name = "android:layout_height">84dp</item>
         <item name = "android:layout_width">match_parent</item>
         <item name = "android:background">@drawable/public_button</item>
         <item name = "android:textColor">@color/black</item>

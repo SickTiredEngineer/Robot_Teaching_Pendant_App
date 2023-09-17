@@ -2,27 +2,27 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/style_bg"
     android:layout_width="670dp"
-    android:layout_height="600dp"
-    style = "@style/style_bg">
+    android:layout_height="675dp">
 
 
     <LinearLayout
         android:id="@+id/second_tree_view"
-        android:background="@drawable/square_background_border"
         android:layout_width="450dp"
-        android:layout_height="600dp"
+        android:layout_height="675dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
+        android:background="@drawable/square_background_border"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/ext_tool_view"
         android:layout_width="217dp"
-        android:layout_height="600dp"
+        android:layout_height="675dp"
         android:layout_marginStart="1dp"
         android:layout_marginEnd="1dp"
         android:background="@drawable/square_background_border"

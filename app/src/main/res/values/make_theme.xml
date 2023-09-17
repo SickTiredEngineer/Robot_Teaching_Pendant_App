@@ -19,5 +19,27 @@
         <item name = "android:gravity">center</item>
     </style>
 
+    //Jog Mode 의 Tick 모드 사용 시
+    <style name = "style_jogmode_edtx">
+        <item name = "android:background">@drawable/square_background_border</item>
+        <item name = "android:layout_width">55dp</item>
+        <item name = "android:layout_height">30dp</item>
+        <item name = "android:textColor">@color/main_black</item>
+        <item name = "android:textSize">15sp</item>
+        <item name = "android:gravity">center</item>
+        <item name ="android:inputType">number</item>
+    </style>
+
+
+    <style name = "style_jogmode_tx">
+        <item name = "android:layout_width">55dp</item>
+        <item name = "android:layout_height">30dp</item>
+        <item name = "android:textColor">@color/main_black</item>
+        <item name = "android:textSize">11sp</item>
+        <item name = "android:gravity">center</item>
+    </style>
+
+
+
 
 </resources>

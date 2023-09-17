@@ -3,8 +3,18 @@
     <string name ="str_all">All</string>
     <string name ="str_move">Move</string>
     <string name ="str_func">Function</string>
-    <string name ="str_end_eff">End eff</string>
+    <string name ="str_end_ef">End eff</string>
     <string name ="str_other">Other</string>
     <string name ="str_search">Search</string>
+
+    //Smooth and Tick UI Str
+    <string name = "str_smooth">Smooth</string>
+    <string name = "str_tick">Tick</string>
+
+    <string name = "str_dist_mm">Dist(mm)</string>
+    <string name = "str_ori_dgr">Ori(°)</string>
+    <string name = "str_joint_dgr">Joint(°)</string>
+
+
 
 </resources>

@@ -78,7 +78,7 @@
     //우측 상단 파일 관련(저장, 불러오기 등) 버튼 디자인
     <style name = "style_file_menu">
         <item name = "android:layout_width">120dp</item>
-        <item name = "android:layout_height">50dp</item>
+        <item name = "android:layout_height">40dp</item>
         <item name = "android:textSize">20sp</item>
         <item name = "android:background">@drawable/public_button</item>
         <item name = "android:textColor">@color/black</item>
