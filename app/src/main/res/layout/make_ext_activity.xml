@@ -17,7 +17,17 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <TextView
+            android:id="@+id/textView"
+            style = "@style/style_tvc"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Sub Tree가 삽입될 레이아웃 입니다." />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/ext_tool_view"
@@ -30,5 +40,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/second_tree_view"
-        app:layout_constraintTop_toTopOf="parent"></LinearLayout>
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:id="@+id/textView2"
+            style = "@style/style_tvc"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Sub Tool 이 표시될 레이아웃입니다." />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
