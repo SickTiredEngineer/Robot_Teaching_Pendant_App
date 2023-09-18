@@ -138,6 +138,11 @@
             app:layout_constraintStart_toEndOf="@+id/jog_mode_layout"
             app:layout_constraintTop_toTopOf="parent">
 
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/view_3d_ex" />
         </LinearLayout>
 
         <LinearLayout

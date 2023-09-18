@@ -117,19 +117,20 @@ class MainActivity : AppCompatActivity() {
 
                         connectBt.setText(R.string.str_control)
                         disconnectBt.setBackgroundResource(R.drawable.color_red_box)
-                        disconnectBt.isEnabled = true
 
-                        //Connect 버튼을 다시 활성화 시킵니다.
+
+                        //Connect,Disconnect 버튼을 다시 활성화 시킵니다.
                         connectBt.isEnabled = true
-
+                        disconnectBt.isEnabled = true
                     }, 3000L)
                     conCount += 1
                 }
 
                 //두 번째 동작 (Control) -> 나머지 요소들에 대한 작업을 진행하고 동작이 끝나면 Connect 버튼을 Power Down 으로 변경합니다.
                 1 -> {
-                    //중복 클릭을 방지하기 위해 과정이 끝나기 전 까지 connect 버튼을 비활성화 합니다.
+                    //중복 클릭을 방지하기 위해 과정이 끝나기 전 까지 connect, Disconnect 버튼을 비활성화 합니다.
                     connectBt.isEnabled = false
+                    disconnectBt.isEnabled = false
 
                     val mHandler = Handler(Looper.getMainLooper())
                     mHandler.postDelayed({
@@ -155,9 +156,9 @@ class MainActivity : AppCompatActivity() {
                         connectBt.setText(R.string.str_power_down)
                         connectBt.setBackgroundResource(R.drawable.color_yellow_box)
 
-                        //Connect 버튼을 다시 활성화 시킵니다.
+                        //Connect,Disconnect 버튼을 다시 활성화 시킵니다.
                         connectBt.isEnabled = true
-
+                        disconnectBt.isEnabled = true
                     }, 3000L)
                     conCount += 1
                 }
