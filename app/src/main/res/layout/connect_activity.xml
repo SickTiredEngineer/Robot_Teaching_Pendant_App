@@ -111,7 +111,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/connect_list" />
 
-    <TextView
+    <View
         android:id="@+id/state_con_box"
         android:background="@drawable/square_background_border"
         android:layout_width="100dp"
@@ -121,7 +121,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
+    <View
         android:id="@+id/state_power_box"
         android:background="@drawable/square_background_border"
         android:layout_width="100dp"
@@ -132,7 +132,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/state_con_box" />
 
-    <TextView
+    <View
         android:id="@+id/state_device_box"
         android:background="@drawable/square_background_border"
         android:layout_width="100dp"
@@ -154,7 +154,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/state_device_box" />
 
-    <TextView
+    <View
         android:id="@+id/state_rob_Oper_box"
         android:background="@drawable/square_background_border"
         android:layout_width="100dp"
