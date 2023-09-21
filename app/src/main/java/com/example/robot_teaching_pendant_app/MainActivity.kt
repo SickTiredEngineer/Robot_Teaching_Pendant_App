@@ -48,13 +48,13 @@ class MainActivity : AppCompatActivity() {
         val conBinding = ConnectActivityBinding.inflate(layoutInflater)
         val connectViewer = binding.connectViewer
         connectViewer.addView(conBinding.root)
-        
+
         //기본적인 상태를 설정합니다. 연결 상태 창은 붉은 빛이 들어오며, Disconnect 버튼은 비활성화 시킨 상태입니다.
         conBinding.stateConBox.setBackgroundResource(R.drawable.color_red_box)
         conBinding.disconnectBt.isEnabled = false
 
 
-        //DarkModeManager 클래스를 이용하여 DarkMode와 NormalMode를 관리합니다. 자세한 코드는 해당 Class를 참고 하십시오.
+        /* mainDarkSwitch 버튼과 DarkModeManager 클래스를 이용하여 DarkMode 관리를 합니다. 자세한 코드는 해당 Class를 참고 하십시오*/
         darkModeManager = DarkModeManager(this, binding.mainDarkSwitch)
 
 
