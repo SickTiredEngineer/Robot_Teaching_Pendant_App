@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/style_bg"
+    android:layout_width="800dp"
+    android:layout_height="480dp"
+    tools:context=".connect.ConnectInterface">
+
+    <TextView
+        android:id="@+id/state_connect"
+        style="@style/style_tvc"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:text="@string/state_disconnected"
+        app:layout_constraintBottom_toTopOf="@+id/state_power"
+        app:layout_constraintEnd_toEndOf="@+id/state_power"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/state_power"
+        style="@style/style_tvc"
+        android:layout_width="300dp"
+
+        android:layout_height="60dp"
+        android:text="@string/state_power_off"
+
+        app:layout_constraintBottom_toTopOf="@+id/state_device"
+        app:layout_constraintEnd_toEndOf="@+id/state_device"
+        app:layout_constraintTop_toBottomOf="@+id/state_connect" />
+
+    <TextView
+        android:id="@+id/state_device"
+        style="@style/style_tvc"
+        android:layout_width="300dp"
+
+        android:layout_height="60dp"
+        android:text="@string/state_device_off"
+        app:layout_constraintEnd_toEndOf="@+id/state_system"
+        app:layout_constraintTop_toBottomOf="@+id/state_power" />
+
+    <TextView
+        android:id="@+id/state_system"
+        style="@style/style_tvc"
+        android:layout_width="300dp"
+
+        android:layout_height="60dp"
+        android:text="@string/state_system_off"
+        app:layout_constraintBottom_toTopOf="@+id/state_robot_operation"
+        app:layout_constraintEnd_toEndOf="@+id/state_robot_operation"
+        app:layout_constraintTop_toBottomOf="@+id/state_device" />
+
+    <TextView
+        android:id="@+id/state_robot_operation"
+        style="@style/style_tvc"
+        android:layout_width="300dp"
+
+        android:layout_height="60dp"
+        android:layout_marginBottom="50dp"
+        android:text="@string/state_robot_operation"
+        app:layout_constraintBottom_toTopOf="@+id/connect_bt"
+        app:layout_constraintEnd_toEndOf="@+id/connect_bt"
+        app:layout_constraintTop_toBottomOf="@+id/state_system" />
+
+    <Button
+        android:id="@+id/connect_bt"
+
+        style="@style/style_enable_bt"
+        android:layout_width="400dp"
+        android:layout_height="65dp"
+
+        android:text="@string/str_connect"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/disconnect_bt"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/disconnect_bt"
+        style="@style/style_disable_bt"
+        android:layout_width="400dp"
+        android:layout_height="65dp"
+
+        android:text="@string/str_disconnect"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ScrollView
+        android:id="@+id/connect_list"
+        android:layout_width="350dp"
+        android:layout_height="344dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/square_background_border"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/textView3"
+        style="@style/style_tvc"
+        android:text = "컨트롤 박스 정보를 나타내는 창입니다."
+        android:layout_width="350dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/connect_list" />
+
+    <View
+        android:id="@+id/state_con_box"
+        android:background="@drawable/square_background_border"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+
+        app:layout_constraintEnd_toStartOf="@+id/state_connect"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/state_power_box"
+        android:background="@drawable/square_background_border"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+
+        app:layout_constraintEnd_toStartOf="@+id/state_connect"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/state_con_box" />
+
+    <View
+        android:id="@+id/state_device_box"
+        android:background="@drawable/square_background_border"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+
+        app:layout_constraintEnd_toStartOf="@+id/state_connect"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/state_power_box" />
+
+    <TextView
+        android:id="@+id/state_system_box"
+        android:background="@drawable/square_background_border"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+
+        app:layout_constraintEnd_toStartOf="@+id/state_connect"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/state_device_box" />
+
+    <View
+        android:id="@+id/state_rob_Oper_box"
+        android:background="@drawable/square_background_border"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+
+        app:layout_constraintEnd_toStartOf="@+id/state_connect"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/state_system_box" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

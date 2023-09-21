@@ -13,6 +13,7 @@ import android.view.View
 //import android.widget.CompoundButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
+import com.example.robot_teaching_pendant_app.connect.ConnectInterface
 //import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.robot_teaching_pendant_app.databinding.MainActivityBinding
 import com.example.robot_teaching_pendant_app.make.MakeActivity
@@ -45,33 +46,23 @@ class MainActivity : AppCompatActivity() {
 
         //Connect를 위한 UI 동작 구현 부분 입니다.
         //연결 UI를 표시하기 위한 Layout 선언 및 Connect Activity 삽입
-        val conBinding = ConnectActivityBinding.inflate(layoutInflater)
         val connectViewer = binding.connectViewer
-        connectViewer.addView(conBinding.root)
 
-        //기본적인 상태를 설정합니다. 연결 상태 창은 붉은 빛이 들어오며, Disconnect 버튼은 비활성화 시킨 상태입니다.
-        conBinding.stateConBox.setBackgroundResource(R.drawable.color_red_box)
-        conBinding.disconnectBt.isEnabled = false
+        if (savedInstanceState == null) { // 처음 액티비티가 생성되었을 때만 프래그먼트 추가
+            val fragment = ConnectInterface() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
+            supportFragmentManager.beginTransaction()
+                .replace(connectViewer.id, fragment)
+                .commit()
+        }
+
+
+//        //기본적인 상태를 설정합니다. 연결 상태 창은 붉은 빛이 들어오며, Disconnect 버튼은 비활성화 시킨 상태입니다.
+//        conBinding.stateConBox.setBackgroundResource(R.drawable.color_red_box)
+//        conBinding.disconnectBt.isEnabled = false
 
 
         /* mainDarkSwitch 버튼과 DarkModeManager 클래스를 이용하여 DarkMode 관리를 합니다. 자세한 코드는 해당 Class를 참고 하십시오*/
         darkModeManager = DarkModeManager(this, binding.mainDarkSwitch)
-
-
-        //Connect Helper Class 를 통하여 연결 동작을 실행합니다. 자세한 코드는 해당 Class를 참고 하십시오.
-        connectHelper = ConnectHelper(
-            connectBt = conBinding.connectBt,
-            disconnectBt = conBinding.disconnectBt,
-            stateConnect = conBinding.stateConnect,
-            stateConBox = conBinding.stateConBox,
-            statePower = conBinding.statePower,
-            statePowerBox = conBinding.statePowerBox,
-            stateDevice = conBinding.stateDevice,
-            stateDeviceBox = conBinding.stateDeviceBox,
-            stateSystem = conBinding.stateSystem,
-            stateSystemBox = conBinding.stateSystemBox,
-            stateRobOperBox = conBinding.stateRobOperBox
-        )
 
 
         //작업 화면 버튼을 클릭 시 동작으로, 해당 화면으로 이동합니다.
