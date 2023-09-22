@@ -203,10 +203,10 @@
 
     <ToggleButton
         android:id="@+id/tree_ext_bt"
-        style="@style/style_tree_bt2"
+        style="@style/style_toggle_button"
         android:text="@string/str_ext"
-        android:textOff="@string/str_ext_off"
-        android:textOn="@string/str_ext_on"
+        android:textOff="@string/str_ext"
+        android:textOn="@string/str_ext"
 
         app:layout_constraintStart_toEndOf="@+id/tree_del_bt"
         app:layout_constraintTop_toBottomOf="@+id/make_tree_view" />

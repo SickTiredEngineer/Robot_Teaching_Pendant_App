@@ -26,25 +26,29 @@ class MakeActivity : AppCompatActivity() {
         //좌측 상단에 위치한 화면 이동 메뉴 버튼
         val makeMenuBt = binding.makeMenuBt
 
-
+        val makePowerBt = binding.makePowerBt
+        val treeExtBt = binding.treeExtBt
 
         /* TREE를 제외한 우측에 요소들을 표시해주는 View 와 기본적으로 보여지는 화면(Default) 설정이며, 확장 버튼 클릭 시 ext Activity로 교체합니다. */
         val sideViewer = binding.sideView
 
+
+        //Ext, Default Fragment 를 변수에 초기화합니다.
+        val fragmentExt = MakeExt()
+        val fragmentDefault = MakeDefault()
+
+        //Ext,  Default 모드에 맞게 초기 상태를 설정합니다.
+        val initialFragment = if (treeExtBt.isChecked) fragmentExt else fragmentDefault
+        supportFragmentManager.beginTransaction()
+            .add(sideViewer.id, initialFragment)
+            .commit()
+
         if (savedInstanceState == null) { // 처음 액티비티가 생성되었을 때만 프래그먼트 추가
-            val fragment = MakeDefault() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
+            val fragment = MakeDefault() //
             supportFragmentManager.beginTransaction()
                 .replace(sideViewer.id, fragment)
                 .commit()
         }
-
-
-        val makePowerBt = binding.makePowerBt
-        val treeExtBt = binding.treeExtBt
-
-        //Ext Activity 바인딩합니다.
-        val extBinding = MakeExtActivityBinding.inflate(layoutInflater)
-
 
         //Ext tree 토글 버튼 클릭 시 동작입니다.
         treeExtBt.setOnCheckedChangeListener { _, isChecked ->

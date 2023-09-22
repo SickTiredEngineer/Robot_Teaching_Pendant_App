@@ -11,6 +11,15 @@
         <item name = "android:gravity">center</item>
     </style>
 
+    //Toggle Button Style
+    <style name = "style_toggle_button">
+        <item name = "android:layout_width">90dp</item>
+        <item name = "android:layout_height">75dp</item>
+        <item name = "android:background">@drawable/public_toggle_button</item>
+        <item name = "android:textColor">@color/white</item>
+        <item name = "android:gravity">center</item>
+    </style>
+
     //TextView 스타일로 테두리를 가지고 있습니다. tvc는 글자가 중앙에 위치합니다.
     <style name = "style_tvc">
         <item name = "android:background">@drawable/square_background_border</item>

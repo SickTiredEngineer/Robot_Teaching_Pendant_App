@@ -118,9 +118,12 @@
         app:layout_constraintStart_toEndOf="@+id/login_icon"
         app:layout_constraintTop_toBottomOf="@+id/login_line1">
 
+
+<!--        Passward Box 의 아이디는 맨 좌측부터 1~4순입니다.-->
         <EditText
-            android:id="@+id/login_pw1"
+            android:id="@+id/pass_box_1"
             style="@style/style_pwbox"
+            android:maxLength="1"
 
             android:layout_width="153dp"
             android:layout_height="match_parent"
@@ -130,8 +133,9 @@
             tools:ignore="Autofill,LabelFor" />
 
         <EditText
-            android:id="@+id/login_pw2"
+            android:id="@+id/pass_box_2"
             style = "@style/style_pwbox"
+            android:maxLength="1"
 
             android:layout_width="150dp"
             android:layout_height="match_parent"
@@ -141,8 +145,9 @@
             tools:ignore="Autofill,LabelFor" />
 
         <EditText
-            android:id="@+id/login_pw3"
+            android:id="@+id/pass_box_3"
             style = "@style/style_pwbox"
+            android:maxLength="1"
 
             android:layout_width="150dp"
             android:layout_height="match_parent"
@@ -152,8 +157,9 @@
             tools:ignore="Autofill,LabelFor" />
 
         <EditText
-            android:id="@+id/login_pw4"
+            android:id="@+id/pass_box_4"
             style = "@style/style_pwbox"
+            android:maxLength="1"
 
             android:layout_width="150dp"
             android:layout_height="match_parent"

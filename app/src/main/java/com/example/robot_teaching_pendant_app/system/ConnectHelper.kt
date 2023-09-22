@@ -30,8 +30,6 @@ class ConnectHelper(
     //메서드 미리 선언(?)
     init {
         setConnectBtOnClickListener()
-    }
-    init {
         setDisconnectBtOnClickListener()
     }
 
