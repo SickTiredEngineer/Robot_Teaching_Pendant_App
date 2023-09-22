@@ -3,6 +3,7 @@
     //임시 배치 (string control)
     <string name="str_control">Control</string>
 
+    <string name = "str_cancel">Cancel</string>
     //공통적으로 사용하는 버튼에 들어갈 string 입니다.
     <string name="str_power_bt">파워 버튼</string>
     <string name="str_menu">메뉴</string>
@@ -24,6 +25,11 @@
     <string name="str_minus">_</string>
 
     <string name = "str_mode">Mode</string>
+
+    //Power Button Fragment에 사용할 string
+    <string name = "str_shutdown">SHUTDOWN</string>
+
+
 
 
 </resources>

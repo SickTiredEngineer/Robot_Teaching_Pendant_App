@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="1000dp"
+    android:layout_height="600dp"
+    style = "@style/style_bg"
+    tools:context=".system.FragmentPowerOff">
+
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="450dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="450dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/my_warning"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/textView8"
+        style="@style/style_tv2"
+        android:layout_width="908dp"
+        android:layout_height="78dp"
+
+        android:layout_marginStart="46dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="46dp"
+        android:text="@string/str_poweroff_inf"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+    <Button
+        android:id="@+id/shutdown_bt"
+        style="@style/style_disable_bt"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginBottom="50dp"
+        android:text="@string/str_shutdown"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/cancel_bt"
+        style="@style/style_enable_bt"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="50dp"
+        android:text="@string/str_cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

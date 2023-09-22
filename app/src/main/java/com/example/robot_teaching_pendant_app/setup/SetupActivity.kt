@@ -30,6 +30,7 @@ import com.example.robot_teaching_pendant_app.databinding.SetupToolListActivityB
 import com.example.robot_teaching_pendant_app.databinding.SetupUtilityActivityBinding
 import com.example.robot_teaching_pendant_app.make.MakeActivity
 import com.example.robot_teaching_pendant_app.play.PlayActivity
+import com.example.robot_teaching_pendant_app.system.FragmentPowerOff
 
 
 class SetupActivity : AppCompatActivity() {
@@ -209,7 +210,8 @@ class SetupActivity : AppCompatActivity() {
 
         //우측 하단에 위치한 파워 버튼을 클릭 시 동작입니다.
         setupPowerBt.setOnClickListener{
-            Toast.makeText(this@SetupActivity,"전원 버튼 클릭", Toast.LENGTH_SHORT).show()
+            val dialogFragment = FragmentPowerOff()
+            dialogFragment.show(supportFragmentManager,null)
         }
 
     }

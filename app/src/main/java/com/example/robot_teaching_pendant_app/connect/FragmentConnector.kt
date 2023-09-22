@@ -5,8 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.robot_teaching_pendant_app.R
-import com.example.robot_teaching_pendant_app.databinding.FragmentConnectInterfaceBinding
+import com.example.robot_teaching_pendant_app.databinding.FragmentConnectorBinding
 import com.example.robot_teaching_pendant_app.system.ConnectHelper
 
 // TODO: Rename parameter arguments, choose names that match
@@ -16,10 +15,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [ConnectInterface.newInstance] factory method to
+ * Use the [FragmentConnector.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ConnectInterface : Fragment() {
+class FragmentConnector : Fragment() {
 
     private lateinit var connectHelper: ConnectHelper
     // TODO: Rename and change types of parameters
@@ -40,7 +39,7 @@ class ConnectInterface : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         //Connect Helper Class 를 통하여 연결 동작을 실행합니다. 자세한 코드는 해당 Class를 참고 하십시오.
-        val cbinding = FragmentConnectInterfaceBinding.inflate(layoutInflater)
+        val cbinding = FragmentConnectorBinding.inflate(layoutInflater)
 
         connectHelper = ConnectHelper(
             connectBt = cbinding.connectBt,
@@ -72,7 +71,7 @@ class ConnectInterface : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            ConnectInterface().apply {
+            FragmentConnector().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

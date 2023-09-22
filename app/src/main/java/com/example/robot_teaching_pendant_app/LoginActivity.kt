@@ -13,7 +13,7 @@ import android.widget.EditText
 import android.widget.Toast
 import com.example.robot_teaching_pendant_app.MainActivity
 import com.example.robot_teaching_pendant_app.databinding.LoginActivityBinding
-
+import com.example.robot_teaching_pendant_app.system.FragmentPowerOff
 
 
 class LoginActivity : AppCompatActivity() {
@@ -29,7 +29,7 @@ class LoginActivity : AppCompatActivity() {
         val passBox3 = binding.passBox3
         val passBox4 = binding.passBox4
 
-        //자동으로 숫자를 입력할 때 마다 Focus 를 바꿔주는 함수입니다. 제일 아래에 구현 해 놓았습니다.
+        //자동으로 숫자를 입력할 때 마다 Focus 를 바꿔주는 함수입니다. 제일 아래 (onCreate 밖) 에 구현 해 놓았습니다.
         setupAutoFocusEditTexts(passBox1, passBox2, passBox3, passBox4)
 
 
@@ -46,7 +46,6 @@ class LoginActivity : AppCompatActivity() {
             val nextIntent = Intent(this, MainActivity::class.java)
 
             //시스템 변수 전송 내용 추후 추가
-
             startActivity(nextIntent)
             Toast.makeText(this@LoginActivity, "로그인 완료", Toast.LENGTH_SHORT ).show()
             //로그인 화면 종료
@@ -55,7 +54,9 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginPowerBt.setOnClickListener{
-            Toast.makeText(this@LoginActivity,"전원 버튼 클릭",Toast.LENGTH_SHORT).show()
+            val dialogFragment = FragmentPowerOff()
+            dialogFragment.show(supportFragmentManager,null)
+
         }
 
     }
@@ -82,7 +83,7 @@ private fun setupAutoFocusEditTexts(vararg editTexts: EditText) {
             }
         })
 
-        // Optional: If you want the previous EditText to be focused when current EditText is cleared.
+        //현재의 EditText가 지워질 때 (내용이 제거될 때) 이전 EditText로 포커스가 이동하길 원한다면 사용하는 코드
         editTexts[i].setOnKeyListener { _, _, event ->
             if (event.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_DEL && editTexts[i].text.isEmpty() && i - 1 >= 0) {
                 editTexts[i - 1].requestFocus()

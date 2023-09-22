@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    //Power off 창에 사용할 설명입니다.
+    <string name = "str_poweroff_inf"> 정말로 프로그램을 종료 하시겠습니까?\n
+        (로봇이 활성화 되어 있고 컨트롤 박스가 테블릿 PC와 연결 되어 있을 시, 로봇의 전원도 함께 내려갑니다.)
+    </string>
+
+<!--    <style name="style_power_dialog_size" parent="Theme.AppCompat.Dialog">-->
+<!--        <item name="android:windowMinWidthMajor">90%</item> &lt;!&ndash; 너비를 화면의 90%로 설정 &ndash;&gt;-->
+<!--        <item name="android:windowMinWidthMinor">90%</item> &lt;!&ndash; 높이를 화면의 90%로 설정 &ndash;&gt;-->
+<!--    </style>-->
+
+
+</resources>

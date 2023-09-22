@@ -5,7 +5,7 @@
     style="@style/style_bg"
     android:layout_width="800dp"
     android:layout_height="480dp"
-    tools:context=".connect.ConnectInterface">
+    tools:context=".connect.FragmentConnector">
 
     <TextView
         android:id="@+id/state_connect"

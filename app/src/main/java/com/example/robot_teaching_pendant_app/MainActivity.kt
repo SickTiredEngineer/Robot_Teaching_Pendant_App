@@ -1,28 +1,21 @@
 package com.example.robot_teaching_pendant_app
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.view.View
 //import android.view.WindowManager
 //import android.widget.CompoundButton
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatDelegate
-import com.example.robot_teaching_pendant_app.connect.ConnectInterface
+import com.example.robot_teaching_pendant_app.connect.FragmentConnector
 //import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.robot_teaching_pendant_app.databinding.MainActivityBinding
 import com.example.robot_teaching_pendant_app.make.MakeActivity
 import com.example.robot_teaching_pendant_app.play.PlayActivity
 import com.example.robot_teaching_pendant_app.setup.SetupActivity
-import com.example.robot_teaching_pendant_app.databinding.ConnectActivityBinding
 import com.example.robot_teaching_pendant_app.system.ConnectHelper
 import com.example.robot_teaching_pendant_app.system.DarkModeManager
-
+import com.example.robot_teaching_pendant_app.system.FragmentPowerOff
 
 
 class MainActivity : AppCompatActivity() {
@@ -49,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         val connectViewer = binding.connectViewer
 
         if (savedInstanceState == null) { // 처음 액티비티가 생성되었을 때만 프래그먼트 추가
-            val fragment = ConnectInterface() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
+            val fragment = FragmentConnector() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
             supportFragmentManager.beginTransaction()
                 .replace(connectViewer.id, fragment)
                 .commit()
@@ -94,7 +87,9 @@ class MainActivity : AppCompatActivity() {
 
         //우측 하단에 위치한 파워 버튼을 클릭 시 동작입니다.
         mainPowerBt.setOnClickListener{
-            Toast.makeText(this@MainActivity,"전원 버튼 클릭",Toast.LENGTH_SHORT).show()
+            val dialogFragment = FragmentPowerOff()
+            dialogFragment.show(supportFragmentManager,null)
+
         }
 
     }
