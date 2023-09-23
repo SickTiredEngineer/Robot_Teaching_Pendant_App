@@ -1,4 +1,4 @@
-package com.example.robot_teaching_pendant_app.system
+package com.example.robot_teaching_pendant_app.connect
 
 import android.app.Activity
 import android.content.Context
@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import com.example.robot_teaching_pendant_app.R
+import com.example.robot_teaching_pendant_app.connect.ConnectionState
 
 //생성자입니다. 나중에 필요 시, 추가적으로 제어상자의 정보 View 등을 추가해야 합니다.
 class ConnectHelper(
@@ -24,14 +25,28 @@ class ConnectHelper(
     private val stateSystemBox: View,
     private val stateRobOperBox: View
 ) {
-    private var conCount = 0
 
-
-    //메서드 미리 선언(?)
+    //메서드,필요한 변수 등 미리 선언(?)
     init {
         setConnectBtOnClickListener()
         setDisconnectBtOnClickListener()
+
+        when(ConnectionState.conCount){
+            0 -> {
+                setConUiDef()
+            }
+            1-> {
+                setConUiFirst()
+            }
+            2-> {
+                setConUiSecond()
+            }
+
+        }
+
     }
+
+    private var conCount = 0
 
     //connect 버튼의 클릭 리스너 동작입니다. Case는 아래에 구현해 놓았습니다.
     private fun setConnectBtOnClickListener() {
@@ -47,28 +62,7 @@ class ConnectHelper(
     //Disconnect 버튼의 클릭 리스너 동작입니다. 별도의 Case는 없습니다.
     private fun setDisconnectBtOnClickListener() {
         disconnectBt.setOnClickListener {
-
-            stateConnect.setText(R.string.state_disconnected)
-            stateConBox.setBackgroundResource(R.drawable.color_red_box)
-
-            statePower.setText(R.string.state_power_off)
-            statePowerBox.setBackgroundResource(R.drawable.square_background_border)
-
-            stateDevice.setText(R.string.state_device_off)
-            stateDeviceBox.setBackgroundResource(R.drawable.square_background_border)
-
-            stateSystem.setText(R.string.state_system_off)
-            stateSystemBox.setBackgroundResource(R.drawable.square_background_border)
-
-            stateRobOperBox.setBackgroundResource(R.drawable.square_background_border)
-
-            connectBt.setText(R.string.str_connect)
-            connectBt.setBackgroundResource(R.drawable.color_green_box)
-
-            disconnectBt.isEnabled = false
-            disconnectBt.setBackgroundResource(R.drawable.color_gray_box)
-
-            conCount = 0
+            disconnectClick()
         }
     }
 
@@ -96,7 +90,8 @@ class ConnectHelper(
             connectBt.isEnabled = true
             disconnectBt.isEnabled = true
         }, 3000L)
-        conCount += 1
+        conCount = 1
+        ConnectionState.conCount = 1
     }
 
     private fun SecondClick() {
@@ -132,7 +127,9 @@ class ConnectHelper(
             connectBt.isEnabled = true
             disconnectBt.isEnabled = true
         }, 3000L)
-        conCount += 1
+        conCount = 2
+        ConnectionState.conCount = 2
+
     }
     private fun ThirdClick() {
 
@@ -156,7 +153,69 @@ class ConnectHelper(
         disconnectBt.setBackgroundResource(R.drawable.color_gray_box)
         disconnectBt.isEnabled = false
         conCount = 0
+        ConnectionState.conCount = 0
 
     }
+
+    private fun disconnectClick(){
+        stateConnect.setText(R.string.state_disconnected)
+        stateConBox.setBackgroundResource(R.drawable.color_red_box)
+
+        statePower.setText(R.string.state_power_off)
+        statePowerBox.setBackgroundResource(R.drawable.square_background_border)
+
+        stateDevice.setText(R.string.state_device_off)
+        stateDeviceBox.setBackgroundResource(R.drawable.square_background_border)
+
+        stateSystem.setText(R.string.state_system_off)
+        stateSystemBox.setBackgroundResource(R.drawable.square_background_border)
+
+        stateRobOperBox.setBackgroundResource(R.drawable.square_background_border)
+
+        connectBt.setText(R.string.str_connect)
+        connectBt.setBackgroundResource(R.drawable.color_green_box)
+
+        disconnectBt.setBackgroundResource(R.drawable.color_gray_box)
+        disconnectBt.isEnabled = false
+        conCount = 0
+        ConnectionState.conCount = 0
+    }
+
+    private fun setConUiDef(){
+        conCount = 0
+        stateConBox.setBackgroundResource(R.drawable.color_red_box)
+        stateConnect.setText(R.string.state_disconnected)
+    }
+
+    private fun setConUiFirst(){
+        conCount = 1
+        connectBt.setText(R.string.str_control)
+        disconnectBt.setBackgroundResource(R.drawable.color_red_box)
+        disconnectBt.isEnabled = true
+
+        stateConBox.setBackgroundResource(R.drawable.color_green_box)
+        stateConnect.setText(R.string.state_connected)
+    }
+    private fun setConUiSecond(){
+        conCount = 2
+        connectBt.setBackgroundResource(R.drawable.color_yellow_box)
+        connectBt.setText(R.string.str_power_down)
+        disconnectBt.setBackgroundResource(R.drawable.color_red_box)
+
+        stateConBox.setBackgroundResource(R.drawable.color_green_box)
+        statePowerBox.setBackgroundResource(R.drawable.color_green_box)
+        stateDeviceBox.setBackgroundResource(R.drawable.color_green_box)
+        stateSystemBox.setBackgroundResource(R.drawable.color_green_box)
+        stateRobOperBox.setBackgroundResource(R.drawable.color_green_box)
+
+        stateConnect.setText(R.string.state_connected)
+        statePower.setText(R.string.state_power_on)
+        stateDevice.setText(R.string.state_device_on)
+        stateSystem.setText(R.string.state_system_on)
+    }
+
 }
+
+
+
 

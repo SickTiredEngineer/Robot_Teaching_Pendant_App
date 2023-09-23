@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.robot_teaching_pendant_app.databinding.FragmentConnectorBinding
-import com.example.robot_teaching_pendant_app.system.ConnectHelper
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,8 +21,8 @@ open class FragmentConnector : Fragment() {
 
     protected var cbinding: FragmentConnectorBinding? = null
     protected val binding get() = cbinding!!
-
     private lateinit var connectHelper: ConnectHelper
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null

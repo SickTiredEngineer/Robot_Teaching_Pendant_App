@@ -7,14 +7,13 @@ import android.os.Bundle
 //import android.view.WindowManager
 //import android.widget.CompoundButton
 import android.widget.Toast
-import com.example.robot_teaching_pendant_app.connect.FragmentConnector
 import com.example.robot_teaching_pendant_app.connect.FragmentDefaultConnector
 //import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.robot_teaching_pendant_app.databinding.MainActivityBinding
 import com.example.robot_teaching_pendant_app.make.MakeActivity
 import com.example.robot_teaching_pendant_app.play.PlayActivity
 import com.example.robot_teaching_pendant_app.setup.SetupActivity
-import com.example.robot_teaching_pendant_app.system.ConnectHelper
+import com.example.robot_teaching_pendant_app.connect.ConnectHelper
 import com.example.robot_teaching_pendant_app.system.DarkModeManager
 import com.example.robot_teaching_pendant_app.system.FragmentPowerOff
 

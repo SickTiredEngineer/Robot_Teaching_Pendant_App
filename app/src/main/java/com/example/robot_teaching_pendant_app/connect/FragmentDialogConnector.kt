@@ -1,15 +1,12 @@
 package com.example.robot_teaching_pendant_app.connect
 
 import android.os.Bundle
-import android.util.TypedValue
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
-import com.example.robot_teaching_pendant_app.R
 import com.example.robot_teaching_pendant_app.databinding.FragmentConnectorBinding
-import com.example.robot_teaching_pendant_app.system.ConnectHelper
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,9 +19,9 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class FragmentDialogConnector : DialogFragment() {
+
     protected var cbinding: FragmentConnectorBinding? = null
     protected val binding get() = cbinding!!
-
     private lateinit var connectHelper: ConnectHelper
 
     // TODO: Rename and change types of parameters
