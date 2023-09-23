@@ -74,6 +74,8 @@ class FragmentDialogConnector : DialogFragment() {
             stateSystemBox = localbinding.stateSystemBox,
             stateRobOperBox = localbinding.stateRobOperBox
         )
+
+        //해당 Dialog 는 바깥 배경을 클릭하여 Cancel할 수 없습니다.
         return binding.root
     }
 

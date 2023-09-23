@@ -221,5 +221,13 @@
         app:layout_constraintTop_toBottomOf="@+id/setup_line3"
         app:layout_constraintVertical_bias="0.0"></LinearLayout>
 
+    <Button
+        android:id="@+id/setup_connect_bt"
+        style="@style/style_under_button"
+        android:layout_marginEnd="10dp"
+        android:text="@string/str_connect"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/setup_power_bt" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

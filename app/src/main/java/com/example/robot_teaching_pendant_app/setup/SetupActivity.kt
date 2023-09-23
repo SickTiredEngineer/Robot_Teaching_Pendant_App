@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.robot_teaching_pendant_app.MainActivity
 import com.example.robot_teaching_pendant_app.R
+import com.example.robot_teaching_pendant_app.connect.FragmentDialogConnector
 import com.example.robot_teaching_pendant_app.databinding.SetupActivityBinding
 import com.example.robot_teaching_pendant_app.databinding.SetupCobotActivityBinding
 import com.example.robot_teaching_pendant_app.databinding.SetupCoordActivityBinding
@@ -45,6 +46,7 @@ class SetupActivity : AppCompatActivity() {
 
         //버튼 변수 등록
         val setupPowerBt = binding.setupPowerBt
+        val setupConnectBt = binding.setupConnectBt
 
         //좌측에 위치한 설정 종류 버튼으로, 클릭 시 해당 설정을 위한 화면을 setupViewer에 출력합니다.
         val setupCobotBt = binding.setupCobotBt
@@ -206,6 +208,14 @@ class SetupActivity : AppCompatActivity() {
             setupViewer.removeAllViews()
             setupViewer.addView(prgtableBinding.root)
         }
+
+
+        //연결 버튼 동작입니다.
+        setupConnectBt.setOnClickListener{
+            val dialogFragment = FragmentDialogConnector()
+            dialogFragment.show(supportFragmentManager,null)
+        }
+
 
 
         //우측 하단에 위치한 파워 버튼을 클릭 시 동작입니다.

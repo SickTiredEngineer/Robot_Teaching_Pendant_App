@@ -165,4 +165,12 @@
             android:orientation="vertical"></LinearLayout>
     </LinearLayout>
 
+    <Button
+        android:id="@+id/play_connect_bt"
+        style="@style/style_under_button"
+        android:layout_marginEnd="10dp"
+        android:text="@string/str_connect"
+        app:layout_constraintEnd_toStartOf="@+id/play_power_bt"
+        app:layout_constraintTop_toBottomOf="@+id/play_line1" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

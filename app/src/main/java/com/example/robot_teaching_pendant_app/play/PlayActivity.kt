@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.robot_teaching_pendant_app.MainActivity
 import com.example.robot_teaching_pendant_app.R
+import com.example.robot_teaching_pendant_app.connect.FragmentDialogConnector
 import com.example.robot_teaching_pendant_app.databinding.PlayActivityBinding
 import com.example.robot_teaching_pendant_app.make.MakeActivity
 import com.example.robot_teaching_pendant_app.setup.SetupActivity
@@ -25,6 +26,14 @@ class PlayActivity : AppCompatActivity() {
 
         //좌측 상단에 위치한 화면 이동 메뉴 버튼
         val playMenuBt = binding.playMenuBt
+
+        val connectBt = binding.playConnectBt
+
+        connectBt.setOnClickListener{
+            val dialogFragment = FragmentDialogConnector()
+            dialogFragment.show(supportFragmentManager,null)
+        }
+
 
 
         //좌측 상단에 위치한 Menu 버튼 동작, Dialog 형식으로 해당 화면으로 이동할 수 있는 기능
