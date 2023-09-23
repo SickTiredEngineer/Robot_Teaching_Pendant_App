@@ -10,6 +10,7 @@ import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import com.example.robot_teaching_pendant_app.MainActivity
 import com.example.robot_teaching_pendant_app.R
+import com.example.robot_teaching_pendant_app.connect.FragmentDialogConnector
 import com.example.robot_teaching_pendant_app.databinding.MakeActivityBinding
 import com.example.robot_teaching_pendant_app.databinding.MakeExtActivityBinding
 import com.example.robot_teaching_pendant_app.play.PlayActivity
@@ -32,6 +33,8 @@ class MakeActivity : AppCompatActivity() {
 
         /* TREE를 제외한 우측에 요소들을 표시해주는 View 와 기본적으로 보여지는 화면(Default) 설정이며, 확장 버튼 클릭 시 ext Activity로 교체합니다. */
         val sideViewer = binding.sideView
+
+        val makeConnectBt = binding.makeConnectBt
 
 
         //Ext, Default Fragment 를 변수에 초기화합니다.
@@ -62,6 +65,12 @@ class MakeActivity : AppCompatActivity() {
                         .replace(sideViewer.id, fragment)
                         .commit()
                 }
+
+
+        makeConnectBt.setOnClickListener{
+            val dialogFragment = FragmentDialogConnector()
+            dialogFragment.show(supportFragmentManager,null)
+        }
 
 
         //좌측 상단에 위치한 Menu 버튼 동작, Dialog 형식으로 해당 화면으로 이동할 수 있는 기능

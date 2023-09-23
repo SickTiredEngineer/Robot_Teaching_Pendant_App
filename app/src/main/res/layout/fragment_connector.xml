@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     style="@style/style_bg"
-    android:layout_width="800dp"
-    android:layout_height="480dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     tools:context=".connect.FragmentConnector">
 
     <TextView
@@ -12,9 +12,10 @@
         style="@style/style_tvc"
         android:layout_width="300dp"
         android:layout_height="60dp"
+        android:layout_marginEnd="45dp"
         android:text="@string/state_disconnected"
         app:layout_constraintBottom_toTopOf="@+id/state_power"
-        app:layout_constraintEnd_toEndOf="@+id/state_power"
+        app:layout_constraintEnd_toStartOf="@+id/connect_list"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -23,10 +24,11 @@
         android:layout_width="300dp"
 
         android:layout_height="60dp"
-        android:text="@string/state_power_off"
+        android:layout_marginEnd="45dp"
 
+        android:text="@string/state_power_off"
         app:layout_constraintBottom_toTopOf="@+id/state_device"
-        app:layout_constraintEnd_toEndOf="@+id/state_device"
+        app:layout_constraintEnd_toStartOf="@+id/connect_list"
         app:layout_constraintTop_toBottomOf="@+id/state_connect" />
 
     <TextView
@@ -35,8 +37,9 @@
         android:layout_width="300dp"
 
         android:layout_height="60dp"
+        android:layout_marginEnd="45dp"
         android:text="@string/state_device_off"
-        app:layout_constraintEnd_toEndOf="@+id/state_system"
+        app:layout_constraintEnd_toStartOf="@+id/connect_list"
         app:layout_constraintTop_toBottomOf="@+id/state_power" />
 
     <TextView
@@ -45,9 +48,10 @@
         android:layout_width="300dp"
 
         android:layout_height="60dp"
+        android:layout_marginEnd="45dp"
         android:text="@string/state_system_off"
         app:layout_constraintBottom_toTopOf="@+id/state_robot_operation"
-        app:layout_constraintEnd_toEndOf="@+id/state_robot_operation"
+        app:layout_constraintEnd_toStartOf="@+id/connect_list"
         app:layout_constraintTop_toBottomOf="@+id/state_device" />
 
     <TextView
@@ -56,10 +60,11 @@
         android:layout_width="300dp"
 
         android:layout_height="60dp"
+        android:layout_marginEnd="45dp"
         android:layout_marginBottom="50dp"
         android:text="@string/state_robot_operation"
         app:layout_constraintBottom_toTopOf="@+id/connect_bt"
-        app:layout_constraintEnd_toEndOf="@+id/connect_bt"
+        app:layout_constraintEnd_toStartOf="@+id/connect_list"
         app:layout_constraintTop_toBottomOf="@+id/state_system" />
 
     <Button
@@ -103,19 +108,20 @@
     <TextView
         android:id="@+id/textView3"
         style="@style/style_tvc"
-        android:text = "컨트롤 박스 정보를 나타내는 창입니다."
         android:layout_width="350dp"
         android:layout_height="120dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="5dp"
+        android:text="컨트롤 박스 정보를 나타내는 창입니다."
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/connect_list" />
 
     <View
         android:id="@+id/state_con_box"
-        android:background="@drawable/square_background_border"
         android:layout_width="100dp"
         android:layout_height="60dp"
+        android:background="@drawable/square_background_border"
 
         app:layout_constraintEnd_toStartOf="@+id/state_connect"
         app:layout_constraintStart_toStartOf="parent"
@@ -123,9 +129,9 @@
 
     <View
         android:id="@+id/state_power_box"
-        android:background="@drawable/square_background_border"
         android:layout_width="100dp"
         android:layout_height="60dp"
+        android:background="@drawable/square_background_border"
 
         app:layout_constraintEnd_toStartOf="@+id/state_connect"
         app:layout_constraintHorizontal_bias="0.0"
@@ -134,9 +140,9 @@
 
     <View
         android:id="@+id/state_device_box"
-        android:background="@drawable/square_background_border"
         android:layout_width="100dp"
         android:layout_height="60dp"
+        android:background="@drawable/square_background_border"
 
         app:layout_constraintEnd_toStartOf="@+id/state_connect"
         app:layout_constraintHorizontal_bias="0.0"
@@ -145,9 +151,9 @@
 
     <TextView
         android:id="@+id/state_system_box"
-        android:background="@drawable/square_background_border"
         android:layout_width="100dp"
         android:layout_height="60dp"
+        android:background="@drawable/square_background_border"
 
         app:layout_constraintEnd_toStartOf="@+id/state_connect"
         app:layout_constraintHorizontal_bias="0.0"
@@ -156,9 +162,9 @@
 
     <View
         android:id="@+id/state_rob_Oper_box"
-        android:background="@drawable/square_background_border"
         android:layout_width="100dp"
         android:layout_height="60dp"
+        android:background="@drawable/square_background_border"
 
         app:layout_constraintEnd_toStartOf="@+id/state_connect"
         app:layout_constraintHorizontal_bias="0.0"

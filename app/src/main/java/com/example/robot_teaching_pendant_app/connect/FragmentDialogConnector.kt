@@ -1,10 +1,13 @@
 package com.example.robot_teaching_pendant_app.connect
 
 import android.os.Bundle
+import android.util.TypedValue
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.DialogFragment
+import com.example.robot_teaching_pendant_app.R
 import com.example.robot_teaching_pendant_app.databinding.FragmentConnectorBinding
 import com.example.robot_teaching_pendant_app.system.ConnectHelper
 
@@ -15,15 +18,15 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [FragmentConnector.newInstance] factory method to
+ * Use the [FragmentDialogConnector.newInstance] factory method to
  * create an instance of this fragment.
  */
-open class FragmentConnector : Fragment() {
-
+class FragmentDialogConnector : DialogFragment() {
     protected var cbinding: FragmentConnectorBinding? = null
     protected val binding get() = cbinding!!
 
     private lateinit var connectHelper: ConnectHelper
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -36,12 +39,25 @@ open class FragmentConnector : Fragment() {
         }
     }
 
+//    override fun onStart() {
+//        super.onStart()
+//
+//        val widthInDp = 800
+//        val heightInDp = 500
+//
+//        val width = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, widthInDp.toFloat(), resources.displayMetrics).toInt()
+//        val height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, heightInDp.toFloat(), resources.displayMetrics).toInt()
+//
+//        val params = dialog?.window?.attributes
+//        params?.width = width
+//        params?.height = height
+//        dialog?.window?.attributes = params
+//    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        //Connect Helper Class 를 통하여 연결 동작을 실행합니다. 자세한 코드는 해당 Class를 참고 하십시오.
         cbinding = FragmentConnectorBinding.inflate(inflater, container, false)
         val localbinding = cbinding ?: return null
 
@@ -61,12 +77,18 @@ open class FragmentConnector : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val width = ViewGroup.LayoutParams.WRAP_CONTENT
+        val height = ViewGroup.LayoutParams.WRAP_CONTENT
+        dialog?.window?.setLayout(width, height)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         cbinding = null
     }
-
-
     companion object {
         /**
          * Use this factory method to create a new instance of
@@ -74,12 +96,12 @@ open class FragmentConnector : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment ConnectInterface.
+         * @return A new instance of fragment FragmentDialogConnector.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            FragmentConnector().apply {
+            FragmentDialogConnector().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

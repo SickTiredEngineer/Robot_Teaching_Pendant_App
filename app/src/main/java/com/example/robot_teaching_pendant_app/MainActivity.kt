@@ -8,6 +8,7 @@ import android.os.Bundle
 //import android.widget.CompoundButton
 import android.widget.Toast
 import com.example.robot_teaching_pendant_app.connect.FragmentConnector
+import com.example.robot_teaching_pendant_app.connect.FragmentDefaultConnector
 //import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.robot_teaching_pendant_app.databinding.MainActivityBinding
 import com.example.robot_teaching_pendant_app.make.MakeActivity
@@ -42,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         val connectViewer = binding.connectViewer
 
         if (savedInstanceState == null) { // 처음 액티비티가 생성되었을 때만 프래그먼트 추가
-            val fragment = FragmentConnector() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
+            val fragment = FragmentDefaultConnector() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
             supportFragmentManager.beginTransaction()
                 .replace(connectViewer.id, fragment)
                 .commit()

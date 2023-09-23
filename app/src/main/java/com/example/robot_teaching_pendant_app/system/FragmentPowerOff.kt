@@ -30,20 +30,20 @@ class FragmentPowerOff : DialogFragment() {
 
 
     //Dialog 의 사이즈를 원하는 만큼 DP로 설정합니다.
-    override fun onStart() {
-        super.onStart()
-
-        val widthInDp = 1000
-        val heightInDp = 600
-
-        val width = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, widthInDp.toFloat(), resources.displayMetrics).toInt()
-        val height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, heightInDp.toFloat(), resources.displayMetrics).toInt()
-
-        val params = dialog?.window?.attributes
-        params?.width = width
-        params?.height = height
-        dialog?.window?.attributes = params
-    }
+//    override fun onStart() {
+//        super.onStart()
+//
+//        val widthInDp = 1000
+//        val heightInDp = 600
+//
+//        val width = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, widthInDp.toFloat(), resources.displayMetrics).toInt()
+//        val height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, heightInDp.toFloat(), resources.displayMetrics).toInt()
+//
+//        val params = dialog?.window?.attributes
+//        params?.width = width
+//        params?.height = height
+//        dialog?.window?.attributes = params
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +55,15 @@ class FragmentPowerOff : DialogFragment() {
 ////            param2 = it.getString(ARG_PARAM2)
 //        }
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val width = ViewGroup.LayoutParams.WRAP_CONTENT
+        val height = ViewGroup.LayoutParams.WRAP_CONTENT
+        dialog?.window?.setLayout(width, height)
+    }
+
 
     private lateinit var binding: FragmentPowerOffBinding
 

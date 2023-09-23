@@ -9,6 +9,15 @@
         <item name = "android:gravity">center</item>
     </style>
 
+    //Make, Play 등 하단의 라인 아래에 위치한 작은 버튼 규격입니다.
+    <style name = "style_under_button">
+        <item name = "android:layout_width">50dp</item>
+        <item name = "android:layout_height">50dp</item>
+        <item name = "android:background">@drawable/public_button</item>
+        <item name = "android:textColor">@color/black</item>
+        <item name = "android:gravity">center</item>
+    </style>
+
     //Toggle Button Style
     <style name = "style_toggle_button">
         <item name = "android:layout_width">90dp</item>
