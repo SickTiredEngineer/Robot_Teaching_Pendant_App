@@ -5,8 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.DialogFragment
-import com.example.robot_teaching_pendant_app.databinding.FragmentConnectorBinding
+import com.example.robot_teaching_pendant_app.databinding.ConnectorFragmentBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -15,12 +14,12 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [FragmentDialogConnector.newInstance] factory method to
+ * Use the [ConnectorFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FragmentDialogConnector : DialogFragment() {
+open class ConnectorFragment : Fragment() {
 
-    protected var cbinding: FragmentConnectorBinding? = null
+    protected var cbinding: ConnectorFragmentBinding? = null
     protected val binding get() = cbinding!!
     private lateinit var connectHelper: ConnectHelper
 
@@ -36,26 +35,13 @@ class FragmentDialogConnector : DialogFragment() {
         }
     }
 
-//    override fun onStart() {
-//        super.onStart()
-//
-//        val widthInDp = 800
-//        val heightInDp = 500
-//
-//        val width = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, widthInDp.toFloat(), resources.displayMetrics).toInt()
-//        val height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, heightInDp.toFloat(), resources.displayMetrics).toInt()
-//
-//        val params = dialog?.window?.attributes
-//        params?.width = width
-//        params?.height = height
-//        dialog?.window?.attributes = params
-//    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        cbinding = FragmentConnectorBinding.inflate(inflater, container, false)
+        // Inflate the layout for this fragment
+        //Connect Helper Class 를 통하여 연결 동작을 실행합니다. 자세한 코드는 해당 Class를 참고 하십시오.
+        cbinding = ConnectorFragmentBinding.inflate(inflater, container, false)
         val localbinding = cbinding ?: return null
 
         connectHelper = ConnectHelper(
@@ -71,23 +57,15 @@ class FragmentDialogConnector : DialogFragment() {
             stateSystemBox = localbinding.stateSystemBox,
             stateRobOperBox = localbinding.stateRobOperBox
         )
-
-        //해당 Dialog 는 바깥 배경을 클릭하여 Cancel할 수 없습니다.
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val width = ViewGroup.LayoutParams.WRAP_CONTENT
-        val height = ViewGroup.LayoutParams.WRAP_CONTENT
-        dialog?.window?.setLayout(width, height)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         cbinding = null
     }
+
+
     companion object {
         /**
          * Use this factory method to create a new instance of
@@ -95,12 +73,12 @@ class FragmentDialogConnector : DialogFragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment FragmentDialogConnector.
+         * @return A new instance of fragment ConnectInterface.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            FragmentDialogConnector().apply {
+            ConnectorFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

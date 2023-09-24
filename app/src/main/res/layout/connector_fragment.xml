@@ -5,7 +5,7 @@
     style="@style/style_bg"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    tools:context=".connect.FragmentConnector">
+    tools:context=".connect.ConnectorFragment">
 
     <TextView
         android:id="@+id/state_connect"

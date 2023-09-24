@@ -1,37 +1,19 @@
 package com.example.robot_teaching_pendant_app.setup
-import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
 //import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.robot_teaching_pendant_app.MainActivity
 import com.example.robot_teaching_pendant_app.R
-import com.example.robot_teaching_pendant_app.connect.FragmentDialogConnector
+import com.example.robot_teaching_pendant_app.connect.ConnectorDialogFragment
 import com.example.robot_teaching_pendant_app.databinding.SetupActivityBinding
-import com.example.robot_teaching_pendant_app.databinding.SetupCobotActivityBinding
-import com.example.robot_teaching_pendant_app.databinding.SetupCoordActivityBinding
-import com.example.robot_teaching_pendant_app.databinding.SetupDevicesActivityBinding
-import com.example.robot_teaching_pendant_app.databinding.SetupInboxActivityBinding
-import com.example.robot_teaching_pendant_app.databinding.SetupInterfaceActivityBinding
-import com.example.robot_teaching_pendant_app.databinding.SetupIo1ActivityBinding
-import com.example.robot_teaching_pendant_app.databinding.SetupIo2ActivityBinding
-import com.example.robot_teaching_pendant_app.databinding.SetupLogActivityBinding
-import com.example.robot_teaching_pendant_app.databinding.SetupProgTableActivityBinding
-import com.example.robot_teaching_pendant_app.databinding.SetupSecurityActivityBinding
-import com.example.robot_teaching_pendant_app.databinding.SetupSerialActivityBinding
-import com.example.robot_teaching_pendant_app.databinding.SetupSystemActivityBinding
-import com.example.robot_teaching_pendant_app.databinding.SetupToolActivityBinding
-import com.example.robot_teaching_pendant_app.databinding.SetupToolListActivityBinding
-import com.example.robot_teaching_pendant_app.databinding.SetupUtilityActivityBinding
 import com.example.robot_teaching_pendant_app.make.MakeActivity
 import com.example.robot_teaching_pendant_app.play.PlayActivity
-import com.example.robot_teaching_pendant_app.system.FragmentPowerOff
+import com.example.robot_teaching_pendant_app.system.PowerOffFragment
 
 
 class SetupActivity : AppCompatActivity() {
@@ -64,6 +46,35 @@ class SetupActivity : AppCompatActivity() {
         val setupDevicesBt = binding.setupDevicesBt
         val setupToolListBt = binding.setupToolListBt
         val setupProgramTableBt = binding.setupProgramTableBt
+
+        //Setup목록 버튼들을 리스트 화 하고 바로 아래에 위치한 로직에 사용합니다.
+        val setupButtonList = listOf(setupCobotBt, setupToolBt, setupSystemBt, setupLogBt, setupUtilityBt, setupSerialBt, setupIo1Bt, setupIo2Bt,
+            setupInboxBt, setupInterfaceBt, setupCoordBt, setupSecurityBt, setupDevicesBt, setupToolListBt, setupProgramTableBt)
+
+        //중복 클릭 방지를 위해 자기 자신은 Disable 하고 나머지 버튼은 활성화 시켜주는 로직입니다.
+
+        for(button in setupButtonList){
+            button.setOnClickListener { clickedButton ->
+                for (otherButton in setupButtonList){
+                    otherButton.isEnabled = (otherButton != clickedButton)
+                }
+            }
+        }
+//        for(button in setupButtonList){
+//            button.setOnClickListener { clickedButton ->
+//                Log.d("ButtonClicked", "Button clicked!")
+//                for (otherButton in setupButtonList){
+//                    if(otherButton == clickedButton){
+//                        otherButton.isEnabled = false
+//                        otherButton.setBackgroundResource(R.drawable.color_red_box)
+//                    }
+//                    else{
+//                        otherButton.isEnabled = true
+//                        otherButton.setBackgroundResource(R.drawable.public_button)
+//                    }
+//                }
+//            }
+//        }
 
         //좌측 상단에 위치한 화면 이동 메뉴 버튼
         val setupMenuBt = binding.setupMenuBt
@@ -100,119 +111,128 @@ class SetupActivity : AppCompatActivity() {
 
         //Cobot 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
         setupCobotBt.setOnClickListener{
-            val cobotBinding = SetupCobotActivityBinding.inflate(layoutInflater)
-            setupViewer.removeAllViews()
-            setupViewer.addView(cobotBinding.root)
-
-            val saveBt = cobotBinding.cobotSaveBt
-            saveBt.setOnClickListener{
-                Toast.makeText(this@SetupActivity,"Save 버튼 클릭",Toast.LENGTH_SHORT).show()
+            val fragment = SetupCobotFragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
+            supportFragmentManager.beginTransaction()
+                .replace(setupViewer.id, fragment)
+                .commit()
             }
-        }
 
         //Tool 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
         setupToolBt.setOnClickListener{
-            val toolBinding = SetupToolActivityBinding.inflate(layoutInflater)
-            setupViewer.removeAllViews()
-            setupViewer.addView(toolBinding.root)
+            val fragment = SetupToolFragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
+            supportFragmentManager.beginTransaction()
+                .replace(setupViewer.id, fragment)
+                .commit()
         }
 
         //System 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
         setupSystemBt.setOnClickListener{
-            val systemBinding = SetupSystemActivityBinding.inflate(layoutInflater)
-            setupViewer.removeAllViews()
-            setupViewer.addView(systemBinding.root)
+            val fragment = SetupSystemFragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
+            supportFragmentManager.beginTransaction()
+                .replace(setupViewer.id, fragment)
+                .commit()
         }
 
         //Log 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
         setupLogBt.setOnClickListener{
-            val logBinding = SetupLogActivityBinding.inflate(layoutInflater)
-            setupViewer.removeAllViews()
-            setupViewer.addView(logBinding.root)
+            val fragment =SetupLogFragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
+            supportFragmentManager.beginTransaction()
+                .replace(setupViewer.id, fragment)
+                .commit()
         }
 
         //Utility 버튼 클릭, 설정
         setupUtilityBt.setOnClickListener{
-            val utilBinding = SetupUtilityActivityBinding.inflate(layoutInflater)
-            setupViewer.removeAllViews()
-            setupViewer.addView(utilBinding.root)
+            val fragment =SetupUtilityFragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
+            supportFragmentManager.beginTransaction()
+                .replace(setupViewer.id, fragment)
+                .commit()
         }
 
         //Serial 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
         setupSerialBt.setOnClickListener{
-            val serialBinding = SetupSerialActivityBinding.inflate(layoutInflater)
-            setupViewer.removeAllViews()
-            setupViewer.addView(serialBinding.root)
+            val fragment = SetupSerialFragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
+            supportFragmentManager.beginTransaction()
+                .replace(setupViewer.id, fragment)
+                .commit()
         }
 
         //I/O1 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
         setupIo1Bt.setOnClickListener{
-           val io1Binding = SetupIo1ActivityBinding.inflate(layoutInflater)
-            setupViewer.removeAllViews()
-            setupViewer.addView(io1Binding.root)
+            val fragment = SetupIo1Fragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
+            supportFragmentManager.beginTransaction()
+                .replace(setupViewer.id, fragment)
+                .commit()
         }
 
         //I/O2 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
         setupIo2Bt.setOnClickListener{
-            val io2Binding = SetupIo2ActivityBinding.inflate(layoutInflater)
-            setupViewer.removeAllViews()
-            setupViewer.addView(io2Binding.root)
+            val fragment = SetupIo2Fragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
+            supportFragmentManager.beginTransaction()
+                .replace(setupViewer.id, fragment)
+                .commit()
         }
 
         //Inbox 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
         setupInboxBt.setOnClickListener{
-            val inboxBinding = SetupInboxActivityBinding.inflate(layoutInflater)
-            setupViewer.removeAllViews()
-            setupViewer.addView(inboxBinding.root)
+            val fragment = SetupInboxFragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
+            supportFragmentManager.beginTransaction()
+                .replace(setupViewer.id, fragment)
+                .commit()
         }
 
         //Interface 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
         setupInterfaceBt.setOnClickListener{
-            val interBinding = SetupInterfaceActivityBinding.inflate(layoutInflater)
-            setupViewer.removeAllViews()
-            setupViewer.addView(interBinding.root)
+            val fragment = SetupInterfaceFragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
+            supportFragmentManager.beginTransaction()
+                .replace(setupViewer.id, fragment)
+                .commit()
         }
 
         //Coordinate 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
         setupCoordBt.setOnClickListener{
-            val coordBinding = SetupCoordActivityBinding.inflate(layoutInflater)
-            setupViewer.removeAllViews()
-            setupViewer.addView(coordBinding.root)
+            val fragment = SetupCoordFragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
+            supportFragmentManager.beginTransaction()
+                .replace(setupViewer.id, fragment)
+                .commit()
         }
 
         //Security 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
         setupSecurityBt.setOnClickListener{
-            val secuBinding = SetupSecurityActivityBinding.inflate(layoutInflater)
-            setupViewer.removeAllViews()
-            setupViewer.addView(secuBinding.root)
+            val fragment = SetupSecurityFragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
+            supportFragmentManager.beginTransaction()
+                .replace(setupViewer.id, fragment)
+                .commit()
         }
 
         //Devices 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
         setupDevicesBt.setOnClickListener{
-            val deviceBinding = SetupDevicesActivityBinding.inflate(layoutInflater)
-            setupViewer.removeAllViews()
-            setupViewer.addView(deviceBinding.root)
+            val fragment = SetupDevicesFragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
+            supportFragmentManager.beginTransaction()
+                .replace(setupViewer.id, fragment)
+                .commit()
         }
 
         //Tool List 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
         setupToolListBt.setOnClickListener{
-            val tlistBinding = SetupToolListActivityBinding.inflate(layoutInflater)
-
-            setupViewer.removeAllViews()
-            setupViewer.addView(tlistBinding.root)
+            val fragment = SetupToolListFragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
+            supportFragmentManager.beginTransaction()
+                .replace(setupViewer.id, fragment)
+                .commit()
         }
 
         //ProgramTable 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
         setupProgramTableBt.setOnClickListener{
-            val prgtableBinding = SetupProgTableActivityBinding.inflate(layoutInflater)
-            setupViewer.removeAllViews()
-            setupViewer.addView(prgtableBinding.root)
+            val fragment = SetupProgTableFragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
+            supportFragmentManager.beginTransaction()
+                .replace(setupViewer.id, fragment)
+                .commit()
         }
 
 
         //연결 버튼 동작입니다.
         setupConnectBt.setOnClickListener{
-            val dialogFragment = FragmentDialogConnector()
+            val dialogFragment = ConnectorDialogFragment()
             dialogFragment.show(supportFragmentManager,null)
         }
 
@@ -220,7 +240,7 @@ class SetupActivity : AppCompatActivity() {
 
         //우측 하단에 위치한 파워 버튼을 클릭 시 동작입니다.
         setupPowerBt.setOnClickListener{
-            val dialogFragment = FragmentPowerOff()
+            val dialogFragment = PowerOffFragment()
             dialogFragment.show(supportFragmentManager,null)
         }
 

@@ -4,17 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style = "@style/style_bg">
+    style = "@style/style_bg"
+    tools:context=".setup.SetupSystemFragment">
 
     <Button
-        android:id="@+id/devices_save_bt"
-        style = "@style/style_button"
-        android:text="@string/str_save"
-
+        android:id="@+id/system_save_bt"
+        style="@style/style_button"
         android:layout_width="match_parent"
+
         android:layout_height="wrap_content"
+        android:text="@string/str_save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

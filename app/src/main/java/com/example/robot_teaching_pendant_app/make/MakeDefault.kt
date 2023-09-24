@@ -8,11 +8,11 @@ import android.view.ViewGroup
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import com.example.robot_teaching_pendant_app.R
-import com.example.robot_teaching_pendant_app.databinding.FragmentMakeDefaultBinding
 import com.example.robot_teaching_pendant_app.databinding.JGlobalActivityBinding
 import com.example.robot_teaching_pendant_app.databinding.JJointActivityBinding
 import com.example.robot_teaching_pendant_app.databinding.JLocalActivityBinding
 import com.example.robot_teaching_pendant_app.databinding.JUserActivityBinding
+import com.example.robot_teaching_pendant_app.databinding.MakeDefaultFragmentBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,7 +36,7 @@ class MakeDefault : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val defBinding = FragmentMakeDefaultBinding.inflate(layoutInflater)
+        val defBinding = MakeDefaultFragmentBinding.inflate(layoutInflater)
         // Inflate the layout for this fragment
 
 

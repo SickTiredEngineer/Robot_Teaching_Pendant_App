@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style ="@style/style_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style = "@style/style_bg">
+    tools:context=".setup.SetupDevicesFragment">
 
     <Button
-        android:id="@+id/serial_save_bt"
+        android:id="@+id/devices_save_bt"
         style = "@style/style_button"
         android:text="@string/str_save"
 

@@ -1,17 +1,14 @@
 package com.example.robot_teaching_pendant_app.system
 
-import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
-import android.util.TypedValue
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
-import com.example.robot_teaching_pendant_app.R
-import com.example.robot_teaching_pendant_app.databinding.FragmentPowerOffBinding
+import com.example.robot_teaching_pendant_app.databinding.PowerOffFragmentBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -20,30 +17,14 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [FragmentPowerOff.newInstance] factory method to
+ * Use the [PowerOffFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class FragmentPowerOff : DialogFragment() {
-//    // TODO: Rename and change types of parameters
+class PowerOffFragment : DialogFragment() {
+    // TODO: Rename and change types of parameters
 //    private var param1: String? = null
 //    private var param2: String? = null
 
-
-    //Dialog 의 사이즈를 원하는 만큼 DP로 설정합니다.
-//    override fun onStart() {
-//        super.onStart()
-//
-//        val widthInDp = 1000
-//        val heightInDp = 600
-//
-//        val width = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, widthInDp.toFloat(), resources.displayMetrics).toInt()
-//        val height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, heightInDp.toFloat(), resources.displayMetrics).toInt()
-//
-//        val params = dialog?.window?.attributes
-//        params?.width = width
-//        params?.height = height
-//        dialog?.window?.attributes = params
-//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,6 +37,7 @@ class FragmentPowerOff : DialogFragment() {
 //        }
     }
 
+    //화면 비율을 맞추는 코드입니다. (Wrap_Content)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -65,11 +47,11 @@ class FragmentPowerOff : DialogFragment() {
     }
 
 
-    private lateinit var binding: FragmentPowerOffBinding
+    private lateinit var binding: PowerOffFragmentBinding
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
-        binding = FragmentPowerOffBinding.inflate(LayoutInflater.from(context))
+        binding = PowerOffFragmentBinding.inflate(LayoutInflater.from(context))
 
         val cancelBt = binding.cancelBt
         val shutdownBt = binding.shutdownBt
@@ -104,7 +86,7 @@ class FragmentPowerOff : DialogFragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            FragmentPowerOff().apply {
+            PowerOffFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

@@ -1,18 +1,15 @@
 package com.example.robot_teaching_pendant_app.play
 
-import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.robot_teaching_pendant_app.MainActivity
-import com.example.robot_teaching_pendant_app.R
-import com.example.robot_teaching_pendant_app.connect.FragmentDialogConnector
+import com.example.robot_teaching_pendant_app.connect.ConnectorDialogFragment
 import com.example.robot_teaching_pendant_app.databinding.PlayActivityBinding
 import com.example.robot_teaching_pendant_app.make.MakeActivity
 import com.example.robot_teaching_pendant_app.setup.SetupActivity
-import com.example.robot_teaching_pendant_app.system.FragmentPowerOff
+import com.example.robot_teaching_pendant_app.system.PowerOffFragment
 
 
 class PlayActivity : AppCompatActivity() {
@@ -30,7 +27,7 @@ class PlayActivity : AppCompatActivity() {
         val connectBt = binding.playConnectBt
 
         connectBt.setOnClickListener{
-            val dialogFragment = FragmentDialogConnector()
+            val dialogFragment = ConnectorDialogFragment()
             dialogFragment.show(supportFragmentManager,null)
         }
 
@@ -68,7 +65,7 @@ class PlayActivity : AppCompatActivity() {
 
         //우측 하단에 위치한 파워 버튼을 클릭 시 동작입니다.
         playPowerBt.setOnClickListener{
-            val dialogFragment = FragmentPowerOff()
+            val dialogFragment = PowerOffFragment()
             dialogFragment.show(supportFragmentManager,null)
         }
 

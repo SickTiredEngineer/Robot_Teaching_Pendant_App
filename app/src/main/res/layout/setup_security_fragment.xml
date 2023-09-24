@@ -2,17 +2,18 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style = "@style/style_bg"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style = "@style/style_bg">
+    tools:context=".setup.SetupSecurityFragment">
 
     <Button
-        android:id="@+id/interface_save_bt"
+        android:id="@+id/security_save_bt"
         style = "@style/style_button"
-        android:text="@string/str_save"
-
         android:layout_width="match_parent"
+
         android:layout_height="wrap_content"
+        android:text="@string/str_save"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

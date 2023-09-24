@@ -11,9 +11,8 @@ import android.widget.EditText
 //import android.view.WindowManager
 //import android.widget.Button
 import android.widget.Toast
-import com.example.robot_teaching_pendant_app.MainActivity
 import com.example.robot_teaching_pendant_app.databinding.LoginActivityBinding
-import com.example.robot_teaching_pendant_app.system.FragmentPowerOff
+import com.example.robot_teaching_pendant_app.system.PowerOffFragment
 
 
 class LoginActivity : AppCompatActivity() {
@@ -54,7 +53,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginPowerBt.setOnClickListener{
-            val dialogFragment = FragmentPowerOff()
+            val dialogFragment = PowerOffFragment()
             dialogFragment.show(supportFragmentManager,null)
 
         }

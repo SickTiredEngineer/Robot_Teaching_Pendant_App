@@ -205,21 +205,20 @@
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"/>
 
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/setup_viewer"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
-        android:gravity="bottom|center"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/setup_line1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/connect_line"
         app:layout_constraintTop_toBottomOf="@+id/setup_line3"
-        app:layout_constraintVertical_bias="0.0"></LinearLayout>
+        app:layout_constraintVertical_bias="0.0"></FrameLayout>
 
     <Button
         android:id="@+id/setup_connect_bt"

@@ -4,30 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style = "@style/style_bg">
+    style = "@style/style_bg"
+    tools:context=".setup.SetupToolFragment">
 
     <Button
-        android:id="@+id/cobot_save_bt"
-        style="@style/style_button"
-        android:layout_width="match_parent"
+        android:id="@+id/tool_save_bt"
+        android:layout_width="0dp"
+        style = "@style/style_button"
 
         android:layout_height="50dp"
-        android:layout_marginBottom="1dp"
+        android:layout_marginTop="752dp"
         android:text="@string/str_save"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/test_bt"
-        android:layout_width="413dp"
-        android:layout_height="242dp"
-        android:layout_marginStart="434dp"
-        android:layout_marginTop="279dp"
-        android:layout_marginEnd="433dp"
-        android:layout_marginBottom="228dp"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/cobot_save_bt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
