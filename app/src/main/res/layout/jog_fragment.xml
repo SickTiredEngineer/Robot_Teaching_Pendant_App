@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".make.JogFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/jog_controller_view"
+        android:layout_width="190dp"
+        android:layout_height="335dp"
+        android:background="@drawable/square_background_border"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- X, Base-->
+        <TextView
+            android:id="@+id/jogInfo1"
+            style="@style/style_jog_info"
+
+            android:text="@string/str_x"
+            android:textColor="@color/red"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/jogView1"
+            style="@style/style_jog_view"
+
+            app:layout_constraintEnd_toStartOf="@+id/jogDec1"
+            app:layout_constraintStart_toEndOf="@+id/jogInc1"
+            app:layout_constraintTop_toBottomOf="@+id/jogInfo1" />
+
+        <Button
+            android:id="@+id/jogInc1"
+            style="@style/style_jog_inc"
+
+            app:layout_constraintEnd_toStartOf="@+id/jogView1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/jogInfo1" />
+
+        <Button
+            android:id="@+id/jogDec1"
+            style="@style/style_jog_dec"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/jogView1"
+            app:layout_constraintTop_toBottomOf="@+id/jogInfo1" />
+
+        <!--Y, Shoulder-->
+        <TextView
+            android:id="@+id/jogInfo2"
+            style="@style/style_jog_info"
+
+            android:text="@string/str_y"
+            android:textColor="@color/green"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/jogView1" />
+
+        <TextView
+            android:id="@+id/jogView2"
+            style="@style/style_jog_view"
+
+            app:layout_constraintEnd_toStartOf="@+id/jogDec2"
+            app:layout_constraintStart_toEndOf="@+id/jogInc2"
+            app:layout_constraintTop_toBottomOf="@+id/jogInfo2" />
+
+        <Button
+            android:id="@+id/jogInc2"
+            style="@style/style_jog_inc"
+
+            app:layout_constraintEnd_toStartOf="@+id/jogView2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/jogInfo2" />
+
+        <Button
+            android:id="@+id/jogDec2"
+            style="@style/style_jog_dec"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/jogView2"
+            app:layout_constraintTop_toBottomOf="@+id/jogInfo2" />
+
+
+        <!--Z, Elbow-->
+        <TextView
+            android:id="@+id/jogInfo3"
+            style="@style/style_jog_info"
+
+            android:text="@string/str_z"
+
+            android:textColor="@color/blue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/jogView2" />
+
+        <TextView
+            android:id="@+id/jogView3"
+            style="@style/style_jog_view"
+
+            app:layout_constraintEnd_toStartOf="@+id/jogDec3"
+            app:layout_constraintStart_toEndOf="@+id/jogInc3"
+            app:layout_constraintTop_toBottomOf="@+id/jogInfo3" />
+
+        <Button
+            android:id="@+id/jogInc3"
+            style="@style/style_jog_inc"
+            app:layout_constraintEnd_toStartOf="@+id/jogView3"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/jogInfo3" />
+
+        <Button
+            android:id="@+id/jogDec3"
+            style="@style/style_jog_dec"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/jogView3"
+            app:layout_constraintTop_toBottomOf="@+id/jogInfo3" />
+
+
+        <!--Rx, Wrist1-->
+
+        <TextView
+            android:id="@+id/jogInfo4"
+            style="@style/style_jog_info"
+
+            android:text="@string/str_rx"
+            android:textColor="@color/red"
+            android:textSize="11sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/jogView3" />
+
+        <TextView
+            android:id="@+id/jogView4"
+            style="@style/style_jog_view"
+
+            app:layout_constraintEnd_toStartOf="@+id/jogDec4"
+            app:layout_constraintStart_toEndOf="@+id/jogInc4"
+            app:layout_constraintTop_toBottomOf="@+id/jogInfo4" />
+
+        <Button
+            android:id="@+id/jogInc4"
+            style="@style/style_jog_inc"
+
+            app:layout_constraintEnd_toStartOf="@+id/jogView4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/jogInfo4" />
+
+        <Button
+            android:id="@+id/jogDec4"
+            style="@style/style_jog_dec"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/jogView4"
+            app:layout_constraintTop_toBottomOf="@+id/jogInfo4" />
+
+        <!--Ry, Wrist2-->
+        <TextView
+            android:id="@+id/jogInfo5"
+            style="@style/style_jog_info"
+            android:text="@string/str_ry"
+            android:textColor="@color/green"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/jogDec4" />
+
+        <TextView
+            android:id="@+id/jogView5"
+            style="@style/style_jog_view"
+
+            app:layout_constraintEnd_toStartOf="@+id/jogDec5"
+            app:layout_constraintStart_toEndOf="@+id/jogInc5"
+            app:layout_constraintTop_toBottomOf="@+id/jogInfo5" />
+
+        <Button
+            android:id="@+id/jogInc5"
+            style="@style/style_jog_inc"
+
+            app:layout_constraintEnd_toStartOf="@+id/jogView5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/jogInfo5" />
+
+        <Button
+            android:id="@+id/jogDec5"
+            style="@style/style_jog_dec"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/jogView5"
+            app:layout_constraintTop_toBottomOf="@+id/jogInfo5" />
+
+
+        <!--Rx, Wrist3-->
+        <TextView
+            android:id="@+id/jogInfo6"
+            style="@style/style_jog_info"
+
+            android:text="@string/str_rz"
+            android:textColor="@color/blue"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/jogView5" />
+
+        <TextView
+            android:id="@+id/jogView6"
+            style="@style/style_jog_view"
+
+            app:layout_constraintEnd_toStartOf="@+id/jogDec6"
+            app:layout_constraintStart_toEndOf="@+id/jogInc6"
+            app:layout_constraintTop_toBottomOf="@+id/jogInfo6" />
+
+        <Button
+            android:id="@+id/jogInc6"
+            style="@style/style_jog_inc"
+
+            app:layout_constraintEnd_toStartOf="@+id/jogView6"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/jogInfo6" />
+
+        <Button
+            android:id="@+id/jogDec6"
+            style="@style/style_jog_dec"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/jogView6"
+            app:layout_constraintTop_toBottomOf="@+id/jogInfo6" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

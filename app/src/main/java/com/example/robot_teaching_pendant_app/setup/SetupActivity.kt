@@ -95,7 +95,6 @@ class SetupActivity : AppCompatActivity() {
             }
         }
 
-
         //좌측 상단에 위치한 화면 이동 메뉴 버튼
         val setupMenuBt = binding.setupMenuBt
 
@@ -128,15 +127,11 @@ class SetupActivity : AppCompatActivity() {
             menuDialog.show()
         }
 
-
-
         //연결 버튼 동작입니다.
         setupConnectBt.setOnClickListener{
             val dialogFragment = ConnectorDialogFragment()
             dialogFragment.show(supportFragmentManager,null)
         }
-
-
 
         //우측 하단에 위치한 파워 버튼을 클릭 시 동작입니다.
         setupPowerBt.setOnClickListener{

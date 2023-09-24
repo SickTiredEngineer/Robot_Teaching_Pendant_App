@@ -32,8 +32,8 @@ class MakeActivity : AppCompatActivity() {
 
 
         //Ext, Default Fragment 를 변수에 초기화합니다.
-        val fragmentExt = MakeExt()
-        val fragmentDefault = MakeDefault()
+        val fragmentExt = MakeExtFragment()
+        val fragmentDefault = MakeDefaultFragment()
 
         //Ext,  Default 모드에 맞게 초기 상태를 설정합니다.
         val initialFragment = if (treeExtBt.isChecked) fragmentExt else fragmentDefault
@@ -42,7 +42,7 @@ class MakeActivity : AppCompatActivity() {
             .commit()
 
         if (savedInstanceState == null) { // 처음 액티비티가 생성되었을 때만 프래그먼트 추가
-            val fragment = MakeDefault() //
+            val fragment = MakeDefaultFragment() //
             supportFragmentManager.beginTransaction()
                 .replace(sideViewer.id, fragment)
                 .commit()
@@ -51,9 +51,9 @@ class MakeActivity : AppCompatActivity() {
         //Ext tree 토글 버튼 클릭 시 동작입니다.
         treeExtBt.setOnCheckedChangeListener { _, isChecked ->
             val fragment = if(isChecked) {
-                MakeExt()
+                MakeExtFragment()
                 } else {
-                    MakeDefault()
+                    MakeDefaultFragment()
                     }
                     supportFragmentManager.beginTransaction()
                         .replace(sideViewer.id, fragment)

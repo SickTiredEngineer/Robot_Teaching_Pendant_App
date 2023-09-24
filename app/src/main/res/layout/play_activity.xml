@@ -148,13 +148,13 @@
         <LinearLayout
             style="@style/style_bg"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="450dp"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imageView4"
                 android:layout_width="match_parent"
-                android:layout_height="312dp"
+                android:layout_height="match_parent"
                 app:srcCompat="@drawable/view_3d_ex" />
         </LinearLayout>
 
@@ -162,7 +162,15 @@
             style="@style/style_bg"
             android:layout_width="match_parent"
             android:layout_height="292dp"
-            android:orientation="vertical"></LinearLayout>
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src ="@drawable/myrinfo" />
+            />
+        </LinearLayout>
     </LinearLayout>
 
     <Button

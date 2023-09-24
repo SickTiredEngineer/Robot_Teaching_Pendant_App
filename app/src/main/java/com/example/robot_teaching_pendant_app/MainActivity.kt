@@ -41,17 +41,12 @@ class MainActivity : AppCompatActivity() {
         //연결 UI를 표시하기 위한 Layout 선언 및 Connect Activity 삽입
         val connectViewer = binding.connectViewer
 
-        if (savedInstanceState == null) { // 처음 액티비티가 생성되었을 때만 프래그먼트 추가
-            val fragment = ConnectorDefaultFragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
+        if (savedInstanceState == null) { // 처음 액티비티가 생성되었을 때 프래그맨트 추가
+            val fragment = ConnectorDefaultFragment()
             supportFragmentManager.beginTransaction()
                 .replace(connectViewer.id, fragment)
                 .commit()
         }
-
-
-//        //기본적인 상태를 설정합니다. 연결 상태 창은 붉은 빛이 들어오며, Disconnect 버튼은 비활성화 시킨 상태입니다.
-//        conBinding.stateConBox.setBackgroundResource(R.drawable.color_red_box)
-//        conBinding.disconnectBt.isEnabled = false
 
 
         /* mainDarkSwitch 버튼과 DarkModeManager 클래스를 이용하여 DarkMode 관리를 합니다. 자세한 코드는 해당 Class를 참고 하십시오*/

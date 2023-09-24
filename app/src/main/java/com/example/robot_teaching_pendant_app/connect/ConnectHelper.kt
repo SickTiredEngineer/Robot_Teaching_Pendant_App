@@ -46,6 +46,7 @@ class ConnectHelper(
 
     }
 
+    //연결 단계를 나타내는 변수입니다.
     private var conCount = 0
 
     //connect 버튼의 클릭 리스너 동작입니다. Case는 아래에 구현해 놓았습니다.

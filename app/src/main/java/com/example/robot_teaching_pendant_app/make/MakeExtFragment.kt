@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.robot_teaching_pendant_app.R
 import com.example.robot_teaching_pendant_app.databinding.MakeExtFragmentBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -15,13 +14,18 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [MakeExt.newInstance] factory method to
+ * Use the [MakeExtFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class MakeExt : Fragment() {
+class MakeExtFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    init{
+
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,8 +40,6 @@ class MakeExt : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val extBinding = MakeExtFragmentBinding.inflate(layoutInflater)
-
-
 
         // Inflate the layout for this fragment
         return extBinding.root
@@ -55,7 +57,7 @@ class MakeExt : Fragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            MakeExt().apply {
+            MakeExtFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
