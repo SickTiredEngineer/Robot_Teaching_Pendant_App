@@ -51,30 +51,50 @@ class SetupActivity : AppCompatActivity() {
         val setupButtonList = listOf(setupCobotBt, setupToolBt, setupSystemBt, setupLogBt, setupUtilityBt, setupSerialBt, setupIo1Bt, setupIo2Bt,
             setupInboxBt, setupInterfaceBt, setupCoordBt, setupSecurityBt, setupDevicesBt, setupToolListBt, setupProgramTableBt)
 
-        //중복 클릭 방지를 위해 자기 자신은 Disable 하고 나머지 버튼은 활성화 시켜주는 로직입니다.
+        //각 버튼에 맞는 Fragment를 불러옵니다. 중복 클릭을 방지하기 위한 로직이 있습니다.
 
         for(button in setupButtonList){
             button.setOnClickListener { clickedButton ->
+                // 버튼에 따라서 적절한 프래그먼트를 로드
+                val fragment = when(clickedButton) {
+                    setupCobotBt -> SetupCobotFragment()
+                    setupToolBt -> SetupToolFragment()
+                    setupSystemBt -> SetupSystemFragment()
+                    setupLogBt -> SetupLogFragment()
+                    setupUtilityBt -> SetupUtilityFragment()
+                    setupSerialBt -> SetupSerialFragment()
+                    setupIo1Bt -> SetupIo1Fragment()
+                    setupIo2Bt -> SetupIo2Fragment()
+                    setupInboxBt -> SetupInboxFragment()
+                    setupInterfaceBt -> SetupInterfaceFragment()
+                    setupCoordBt -> SetupCoordFragment()
+                    setupSecurityBt -> SetupSecurityFragment()
+                    setupDevicesBt -> SetupDevicesFragment()
+                    setupToolListBt -> SetupToolListFragment()
+                    setupProgramTableBt -> SetupProgTableFragment()
+                    else -> null
+                }
+
+                fragment?.let {
+                    supportFragmentManager.beginTransaction()
+                        .replace(setupViewer.id, it)
+                        .commit()
+                }
+
+                // 기존의 배경 변경 로직
                 for (otherButton in setupButtonList){
-                    otherButton.isEnabled = (otherButton != clickedButton)
+                    if(otherButton == clickedButton){
+                        otherButton.isEnabled = false
+                        otherButton.setBackgroundResource(R.drawable.color_green_box)
+                    }
+                    else{
+                        otherButton.isEnabled = true
+                        otherButton.setBackgroundResource(R.drawable.square_background_border)
+                    }
                 }
             }
         }
-//        for(button in setupButtonList){
-//            button.setOnClickListener { clickedButton ->
-//                Log.d("ButtonClicked", "Button clicked!")
-//                for (otherButton in setupButtonList){
-//                    if(otherButton == clickedButton){
-//                        otherButton.isEnabled = false
-//                        otherButton.setBackgroundResource(R.drawable.color_red_box)
-//                    }
-//                    else{
-//                        otherButton.isEnabled = true
-//                        otherButton.setBackgroundResource(R.drawable.public_button)
-//                    }
-//                }
-//            }
-//        }
+
 
         //좌측 상단에 위치한 화면 이동 메뉴 버튼
         val setupMenuBt = binding.setupMenuBt
@@ -108,126 +128,6 @@ class SetupActivity : AppCompatActivity() {
             menuDialog.show()
         }
 
-
-        //Cobot 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
-        setupCobotBt.setOnClickListener{
-            val fragment = SetupCobotFragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
-            supportFragmentManager.beginTransaction()
-                .replace(setupViewer.id, fragment)
-                .commit()
-            }
-
-        //Tool 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
-        setupToolBt.setOnClickListener{
-            val fragment = SetupToolFragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
-            supportFragmentManager.beginTransaction()
-                .replace(setupViewer.id, fragment)
-                .commit()
-        }
-
-        //System 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
-        setupSystemBt.setOnClickListener{
-            val fragment = SetupSystemFragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
-            supportFragmentManager.beginTransaction()
-                .replace(setupViewer.id, fragment)
-                .commit()
-        }
-
-        //Log 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
-        setupLogBt.setOnClickListener{
-            val fragment =SetupLogFragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
-            supportFragmentManager.beginTransaction()
-                .replace(setupViewer.id, fragment)
-                .commit()
-        }
-
-        //Utility 버튼 클릭, 설정
-        setupUtilityBt.setOnClickListener{
-            val fragment =SetupUtilityFragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
-            supportFragmentManager.beginTransaction()
-                .replace(setupViewer.id, fragment)
-                .commit()
-        }
-
-        //Serial 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
-        setupSerialBt.setOnClickListener{
-            val fragment = SetupSerialFragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
-            supportFragmentManager.beginTransaction()
-                .replace(setupViewer.id, fragment)
-                .commit()
-        }
-
-        //I/O1 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
-        setupIo1Bt.setOnClickListener{
-            val fragment = SetupIo1Fragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
-            supportFragmentManager.beginTransaction()
-                .replace(setupViewer.id, fragment)
-                .commit()
-        }
-
-        //I/O2 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
-        setupIo2Bt.setOnClickListener{
-            val fragment = SetupIo2Fragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
-            supportFragmentManager.beginTransaction()
-                .replace(setupViewer.id, fragment)
-                .commit()
-        }
-
-        //Inbox 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
-        setupInboxBt.setOnClickListener{
-            val fragment = SetupInboxFragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
-            supportFragmentManager.beginTransaction()
-                .replace(setupViewer.id, fragment)
-                .commit()
-        }
-
-        //Interface 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
-        setupInterfaceBt.setOnClickListener{
-            val fragment = SetupInterfaceFragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
-            supportFragmentManager.beginTransaction()
-                .replace(setupViewer.id, fragment)
-                .commit()
-        }
-
-        //Coordinate 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
-        setupCoordBt.setOnClickListener{
-            val fragment = SetupCoordFragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
-            supportFragmentManager.beginTransaction()
-                .replace(setupViewer.id, fragment)
-                .commit()
-        }
-
-        //Security 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
-        setupSecurityBt.setOnClickListener{
-            val fragment = SetupSecurityFragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
-            supportFragmentManager.beginTransaction()
-                .replace(setupViewer.id, fragment)
-                .commit()
-        }
-
-        //Devices 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
-        setupDevicesBt.setOnClickListener{
-            val fragment = SetupDevicesFragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
-            supportFragmentManager.beginTransaction()
-                .replace(setupViewer.id, fragment)
-                .commit()
-        }
-
-        //Tool List 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
-        setupToolListBt.setOnClickListener{
-            val fragment = SetupToolListFragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
-            supportFragmentManager.beginTransaction()
-                .replace(setupViewer.id, fragment)
-                .commit()
-        }
-
-        //ProgramTable 버튼 클릭 시, 해당 사항에 관한 설정을 진행할 수 있는 창이 우측에 생성됨
-        setupProgramTableBt.setOnClickListener{
-            val fragment = SetupProgTableFragment() // 여기서 YourFragment는 원하는 프래그먼트 클래스명으로 바꾸세요.
-            supportFragmentManager.beginTransaction()
-                .replace(setupViewer.id, fragment)
-                .commit()
-        }
 
 
         //연결 버튼 동작입니다.

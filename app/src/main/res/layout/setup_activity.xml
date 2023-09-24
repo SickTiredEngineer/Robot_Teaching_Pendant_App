@@ -50,7 +50,7 @@
 
             <Button
                 android:id="@+id/setup_cobot_bt"
-                style="@style/style_button"
+                style="@style/style_setup_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/str_cobot"
@@ -59,7 +59,7 @@
 
             <Button
                 android:id="@+id/setup_tool_bt"
-                style="@style/style_button"
+                style="@style/style_setup_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/str_tool"
@@ -68,7 +68,7 @@
 
             <Button
                 android:id="@+id/setup_system_bt"
-                style="@style/style_button"
+                style="@style/style_setup_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/str_system"
@@ -77,7 +77,7 @@
 
             <Button
                 android:id="@+id/setup_log_bt"
-                style="@style/style_button"
+                style="@style/style_setup_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/str_log"
@@ -86,7 +86,7 @@
 
             <Button
                 android:id="@+id/setup_utility_bt"
-                style="@style/style_button"
+                style="@style/style_setup_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/str_utility"
@@ -95,7 +95,7 @@
 
             <Button
                 android:id="@+id/setup_serial_bt"
-                style="@style/style_button"
+                style="@style/style_setup_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/str_serial"
@@ -104,7 +104,7 @@
 
             <Button
                 android:id="@+id/setup_io1_bt"
-                style="@style/style_button"
+                style="@style/style_setup_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/str_io1"
@@ -113,7 +113,7 @@
 
             <Button
                 android:id="@+id/setup_io2_bt"
-                style="@style/style_button"
+                style="@style/style_setup_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/str_io2"
@@ -122,7 +122,7 @@
 
             <Button
                 android:id="@+id/setup_inbox_bt"
-                style="@style/style_button"
+                style="@style/style_setup_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/str_inbox"
@@ -131,7 +131,7 @@
 
             <Button
                 android:id="@+id/setup_interface_bt"
-                style="@style/style_button"
+                style="@style/style_setup_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/str_interface"
@@ -140,7 +140,7 @@
 
             <Button
                 android:id="@+id/setup_coord_bt"
-                style="@style/style_button"
+                style="@style/style_setup_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/str_coord"
@@ -149,7 +149,7 @@
 
             <Button
                 android:id="@+id/setup_security_bt"
-                style="@style/style_button"
+                style="@style/style_setup_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/str_security"
@@ -158,7 +158,7 @@
 
             <Button
                 android:id="@+id/setup_devices_bt"
-                style="@style/style_button"
+                style="@style/style_setup_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/str_devices"
@@ -167,7 +167,7 @@
 
             <Button
                 android:id="@+id/setup_tool_list_bt"
-                style="@style/style_button"
+                style="@style/style_setup_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/str_tool_list"
@@ -176,7 +176,7 @@
 
             <Button
                 android:id="@+id/setup_program_table_bt"
-                style="@style/style_button"
+                style="@style/style_setup_button"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
 
