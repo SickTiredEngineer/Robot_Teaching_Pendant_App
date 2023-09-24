@@ -49,6 +49,7 @@ class JogFragment : Fragment() {
         val jogInfo5 = binding.jogInfo5
         val jogInfo6 = binding.jogInfo6
 
+        //JogSelected 에 따라서 Info(TextView)를 바꿀 때 사용할 문자열 리소스 List
         val jogInfoList = listOf<TextView>(jogInfo1,jogInfo2,jogInfo3,jogInfo4,jogInfo5,jogInfo6)
         val coordStrList = listOf(R.string.str_x,R.string.str_y,R.string.str_z,R.string.str_rx,R.string.str_ry,R.string.str_rz)
         val jointStrList = listOf(R.string.str_base,R.string.str_should,R.string.str_elbow,R.string.str_wrist1,R.string.str_wrist2,R.string.str_wrist3)

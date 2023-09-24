@@ -61,10 +61,6 @@ class MakeActivity : AppCompatActivity() {
                 }
 
 
-        makeConnectBt.setOnClickListener{
-            val dialogFragment = ConnectorDialogFragment()
-            dialogFragment.show(supportFragmentManager,null)
-        }
 
 
         //좌측 상단에 위치한 Menu 버튼 동작, Dialog 형식으로 해당 화면으로 이동할 수 있는 기능
@@ -95,6 +91,12 @@ class MakeActivity : AppCompatActivity() {
             }
             menuDialog.show()
         }
+
+        makeConnectBt.setOnClickListener{
+            val dialogFragment = ConnectorDialogFragment()
+            dialogFragment.show(supportFragmentManager,null)
+        }
+
 
 
         //우측 하단에 위치한 파워 버튼을 클릭 시 동작입니다.

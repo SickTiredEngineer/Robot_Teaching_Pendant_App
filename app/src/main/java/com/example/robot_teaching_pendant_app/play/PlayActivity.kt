@@ -26,10 +26,7 @@ class PlayActivity : AppCompatActivity() {
 
         val connectBt = binding.playConnectBt
 
-        connectBt.setOnClickListener{
-            val dialogFragment = ConnectorDialogFragment()
-            dialogFragment.show(supportFragmentManager,null)
-        }
+
 
 
 
@@ -62,6 +59,11 @@ class PlayActivity : AppCompatActivity() {
             menuDialog.show()
         }
 
+        //우측 하단에 위치한 연결 버튼 동작입니다.
+        connectBt.setOnClickListener{
+            val dialogFragment = ConnectorDialogFragment()
+            dialogFragment.show(supportFragmentManager,null)
+        }
 
         //우측 하단에 위치한 파워 버튼을 클릭 시 동작입니다.
         playPowerBt.setOnClickListener{

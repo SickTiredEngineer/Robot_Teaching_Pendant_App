@@ -26,11 +26,12 @@ class ConnectHelper(
     private val stateRobOperBox: View
 ) {
 
-    //메서드,필요한 변수 등 미리 선언(?)
+
     init {
         setConnectBtOnClickListener()
         setDisconnectBtOnClickListener()
 
+        //전역변수 ConnectionState.conCount 에 초기화 된 값에 따라 UI의 초기 상태를 설정합니다.
         when(ConnectionState.conCount){
             0 -> {
                 setConUiDef()
