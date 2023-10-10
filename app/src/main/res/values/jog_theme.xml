@@ -7,7 +7,7 @@
         <item name = "android:layout_width">50dp</item>
         <item name = "android:layout_height">25dp</item>
         <item name = "android:background">@drawable/public_button</item>
-        <item name = "android:textColor">@color/black</item>
+        <item name = "android:textColor">@color/color_text</item>
         <item name = "android:gravity">center</item>
     </style>
 
@@ -17,22 +17,22 @@
         <item name = "android:layout_width">50dp</item>
         <item name = "android:layout_height">25dp</item>
         <item name = "android:background">@drawable/public_button</item>
-        <item name = "android:textColor">@color/black</item>
+        <item name = "android:textColor">@color/color_text</item>
         <item name = "android:gravity">center|top</item>
     </style>
 
     <style name = "style_jog_info">
         <item name = "android:textSize">11sp</item>
         <item name = "android:gravity">center</item>
-        <item name = "android:textColor">@color/black</item>
+        <item name = "android:textColor">@color/color_text</item>
         <item name = "android:layout_width">wrap_content</item>
         <item name = "android:layout_height">25dp</item>
     </style>
 
     //조그에서 현재 값을 나타내는 View의 스타일
     <style name = "style_jog_view">
-        <item name = "android:background">@drawable/square_background_border</item>
-        <item name = "android:textColor">@color/black</item>
+        <item name = "android:background">@drawable/main_frame</item>
+        <item name = "android:textColor">@color/color_text</item>
         <item name = "android:gravity">center</item>
         <item name = "android:layout_height">25dp</item>
         <item name = "android:layout_width">90dp</item>
@@ -43,8 +43,8 @@
     <style name = "style_jog_choice">
         <item name = "android:layout_height">84dp</item>
         <item name = "android:layout_width">match_parent</item>
-        <item name = "android:background">@drawable/square_background_border</item>
-        <item name = "android:textColor">@color/black</item>
+        <item name = "android:background">@drawable/public_button</item>
+        <item name = "android:textColor">@color/color_text</item>
         <item name = "android:gravity">center</item>
     </style>
 

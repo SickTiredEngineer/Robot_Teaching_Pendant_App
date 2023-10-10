@@ -51,7 +51,7 @@
 
     <ImageView
         android:id="@+id/login_icon"
-        android:background="@drawable/square_background_border"
+        android:background="@drawable/main_frame"
 
         android:layout_width="161dp"
         android:layout_height="120dp"

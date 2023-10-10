@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--다크모드에서 사용할 색상을 지정합니다.-->
+<resources>
+
+<!--    Darmode 에서 사용 될  TextColor -->
+    <color name="color_text">@color/white</color>
+    <color name="color_frame">@color/main_white</color>
+    <color name="color_bg">@color/main_black</color>
+
+</resources>

@@ -5,7 +5,7 @@
     //Button 의 기본 Style
     <style name = "style_button">
         <item name = "android:background">@drawable/public_button</item>
-        <item name = "android:textColor">@color/black</item>
+        <item name = "android:textColor">@color/color_text</item>
         <item name = "android:gravity">center</item>
     </style>
 
@@ -14,7 +14,7 @@
         <item name = "android:layout_width">50dp</item>
         <item name = "android:layout_height">50dp</item>
         <item name = "android:background">@drawable/public_button</item>
-        <item name = "android:textColor">@color/black</item>
+        <item name = "android:textColor">@color/color_text</item>
         <item name = "android:gravity">center</item>
     </style>
 
@@ -23,56 +23,56 @@
         <item name = "android:layout_width">90dp</item>
         <item name = "android:layout_height">75dp</item>
         <item name = "android:background">@drawable/public_toggle_button</item>
-        <item name = "android:textColor">@color/black</item>
+        <item name = "android:textColor">@color/color_text</item>
         <item name = "android:gravity">center</item>
     </style>
 
     //TextView 스타일로 테두리를 가지고 있습니다. tvc는 글자가 중앙에 위치합니다.
     <style name = "style_tvc">
-        <item name = "android:background">@drawable/square_background_border</item>
-        <item name = "android:textColor">@color/black</item>
+        <item name = "android:background">@drawable/main_frame</item>
+        <item name = "android:textColor">@color/color_text</item>
         <item name = "android:gravity">center</item>
     </style>
 
     <style name = "style_tv">
-            <item name = "android:background">@drawable/square_background_border</item>
-            <item name = "android:textColor">@color/black</item>
+            <item name = "android:background">@drawable/main_frame</item>
+            <item name = "android:textColor">@color/color_text</item>
         </style>
 
     //TextView 스타일로 (2)가 붙으면 테두리가 존재하지 않습니다.
     <style name = "style_tv2">
-        <item name = "android:textColor">@color/black</item>
+        <item name = "android:textColor">@color/color_text</item>
     </style>
 
     <style name = "style_tvc2">
         <item name = "android:gravity">center</item>
-        <item name = "android:textColor">@color/black</item>
+        <item name = "android:textColor">@color/color_text</item>
     </style>
 
 
     //기본적으로 사용하게 될 Background 스타일 입니다.
     <style name = "style_bg">
-        <item name = "android:background">@drawable/square_background_border</item>
+        <item name = "android:background">@drawable/main_frame</item>
     </style>
 
     //기본적으로 사용하레 될 TextColor 입니다.
     <style name = "style_text_color">
-        <item name = "android:textColor">@color/black</item>
+        <item name = "android:textColor">@color/color_text</item>
     </style>
 
     //enable, disable 버튼은 Night 모드 구현할 필요를 느끼지 못하여 아직 추가하지 않았습니다.
 
-    /* 활성화 된 버튼을 초록색으로 표현한 스타일 입니다 */
+    /* 활성화 된 버튼을 초록색으로 표현할 때 사용합니다 */
     <style name = "style_enable_bt">
         <item name="android:background">@drawable/color_green_box</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/color_text</item>
         <item name = "android:gravity">center</item>
     </style>
 
     //비활성화 된 버튼을 회색 배경으로 표현한 스타일 입니다.
     <style name = "style_disable_bt">
         <item name="android:background">@drawable/color_gray_box</item>
-        <item name="android:textColor">@color/black</item>
+        <item name="android:textColor">@color/color_text</item>
         <item name = "android:gravity">center</item>
     </style>
 
@@ -99,7 +99,7 @@
         <item name = "android:layout_height">40dp</item>
         <item name = "android:textSize">20sp</item>
         <item name = "android:background">@drawable/public_button</item>
-        <item name = "android:textColor">@color/black</item>
+        <item name = "android:textColor">@color/color_text</item>
         <item name = "android:gravity">center</item>
     </style>
 

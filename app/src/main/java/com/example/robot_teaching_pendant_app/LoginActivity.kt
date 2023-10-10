@@ -32,7 +32,6 @@ class LoginActivity : AppCompatActivity() {
         setupAutoFocusEditTexts(passBox1, passBox2, passBox3, passBox4)
 
 
-
         //변수에 위젯 초기화
         val loginBt = binding.loginBt
         val loginPowerBt = binding.loginPowerBt

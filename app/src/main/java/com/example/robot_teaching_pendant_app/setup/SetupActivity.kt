@@ -3,9 +3,6 @@ import android.content.Intent
 //import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.example.robot_teaching_pendant_app.MainActivity
 import com.example.robot_teaching_pendant_app.R
@@ -81,7 +78,7 @@ class SetupActivity : AppCompatActivity() {
                         .commit()
                 }
 
-                // 기존의 배경 변경 로직
+                // 선택된 버튼은 연두색 배경이 되며 Disable, 나머지는 public_button 상태로 돌아옵니다.
                 for (otherButton in setupButtonList){
                     if(otherButton == clickedButton){
                         otherButton.isEnabled = false
@@ -89,7 +86,7 @@ class SetupActivity : AppCompatActivity() {
                     }
                     else{
                         otherButton.isEnabled = true
-                        otherButton.setBackgroundResource(R.drawable.square_background_border)
+                        otherButton.setBackgroundResource(R.drawable.public_button)
                     }
                 }
             }

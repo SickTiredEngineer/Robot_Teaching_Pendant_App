@@ -11,7 +11,7 @@
         android:id="@+id/jog_controller_view"
         android:layout_width="190dp"
         android:layout_height="335dp"
-        android:background="@drawable/square_background_border"
+        android:background="@drawable/main_frame"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">

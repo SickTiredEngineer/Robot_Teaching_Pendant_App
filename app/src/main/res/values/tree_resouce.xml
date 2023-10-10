@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name = "style_make_tree">
-        <item name = "android:background">@drawable/square_background_border</item>
+        <item name = "android:background">@drawable/main_frame</item>
         <item name ="android:layout_height">600dp</item>
         <item name ="android:layout_width">450dp</item>
     </style>

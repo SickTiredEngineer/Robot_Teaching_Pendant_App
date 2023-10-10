@@ -14,14 +14,14 @@
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
-        android:background="@drawable/square_background_border"
+        android:background="@drawable/main_frame"
         android:orientation="vertical">
 
         <LinearLayout
 
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/square_background_border"
+            android:background="@drawable/main_frame"
             android:orientation="horizontal">
 
             <Button
@@ -139,7 +139,7 @@
         android:layout_height="335dp"
         android:layout_marginStart="1dp"
         android:layout_marginEnd="1dp"
-        android:background="@drawable/square_background_border">
+        android:background="@drawable/main_frame">
 
         <LinearLayout
             android:id="@+id/jog_mode_layout"
@@ -177,7 +177,7 @@
             android:layout_width="190dp"
             android:layout_height="335dp"
             android:layout_marginStart="1dp"
-            android:background="@drawable/square_background_border"
+            android:background="@drawable/main_frame"
             android:orientation="vertical"
             app:layout_constraintStart_toEndOf="@+id/jog_mode_layout"
             app:layout_constraintTop_toTopOf="parent">
@@ -194,7 +194,7 @@
             android:layout_width="190dp"
             android:layout_height="335dp"
             android:layout_marginStart="3dp"
-            android:background="@drawable/square_background_border"
+            android:background="@drawable/main_frame"
             android:orientation="vertical"
             app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
             app:layout_constraintStart_toEndOf="@+id/jog_3d_view"
@@ -208,7 +208,7 @@
             android:layout_height="166dp"
             android:layout_marginStart="1dp"
             android:layout_marginEnd="1dp"
-            android:background="@drawable/square_background_border"
+            android:background="@drawable/main_frame"
             android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
             app:layout_constraintEnd_toEndOf="parent"
@@ -323,7 +323,7 @@
             android:layout_marginStart="1dp"
             android:layout_marginEnd="1dp"
             android:layout_marginBottom="3dp"
-            android:background="@drawable/square_background_border"
+            android:background="@drawable/main_frame"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

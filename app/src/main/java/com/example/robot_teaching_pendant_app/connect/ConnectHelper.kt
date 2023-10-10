@@ -1,15 +1,11 @@
 package com.example.robot_teaching_pendant_app.connect
 
-import android.app.Activity
-import android.content.Context
 import android.os.Handler
 import android.os.Looper
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import com.example.robot_teaching_pendant_app.R
-import com.example.robot_teaching_pendant_app.connect.ConnectionState
 
 //생성자입니다. 나중에 필요 시, 추가적으로 제어상자의 정보 View 등을 추가해야 합니다.
 class ConnectHelper(
@@ -139,15 +135,15 @@ class ConnectHelper(
         stateConBox.setBackgroundResource(R.drawable.color_red_box)
 
         statePower.setText(R.string.state_power_off)
-        statePowerBox.setBackgroundResource(R.drawable.square_background_border)
+        statePowerBox.setBackgroundResource(R.drawable.main_frame)
 
         stateDevice.setText(R.string.state_device_off)
-        stateDeviceBox.setBackgroundResource(R.drawable.square_background_border)
+        stateDeviceBox.setBackgroundResource(R.drawable.main_frame)
 
         stateSystem.setText(R.string.state_system_off)
-        stateSystemBox.setBackgroundResource(R.drawable.square_background_border)
+        stateSystemBox.setBackgroundResource(R.drawable.main_frame)
 
-        stateRobOperBox.setBackgroundResource(R.drawable.square_background_border)
+        stateRobOperBox.setBackgroundResource(R.drawable.main_frame)
 
         connectBt.setText(R.string.str_connect)
         connectBt.setBackgroundResource(R.drawable.color_green_box)
@@ -164,15 +160,15 @@ class ConnectHelper(
         stateConBox.setBackgroundResource(R.drawable.color_red_box)
 
         statePower.setText(R.string.state_power_off)
-        statePowerBox.setBackgroundResource(R.drawable.square_background_border)
+        statePowerBox.setBackgroundResource(R.drawable.main_frame)
 
         stateDevice.setText(R.string.state_device_off)
-        stateDeviceBox.setBackgroundResource(R.drawable.square_background_border)
+        stateDeviceBox.setBackgroundResource(R.drawable.main_frame)
 
         stateSystem.setText(R.string.state_system_off)
-        stateSystemBox.setBackgroundResource(R.drawable.square_background_border)
+        stateSystemBox.setBackgroundResource(R.drawable.main_frame)
 
-        stateRobOperBox.setBackgroundResource(R.drawable.square_background_border)
+        stateRobOperBox.setBackgroundResource(R.drawable.main_frame)
 
         connectBt.setText(R.string.str_connect)
         connectBt.setBackgroundResource(R.drawable.color_green_box)

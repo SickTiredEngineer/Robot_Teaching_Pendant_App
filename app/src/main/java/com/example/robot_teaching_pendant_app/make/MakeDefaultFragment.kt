@@ -106,7 +106,7 @@ class MakeDefaultFragment : Fragment() {
                         Toast.makeText(it.context, "$buttonText 버튼을 눌렀습니다.", Toast.LENGTH_SHORT).show()
                     } else {
                         otherButton.isEnabled = true
-                        otherButton.setBackgroundResource(R.drawable.square_background_border) // 기본 배경 리소스
+                        otherButton.setBackgroundResource(R.drawable.public_button) // 기본 배경 리소스
                     }
                 }
             }
@@ -163,7 +163,7 @@ class MakeDefaultFragment : Fragment() {
             makeSmoothBt.setBackgroundResource(R.drawable.color_red_box)
 
             makeTickBt.isEnabled = true
-            makeTickBt.setBackgroundResource(R.drawable.square_background_border)
+            makeTickBt.setBackgroundResource(R.drawable.public_button)
 
             //Tick에 관련된 요소들이 보이지 않게 가립니다.
             tickDist.isInvisible = true
@@ -182,7 +182,7 @@ class MakeDefaultFragment : Fragment() {
             makeTickBt.setBackgroundResource(R.drawable.color_red_box)
 
             makeSmoothBt.isEnabled = true
-            makeSmoothBt.setBackgroundResource(R.drawable.square_background_border)
+            makeSmoothBt.setBackgroundResource(R.drawable.public_button)
 
             //Tick에 관련된 요소들을 활성화 시킵니다.
             tickDist.isVisible = true

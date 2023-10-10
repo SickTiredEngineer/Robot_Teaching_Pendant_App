@@ -95,7 +95,7 @@
         android:layout_width="350dp"
         android:layout_height="344dp"
         android:layout_marginEnd="5dp"
-        android:background="@drawable/square_background_border"
+        android:background="@drawable/main_frame"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -121,7 +121,7 @@
         android:id="@+id/state_con_box"
         android:layout_width="100dp"
         android:layout_height="60dp"
-        android:background="@drawable/square_background_border"
+        android:background="@drawable/main_frame"
 
         app:layout_constraintEnd_toStartOf="@+id/state_connect"
         app:layout_constraintStart_toStartOf="parent"
@@ -131,7 +131,7 @@
         android:id="@+id/state_power_box"
         android:layout_width="100dp"
         android:layout_height="60dp"
-        android:background="@drawable/square_background_border"
+        android:background="@drawable/main_frame"
 
         app:layout_constraintEnd_toStartOf="@+id/state_connect"
         app:layout_constraintHorizontal_bias="0.0"
@@ -142,7 +142,7 @@
         android:id="@+id/state_device_box"
         android:layout_width="100dp"
         android:layout_height="60dp"
-        android:background="@drawable/square_background_border"
+        android:background="@drawable/main_frame"
 
         app:layout_constraintEnd_toStartOf="@+id/state_connect"
         app:layout_constraintHorizontal_bias="0.0"
@@ -153,7 +153,7 @@
         android:id="@+id/state_system_box"
         android:layout_width="100dp"
         android:layout_height="60dp"
-        android:background="@drawable/square_background_border"
+        android:background="@drawable/main_frame"
 
         app:layout_constraintEnd_toStartOf="@+id/state_connect"
         app:layout_constraintHorizontal_bias="0.0"
@@ -164,7 +164,7 @@
         android:id="@+id/state_rob_Oper_box"
         android:layout_width="100dp"
         android:layout_height="60dp"
-        android:background="@drawable/square_background_border"
+        android:background="@drawable/main_frame"
 
         app:layout_constraintEnd_toStartOf="@+id/state_connect"
         app:layout_constraintHorizontal_bias="0.0"
