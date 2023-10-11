@@ -57,6 +57,4 @@ object JogState {
     var shoulder: Float = 0f
     var elbow: Float = 0f
     var wrist1: Float = 0f
-    var wrist2: Float = 0f
-    var wrist3: Float = 0f
 }
