@@ -12,7 +12,7 @@ import android.widget.EditText
 //import android.widget.Button
 import android.widget.Toast
 import com.example.robot_teaching_pendant_app.databinding.LoginActivityBinding
-import com.example.robot_teaching_pendant_app.system.PowerOffFragment
+import com.example.robot_teaching_pendant_app.system.PowerOffDialogFragment
 
 
 class LoginActivity : AppCompatActivity() {
@@ -51,8 +51,9 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
+        //우측 하단에 위치한 파워버튼 클릭 시, system 디렉토리에 위치한
         loginPowerBt.setOnClickListener{
-            val dialogFragment = PowerOffFragment()
+            val dialogFragment = PowerOffDialogFragment()
             dialogFragment.show(supportFragmentManager,null)
 
         }

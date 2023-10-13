@@ -9,7 +9,7 @@ import com.example.robot_teaching_pendant_app.connect.ConnectorDialogFragment
 import com.example.robot_teaching_pendant_app.databinding.MakeActivityBinding
 import com.example.robot_teaching_pendant_app.play.PlayActivity
 import com.example.robot_teaching_pendant_app.setup.SetupActivity
-import com.example.robot_teaching_pendant_app.system.PowerOffFragment
+import com.example.robot_teaching_pendant_app.system.PowerOffDialogFragment
 
 class MakeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,8 +41,10 @@ class MakeActivity : AppCompatActivity() {
             .add(sideViewer.id, initialFragment)
             .commit()
 
-        if (savedInstanceState == null) { // 처음 액티비티가 생성되었을 때만 프래그먼트 추가
-            val fragment = MakeDefaultFragment() //
+
+        // 처음 액티비티가 생성되었을 때 프래그먼트 추가
+        if (savedInstanceState == null) {
+            val fragment = MakeDefaultFragment()
             supportFragmentManager.beginTransaction()
                 .replace(sideViewer.id, fragment)
                 .commit()
@@ -50,6 +52,8 @@ class MakeActivity : AppCompatActivity() {
 
         //Ext tree 토글 버튼 클릭 시 동작입니다.
         treeExtBt.setOnCheckedChangeListener { _, isChecked ->
+
+            //토클버튼이 true 일땐 ExtFragment , False 일 땐 DefaultFragment 로 값을 주고 프래그먼트를 불러옵니다.
             val fragment = if(isChecked) {
                 MakeExtFragment()
                 } else {
@@ -101,7 +105,7 @@ class MakeActivity : AppCompatActivity() {
 
         //우측 하단에 위치한 파워 버튼을 클릭 시 동작입니다.
         makePowerBt.setOnClickListener{
-            val dialogFragment = PowerOffFragment()
+            val dialogFragment = PowerOffDialogFragment()
             dialogFragment.show(supportFragmentManager,null)
         }
     }

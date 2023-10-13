@@ -10,7 +10,7 @@ import com.example.robot_teaching_pendant_app.connect.ConnectorDialogFragment
 import com.example.robot_teaching_pendant_app.databinding.SetupActivityBinding
 import com.example.robot_teaching_pendant_app.make.MakeActivity
 import com.example.robot_teaching_pendant_app.play.PlayActivity
-import com.example.robot_teaching_pendant_app.system.PowerOffFragment
+import com.example.robot_teaching_pendant_app.system.PowerOffDialogFragment
 
 
 class SetupActivity : AppCompatActivity() {
@@ -82,7 +82,7 @@ class SetupActivity : AppCompatActivity() {
                 for (otherButton in setupButtonList){
                     if(otherButton == clickedButton){
                         otherButton.isEnabled = false
-                        otherButton.setBackgroundResource(R.drawable.color_green_box)
+                        otherButton.setBackgroundResource(R.drawable.color_green_frame)
                     }
                     else{
                         otherButton.isEnabled = true
@@ -124,15 +124,15 @@ class SetupActivity : AppCompatActivity() {
             menuDialog.show()
         }
 
-        //연결 버튼 동작입니다.
+        //우측 하단에 위치한 연결 버튼 클릭 시 connect 디렉토리에 있는 ConnectDialogFragment를 Dialog로 출력합니다.
         setupConnectBt.setOnClickListener{
             val dialogFragment = ConnectorDialogFragment()
             dialogFragment.show(supportFragmentManager,null)
         }
 
-        //우측 하단에 위치한 파워 버튼을 클릭 시 동작입니다.
+        //우측 하단에 위치한 파워 버튼을 클릭 시 동작으로 system 디렉토리에 있는 PowerOffFragment를 Dialog로 출력합니다.
         setupPowerBt.setOnClickListener{
-            val dialogFragment = PowerOffFragment()
+            val dialogFragment = PowerOffDialogFragment()
             dialogFragment.show(supportFragmentManager,null)
         }
 

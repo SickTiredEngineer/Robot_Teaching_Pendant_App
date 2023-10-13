@@ -64,14 +64,14 @@
 
     /* 활성화 된 버튼을 초록색으로 표현할 때 사용합니다 */
     <style name = "style_enable_bt">
-        <item name="android:background">@drawable/color_green_box</item>
+        <item name="android:background">@drawable/color_green_frame</item>
         <item name="android:textColor">@color/color_text</item>
         <item name = "android:gravity">center</item>
     </style>
 
     //비활성화 된 버튼을 회색 배경으로 표현한 스타일 입니다.
     <style name = "style_disable_bt">
-        <item name="android:background">@drawable/color_gray_box</item>
+        <item name="android:background">@drawable/color_gray_frame</item>
         <item name="android:textColor">@color/color_text</item>
         <item name = "android:gravity">center</item>
     </style>

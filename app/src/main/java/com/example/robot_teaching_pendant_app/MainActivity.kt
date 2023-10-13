@@ -15,7 +15,7 @@ import com.example.robot_teaching_pendant_app.play.PlayActivity
 import com.example.robot_teaching_pendant_app.setup.SetupActivity
 import com.example.robot_teaching_pendant_app.connect.ConnectHelper
 import com.example.robot_teaching_pendant_app.system.DarkModeManager
-import com.example.robot_teaching_pendant_app.system.PowerOffFragment
+import com.example.robot_teaching_pendant_app.system.PowerOffDialogFragment
 
 
 class MainActivity : AppCompatActivity() {
@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
 
         //우측 하단에 위치한 파워 버튼을 클릭 시 동작입니다.
         mainPowerBt.setOnClickListener{
-            val dialogFragment = PowerOffFragment()
+            val dialogFragment = PowerOffDialogFragment()
             dialogFragment.show(supportFragmentManager,null)
 
         }

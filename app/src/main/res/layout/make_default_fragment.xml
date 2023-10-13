@@ -73,6 +73,34 @@
                 android:text="@string/str_search" />
         </LinearLayout>
 
+        <ScrollView
+            android:id="@+id/def_icon_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <GridLayout
+                android:id = "@+id/grid_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:columnCount="8"
+                android:padding="10dp"
+                android:layout_gravity="center_horizontal">
+                <!-- Here you can add multiple views -->
+
+            </GridLayout>
+        </ScrollView>
+
+        <!--        <com.google.android.flexbox.FlexboxLayout-->
+        <!--            android:id="@+id/def_view"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:padding="10dp"-->
+        <!--            app:flexWrap="wrap">-->
+
+        <!--            &lt;!&ndash; 버튼은 동적으로 추가될 것이므로 내부는 비워 둡니다. &ndash;&gt;-->
+        <!--        </com.google.android.flexbox.FlexboxLayout>-->
+
+
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -138,9 +166,9 @@
             android:layout_marginStart="3dp"
             android:background="@drawable/main_frame"
             android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/linearLayout3"
-            app:layout_constraintStart_toEndOf="@+id/jog_3d_view"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintStart_toEndOf="@+id/jog_3d_view">
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

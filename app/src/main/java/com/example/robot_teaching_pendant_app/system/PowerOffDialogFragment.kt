@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.DialogFragment
-import com.example.robot_teaching_pendant_app.databinding.PowerOffFragmentBinding
+import com.example.robot_teaching_pendant_app.databinding.PowerOffDialogFragmentBinding
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,10 +17,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [PowerOffFragment.newInstance] factory method to
+ * Use the [PowerOffDialogFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class PowerOffFragment : DialogFragment() {
+class PowerOffDialogFragment : DialogFragment() {
     // TODO: Rename and change types of parameters
 //    private var param1: String? = null
 //    private var param2: String? = null
@@ -47,11 +47,11 @@ class PowerOffFragment : DialogFragment() {
     }
 
 
-    private lateinit var binding: PowerOffFragmentBinding
+    private lateinit var binding: PowerOffDialogFragmentBinding
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
-        binding = PowerOffFragmentBinding.inflate(LayoutInflater.from(context))
+        binding = PowerOffDialogFragmentBinding.inflate(LayoutInflater.from(context))
 
         val cancelBt = binding.cancelBt
         val shutdownBt = binding.shutdownBt
@@ -86,7 +86,7 @@ class PowerOffFragment : DialogFragment() {
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            PowerOffFragment().apply {
+            PowerOffDialogFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

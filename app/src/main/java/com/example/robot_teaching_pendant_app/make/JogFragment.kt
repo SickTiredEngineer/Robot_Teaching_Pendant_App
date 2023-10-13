@@ -76,16 +76,16 @@ class JogFragment : Fragment() {
         val jogDec6 = binding.jogDec6
 
 
-//        if(JogState.jogSelected == JogState.JOG_JOINT_SELECTED) {
-//            for (i in jogInfoList.indices) {
-//                jogInfoList[i].setText(jointStrList[i])
-//            }
-//        }
-//        else{
-//            for(i in jogInfoList.indices){
-//                jogInfoList[i].setText(coordStrList[i])
-//            }
-//        }
+        if(JogState.jogSelected == JogState.JOG_JOINT_SELECTED) {
+            for (i in jogInfoList.indices) {
+                jogInfoList[i].setText(jointStrList[i])
+            }
+        }
+        else{
+            for(i in jogInfoList.indices){
+                jogInfoList[i].setText(coordStrList[i])
+            }
+        }
 
 
 
