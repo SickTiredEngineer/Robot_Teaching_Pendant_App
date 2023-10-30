@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.core.view.isVisible
 import com.example.robot_teaching_pendant_app.R
 import com.example.robot_teaching_pendant_app.databinding.JogFragmentBinding
 import com.example.robot_teaching_pendant_app.system.JogState
@@ -76,20 +77,45 @@ class JogFragment : Fragment() {
         val jogDec6 = binding.jogDec6
 
 
+        //MakeDefaultFragment 에서 Global, Local, User, Joint  를 누를 때 UI 동작 코드입니다.
+        // JOINT 모드일 경우 INFO 창을 JOINT1~4로 바꾸고 5~6번 버튼과 정보창을 Invisible 합니다.
         if(JogState.jogSelected == JogState.JOG_JOINT_SELECTED) {
             for (i in jogInfoList.indices) {
                 jogInfoList[i].setText(jointStrList[i])
             }
+            jogDec5.isVisible = false
+            jogInc5.isVisible =false
+
+            jogDec6.isVisible = false
+            jogInc6.isVisible =false
+
+            jogInfo5.isVisible = false
+            jogInfo6.isVisible = false
+
+            jogView5.isVisible = false
+            jogView6.isVisible = false
+
+
         }
         else{
+            //아닌 경우 INFO를 좌표계 문자열로 바꾸고 5~6번 버튼과 정보창을 Visible 합니다.
             for(i in jogInfoList.indices){
                 jogInfoList[i].setText(coordStrList[i])
+
+                jogDec5.isVisible = true
+                jogInc5.isVisible = true
+
+                jogDec6.isVisible = true
+                jogInc6.isVisible = true
+
+                jogInfo5.isVisible = true
+                jogInfo6.isVisible = true
+
+                jogView5.isVisible = true
+                jogView6.isVisible = true
+
             }
         }
-
-
-
-
 
         // Inflate the layout for this fragment
         return binding.root

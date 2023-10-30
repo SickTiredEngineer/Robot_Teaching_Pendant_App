@@ -42,7 +42,7 @@
 
             app:layout_constraintEnd_toStartOf="@+id/jogView1"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/jogInfo1" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/jogDec1"
@@ -50,7 +50,7 @@
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/jogView1"
-            app:layout_constraintTop_toBottomOf="@+id/jogInfo1" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <!--Y, Shoulder-->
         <TextView
@@ -60,16 +60,16 @@
             android:text="@string/str_y"
             android:textColor="@color/green"
 
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/jogDec2"
+            app:layout_constraintStart_toEndOf="@+id/jogInc2"
             app:layout_constraintTop_toBottomOf="@+id/jogView1" />
 
         <TextView
             android:id="@+id/jogView2"
             style="@style/style_jog_view"
 
-            app:layout_constraintEnd_toStartOf="@+id/jogDec2"
-            app:layout_constraintStart_toEndOf="@+id/jogInc2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/jogInfo2" />
 
         <Button
@@ -78,7 +78,7 @@
 
             app:layout_constraintEnd_toStartOf="@+id/jogView2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/jogInfo2" />
+            app:layout_constraintTop_toBottomOf="@+id/jogInc1" />
 
         <Button
             android:id="@+id/jogDec2"
@@ -86,7 +86,7 @@
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/jogView2"
-            app:layout_constraintTop_toBottomOf="@+id/jogInfo2" />
+            app:layout_constraintTop_toBottomOf="@+id/jogDec1" />
 
 
         <!--Z, Elbow-->
@@ -114,7 +114,7 @@
             style="@style/style_jog_inc"
             app:layout_constraintEnd_toStartOf="@+id/jogView3"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/jogInfo3" />
+            app:layout_constraintTop_toBottomOf="@+id/jogInc2" />
 
         <Button
             android:id="@+id/jogDec3"
@@ -122,7 +122,7 @@
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/jogView3"
-            app:layout_constraintTop_toBottomOf="@+id/jogInfo3" />
+            app:layout_constraintTop_toBottomOf="@+id/jogDec2" />
 
 
         <!--Rx, Wrist1-->
@@ -152,7 +152,7 @@
 
             app:layout_constraintEnd_toStartOf="@+id/jogView4"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/jogInfo4" />
+            app:layout_constraintTop_toBottomOf="@+id/jogInc3" />
 
         <Button
             android:id="@+id/jogDec4"
@@ -160,7 +160,7 @@
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/jogView4"
-            app:layout_constraintTop_toBottomOf="@+id/jogInfo4" />
+            app:layout_constraintTop_toBottomOf="@+id/jogDec3" />
 
         <!--Ry, Wrist2-->
         <TextView
@@ -170,7 +170,7 @@
             android:textColor="@color/green"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/jogDec4" />
+            app:layout_constraintTop_toBottomOf="@+id/jogView4" />
 
         <TextView
             android:id="@+id/jogView5"
@@ -186,7 +186,7 @@
 
             app:layout_constraintEnd_toStartOf="@+id/jogView5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/jogInfo5" />
+            app:layout_constraintTop_toBottomOf="@+id/jogInc4" />
 
         <Button
             android:id="@+id/jogDec5"
@@ -194,7 +194,7 @@
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/jogView5"
-            app:layout_constraintTop_toBottomOf="@+id/jogInfo5" />
+            app:layout_constraintTop_toBottomOf="@+id/jogDec4" />
 
 
         <!--Rx, Wrist3-->
@@ -223,7 +223,7 @@
 
             app:layout_constraintEnd_toStartOf="@+id/jogView6"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/jogInfo6" />
+            app:layout_constraintTop_toBottomOf="@+id/jogInc5" />
 
         <Button
             android:id="@+id/jogDec6"
@@ -231,7 +231,7 @@
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/jogView6"
-            app:layout_constraintTop_toBottomOf="@+id/jogInfo6" />
+            app:layout_constraintTop_toBottomOf="@+id/jogDec5" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

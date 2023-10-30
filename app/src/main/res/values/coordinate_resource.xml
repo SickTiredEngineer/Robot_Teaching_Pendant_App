@@ -10,10 +10,10 @@
     <string name ="str_rz">Rz</string>
 
     //Joint 계 string
-    <string name ="str_base">Base</string>
-    <string name ="str_should">Shoulder</string>
-    <string name ="str_elbow">Elbow</string>
-    <string name ="str_wrist1">Wrist1</string>
+    <string name ="str_base">JOINT1</string>
+    <string name ="str_should">JOINT2</string>
+    <string name ="str_elbow">JOINT3</string>
+    <string name ="str_wrist1">JOINT4</string>
     <string name ="str_wrist2">Wrist2</string>
     <string name ="str_wrist3">Wrist3</string>
 

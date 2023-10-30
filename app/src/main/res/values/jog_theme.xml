@@ -5,7 +5,7 @@
     <style name = "style_jog_inc">
         <item name = "android:text">+</item>
         <item name = "android:layout_width">50dp</item>
-        <item name = "android:layout_height">25dp</item>
+        <item name = "android:layout_height">50dp</item>
         <item name = "android:background">@drawable/public_button</item>
         <item name = "android:textColor">@color/color_text</item>
         <item name = "android:gravity">center</item>
@@ -15,7 +15,7 @@
     <style name = "style_jog_dec">
         <item name = "android:text">-</item>
         <item name = "android:layout_width">50dp</item>
-        <item name = "android:layout_height">25dp</item>
+        <item name = "android:layout_height">50dp</item>
         <item name = "android:background">@drawable/public_button</item>
         <item name = "android:textColor">@color/color_text</item>
         <item name = "android:gravity">center|top</item>
@@ -23,9 +23,10 @@
 
     <style name = "style_jog_info">
         <item name = "android:textSize">11sp</item>
+        <item name = "android:background">@drawable/main_frame</item>
         <item name = "android:gravity">center</item>
         <item name = "android:textColor">@color/color_text</item>
-        <item name = "android:layout_width">wrap_content</item>
+        <item name = "android:layout_width">90dp</item>
         <item name = "android:layout_height">25dp</item>
     </style>
 
