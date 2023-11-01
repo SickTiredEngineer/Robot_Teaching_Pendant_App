@@ -14,8 +14,8 @@
     <string name ="str_should">JOINT2</string>
     <string name ="str_elbow">JOINT3</string>
     <string name ="str_wrist1">JOINT4</string>
-    <string name ="str_wrist2">Wrist2</string>
-    <string name ="str_wrist3">Wrist3</string>
+    <string name ="str_wrist2">-</string>
+    <string name ="str_wrist3">-</string>
 
     //좌표계 종류 string
     <string name = "str_global">Global</string>

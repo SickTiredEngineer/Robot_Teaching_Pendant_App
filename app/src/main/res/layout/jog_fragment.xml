@@ -28,9 +28,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <EditText
             android:id="@+id/jogView1"
             style="@style/style_jog_view"
+            android:inputType="number|numberDecimal"
 
             app:layout_constraintEnd_toStartOf="@+id/jogDec1"
             app:layout_constraintStart_toEndOf="@+id/jogInc1"
@@ -64,9 +65,10 @@
             app:layout_constraintStart_toEndOf="@+id/jogInc2"
             app:layout_constraintTop_toBottomOf="@+id/jogView1" />
 
-        <TextView
+        <EditText
             android:id="@+id/jogView2"
             style="@style/style_jog_view"
+            android:inputType="number|numberDecimal"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -101,9 +103,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/jogView2" />
 
-        <TextView
+        <EditText
             android:id="@+id/jogView3"
             style="@style/style_jog_view"
+            android:inputType="number|numberDecimal"
 
             app:layout_constraintEnd_toStartOf="@+id/jogDec3"
             app:layout_constraintStart_toEndOf="@+id/jogInc3"
@@ -138,9 +141,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/jogView3" />
 
-        <TextView
+        <EditText
             android:id="@+id/jogView4"
             style="@style/style_jog_view"
+            android:inputType="number|numberDecimal"
 
             app:layout_constraintEnd_toStartOf="@+id/jogDec4"
             app:layout_constraintStart_toEndOf="@+id/jogInc4"
@@ -172,9 +176,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/jogView4" />
 
-        <TextView
+        <EditText
             android:id="@+id/jogView5"
             style="@style/style_jog_view"
+            android:inputType="number|numberDecimal"
 
             app:layout_constraintEnd_toStartOf="@+id/jogDec5"
             app:layout_constraintStart_toEndOf="@+id/jogInc5"
@@ -209,9 +214,10 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/jogView5" />
 
-        <TextView
+        <EditText
             android:id="@+id/jogView6"
             style="@style/style_jog_view"
+            android:inputType="number|numberDecimal"
 
             app:layout_constraintEnd_toStartOf="@+id/jogDec6"
             app:layout_constraintStart_toEndOf="@+id/jogInc6"

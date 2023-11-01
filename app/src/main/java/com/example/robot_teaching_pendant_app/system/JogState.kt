@@ -7,12 +7,14 @@ object JogState {
     const val JOG_LOCAL_SELECTED: Int = 1
     const val JOG_USER_SELECTED: Int = 2
     const val JOG_JOINT_SELECTED: Int = 3
+    var jogSelected: Int = 0
+
 
     const val JOG_SMOOTH_SELECTED: Int = 0
     const val JOG_TICK_SELECTED: Int =1
 
     var jogModeSelected: Int = 0
-    var jogSelected: Int = 0
+
 
     //Global 좌표계 값들을 초기화 하는 변수들 입니다.
     var globalX: Float = 0f

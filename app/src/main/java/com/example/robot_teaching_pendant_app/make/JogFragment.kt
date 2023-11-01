@@ -1,6 +1,9 @@
 package com.example.robot_teaching_pendant_app.make
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,11 +11,12 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import androidx.core.view.isVisible
 import com.example.robot_teaching_pendant_app.R
 import com.example.robot_teaching_pendant_app.databinding.JogFragmentBinding
 import com.example.robot_teaching_pendant_app.system.JogState
-import org.w3c.dom.Text
+import com.example.robot_teaching_pendant_app.system.JogState.JOG_GLOBAL_SELECTED
+import com.example.robot_teaching_pendant_app.system.JogState.JOG_JOINT_SELECTED
+import com.example.robot_teaching_pendant_app.system.RobotState
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -76,50 +80,271 @@ class JogFragment : Fragment() {
         val jogDec5 = binding.jogDec5
         val jogDec6 = binding.jogDec6
 
+        //Data Class robotState 객체 생성. 자세한 사항은 해당 Data Class 를 참고하세요.
+        val robotState = RobotState()
+//        val currentState = RobotStateManager.getRobotCurrentState()
+
+
+        val incBtList = listOf<Button>(jogInc1,jogInc2,jogInc3,jogInc4,jogInc5,jogInc6)
+        val decBtList = listOf<Button>(jogDec1,jogDec2,jogDec3,jogDec4,jogDec5,jogDec6)
+        val jogViewList = listOf<EditText>(jogView1,jogView2,jogView3,jogView4,jogView5,jogView6)
+
+
+        //JOINT 조그 사용 시, 사용하지 않는 버튼 리스트 입니다.
+        val changeBtList = listOf<Button>(jogInc5,jogInc6,jogDec5,jogDec6)
+
 
         //MakeDefaultFragment 에서 Global, Local, User, Joint  를 누를 때 UI 동작 코드입니다.
         // JOINT 모드일 경우 INFO 창을 JOINT1~4로 바꾸고 5~6번 버튼과 정보창을 Invisible 합니다.
         if(JogState.jogSelected == JogState.JOG_JOINT_SELECTED) {
             for (i in jogInfoList.indices) {
                 jogInfoList[i].setText(jointStrList[i])
+                if (i > 3) {
+                    jogInfoList[i].setBackgroundResource(R.drawable.color_gray_frame)
+                    jogInfoList[i].isEnabled = false
+
+                }
+
+                for (j in changeBtList.indices) {
+                    changeBtList[j].setBackgroundResource(R.drawable.color_gray_frame)
+                    changeBtList[j].isEnabled = false
+                }
+
+                jogViewList[0].setText(robotState.joint1.toString())
+                jogViewList[1].setText(robotState.joint2.toString())
+                jogViewList[2].setText(robotState.joint3.toString())
+                jogViewList[3].setText(robotState.joint4.toString())
+                jogViewList[4].setText("-")
+                jogViewList[5].setText("-")
+
+
+
+
+                jogView5.isEnabled = false
+                jogView5.setBackgroundResource(R.drawable.color_gray_frame)
+
+                jogView6.isEnabled = false
+                jogView6.setBackgroundResource(R.drawable.color_gray_frame)
+
+
             }
-            jogDec5.isVisible = false
-            jogInc5.isVisible =false
-
-            jogDec6.isVisible = false
-            jogInc6.isVisible =false
-
-            jogInfo5.isVisible = false
-            jogInfo6.isVisible = false
-
-            jogView5.isVisible = false
-            jogView6.isVisible = false
-
-
         }
+
         else{
-            //아닌 경우 INFO를 좌표계 문자열로 바꾸고 5~6번 버튼과 정보창을 Visible 합니다.
-            for(i in jogInfoList.indices){
-                jogInfoList[i].setText(coordStrList[i])
+                //아닌 경우 INFO를 좌표계 문자열로 바꾸고 5~6번 버튼과 정보창을 Visible 합니다.
+                for (i in jogInfoList.indices) {
+                    jogInfoList[i].setText(coordStrList[i])
+                    if (i > 3) {
+                        jogInfoList[i].setBackgroundResource(R.drawable.public_button)
+                        jogInfoList[i].isEnabled = true
 
-                jogDec5.isVisible = true
-                jogInc5.isVisible = true
+                    }
+                }
 
-                jogDec6.isVisible = true
-                jogInc6.isVisible = true
+                for (j in changeBtList.indices) {
 
-                jogInfo5.isVisible = true
-                jogInfo6.isVisible = true
+                    changeBtList[j].setBackgroundResource(R.drawable.public_button)
+                    changeBtList[j].isEnabled = true
 
-                jogView5.isVisible = true
-                jogView6.isVisible = true
+                }
 
+                jogViewList[0].setText(robotState.x.toString())
+                jogViewList[1].setText(robotState.y.toString())
+                jogViewList[2].setText(robotState.z.toString())
+                jogViewList[3].setText(robotState.Rx.toString())
+                jogViewList[4].setText(robotState.Ry.toString())
+                jogViewList[5].setText(robotState.Rz.toString())
+
+                jogView5.isEnabled = true
+                jogView5.setBackgroundResource(R.drawable.public_button)
+
+                jogView6.isEnabled = true
+                jogView6.setBackgroundResource(R.drawable.public_button)
+            }
+
+
+
+
+        //JOG의 상승 버튼 리스너
+        incBtList.forEachIndexed { index, button ->
+            button.setOnClickListener {
+                when (JogState.jogSelected) {
+                    JOG_GLOBAL_SELECTED -> {
+                        when (index) {
+                            0 -> {
+                                robotState.x += 0.1f
+                                jogViewList[index].setText("%.2f".format(robotState.x))
+                            }
+                            1 -> {
+                                robotState.y += 0.1f
+                                jogViewList[index].setText("%.2f".format(robotState.y))
+                            }
+                            2 -> {
+                                robotState.z += 0.1f
+                                jogViewList[index].setText("%.2f".format(robotState.z))
+                            }
+                            3 -> {
+                                robotState.Rx += 0.1f
+                                jogViewList[index].setText("%.2f".format(robotState.Rx))
+                            }
+                            4 -> {
+                                robotState.Ry += 0.1f
+                                jogViewList[index].setText("%.2f".format(robotState.Ry))
+                            }
+                            5 -> {
+                                robotState.Rz += 0.1f
+                                jogViewList[index].setText("%.2f".format(robotState.Rz))
+                            }
+                        }
+                    }
+                    JOG_JOINT_SELECTED -> {
+                        when (index) {
+                            0 -> {
+                                robotState.joint1 += 0.1f
+                                jogViewList[index].setText("%.2f".format(robotState.joint1))
+                            }
+                            1 -> {
+                                robotState.joint2 += 0.1f
+                                jogViewList[index].setText("%.2f".format(robotState.joint2))
+                            }
+                            2 -> {
+                                robotState.joint3 += 0.1f
+                                jogViewList[index].setText("%.2f".format(robotState.joint3))
+                            }
+                            3 -> {
+                                robotState.joint4 += 0.1f
+                                jogViewList[index].setText("%.2f".format(robotState.joint4))
+                            }
+                            // 4, 5는 해당 관절값이 없으므로 아무 처리도 하지 않습니다.
+                        }
+                    }
+                }
+//                jogViewList[index].setText("%.2f".format(robotState))
             }
         }
+
+
+        //Jog의 감소 버튼 리스너
+        decBtList.forEachIndexed { index, button ->
+            button.setOnClickListener {
+                when (JogState.jogSelected) {
+                    JOG_GLOBAL_SELECTED -> {
+                        when (index) {
+                            0 -> {
+                                robotState.x -= 0.1f
+                                jogViewList[index].setText("%.2f".format(robotState.x))
+
+                            }
+                            1 -> {
+                                robotState.y -= 0.1f
+                                jogViewList[index].setText("%.2f".format(robotState.y))
+                            }
+                            2 -> {
+                                robotState.z -= 0.1f
+                                jogViewList[index].setText("%.2f".format(robotState.z))
+                            }
+                            3 -> {
+                                robotState.Rx -= 0.1f
+                                jogViewList[index].setText("%.2f".format(robotState.Rx))
+                            }
+                            4 -> {
+                                robotState.Ry -= 0.1f
+                                jogViewList[index].setText("%.2f".format(robotState.Ry))
+                            }
+                            5 -> {
+                                robotState.Rz -= 0.1f
+                                jogViewList[index].setText("%.2f".format(robotState.Rz))
+                            }
+                        }
+                    }
+                    JOG_JOINT_SELECTED -> {
+                        when (index) {
+                            0 -> {
+                                robotState.joint1 -= 0.1f
+                                jogViewList[index].setText("%.2f".format(robotState.joint1))
+                            }
+                            1 -> {
+                                robotState.joint2 -= 0.1f
+                                jogViewList[index].setText("%.2f".format(robotState.joint2))
+                            }
+                            2 -> {
+                                robotState.joint3 -= 0.1f
+                                jogViewList[index].setText("%.2f".format(robotState.joint3))
+                            }
+                            3 -> {
+                                robotState.joint4 -= 0.1f
+                                jogViewList[index].setText("%.2f".format(robotState.joint4))
+                            }
+                            // 4, 5는 해당 관절값이 없으므로 아무 처리도 하지 않습니다.
+                        }
+                    }
+
+                }
+            }
+        }
+
+
+
+        //EditText 의 값을 수정하면 좌표계 혹은 관절 값으로 반영합니다.
+        for (i in jogViewList.indices) {
+            jogViewList[i].addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+
+                override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
+
+                override fun afterTextChanged(s: Editable) {
+                    try {
+                        val newValue = s.toString().toFloat()
+
+                        if (JogState.jogSelected == JogState.JOG_GLOBAL_SELECTED) {
+                            when (i) {
+                                0 -> robotState.x = newValue
+                                1 -> robotState.y = newValue
+                                2 -> robotState.z = newValue
+                                3 -> robotState.Rx = newValue
+                                4 -> robotState.Ry = newValue
+                                5 -> robotState.Rz = newValue
+                            }
+                        } else if (JogState.jogSelected == JogState.JOG_JOINT_SELECTED) {
+                            when (i) {
+                                0 -> robotState.joint1 = newValue
+                                1 -> robotState.joint2 = newValue
+                                2 -> robotState.joint3 = newValue
+                                3 -> robotState.joint4 = newValue
+                                // 4, 5번은 비활성화되므로 값 변경 로직은 필요하지 않습니다.
+                            }
+                        }
+
+                    } catch (e: NumberFormatException) {
+                        // 입력된 값이 유효한 float 값이 아닐 때 예외 처리
+                    }
+                }
+            })
+        }
+
+
+
+        for (editText in jogViewList) {
+            // CRLF 방지
+            editText.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+                if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                    // 개행 키를 누르면 아무런 동작을 하지 않습니다.
+                    return@OnKeyListener true
+                }
+                false
+            })
+        }
+
+
 
         // Inflate the layout for this fragment
         return binding.root
     }
+
+
+
+
+
 
     companion object {
         /**

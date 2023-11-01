@@ -15,7 +15,7 @@
     <color name="main_black">#5C5A5A</color>
     <color name="main_white">#EBE5E5</color>
 
-    <color name="disable_color">#848484</color>
+    <color name="disable_color">#BABABA</color>
     <color name="able_color">#AFF3AF</color>
 
     <color name="color_text">@color/black</color>
