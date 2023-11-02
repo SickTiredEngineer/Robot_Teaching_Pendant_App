@@ -79,15 +79,12 @@
             android:layout_height="match_parent">
 
             <GridLayout
-                android:id = "@+id/grid_layout"
+                android:id="@+id/grid_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:columnCount="8"
-                android:padding="10dp"
-                android:layout_gravity="center_horizontal">
-                <!-- Here you can add multiple views -->
-
-            </GridLayout>
+                android:layout_gravity="center_horizontal"
+                android:columnCount="7"
+                android:padding="5dp"/>
         </ScrollView>
 
         <!--        <com.google.android.flexbox.FlexboxLayout-->

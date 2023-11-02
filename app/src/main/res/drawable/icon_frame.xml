@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#00FFFFFF"/> <!-- 배경색 설정, 필요 없으면 삭제 -->
+    <stroke
+        android:color="@color/color_frame"
+        android:width="2dp"/>
+    <corners android:radius="10dp"/> <!-- 테두리의 모서리 둥글기, 필요 없으면 삭제 -->
+</shape>
+

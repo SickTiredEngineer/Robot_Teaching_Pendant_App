@@ -16,6 +16,7 @@ import com.example.robot_teaching_pendant_app.databinding.JogFragmentBinding
 import com.example.robot_teaching_pendant_app.system.JogState
 import com.example.robot_teaching_pendant_app.system.JogState.JOG_GLOBAL_SELECTED
 import com.example.robot_teaching_pendant_app.system.JogState.JOG_JOINT_SELECTED
+import com.example.robot_teaching_pendant_app.system.RobotPosition
 import com.example.robot_teaching_pendant_app.system.RobotState
 
 // TODO: Rename parameter arguments, choose names that match
@@ -110,15 +111,12 @@ class JogFragment : Fragment() {
                     changeBtList[j].isEnabled = false
                 }
 
-                jogViewList[0].setText(robotState.joint1.toString())
-                jogViewList[1].setText(robotState.joint2.toString())
-                jogViewList[2].setText(robotState.joint3.toString())
-                jogViewList[3].setText(robotState.joint4.toString())
+                jogViewList[0].setText(RobotPosition.joint1.toString())
+                jogViewList[1].setText(RobotPosition.joint2.toString())
+                jogViewList[2].setText(RobotPosition.joint3.toString())
+                jogViewList[3].setText(RobotPosition.joint4.toString())
                 jogViewList[4].setText("-")
                 jogViewList[5].setText("-")
-
-
-
 
                 jogView5.isEnabled = false
                 jogView5.setBackgroundResource(R.drawable.color_gray_frame)
@@ -148,12 +146,12 @@ class JogFragment : Fragment() {
 
                 }
 
-                jogViewList[0].setText(robotState.x.toString())
-                jogViewList[1].setText(robotState.y.toString())
-                jogViewList[2].setText(robotState.z.toString())
-                jogViewList[3].setText(robotState.Rx.toString())
-                jogViewList[4].setText(robotState.Ry.toString())
-                jogViewList[5].setText(robotState.Rz.toString())
+                jogViewList[0].setText(RobotPosition.x.toString())
+                jogViewList[1].setText(RobotPosition.y.toString())
+                jogViewList[2].setText(RobotPosition.z.toString())
+                jogViewList[3].setText(RobotPosition.Rx.toString())
+                jogViewList[4].setText(RobotPosition.Ry.toString())
+                jogViewList[5].setText(RobotPosition.Rz.toString())
 
                 jogView5.isEnabled = true
                 jogView5.setBackgroundResource(R.drawable.public_button)
@@ -172,48 +170,48 @@ class JogFragment : Fragment() {
                     JOG_GLOBAL_SELECTED -> {
                         when (index) {
                             0 -> {
-                                robotState.x += 0.1f
-                                jogViewList[index].setText("%.2f".format(robotState.x))
+                                RobotPosition.x += 0.1f
+                                jogViewList[index].setText("%.2f".format(RobotPosition.x))
                             }
                             1 -> {
-                                robotState.y += 0.1f
-                                jogViewList[index].setText("%.2f".format(robotState.y))
+                                RobotPosition.y += 0.1f
+                                jogViewList[index].setText("%.2f".format(RobotPosition.y))
                             }
                             2 -> {
-                                robotState.z += 0.1f
-                                jogViewList[index].setText("%.2f".format(robotState.z))
+                                RobotPosition.z += 0.1f
+                                jogViewList[index].setText("%.2f".format(RobotPosition.z))
                             }
                             3 -> {
-                                robotState.Rx += 0.1f
-                                jogViewList[index].setText("%.2f".format(robotState.Rx))
+                                RobotPosition.Rx += 0.1f
+                                jogViewList[index].setText("%.2f".format(RobotPosition.Rx))
                             }
                             4 -> {
-                                robotState.Ry += 0.1f
-                                jogViewList[index].setText("%.2f".format(robotState.Ry))
+                                RobotPosition.Ry += 0.1f
+                                jogViewList[index].setText("%.2f".format(RobotPosition.Ry))
                             }
                             5 -> {
-                                robotState.Rz += 0.1f
-                                jogViewList[index].setText("%.2f".format(robotState.Rz))
+                                RobotPosition.Rz += 0.1f
+                                jogViewList[index].setText("%.2f".format(RobotPosition.Rz))
                             }
                         }
                     }
                     JOG_JOINT_SELECTED -> {
                         when (index) {
                             0 -> {
-                                robotState.joint1 += 0.1f
-                                jogViewList[index].setText("%.2f".format(robotState.joint1))
+                                RobotPosition.joint1 += 0.1f
+                                jogViewList[index].setText("%.2f".format(RobotPosition.joint1))
                             }
                             1 -> {
-                                robotState.joint2 += 0.1f
-                                jogViewList[index].setText("%.2f".format(robotState.joint2))
+                                RobotPosition.joint2 += 0.1f
+                                jogViewList[index].setText("%.2f".format(RobotPosition.joint2))
                             }
                             2 -> {
-                                robotState.joint3 += 0.1f
-                                jogViewList[index].setText("%.2f".format(robotState.joint3))
+                                RobotPosition.joint3 += 0.1f
+                                jogViewList[index].setText("%.2f".format(RobotPosition.joint3))
                             }
                             3 -> {
-                                robotState.joint4 += 0.1f
-                                jogViewList[index].setText("%.2f".format(robotState.joint4))
+                                RobotPosition.joint4 += 0.1f
+                                jogViewList[index].setText("%.2f".format(RobotPosition.joint4))
                             }
                             // 4, 5는 해당 관절값이 없으므로 아무 처리도 하지 않습니다.
                         }
@@ -231,49 +229,49 @@ class JogFragment : Fragment() {
                     JOG_GLOBAL_SELECTED -> {
                         when (index) {
                             0 -> {
-                                robotState.x -= 0.1f
-                                jogViewList[index].setText("%.2f".format(robotState.x))
+                                RobotPosition.x -= 0.1f
+                                jogViewList[index].setText("%.2f".format(RobotPosition.x))
 
                             }
                             1 -> {
-                                robotState.y -= 0.1f
-                                jogViewList[index].setText("%.2f".format(robotState.y))
+                                RobotPosition.y -= 0.1f
+                                jogViewList[index].setText("%.2f".format(RobotPosition.y))
                             }
                             2 -> {
-                                robotState.z -= 0.1f
-                                jogViewList[index].setText("%.2f".format(robotState.z))
+                                RobotPosition.z -= 0.1f
+                                jogViewList[index].setText("%.2f".format(RobotPosition.z))
                             }
                             3 -> {
-                                robotState.Rx -= 0.1f
-                                jogViewList[index].setText("%.2f".format(robotState.Rx))
+                                RobotPosition.Rx -= 0.1f
+                                jogViewList[index].setText("%.2f".format(RobotPosition.Rx))
                             }
                             4 -> {
-                                robotState.Ry -= 0.1f
-                                jogViewList[index].setText("%.2f".format(robotState.Ry))
+                                RobotPosition.Ry -= 0.1f
+                                jogViewList[index].setText("%.2f".format(RobotPosition.Ry))
                             }
                             5 -> {
-                                robotState.Rz -= 0.1f
-                                jogViewList[index].setText("%.2f".format(robotState.Rz))
+                                RobotPosition.Rz -= 0.1f
+                                jogViewList[index].setText("%.2f".format(RobotPosition.Rz))
                             }
                         }
                     }
                     JOG_JOINT_SELECTED -> {
                         when (index) {
                             0 -> {
-                                robotState.joint1 -= 0.1f
-                                jogViewList[index].setText("%.2f".format(robotState.joint1))
+                                RobotPosition.joint1 -= 0.1f
+                                jogViewList[index].setText("%.2f".format(RobotPosition.joint1))
                             }
                             1 -> {
-                                robotState.joint2 -= 0.1f
-                                jogViewList[index].setText("%.2f".format(robotState.joint2))
+                                RobotPosition.joint2 -= 0.1f
+                                jogViewList[index].setText("%.2f".format(RobotPosition.joint2))
                             }
                             2 -> {
-                                robotState.joint3 -= 0.1f
-                                jogViewList[index].setText("%.2f".format(robotState.joint3))
+                                RobotPosition.joint3 -= 0.1f
+                                jogViewList[index].setText("%.2f".format(RobotPosition.joint3))
                             }
                             3 -> {
-                                robotState.joint4 -= 0.1f
-                                jogViewList[index].setText("%.2f".format(robotState.joint4))
+                                RobotPosition.joint4 -= 0.1f
+                                jogViewList[index].setText("%.2f".format(RobotPosition.joint4))
                             }
                             // 4, 5는 해당 관절값이 없으므로 아무 처리도 하지 않습니다.
                         }
@@ -298,19 +296,19 @@ class JogFragment : Fragment() {
 
                         if (JogState.jogSelected == JogState.JOG_GLOBAL_SELECTED) {
                             when (i) {
-                                0 -> robotState.x = newValue
-                                1 -> robotState.y = newValue
-                                2 -> robotState.z = newValue
-                                3 -> robotState.Rx = newValue
-                                4 -> robotState.Ry = newValue
-                                5 -> robotState.Rz = newValue
+                                0 -> RobotPosition.x = newValue
+                                1 -> RobotPosition.y = newValue
+                                2 -> RobotPosition.z = newValue
+                                3 -> RobotPosition.Rx = newValue
+                                4 -> RobotPosition.Ry = newValue
+                                5 -> RobotPosition.Rz = newValue
                             }
                         } else if (JogState.jogSelected == JogState.JOG_JOINT_SELECTED) {
                             when (i) {
-                                0 -> robotState.joint1 = newValue
-                                1 -> robotState.joint2 = newValue
-                                2 -> robotState.joint3 = newValue
-                                3 -> robotState.joint4 = newValue
+                                0 -> RobotPosition.joint1 = newValue
+                                1 -> RobotPosition.joint2 = newValue
+                                2 -> RobotPosition.joint3 = newValue
+                                3 -> RobotPosition.joint4 = newValue
                                 // 4, 5번은 비활성화되므로 값 변경 로직은 필요하지 않습니다.
                             }
                         }
@@ -335,15 +333,9 @@ class JogFragment : Fragment() {
             })
         }
 
-
-
         // Inflate the layout for this fragment
         return binding.root
     }
-
-
-
-
 
 
     companion object {

@@ -8,9 +8,9 @@ data class Icon(val imageRes: Int, val title: String, val action:() -> Unit)
 
 
 val allIcons = listOf(
-    Icon(R.drawable.mybticon, "Move", { }),
-    Icon(R.drawable.mybticon, "동작J", { /* 동작 처리 */ }),
-    Icon(R.drawable.mybticon, "동작L", { /* 동작 처리 */ }),
+    Icon(R.drawable.itpl, "Move", { }),
+    Icon(R.drawable.itpl2, "동작J", { /* 동작 처리 */ }),
+    Icon(R.drawable.itpl3, "동작L", { /* 동작 처리 */ }),
     Icon(R.drawable.mybticon, "Circle", { /* 동작 처리 */ }),
     Icon(R.drawable.mybticon, "Wait", { /* 동작 처리 */ }),
 

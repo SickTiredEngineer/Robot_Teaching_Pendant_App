@@ -1,5 +1,6 @@
 package com.example.robot_teaching_pendant_app.make
 
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,7 +9,9 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.GridLayout
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentActivity
@@ -185,7 +188,6 @@ class MakeDefaultFragment : Fragment() {
         jogJointBt.assignJogState(JogState.JOG_JOINT_SELECTED, jogButtonList, jogViewer.id)
 
 
-
 /*        카테고리를 클릭하면 해당 카테고리에 포함 된 아이콘 버튼을 -> defIconView 라는 스크롤 바 뷰 안에 포함되어 있는 gridLayout에 출력하는
         함수입니다. 아이콘 버튼은 make 디렉토리의 Icon Data Class 를 참조하십시오.*/
 
@@ -200,15 +202,21 @@ class MakeDefaultFragment : Fragment() {
                 val iconButton = ImageButton(context)
                 iconButton.setImageResource(iconData.imageRes)
 
-                //params(parameters) 는 그리드 레이아웃 클래스를 참조하고 아이콘에 필요한 규격을 설정합니다.
+                //FIT_CENTER는 이미지를 뷰의 중앙에 위치시키면서 뷰에 맞게 이미지를 조절합니다. 이미지의 가로세로 비율은 유지됩니다.
+                //CENTER_INSIDE는 이미지가 뷰의 경계 내에 완전히 들어오도록 이미지 크기를 조절합니다. 이미지의 가로세로 비율 역시 유지됩니다.
+                iconButton.scaleType = ImageView.ScaleType.CENTER_INSIDE
+                iconButton.background = null
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    iconButton.foreground = ContextCompat.getDrawable(requireContext(), R.drawable.icon_frame)
+                }
+
                 val params = GridLayout.LayoutParams()
                 params.width = 150
                 params.height = 150
+                params.setMargins(10, 10, 10, 10)  // 마진 설정: 좌, 상, 우, 하
 
-                //마진 순서는 좌 상 우 하 입니다.
-                params.setMargins(5, 5, 5, 5)  // 마진 설정
-
-                //아이콘 버튼의 파라미터에 params 를 초기화 하여 적용합니다.
+// 아이콘 버튼의 레이아웃 파라미터에 위에서 설정한 params를 적용합니다.
                 iconButton.layoutParams = params
                 iconButton.background = null
 
