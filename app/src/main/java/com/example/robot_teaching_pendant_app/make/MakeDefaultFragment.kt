@@ -2,6 +2,8 @@ package com.example.robot_teaching_pendant_app.make
 
 import android.os.Build
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -52,9 +54,9 @@ class MakeDefaultFragment : Fragment() {
         val defAllBt = defBinding.defAllBt
         val defMoveBt = defBinding.defMoveBt
         val defFuncBt = defBinding.defFuncBt
-        val defEndEffBt = defBinding.defEndEffBt
         val defOtherBt = defBinding.defOtherBt
-        val defSearchBt = defBinding.defSearchBt
+        val searchBox = defBinding.searchBox
+
 
         //기능 버튼 아이콘들이 출력 될 레이아웃
         val defIconView = defBinding.defIconView
@@ -239,6 +241,48 @@ class MakeDefaultFragment : Fragment() {
         defMoveBt.setOnClickListener{
             displayIcons(moveIcons)
         }
+
+
+
+        fun filterAndDisplayIcons(query: String) {
+            // query를 기반으로 icons 리스트를 필터링
+            val filteredIcons = allIcons.filter { icon ->
+                icon.title.contains(query, ignoreCase = true)  // 대소문자를 무시하고 포함 여부 확인
+            }
+
+            displayIcons(filteredIcons)  // 필터링된 아이콘 리스트를 출력
+        }
+
+
+        searchBox.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+                // 입력 전
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                val currentText = s.toString()  // s를 String으로 변환
+                if (currentText.contains("\n") || currentText.contains("\r")) {
+                    // CRLF나 엔터키가 포함된 경우, 해당 문자를 제거
+                    val newText = currentText.replace("\n", "").replace("\r", "")
+                    searchBox.setText(newText)
+
+                    // 커서를 텍스트의 끝으로 이동
+                    searchBox.setSelection(newText.length)
+
+                    // 필요하다면 사용자에게 경고 메시지 표시
+                    Toast.makeText(context, "엔터키 입력은 허용되지 않습니다.", Toast.LENGTH_SHORT).show()
+                } else {
+                    filterAndDisplayIcons(currentText)
+                }
+
+            }
+
+            override fun afterTextChanged(s: Editable) {
+                // 입력 후
+            }
+        })
+
+
 
 
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="670dp"
@@ -7,27 +7,43 @@
     android:orientation="vertical"
     tools:context=".make.MakeDefaultFragment">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="668dp"
-        android:layout_height="335dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
+    <EditText
+        android:id="@+id/searchBox"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:textSize="20sp"
         android:background="@drawable/main_frame"
-        android:orientation="vertical">
+        android:hint="검색할 기능을 입력하세요."
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="265dp"
+        android:background="@drawable/main_frame"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchBox">
 
         <LinearLayout
 
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:id="@+id/linearLayout4"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
             android:background="@drawable/main_frame"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <Button
                 android:id="@+id/def_all_bt"
                 style="@style/style_button"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/str_all" />
@@ -35,7 +51,7 @@
             <Button
                 android:id="@+id/def_move_bt"
                 style="@style/style_button"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/str_move" />
@@ -43,48 +59,38 @@
             <Button
                 android:id="@+id/def_func_bt"
                 style="@style/style_button"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/str_func" />
 
             <Button
-                android:id="@+id/def_end_eff_bt"
-                style="@style/style_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/str_end_ef" />
-
-            <Button
                 android:id="@+id/def_other_bt"
                 style="@style/style_button"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/str_other" />
 
-            <Button
-                android:id="@+id/def_search_bt"
-                style="@style/style_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/str_search" />
         </LinearLayout>
 
         <ScrollView
             android:id="@+id/def_icon_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/linearLayout4"
+            app:layout_constraintTop_toTopOf="parent">
 
             <GridLayout
                 android:id="@+id/grid_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_gravity="center_horizontal"
-                android:columnCount="7"
-                android:padding="5dp"/>
+                android:columnCount="6"
+                android:padding="5dp" />
         </ScrollView>
 
         <!--        <com.google.android.flexbox.FlexboxLayout-->
@@ -98,15 +104,16 @@
         <!--        </com.google.android.flexbox.FlexboxLayout>-->
 
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/jog_view"
         android:layout_width="668dp"
         android:layout_height="335dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:background="@drawable/main_frame">
+        android:background="@drawable/main_frame"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:id="@+id/jog_mode_layout"
@@ -302,9 +309,9 @@
                 android:id="@+id/imageView6"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src ="@drawable/roboinfo" />
+                android:src="@drawable/roboinfo" />
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
