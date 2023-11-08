@@ -58,6 +58,8 @@ class JogFragment : Fragment() {
         //JogSelected 에 따라서 Info(TextView)를 바꿀 때 사용할 문자열 리소스 List
         val jogInfoList = listOf<TextView>(jogInfo1,jogInfo2,jogInfo3,jogInfo4,jogInfo5,jogInfo6)
         val coordStrList = listOf(R.string.str_x,R.string.str_y,R.string.str_z,R.string.str_rx,R.string.str_ry,R.string.str_rz)
+
+        //관절 값 리소스 이름 수정 필요.
         val jointStrList = listOf(R.string.str_base,R.string.str_should,R.string.str_elbow,R.string.str_wrist1,R.string.str_wrist2,R.string.str_wrist3)
 
         val jogView1 = binding.jogView1
@@ -86,6 +88,7 @@ class JogFragment : Fragment() {
 //        val currentState = RobotStateManager.getRobotCurrentState()
 
 
+        //로직에 사용될 버튼과 EditText의 리스트입니다.
         val incBtList = listOf<Button>(jogInc1,jogInc2,jogInc3,jogInc4,jogInc5,jogInc6)
         val decBtList = listOf<Button>(jogDec1,jogDec2,jogDec3,jogDec4,jogDec5,jogDec6)
         val jogViewList = listOf<EditText>(jogView1,jogView2,jogView3,jogView4,jogView5,jogView6)
@@ -96,6 +99,8 @@ class JogFragment : Fragment() {
 
 
         //MakeDefaultFragment 에서 Global, Local, User, Joint  를 누를 때 UI 동작 코드입니다.
+        //MakeDefaultFragment 에서 4가지 조그 중 하나를 선택하면, 해당 Fragment를 새로고침 하여 변경된 사항을 적용하게 됩니다.
+
         // JOINT 모드일 경우 INFO 창을 JOINT1~4로 바꾸고 5~6번 버튼과 정보창을 Invisible 합니다.
         if(JogState.jogSelected == JogState.JOG_JOINT_SELECTED) {
             for (i in jogInfoList.indices) {
@@ -168,6 +173,7 @@ class JogFragment : Fragment() {
             button.setOnClickListener {
                 when (JogState.jogSelected) {
                     JOG_GLOBAL_SELECTED -> {
+                        //증가 버튼 순서는 제일 위에 0번부터 마지막 제일 아래 5번까지 순서입니다.
                         when (index) {
                             0 -> {
                                 RobotPosition.x += 0.1f
@@ -195,6 +201,8 @@ class JogFragment : Fragment() {
                             }
                         }
                     }
+
+                    //관절값은 4개만 필요하기 때문에 0~3까지만 사용합니다.
                     JOG_JOINT_SELECTED -> {
                         when (index) {
                             0 -> {
@@ -227,6 +235,8 @@ class JogFragment : Fragment() {
             button.setOnClickListener {
                 when (JogState.jogSelected) {
                     JOG_GLOBAL_SELECTED -> {
+
+                        //감소 버튼 순서는 제일 위에 0번부터 마지막 제일 아래 5번까지 순서입니다.
                         when (index) {
                             0 -> {
                                 RobotPosition.x -= 0.1f
@@ -255,6 +265,8 @@ class JogFragment : Fragment() {
                             }
                         }
                     }
+
+                    //관절값은 4개만 필요하기 때문에 0~3까지만 사용합니다.
                     JOG_JOINT_SELECTED -> {
                         when (index) {
                             0 -> {
@@ -294,6 +306,7 @@ class JogFragment : Fragment() {
                     try {
                         val newValue = s.toString().toFloat()
 
+                        //Global Jog 일 때, 각 좌표계 값에 입력값을 대입합니다.
                         if (JogState.jogSelected == JogState.JOG_GLOBAL_SELECTED) {
                             when (i) {
                                 0 -> RobotPosition.x = newValue
@@ -303,6 +316,8 @@ class JogFragment : Fragment() {
                                 4 -> RobotPosition.Ry = newValue
                                 5 -> RobotPosition.Rz = newValue
                             }
+
+                            //Joint Jog 일 때, 각 관절값에 입력값을 대입합니다.
                         } else if (JogState.jogSelected == JogState.JOG_JOINT_SELECTED) {
                             when (i) {
                                 0 -> RobotPosition.joint1 = newValue
@@ -322,6 +337,7 @@ class JogFragment : Fragment() {
 
 
 
+        //JOG 수치를 입력하는 EditText에 CRLF를 허용하지 않습니다.
         for (editText in jogViewList) {
             // CRLF 방지
             editText.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
