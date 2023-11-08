@@ -8,17 +8,17 @@ data class Icon(val imageRes: Int, val title: String, val action:() -> Unit)
 
 
 val allIcons = listOf(
-    Icon(R.drawable.itpl, "Move", { }),
-    Icon(R.drawable.itpl2, "동작J", { /* 동작 처리 */ }),
-    Icon(R.drawable.itpl3, "동작L", { /* 동작 처리 */ }),
-    Icon(R.drawable.mybticon, "Circle", { /* 동작 처리 */ }),
-    Icon(R.drawable.mybticon, "Wait", { /* 동작 처리 */ }),
+    Icon(R.drawable.bt_move_icon, "Move", { }),
+    Icon(R.drawable.bt_movej_icon, "동작J", { /* 동작 처리 */ }),
+    Icon(R.drawable.bt_movel_icon, "동작L", { /* 동작 처리 */ }),
+    Icon(R.drawable.bt_circlemove_icon, "Circle", { /* 동작 처리 */ }),
+    Icon(R.drawable.bt_pinpoint_icon, "Wait", { /* 동작 처리 */ }),
 
     // ... other icons for '전체' category
 )
 
 val moveIcons = listOf(
-    Icon(R.drawable.mybticon, "동작J", { /* 동작 처리 */ }),
-    Icon(R.drawable.mybticon, "동작L", { /* 동작 처리 */ }),
+    Icon(R.drawable.bt_movej_icon, "동작J", { /* 동작 처리 */ }),
+    Icon(R.drawable.bt_movel_icon, "동작L", { /* 동작 처리 */ }),
     // ... other icons for '이동' category
 )
