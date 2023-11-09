@@ -180,7 +180,6 @@
         android:layout_height="84dp"
 
         android:src="@drawable/bt_search_icon"
-        android:text="@string/str_search"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tree_marking_bt" />
 

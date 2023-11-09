@@ -20,7 +20,6 @@
     </style>
 
 
-
     //Jog Mode 의 Tick 모드 사용 시
     <style name = "style_jogmode_edtx">
         <item name = "android:background">@drawable/main_frame</item>

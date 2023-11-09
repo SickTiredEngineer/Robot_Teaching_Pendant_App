@@ -15,12 +15,6 @@ class ConnectHelper(
     private val disconnectBt: Button,
     private val stateConnect: TextView,
     private val stateConBox: View,
-    private val statePower: TextView,
-    private val statePowerBox: View,
-    private val stateDevice: TextView,
-    private val stateDeviceBox: View,
-    private val stateSystem: TextView,
-    private val stateSystemBox: View,
     private val stateRobOperBox: View
 ) {
 
@@ -103,20 +97,7 @@ class ConnectHelper(
         disconnectBt.isEnabled = false
 
         val mHandler = Handler(Looper.getMainLooper())
-        mHandler.postDelayed({
-            statePower.setText(R.string.state_power_on)
-            statePowerBox.setBackgroundResource(R.drawable.color_green_frame)
-        }, 1000L)
 
-        mHandler.postDelayed({
-            stateDevice.setText(R.string.state_device_on)
-            stateDeviceBox.setBackgroundResource(R.drawable.color_green_frame)
-        }, 1500L)
-
-        mHandler.postDelayed({
-            stateSystem.setText(R.string.state_system_on)
-            stateSystemBox.setBackgroundResource(R.drawable.color_green_frame)
-        }, 2000L)
 
         mHandler.postDelayed({
             stateRobOperBox.setBackgroundResource(R.drawable.color_green_frame)
@@ -139,15 +120,6 @@ class ConnectHelper(
         stateConnect.setText(R.string.state_disconnected)
         stateConBox.setBackgroundResource(R.drawable.color_red_frame)
 
-        statePower.setText(R.string.state_power_off)
-        statePowerBox.setBackgroundResource(R.drawable.main_frame)
-
-        stateDevice.setText(R.string.state_device_off)
-        stateDeviceBox.setBackgroundResource(R.drawable.main_frame)
-
-        stateSystem.setText(R.string.state_system_off)
-        stateSystemBox.setBackgroundResource(R.drawable.main_frame)
-
         stateRobOperBox.setBackgroundResource(R.drawable.main_frame)
 
         connectBt.setText(R.string.str_connect)
@@ -163,15 +135,6 @@ class ConnectHelper(
     private fun disconnectClick(){
         stateConnect.setText(R.string.state_disconnected)
         stateConBox.setBackgroundResource(R.drawable.color_red_frame)
-
-        statePower.setText(R.string.state_power_off)
-        statePowerBox.setBackgroundResource(R.drawable.main_frame)
-
-        stateDevice.setText(R.string.state_device_off)
-        stateDeviceBox.setBackgroundResource(R.drawable.main_frame)
-
-        stateSystem.setText(R.string.state_system_off)
-        stateSystemBox.setBackgroundResource(R.drawable.main_frame)
 
         stateRobOperBox.setBackgroundResource(R.drawable.main_frame)
 
@@ -206,15 +169,11 @@ class ConnectHelper(
         disconnectBt.setBackgroundResource(R.drawable.color_red_frame)
 
         stateConBox.setBackgroundResource(R.drawable.color_green_frame)
-        statePowerBox.setBackgroundResource(R.drawable.color_green_frame)
-        stateDeviceBox.setBackgroundResource(R.drawable.color_green_frame)
-        stateSystemBox.setBackgroundResource(R.drawable.color_green_frame)
+
         stateRobOperBox.setBackgroundResource(R.drawable.color_green_frame)
 
         stateConnect.setText(R.string.state_connected)
-        statePower.setText(R.string.state_power_on)
-        stateDevice.setText(R.string.state_device_on)
-        stateSystem.setText(R.string.state_system_on)
+
     }
 
 }

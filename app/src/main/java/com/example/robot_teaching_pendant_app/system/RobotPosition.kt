@@ -13,4 +13,5 @@ object RobotPosition {
     var joint2: Float = 0.0f
     var joint3: Float = 0.0f
     var joint4: Float = 0.0f
+
 }

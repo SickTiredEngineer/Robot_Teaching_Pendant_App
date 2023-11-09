@@ -3,6 +3,7 @@ package com.example.robot_teaching_pendant_app.make
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -16,8 +17,8 @@ import com.example.robot_teaching_pendant_app.databinding.JogFragmentBinding
 import com.example.robot_teaching_pendant_app.system.JogState
 import com.example.robot_teaching_pendant_app.system.JogState.JOG_GLOBAL_SELECTED
 import com.example.robot_teaching_pendant_app.system.JogState.JOG_JOINT_SELECTED
+import com.example.robot_teaching_pendant_app.system.JogState.jogSelected
 import com.example.robot_teaching_pendant_app.system.RobotPosition
-import com.example.robot_teaching_pendant_app.system.RobotState
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,6 +34,9 @@ class JogFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private var _binding: JogFragmentBinding? = null
+    private val binding get() = _binding!!
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,11 +60,26 @@ class JogFragment : Fragment() {
         val jogInfo6 = binding.jogInfo6
 
         //JogSelected 에 따라서 Info(TextView)를 바꿀 때 사용할 문자열 리소스 List
-        val jogInfoList = listOf<TextView>(jogInfo1,jogInfo2,jogInfo3,jogInfo4,jogInfo5,jogInfo6)
-        val coordStrList = listOf(R.string.str_x,R.string.str_y,R.string.str_z,R.string.str_rx,R.string.str_ry,R.string.str_rz)
+        val jogInfoList =
+            listOf<TextView>(jogInfo1, jogInfo2, jogInfo3, jogInfo4, jogInfo5, jogInfo6)
+        val coordStrList = listOf(
+            R.string.str_x,
+            R.string.str_y,
+            R.string.str_z,
+            R.string.str_rx,
+            R.string.str_ry,
+            R.string.str_rz
+        )
 
         //관절 값 리소스 이름 수정 필요.
-        val jointStrList = listOf(R.string.str_base,R.string.str_should,R.string.str_elbow,R.string.str_wrist1,R.string.str_wrist2,R.string.str_wrist3)
+        val jointStrList = listOf(
+            R.string.str_joint1,
+            R.string.str_joint2,
+            R.string.str_joint3,
+            R.string.str_joint4,
+            R.string.str_joint_null1,
+            R.string.str_joint_null2
+        )
 
         val jogView1 = binding.jogView1
         val jogView2 = binding.jogView2
@@ -83,26 +102,59 @@ class JogFragment : Fragment() {
         val jogDec5 = binding.jogDec5
         val jogDec6 = binding.jogDec6
 
-        //Data Class robotState 객체 생성. 자세한 사항은 해당 Data Class 를 참고하세요.
-        val robotState = RobotState()
-//        val currentState = RobotStateManager.getRobotCurrentState()
-
 
         //로직에 사용될 버튼과 EditText의 리스트입니다.
-        val incBtList = listOf<Button>(jogInc1,jogInc2,jogInc3,jogInc4,jogInc5,jogInc6)
-        val decBtList = listOf<Button>(jogDec1,jogDec2,jogDec3,jogDec4,jogDec5,jogDec6)
-        val jogViewList = listOf<EditText>(jogView1,jogView2,jogView3,jogView4,jogView5,jogView6)
+        val incBtList = listOf<Button>(jogInc1, jogInc2, jogInc3, jogInc4, jogInc5, jogInc6)
+        val decBtList = listOf<Button>(jogDec1, jogDec2, jogDec3, jogDec4, jogDec5, jogDec6)
+        val jogViewList = listOf<EditText>(jogView1, jogView2, jogView3, jogView4, jogView5, jogView6)
+
+
+        fun goHome() {
+
+            RobotPosition.joint1 = 0f
+            RobotPosition.joint2 = 0f
+            RobotPosition.joint3 = 0f
+            RobotPosition.joint4 = 0f
+
+            RobotPosition.x = 0f
+            RobotPosition.y = 0f
+            RobotPosition.z = 0f
+            RobotPosition.Rx = 0f
+            RobotPosition.Ry = 0f
+            RobotPosition.Rz = 0f
+
+            when (jogSelected) {
+                JOG_JOINT_SELECTED -> {
+                    jogView1.setText("%.2f".format(RobotPosition.joint1))
+                    jogView2.setText("%.2f".format(RobotPosition.joint2))
+                    jogView3.setText("%.2f".format(RobotPosition.joint3))
+                    jogView4.setText("%.2f".format(RobotPosition.joint4))
+
+                }
+
+                JOG_GLOBAL_SELECTED -> {
+                    jogView1.setText("%.2f".format(RobotPosition.x))
+                    jogView2.setText("%.2f".format(RobotPosition.y))
+                    jogView3.setText("%.2f".format(RobotPosition.z))
+                    jogView4.setText("%.2f".format(RobotPosition.Rx))
+                    jogView5.setText("%.2f".format(RobotPosition.Ry))
+                    jogView6.setText("%.2f".format(RobotPosition.Rz))
+
+                }
+            }
+        }
 
 
         //JOINT 조그 사용 시, 사용하지 않는 버튼 리스트 입니다.
-        val changeBtList = listOf<Button>(jogInc5,jogInc6,jogDec5,jogDec6)
+        val changeBtList = listOf<Button>(jogInc5, jogInc6, jogDec5, jogDec6)
 
 
         //MakeDefaultFragment 에서 Global, Local, User, Joint  를 누를 때 UI 동작 코드입니다.
         //MakeDefaultFragment 에서 4가지 조그 중 하나를 선택하면, 해당 Fragment를 새로고침 하여 변경된 사항을 적용하게 됩니다.
 
+
         // JOINT 모드일 경우 INFO 창을 JOINT1~4로 바꾸고 5~6번 버튼과 정보창을 Invisible 합니다.
-        if(JogState.jogSelected == JogState.JOG_JOINT_SELECTED) {
+        if (JogState.jogSelected == JogState.JOG_JOINT_SELECTED) {
             for (i in jogInfoList.indices) {
                 jogInfoList[i].setText(jointStrList[i])
                 if (i > 3) {
@@ -131,41 +183,36 @@ class JogFragment : Fragment() {
 
 
             }
-        }
-
-        else{
-                //아닌 경우 INFO를 좌표계 문자열로 바꾸고 5~6번 버튼과 정보창을 Visible 합니다.
-                for (i in jogInfoList.indices) {
-                    jogInfoList[i].setText(coordStrList[i])
-                    if (i > 3) {
-                        jogInfoList[i].setBackgroundResource(R.drawable.public_button)
-                        jogInfoList[i].isEnabled = true
-
-                    }
-                }
-
-                for (j in changeBtList.indices) {
-
-                    changeBtList[j].setBackgroundResource(R.drawable.public_button)
-                    changeBtList[j].isEnabled = true
+        } else {
+            //아닌 경우 INFO를 좌표계 문자열로 바꾸고 5~6번 버튼과 정보창을 Visible 합니다.
+            for (i in jogInfoList.indices) {
+                jogInfoList[i].setText(coordStrList[i])
+                if (i > 3) {
+                    jogInfoList[i].setBackgroundResource(R.drawable.public_button)
+                    jogInfoList[i].isEnabled = true
 
                 }
-
-                jogViewList[0].setText(RobotPosition.x.toString())
-                jogViewList[1].setText(RobotPosition.y.toString())
-                jogViewList[2].setText(RobotPosition.z.toString())
-                jogViewList[3].setText(RobotPosition.Rx.toString())
-                jogViewList[4].setText(RobotPosition.Ry.toString())
-                jogViewList[5].setText(RobotPosition.Rz.toString())
-
-                jogView5.isEnabled = true
-                jogView5.setBackgroundResource(R.drawable.public_button)
-
-                jogView6.isEnabled = true
-                jogView6.setBackgroundResource(R.drawable.public_button)
             }
 
+            for (j in changeBtList.indices) {
 
+                changeBtList[j].setBackgroundResource(R.drawable.public_button)
+                changeBtList[j].isEnabled = true
+            }
+
+            jogViewList[0].setText(RobotPosition.x.toString())
+            jogViewList[1].setText(RobotPosition.y.toString())
+            jogViewList[2].setText(RobotPosition.z.toString())
+            jogViewList[3].setText(RobotPosition.Rx.toString())
+            jogViewList[4].setText(RobotPosition.Ry.toString())
+            jogViewList[5].setText(RobotPosition.Rz.toString())
+
+            jogView5.isEnabled = true
+            jogView5.setBackgroundResource(R.drawable.public_button)
+
+            jogView6.isEnabled = true
+            jogView6.setBackgroundResource(R.drawable.public_button)
+        }
 
 
         //JOG의 상승 버튼 리스너
@@ -179,22 +226,27 @@ class JogFragment : Fragment() {
                                 RobotPosition.x += 0.1f
                                 jogViewList[index].setText("%.2f".format(RobotPosition.x))
                             }
+
                             1 -> {
                                 RobotPosition.y += 0.1f
                                 jogViewList[index].setText("%.2f".format(RobotPosition.y))
                             }
+
                             2 -> {
                                 RobotPosition.z += 0.1f
                                 jogViewList[index].setText("%.2f".format(RobotPosition.z))
                             }
+
                             3 -> {
                                 RobotPosition.Rx += 0.1f
                                 jogViewList[index].setText("%.2f".format(RobotPosition.Rx))
                             }
+
                             4 -> {
                                 RobotPosition.Ry += 0.1f
                                 jogViewList[index].setText("%.2f".format(RobotPosition.Ry))
                             }
+
                             5 -> {
                                 RobotPosition.Rz += 0.1f
                                 jogViewList[index].setText("%.2f".format(RobotPosition.Rz))
@@ -209,14 +261,17 @@ class JogFragment : Fragment() {
                                 RobotPosition.joint1 += 0.1f
                                 jogViewList[index].setText("%.2f".format(RobotPosition.joint1))
                             }
+
                             1 -> {
                                 RobotPosition.joint2 += 0.1f
                                 jogViewList[index].setText("%.2f".format(RobotPosition.joint2))
                             }
+
                             2 -> {
                                 RobotPosition.joint3 += 0.1f
                                 jogViewList[index].setText("%.2f".format(RobotPosition.joint3))
                             }
+
                             3 -> {
                                 RobotPosition.joint4 += 0.1f
                                 jogViewList[index].setText("%.2f".format(RobotPosition.joint4))
@@ -225,7 +280,7 @@ class JogFragment : Fragment() {
                         }
                     }
                 }
-//                jogViewList[index].setText("%.2f".format(robotState))
+
             }
         }
 
@@ -243,22 +298,27 @@ class JogFragment : Fragment() {
                                 jogViewList[index].setText("%.2f".format(RobotPosition.x))
 
                             }
+
                             1 -> {
                                 RobotPosition.y -= 0.1f
                                 jogViewList[index].setText("%.2f".format(RobotPosition.y))
                             }
+
                             2 -> {
                                 RobotPosition.z -= 0.1f
                                 jogViewList[index].setText("%.2f".format(RobotPosition.z))
                             }
+
                             3 -> {
                                 RobotPosition.Rx -= 0.1f
                                 jogViewList[index].setText("%.2f".format(RobotPosition.Rx))
                             }
+
                             4 -> {
                                 RobotPosition.Ry -= 0.1f
                                 jogViewList[index].setText("%.2f".format(RobotPosition.Ry))
                             }
+
                             5 -> {
                                 RobotPosition.Rz -= 0.1f
                                 jogViewList[index].setText("%.2f".format(RobotPosition.Rz))
@@ -273,14 +333,17 @@ class JogFragment : Fragment() {
                                 RobotPosition.joint1 -= 0.1f
                                 jogViewList[index].setText("%.2f".format(RobotPosition.joint1))
                             }
+
                             1 -> {
                                 RobotPosition.joint2 -= 0.1f
                                 jogViewList[index].setText("%.2f".format(RobotPosition.joint2))
                             }
+
                             2 -> {
                                 RobotPosition.joint3 -= 0.1f
                                 jogViewList[index].setText("%.2f".format(RobotPosition.joint3))
                             }
+
                             3 -> {
                                 RobotPosition.joint4 -= 0.1f
                                 jogViewList[index].setText("%.2f".format(RobotPosition.joint4))
@@ -294,11 +357,16 @@ class JogFragment : Fragment() {
         }
 
 
-
         //EditText 의 값을 수정하면 좌표계 혹은 관절 값으로 반영합니다.
         for (i in jogViewList.indices) {
             jogViewList[i].addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+                override fun beforeTextChanged(
+                    s: CharSequence,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+                }
 
                 override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
 
@@ -334,7 +402,6 @@ class JogFragment : Fragment() {
                 }
             })
         }
-
 
 
         //JOG 수치를 입력하는 EditText에 CRLF를 허용하지 않습니다.
@@ -375,5 +442,9 @@ class JogFragment : Fragment() {
     }
 
 
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null // 뷰가 파괴될 때 binding을 해제합니다.
+    }
 }
+

@@ -20,6 +20,7 @@ import androidx.fragment.app.FragmentActivity
 import com.example.robot_teaching_pendant_app.R
 import com.example.robot_teaching_pendant_app.databinding.MakeDefaultFragmentBinding
 import com.example.robot_teaching_pendant_app.system.JogState
+import com.example.robot_teaching_pendant_app.system.RobotPosition
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,16 +28,14 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 class MakeDefaultFragment : Fragment() {
+
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
     }
 
     override fun onCreateView(
@@ -45,8 +44,7 @@ class MakeDefaultFragment : Fragment() {
     ): View? {
 
 
-
-        val defBinding = MakeDefaultFragmentBinding.inflate(layoutInflater)
+        val defBinding = MakeDefaultFragmentBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
 
 
@@ -63,6 +61,11 @@ class MakeDefaultFragment : Fragment() {
 
         //Jog Controller를 삽입 할 보여 줄 View 입니다.
         val jogViewer = defBinding.jogControllerView
+
+
+        //defaultFragment 하위에 있는 긴급 정지 버튼과 빠른Home 기능 버튼입니다.
+        val makeEstopBt = defBinding.makeEstopBt
+        val makeQhomeBt = defBinding.makeQhomeBt
 
 
         //Jog Mode -> Smooth , Tick 을 선택할 때 사용하는 버튼입니다.
@@ -89,67 +92,76 @@ class MakeDefaultFragment : Fragment() {
         jogModeTv3.isInvisible = true
 
 
-
         //조그(Global, Local, User, Joint) 를 선택하는 버튼들을 변수에 초기화 시킵니다.
         val jogGlobalBt = defBinding.jogGlobalBt
         val jogLocalBt = defBinding.jogLocalBt
         val jogUserBt = defBinding.jogUserBt
         val jogJointBt = defBinding.jogJointBt
 
-        val jogButtonList = listOf(jogGlobalBt,jogLocalBt,jogUserBt,jogJointBt)
+        val jogButtonList = listOf(jogGlobalBt, jogLocalBt, jogUserBt, jogJointBt)
 
         //Jogstate Object에 있는 jogSelected 값에 따라서 버튼의 Disable 상태를 결정합니다.
-        when(JogState.jogSelected){
-            JogState.JOG_GLOBAL_SELECTED->{
+        when (JogState.jogSelected) {
+            JogState.JOG_GLOBAL_SELECTED -> {
                 jogGlobalBt.setBackgroundResource(R.drawable.color_gray_frame)
                 jogGlobalBt.isEnabled = false
             }
-            JogState.JOG_LOCAL_SELECTED->{
+
+            JogState.JOG_LOCAL_SELECTED -> {
                 jogLocalBt.setBackgroundResource(R.drawable.color_gray_frame)
                 jogLocalBt.isEnabled = false
             }
-            JogState.JOG_USER_SELECTED->{
+
+            JogState.JOG_USER_SELECTED -> {
                 jogUserBt.setBackgroundResource(R.drawable.color_gray_frame)
                 jogUserBt.isEnabled = false
             }
-            JogState.JOG_JOINT_SELECTED->{
+
+            JogState.JOG_JOINT_SELECTED -> {
                 jogJointBt.setBackgroundResource(R.drawable.color_gray_frame)
                 jogJointBt.isEnabled = false
             }
         }
 
 
-//        //4가지의Jog(Global, Local, User...) 버튼 중 하나를 클릭 시, 해당 버튼에 대응하는 Jog모드로 변경하며 자기 자신을 비활성화, 나머지 버튼은 활성화 시키는 로직입니다.
-//        fun Button.assignJogState(value: Int, buttonList: List<Button>) {
-//
-//            //조그 모드 버튼들에 대한 클릭 리스너
-//            this.setOnClickListener {
-//
-//                //Object Jogstate 의 jogSelected(조그 선택상태) 변수를 value인자값으로 변경합니다.
-//                JogState.jogSelected = value
-//                for (otherButton in buttonList) {
-//
-//                    //버튼 리스트에 있는 것이 자기 자신이면 자기 자신을 비활성화 하고 회색 배경으로 변경하는 루프문입니다.
-//                    if (otherButton == this) {
-//                        otherButton.isEnabled = false
-//                        otherButton.setBackgroundResource(R.drawable.color_gray_frame) // 회색 배경 리소스
-//
-//                        //눌러진 버튼의 이름을 출력하는 토스트문
-//                        val buttonText = otherButton.text
-//                        Toast.makeText(it.context, "$buttonText 버튼을 눌렀습니다.", Toast.LENGTH_SHORT).show()
-//
-//                        //눌러진 버튼이 자기 자신이 아니면 활성화 되며 배경을 기본 버튼 프레임으로 변경합니다.
-//                    } else {
-//                        otherButton.isEnabled = true
-//                        otherButton.setBackgroundResource(R.drawable.public_button) // 기본 배경 리소스
-//                    }
-//                }
-//
-//
-//
-//            }
-//        }
+//        Jog Fragment 를 childFragment 형태로 불러옵니다.
+        if (savedInstanceState == null) { // <- saveInstanceState 가 Null 이면 프래그먼트가 처음 생성됨을 의미.
 
+            //처움 생성되는 프래그먼트면 새로운 JogFragment 인스턴스를 생성합니다.
+            val fragment = JogFragment()
+            childFragmentManager.beginTransaction()
+                .replace(jogViewer.id, fragment)
+
+                //트랜잭션을 커밋하여 위에서 정의한 프래그먼트 변경사향들을 적용
+                .commit()
+        }
+
+
+
+        //Quick Home 버튼의 클릭 리스너입니다. 좌표계 값들을 영점으로 만들고 Fragment 를 다시 불러옵니다.
+        makeQhomeBt.setOnClickListener {
+
+            RobotPosition.joint1 = 0f
+            RobotPosition.joint2 = 0f
+            RobotPosition.joint3 = 0f
+            RobotPosition.joint4 = 0f
+
+            RobotPosition.x = 0f
+            RobotPosition.y = 0f
+            RobotPosition.z = 0f
+            RobotPosition.Rx = 0f
+            RobotPosition.Ry = 0f
+            RobotPosition.Rz = 0f
+
+
+            val fragment = JogFragment()
+            (it.context as FragmentActivity).supportFragmentManager.beginTransaction()
+                .replace(jogViewer.id, fragment)
+                .commit()
+        }
+
+
+        //조그를 선택하는 버튼들에 대한 UI 로직입니다. 본인은 비활성화 시키고, 나머지 3가지 버튼은 활성화 시켜줍니다. (중복 클릭 방지)
         fun Button.assignJogState(value: Int, buttonList: List<Button>, fragmentContainer: Int) {
             //조그 모드 버튼들에 대한 클릭 리스너
             this.setOnClickListener {
@@ -167,14 +179,15 @@ class MakeDefaultFragment : Fragment() {
                         val buttonText = otherButton.text
                         Toast.makeText(it.context, "$buttonText 버튼을 눌렀습니다.", Toast.LENGTH_SHORT).show()
 
-                        //눌러진 버튼이 자기 자신이 아니면 활성화 되며 배경을 기본 버튼 프레임으로 변경합니다.
+
+                    //눌러진 버튼이 자기 자신이 아니면 활성화 되며 배경을 기본 버튼 프레임으로 변경합니다.
                     } else {
                         otherButton.isEnabled = true
                         otherButton.setBackgroundResource(R.drawable.public_button) // 기본 배경 리소스
                     }
                 }
 
-                // 프래그먼트 새로고침 코드
+                // 버튼을 클릭하면 프래그먼트를 새로고침합니다.
                 val fragment = JogFragment()
                 (it.context as FragmentActivity).supportFragmentManager.beginTransaction()
                     .replace(fragmentContainer, fragment)
@@ -182,8 +195,7 @@ class MakeDefaultFragment : Fragment() {
             }
         }
 
-
-        //조그를 선택하는 4가지 버튼을 , 위의 함수를 활용하여 그에 맞는 모드와 UI 로직을 가지게 합니다.
+        //위의 함수를 이용하여 조그를 선택하는 4가지 버튼을 , 위의 함수를 활용하여 그에 맞는 모드와 UI 로직을 가지게 합니다.
         jogGlobalBt.assignJogState(JogState.JOG_GLOBAL_SELECTED, jogButtonList, jogViewer.id)
         jogLocalBt.assignJogState(JogState.JOG_LOCAL_SELECTED, jogButtonList, jogViewer.id)
         jogUserBt.assignJogState(JogState.JOG_USER_SELECTED, jogButtonList, jogViewer.id)
@@ -284,19 +296,6 @@ class MakeDefaultFragment : Fragment() {
 
 
 
-
-
-        //Jog Fragment 를 childFragment 형태로 불러옵니다.
-        if (savedInstanceState == null) { // <- saveInstanceState 가 Null 이면 프래그먼트가 처음 생성됨을 의미.
-
-            //처움 생성되는 프래그먼트면 새로운 JogFragment 인스턴스를 생성합니다.
-            val fragment = JogFragment()
-            childFragmentManager.beginTransaction()
-                .replace(jogViewer.id, fragment)
-
-                //트랜잭션을 커밋하여 위에서 정의한 프래그먼트 변경사향들을 적용
-                .commit()
-        }
 
         //Activity 에서도 접근 하려면 필요한 코드, 임시로 남겨 둠, 해당 파일은 Fragment 라 사용하지 않아서 주석으로만 남겨둠.
 //        if (savedInstanceState == null) {

@@ -9,10 +9,12 @@
     <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/jog_controller_view"
+        style="@style/style_bg"
         android:layout_width="190dp"
         android:layout_height="335dp"
-        android:background="@drawable/main_frame"
         android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -217,8 +219,10 @@
         <EditText
             android:id="@+id/jogView6"
             style="@style/style_jog_view"
-            android:inputType="number|numberDecimal"
+            android:layout_marginBottom="35dp"
 
+            android:inputType="number|numberDecimal"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/jogDec6"
             app:layout_constraintStart_toEndOf="@+id/jogInc6"
             app:layout_constraintTop_toBottomOf="@+id/jogInfo6" />
@@ -227,6 +231,8 @@
             android:id="@+id/jogInc6"
             style="@style/style_jog_inc"
 
+            android:layout_marginBottom="35dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/jogView6"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/jogInc5" />
@@ -235,9 +241,46 @@
             android:id="@+id/jogDec6"
             style="@style/style_jog_dec"
 
+            android:layout_marginBottom="35dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/jogView6"
             app:layout_constraintTop_toBottomOf="@+id/jogDec5" />
+
+        <Button
+            android:id="@+id/button"
+            style="@style/style_button"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginBottom="3dp"
+            android:text="Button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/button2"
+            style="@style/style_button"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="3dp"
+            android:text="Button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button3"
+            app:layout_constraintStart_toEndOf="@+id/button" />
+
+        <Button
+            android:id="@+id/button3"
+            style="@style/style_button"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="3dp"
+            android:text="Button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

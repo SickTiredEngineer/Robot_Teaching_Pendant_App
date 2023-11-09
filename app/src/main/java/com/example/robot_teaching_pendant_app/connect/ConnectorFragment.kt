@@ -49,12 +49,6 @@ open class ConnectorFragment : Fragment() {
             disconnectBt = localbinding.disconnectBt,
             stateConnect = localbinding.stateConnect,
             stateConBox = localbinding.stateConBox,
-            statePower = localbinding.statePower,
-            statePowerBox = localbinding.statePowerBox,
-            stateDevice = localbinding.stateDevice,
-            stateDeviceBox = localbinding.stateDeviceBox,
-            stateSystem = localbinding.stateSystem,
-            stateSystemBox = localbinding.stateSystemBox,
             stateRobOperBox = localbinding.stateRobOperBox
         )
         return binding.root
