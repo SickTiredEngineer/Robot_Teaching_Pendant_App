@@ -23,6 +23,8 @@ class MakeActivity : AppCompatActivity() {
         //좌측 상단에 위치한 화면 이동 메뉴 버튼
         val makeMenuBt = binding.makeMenuBt
 
+        val makeTreeView = binding.makeTreeView
+
         val makePowerBt = binding.makePowerBt
         val treeExtBt = binding.treeExtBt
 
@@ -50,6 +52,15 @@ class MakeActivity : AppCompatActivity() {
                 .replace(sideViewer.id, fragment)
                 .commit()
         }
+
+        // 처음 액티비티가 생성되었을 때 프래그먼트 추가
+        if (savedInstanceState == null) {
+            val fragment = MakeTreeFragment()
+            supportFragmentManager.beginTransaction()
+                .replace(makeTreeView.id, fragment)
+                .commit()
+        }
+
 
         //Ext tree 토글 버튼 클릭 시 동작입니다.
         treeExtBt.setOnCheckedChangeListener { _, isChecked ->
