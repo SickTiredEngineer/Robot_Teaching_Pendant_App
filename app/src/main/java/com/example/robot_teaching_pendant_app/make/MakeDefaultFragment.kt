@@ -28,7 +28,7 @@ import com.example.robot_teaching_pendant_app.system.RobotPosition
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class MakeDefaultFragment : Fragment() {
+class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener {
 
     private var _binding: MakeDefaultFragmentBinding? = null
     private val defBinding get() = _binding!!
@@ -144,26 +144,9 @@ class MakeDefaultFragment : Fragment() {
 
 
 
-        //Quick Home 버튼의 클릭 리스너입니다. 좌표계 값들을 영점으로 만들고 Fragment 를 다시 불러옵니다.
+        //Quick Home 버튼의 클릭 리스너입니다. jogFragment의 goHome()메서드를 실행하여 로봇을 영점으로 보내고 editText를 영점 값으로 수정합니다.
         makeQhomeBt.setOnClickListener {
-
-            RobotPosition.joint1 = 0f
-            RobotPosition.joint2 = 0f
-            RobotPosition.joint3 = 0f
-            RobotPosition.joint4 = 0f
-
-            RobotPosition.x = 0f
-            RobotPosition.y = 0f
-            RobotPosition.z = 0f
-            RobotPosition.Rx = 0f
-            RobotPosition.Ry = 0f
-            RobotPosition.Rz = 0f
-
-
-            val fragment = JogFragment()
-            (it.context as FragmentActivity).supportFragmentManager.beginTransaction()
-                .replace(jogViewer.id, fragment)
-                .commit()
+            onGoHome()
         }
 
 
@@ -372,6 +355,12 @@ class MakeDefaultFragment : Fragment() {
                 .replace(fragmentContainer, fragment)
                 .commit()
         }
+    }
+
+    //JogFragment 인터페이스의 onGoHome 메서드를 override하고 goHome() 메서드를 불러와 사용합니다. 로봇을 영점으로 이동시킵니다.
+    override fun onGoHome() {
+        val jogFragment = childFragmentManager.findFragmentById(defBinding.jogControllerView.id) as JogFragment
+        jogFragment?.goHome()
     }
 
     companion object {
