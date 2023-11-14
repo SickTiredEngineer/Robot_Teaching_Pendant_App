@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.robot_teaching_pendant_app.R
+import com.example.robot_teaching_pendant_app.databinding.SetupCobotFragmentBinding
 import com.example.robot_teaching_pendant_app.databinding.SetupCoordFragmentBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -23,6 +24,9 @@ class SetupCoordFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private var _binding: SetupCoordFragmentBinding? = null
+    private val binding get() = _binding!!
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -35,7 +39,7 @@ class SetupCoordFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = SetupCoordFragmentBinding.inflate(layoutInflater)
+        _binding = SetupCoordFragmentBinding.inflate(inflater, container, false)
 
         // Inflate the layout for this fragment
         return binding.root
@@ -59,5 +63,10 @@ class SetupCoordFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

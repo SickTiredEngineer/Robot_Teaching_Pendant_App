@@ -37,9 +37,9 @@ class JogFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
     private var _binding: JogFragmentBinding? = null
     private val binding get() = _binding!!
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +53,13 @@ class JogFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = JogFragmentBinding.inflate(layoutInflater)
+
+        _binding = JogFragmentBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         val jogInfo1 = binding.jogInfo1
         val jogInfo2 = binding.jogInfo2
@@ -105,49 +111,12 @@ class JogFragment : Fragment() {
         val jogViewList = listOf<EditText>(jogView1, jogView2, jogView3, jogView4, jogView5, jogView6)
 
 
-        fun goHome() {
-
-            RobotPosition.joint1 = 0f
-            RobotPosition.joint2 = 0f
-            RobotPosition.joint3 = 0f
-            RobotPosition.joint4 = 0f
-
-            RobotPosition.x = 0f
-            RobotPosition.y = 0f
-            RobotPosition.z = 0f
-            RobotPosition.Rx = 0f
-            RobotPosition.Ry = 0f
-            RobotPosition.Rz = 0f
-
-            when (jogSelected) {
-                JOG_JOINT_SELECTED -> {
-                    jogView1.setText("%.2f".format(RobotPosition.joint1))
-                    jogView2.setText("%.2f".format(RobotPosition.joint2))
-                    jogView3.setText("%.2f".format(RobotPosition.joint3))
-                    jogView4.setText("%.2f".format(RobotPosition.joint4))
-
-                }
-
-                JOG_GLOBAL_SELECTED -> {
-                    jogView1.setText("%.2f".format(RobotPosition.x))
-                    jogView2.setText("%.2f".format(RobotPosition.y))
-                    jogView3.setText("%.2f".format(RobotPosition.z))
-                    jogView4.setText("%.2f".format(RobotPosition.Rx))
-                    jogView5.setText("%.2f".format(RobotPosition.Ry))
-                    jogView6.setText("%.2f".format(RobotPosition.Rz))
-
-                }
-            }
-        }
-
-
         //JOINT 조그 사용 시, 사용하지 않는 버튼 리스트 입니다.
         val changeBtList = listOf<Button>(jogInc5, jogInc6, jogDec5, jogDec6)
 
 
         //MakeDefaultFragment 에서 Global, Local, User, Joint  를 누를 때 UI 동작 코드입니다.
         //MakeDefaultFragment 에서 4가지 조그 중 하나를 선택하면, 해당 Fragment를 새로고침 하여 변경된 사항을 적용하게 됩니다.
-
 
         // JOINT 모드일 경우 INFO 창을 JOINT1~4로 바꾸고 5~6번 버튼과 정보창을 Invisible 합니다.
         if (JogState.jogSelected == JogState.JOG_JOINT_SELECTED) {
@@ -211,11 +180,6 @@ class JogFragment : Fragment() {
         }
 
 
-        fun increaseValueAndSet(maxValue: Float, currentValue: Float, increment: Float): Float {
-            val newValue = currentValue + increment
-            return newValue.coerceAtMost(maxValue)
-        }
-
 
         //JOG의 상승 버튼 리스너
         incBtList.forEachIndexed { index, button ->
@@ -275,12 +239,6 @@ class JogFragment : Fragment() {
                     }
                 }
             }
-        }
-
-
-        fun decreaseValueAndSet(minValue: Float, currentValue: Float, decrement: Float): Float {
-            val newValue = currentValue - decrement
-            return newValue.coerceAtLeast(minValue)
         }
 
 
@@ -345,223 +303,6 @@ class JogFragment : Fragment() {
         }
 
 
-//        fun resetEditTextToCurrentPosition(index: Int) {
-//            val currentValue = when (JogState.jogSelected) {
-//                JogState.JOG_GLOBAL_SELECTED -> {
-//                    when (index) {
-//                        0 -> RobotPosition.x
-//                        1 -> RobotPosition.y
-//                        2 -> RobotPosition.z
-//                        3 -> RobotPosition.Rz
-//                        4 -> RobotPosition.Ry
-//                        5 -> RobotPosition.Rz
-//
-//                        else -> 0.0f
-//                    }
-//                }
-//                JogState.JOG_JOINT_SELECTED -> {
-//                    when (index) {
-//                        0 -> RobotPosition.joint1
-//                        1 -> RobotPosition.joint2
-//                        2 -> RobotPosition.joint3
-//                        3 -> RobotPosition.joint4
-//                        // ... 다른 관절 값들 ...
-//                        else -> 0.0f
-//                    }
-//                }
-//                else -> 0.0f
-//            }
-//            jogViewList[index].setText(currentValue.toString())
-//        }
-//
-//        fun updateRobotPosition(index: Int, value: Float) {
-//            when (JogState.jogSelected) {
-//                JogState.JOG_GLOBAL_SELECTED -> {
-//                    when (index) {
-//                        0 -> RobotPosition.x = value
-//                        1 -> RobotPosition.y = value
-//                        2 -> RobotPosition.z = value
-//                        3 -> RobotPosition.Rx = value
-//                        4 -> RobotPosition.Ry = value
-//                        5 -> RobotPosition.Rz = value
-//
-//                        // ... 다른 좌표계 값들 ...
-//                    }
-//                }
-//                JogState.JOG_JOINT_SELECTED -> {
-//                    when (index) {
-//                        0 -> RobotPosition.joint1 = value
-//                        1 -> RobotPosition.joint2 = value
-//                        2 -> RobotPosition.joint3 = value
-//                        3 -> RobotPosition.joint4 = value
-//                        // ... 다른 관절 값들 ...
-//                    }
-//                }
-//            }
-//        }
-//
-//        for (i in jogViewList.indices) {
-//            jogViewList[i].setOnEditorActionListener { v, actionId, event ->
-//                if (actionId == EditorInfo.IME_ACTION_DONE ||
-//                    (event != null && event.action == KeyEvent.ACTION_UP && event.keyCode == KeyEvent.KEYCODE_ENTER)) {
-//
-//                    val text = jogViewList[i].text.toString()
-//                    val newValue = text.toFloatOrNull()
-//
-//                    if (newValue != null && newValue in 0.0..360.0) {
-//                        // 값이 유효한 범위 내이면 RobotPosition 객체 업데이트
-//                        updateRobotPosition(i, newValue)
-//                    } else {
-//                        // 유효하지 않은 값이면 EditText를 현재 RobotPosition 값으로 되돌림
-//                        resetEditTextToCurrentPosition(i)
-//                    }
-//
-//                    // 키보드 숨기기
-//                    val inputMethodManager = v.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-//                    inputMethodManager.hideSoftInputFromWindow(v.windowToken, 0)
-//
-//                    true // 이벤트 처리 완료 및 개행 방지
-//                } else {
-//                    false // 다른 키 이벤트는 처리하지 않음
-//                }
-//            }
-//        }
-
-
-//        //EditText 의 값을 수정하면 좌표계 혹은 관절 값으로 반영합니다.
-//        for (i in jogViewList.indices) {
-//            jogViewList[i].addTextChangedListener(object : TextWatcher {
-//                override fun beforeTextChanged(
-//                    s: CharSequence,
-//                    start: Int,
-//                    count: Int,
-//                    after: Int
-//                ) {
-//                }
-//
-//                override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
-//
-//                override fun afterTextChanged(s: Editable) {
-//                    try {
-//                        val newValue = s.toString().toFloat()
-//
-//                        //Global Jog 일 때, 각 좌표계 값에 입력값을 대입합니다.
-//                        if (JogState.jogSelected == JogState.JOG_GLOBAL_SELECTED && newValue in 0.0..360.0) {
-//                            when (i) {
-//                                0 -> RobotPosition.x = newValue
-//                                1 -> RobotPosition.y = newValue
-//                                2 -> RobotPosition.z = newValue
-//                                3 -> RobotPosition.Rx = newValue
-//                                4 -> RobotPosition.Ry = newValue
-//                                5 -> RobotPosition.Rz = newValue
-//                            }
-//
-//                            //Joint Jog 일 때, 각 관절값에 입력값을 대입합니다.
-//                        } else if (JogState.jogSelected == JogState.JOG_JOINT_SELECTED && newValue in 0.0..360.0) {
-//                            when (i) {
-//                                0 -> RobotPosition.joint1 = newValue
-//                                1 -> RobotPosition.joint2 = newValue
-//                                2 -> RobotPosition.joint3 = newValue
-//                                3 -> RobotPosition.joint4 = newValue
-//                                // 4, 5번은 비활성화되므로 값 변경 로직은 필요하지 않습니다.
-//                            }
-//                        }
-//
-//                    } catch (e: NumberFormatException) {
-//                        // 입력된 값이 유효한 float 값이 아닐 때 예외 처리
-//                    }
-//                }
-//            })
-//        }
-//
-//        //JOG 수치를 입력하는 EditText에 CRLF를 허용하지 않습니다.
-//        for (editText in jogViewList) {
-//            editText.setOnKeyListener { v, keyCode, event ->
-//                if (keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_UP) {
-//                    // 키보드 숨기기
-//                    val inputMethodManager = v.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-//                    inputMethodManager.hideSoftInputFromWindow(v.windowToken, 0)
-//
-//                    // 개행 방지 및 이벤트 처리 완료
-//                    true
-//                } else {
-//                    // 다른 키 이벤트는 처리하지 않음
-//                    false
-//                }
-//            }
-//        }
-
-
-
-
-//        for (i in jogViewList.indices) {
-//            // 이전 값을 저장하기 위한 변수 초기화
-//            var previousValue = jogViewList[i].text.toString()
-//
-//            jogViewList[i].setOnEditorActionListener { v, actionId, event ->
-//                if (actionId == EditorInfo.IME_ACTION_DONE ||
-//                    (event != null && event.action == KeyEvent.ACTION_UP && event.keyCode == KeyEvent.KEYCODE_ENTER)) {
-//
-//                    // 키보드 숨기기
-//                    val inputMethodManager = v.context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-//                    inputMethodManager.hideSoftInputFromWindow(v.windowToken, 0)
-//
-//                    // 입력된 값을 파싱하고 유효성 검사
-//                    val newValue = v.text.toString().toFloatOrNull()
-//                    if (newValue == null || newValue !in 0.0..360.0) {
-//                        // 유효하지 않은 값의 경우 이전 값으로 되돌리기
-//                        v.setText(previousValue)
-//                        return@setOnEditorActionListener true
-//                    }
-//
-//                    // 값 업데이트
-//                    when (JogState.jogSelected) {
-//                        JogState.JOG_GLOBAL_SELECTED -> {
-//                            when (i) {
-//                                0 -> RobotPosition.x = newValue
-//                                1 -> RobotPosition.y = newValue
-//                                2 -> RobotPosition.z = newValue
-//                                3 -> RobotPosition.Rx = newValue
-//                                4 -> RobotPosition.Ry = newValue
-//                                5 -> RobotPosition.Rz = newValue
-//                            }
-//                        }
-//                        JogState.JOG_JOINT_SELECTED -> {
-//                            when (i) {
-//                                0 -> RobotPosition.joint1 = newValue
-//                                1 -> RobotPosition.joint2 = newValue
-//                                2 -> RobotPosition.joint3 = newValue
-//                                3 -> RobotPosition.joint4 = newValue
-//                            }
-//                        }
-//                    }
-//
-//                    // 이전 값 업데이트
-//                    previousValue = newValue.toString()
-//
-//                    true // 개행 방지 및 이벤트 처리 완료
-//                } else {
-//                    false // 다른 키 이벤트는 처리하지 않음
-//                }
-//            }
-//
-//            // 텍스트 변경을 감지하여 이전 값을 업데이트
-//            jogViewList[i].addTextChangedListener(object : TextWatcher {
-//                override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-//                    // Nothing to do here
-//                }
-//
-//                override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-//                    // Nothing to do here
-//                }
-//
-//                override fun afterTextChanged(s: Editable) {
-//                    // 사용자가 입력을 시작할 때 이전 값을 업데이트
-//                    previousValue = s.toString()
-//                }
-//            })
-//        }
-
 //EditText 의 값을 수정하면 좌표계 혹은 관절 값으로 반영합니다.
         for (i in jogViewList.indices) {
             jogViewList[i].addTextChangedListener(object : TextWatcher {
@@ -620,11 +361,6 @@ class JogFragment : Fragment() {
                 false
             })
         }
-
-
-
-        // Inflate the layout for this fragment
-        return binding.root
     }
 
 
@@ -649,9 +385,61 @@ class JogFragment : Fragment() {
     }
 
 
+
+    //Jog의 + 버튼을 눌렀을때 최대 값을 지정하고, 이 이상이 될 경우 값을 상승시키지 않습니다.
+    fun increaseValueAndSet(maxValue: Float, currentValue: Float, increment: Float): Float {
+        val newValue = currentValue + increment
+        return newValue.coerceAtMost(maxValue)
+    }
+
+
+    //Jog의 - 버튼을 눌렀을때 최소 값을 지정하고, 이 이하가 될 경우 값을 감소시키지 않습니다.
+    fun decreaseValueAndSet(minValue: Float, currentValue: Float, decrement: Float): Float {
+        val newValue = currentValue - decrement
+        return newValue.coerceAtLeast(minValue)
+    }
+
+
+    //makeDefaultFragment에서 Quick Home 버튼을 클릭 시, 로봇을 영점으로 움직이는 명령어입니다. 이름 수정 예정
+    fun goHome() {
+
+        RobotPosition.joint1 = 0f
+        RobotPosition.joint2 = 0f
+        RobotPosition.joint3 = 0f
+        RobotPosition.joint4 = 0f
+
+        RobotPosition.x = 0f
+        RobotPosition.y = 0f
+        RobotPosition.z = 0f
+        RobotPosition.Rx = 0f
+        RobotPosition.Ry = 0f
+        RobotPosition.Rz = 0f
+
+        when (jogSelected) {
+            JOG_JOINT_SELECTED -> {
+                binding.jogView1.setText("%.2f".format(RobotPosition.joint1))
+                binding.jogView2.setText("%.2f".format(RobotPosition.joint2))
+                binding.jogView3.setText("%.2f".format(RobotPosition.joint3))
+                binding.jogView4.setText("%.2f".format(RobotPosition.joint4))
+            }
+
+            JOG_GLOBAL_SELECTED -> {
+                binding.jogView1.setText("%.2f".format(RobotPosition.x))
+                binding.jogView2.setText("%.2f".format(RobotPosition.y))
+                binding.jogView3.setText("%.2f".format(RobotPosition.z))
+                binding.jogView4.setText("%.2f".format(RobotPosition.Rx))
+                binding.jogView5.setText("%.2f".format(RobotPosition.Ry))
+                binding.jogView6.setText("%.2f".format(RobotPosition.Rz))
+            }
+        }
+    }
+
+
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null // 뷰가 파괴될 때 binding을 해제합니다.
+        // 뷰가 파괴될 때 binding을 해제합니다.
+
+        _binding = null
     }
 }
 

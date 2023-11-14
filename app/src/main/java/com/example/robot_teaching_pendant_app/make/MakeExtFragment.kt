@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.robot_teaching_pendant_app.databinding.JogFragmentBinding
+import com.example.robot_teaching_pendant_app.databinding.MakeDefaultFragmentBinding
 import com.example.robot_teaching_pendant_app.databinding.MakeExtFragmentBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -18,6 +20,9 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class MakeExtFragment : Fragment() {
+
+    private var _binding: MakeExtFragmentBinding? = null
+    private val extBinding get() = _binding!!
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -25,7 +30,6 @@ class MakeExtFragment : Fragment() {
     init{
 
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,9 +43,7 @@ class MakeExtFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val extBinding = MakeExtFragmentBinding.inflate(layoutInflater)
-
-        // Inflate the layout for this fragment
+        _binding = MakeExtFragmentBinding.inflate(inflater, container, false)
         return extBinding.root
     }
 
@@ -63,5 +65,10 @@ class MakeExtFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
