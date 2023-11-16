@@ -78,14 +78,7 @@ class JogFragment : Fragment() {
         //JogSelected 에 따라서 Info(TextView)를 바꿀 때 사용할 문자열 리소스 List
         val jogInfoList =
             listOf<TextView>(jogInfo1, jogInfo2, jogInfo3, jogInfo4, jogInfo5, jogInfo6)
-        val coordStrList = listOf(
-            R.string.str_x,
-            R.string.str_y,
-            R.string.str_z,
-            R.string.str_rx,
-            R.string.str_ry,
-            R.string.str_rz
-        )
+        val coordStrList = listOf(R.string.str_x, R.string.str_y, R.string.str_z, R.string.str_rx, R.string.str_ry, R.string.str_rz)
 
         //관절 값 리소스 이름 수정 필요.
         val jointStrList = listOf(R.string.str_joint1, R.string.str_joint2, R.string.str_joint3, R.string.str_joint4, R.string.str_joint_null1, R.string.str_joint_null2)
@@ -121,9 +114,9 @@ class JogFragment : Fragment() {
         //JOINT 조그 사용 시, 사용하지 않는 버튼 리스트 입니다.
         val changeBtList = listOf<Button>(jogInc5, jogInc6, jogDec5, jogDec6)
 
-
         //MakeDefaultFragment 에서 Global, Local, User, Joint  를 누를 때 UI 동작 코드입니다.
-        //MakeDefaultFragment 에서 4가지 조그 중 하나를 선택하면, 해당 Fragment를 새로고침 하여 변경된 사항을 적용하게 됩니다.
+        //MakeDefaultFragment 에서 4가지 조그 중 하나를 선택하면, Fragment를 새로고침 하여 변경된 사항을 적용하게 됩니다.
+
 
         // JOINT 모드일 경우 INFO 창을 JOINT1~4로 바꾸고 5~6번 버튼과 정보창을 Invisible 합니다.
         if (JogState.jogSelected == JogState.JOG_JOINT_SELECTED) {
@@ -185,7 +178,6 @@ class JogFragment : Fragment() {
             jogView6.isEnabled = true
             jogView6.setBackgroundResource(R.drawable.public_button)
         }
-
 
 
         //JOG의 상승 버튼 리스너
@@ -310,57 +302,142 @@ class JogFragment : Fragment() {
         }
 
 
-//EditText 의 값을 수정하면 좌표계 혹은 관절 값으로 반영합니다.
-        for (i in jogViewList.indices) {
-            jogViewList[i].addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(
-                    s: CharSequence,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
-                }
 
-                override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
 
-                override fun afterTextChanged(s: Editable) {
-                    try {
-                        val newValue = s.toString().toFloat()
+        //유효값이 아닐 경우를 대비한 복원 배열입니다.(현재 사용x)
+        val previousValues = Array(jogViewList.size) { "" }
+        val isUserInput = Array(jogViewList.size) { true }
 
-                        //Global Jog 일 때, 각 좌표계 값에 입력값을 대입합니다.
-                        if (JogState.jogSelected == JogState.JOG_GLOBAL_SELECTED && newValue in 0.0..360.0) {
-                            when (i) {
-                                0 -> RobotPosition.x = newValue
-                                1 -> RobotPosition.y = newValue
-                                2 -> RobotPosition.z = newValue
-                                3 -> RobotPosition.Rx = newValue
-                                4 -> RobotPosition.Ry = newValue
-                                5 -> RobotPosition.Rz = newValue
+
+        //EditText에 입력된 값이 유효한지(0~360) 검사하고, 해당 값을 로봇 위치를 저장하는 RobotPosition 전역변수에 저장합니다.
+        fun handleInput(index: Int, input: String) {
+            try {
+                val newValue = input.toFloat()
+
+                //유효값
+                if (newValue in 0.0..360.0) {
+//                     newValue가 0과 360 사이일 때
+//                     RobotPosition 업데이트 로직
+
+                    //선택된 조그가 GLOBAL 일때
+                    if (JogState.jogSelected == JogState.JOG_GLOBAL_SELECTED) {
+                        when(index) {
+                            0 -> RobotPosition.x = newValue
+                            1 -> RobotPosition.y = newValue
+                            2 -> RobotPosition.z = newValue
+                            3 -> RobotPosition.Rx = newValue
+                            4 -> RobotPosition.Ry = newValue
+                            5 -> RobotPosition.Rz = newValue
+                        }
+                    }
+
+                    //선택된 조그가 JOINT 일때
+                        }
+                    else if (JogState.jogSelected == JogState.JOG_JOINT_SELECTED) {
+                        when (index) {
+                            0 -> RobotPosition.joint1 = newValue
+                            1 -> RobotPosition.joint2 = newValue
+                            2 -> RobotPosition.joint3 = newValue
+                            3 -> RobotPosition.joint4 = newValue
+                            // 4, 5번은 비활성화되므로 값 변경 로직은 필요하지 않습니다.
+                        }
+                    }
+
+
+                    //0~360이 아닐 경우, 적용 시키지 않습니다. (EditText를 변경 전으로 돌려놓습니다.
+                    //선택된 조그가 GLOBAL 일때
+                    else {
+                    if (JogState.jogSelected == JogState.JOG_GLOBAL_SELECTED) {
+                        when (index) {
+                            0 -> {
+                                RobotPosition.x = RobotPosition.x
+                                jogViewList[index].setText("%.2f".format(RobotPosition.x))
                             }
 
-                            //Joint Jog 일 때, 각 관절값에 입력값을 대입합니다.
-                        } else if (JogState.jogSelected == JogState.JOG_JOINT_SELECTED && newValue in 0.0..360.0) {
-                            when (i) {
-                                0 -> RobotPosition.joint1 = newValue
-                                1 -> RobotPosition.joint2 = newValue
-                                2 -> RobotPosition.joint3 = newValue
-                                3 -> RobotPosition.joint4 = newValue
-                                // 4, 5번은 비활성화되므로 값 변경 로직은 필요하지 않습니다.
+                            1 -> {
+                                RobotPosition.y = RobotPosition.y
+                                jogViewList[index].setText("%.2f".format(RobotPosition.y))
+                            }
+
+                            2 -> {
+                                RobotPosition.z = RobotPosition.z
+                                jogViewList[index].setText("%.2f".format(RobotPosition.z))
+                            }
+
+                            3 -> {
+                                RobotPosition.Rx = RobotPosition.Rx
+                                jogViewList[index].setText("%.2f".format(RobotPosition.Rx))
+                            }
+
+                            4 -> {
+                                RobotPosition.Ry = RobotPosition.Ry
+                                jogViewList[index].setText("%.2f".format(RobotPosition.Ry))
+                            }
+
+                            5 -> {
+                                RobotPosition.Rz = RobotPosition.Rz
+                                jogViewList[index].setText("%.2f".format(RobotPosition.Rz))
                             }
                         }
+                    }
 
-                    } catch (e: NumberFormatException) {
-                        // 입력된 값이 유효한 float 값이 아닐 때 예외 처리
+                    //선택된 조그가 JOINT 일때
+                    else if (JogState.jogSelected == JogState.JOG_JOINT_SELECTED) {
+                        when (index) {
+                            0 -> {
+                                RobotPosition.joint1 = RobotPosition.joint1
+                                jogViewList[index].setText("%.2f".format(RobotPosition.joint1))
+                            }
+
+                            1 -> {
+                                RobotPosition.joint2 = RobotPosition.joint2
+                                jogViewList[index].setText("%.2f".format(RobotPosition.joint2))
+                            }
+
+                            2 -> {
+                                RobotPosition.joint3 = RobotPosition.joint3
+                                jogViewList[index].setText("%.2f".format(RobotPosition.joint3))
+                            }
+
+                            3 -> {
+                                RobotPosition.joint4 = RobotPosition.joint4
+                                jogViewList[index].setText("%.2f".format(RobotPosition.joint4))
+                            }
+                        }
                     }
                 }
-            })
+            // 유효하지 않은 값일 경우의 처리
+            } catch (e: NumberFormatException) {
+                // 입력된 값이 유효한 float 값이 아닐 때 예외 처리
+            }
         }
 
 
-        //JOG 수치를 입력하는 EditText에 CRLF를 허용하지 않습니다.
-        for (editText in jogViewList) {
-            // CRLF 방지
-            editText.setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
+        //EditText에 값을 입력 시, 값의 범위를 확인하고 유효한 값이면 갱신, 아닐 시 복원합니다.
+        for (i in jogViewList.indices) {
+            jogViewList[i].addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+                override fun afterTextChanged(s: Editable) {}
+            })
+
+            //소프트 키보드의 엔터를 클릭 시, handleInput 메서드를 실행하여 동작을 수행합니다.
+            jogViewList[i].setOnEditorActionListener { v, actionId, event ->
+                if (actionId == EditorInfo.IME_ACTION_DONE ||
+                    (event != null && event.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN)) {
+
+                    handleInput(i, jogViewList[i].text.toString())
+                    true // 이벤트 처리 완료
+                }
+                else {
+                    false // 이벤트 처리 안 함
+                }
+            }
+
+            //개행 방지 코드입니다.
+            jogViewList[i].setOnKeyListener(View.OnKeyListener { v, keyCode, event ->
                 if (keyCode == KeyEvent.KEYCODE_ENTER) {
                     // 개행 키를 누르면 아무런 동작을 하지 않습니다.
                     return@OnKeyListener true
@@ -440,7 +517,6 @@ class JogFragment : Fragment() {
             }
         }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -53,13 +53,6 @@ class MakeActivity : AppCompatActivity() {
                 .commit()
         }
 
-        // 처음 액티비티가 생성되었을 때 프래그먼트 추가
-        if (savedInstanceState == null) {
-            val fragment = MakeTreeFragment()
-            supportFragmentManager.beginTransaction()
-                .replace(makeTreeView.id, fragment)
-                .commit()
-        }
 
 
         //Ext tree 토글 버튼 클릭 시 동작입니다.
