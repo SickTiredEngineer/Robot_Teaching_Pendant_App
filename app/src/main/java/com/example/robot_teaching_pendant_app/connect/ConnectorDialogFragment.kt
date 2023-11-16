@@ -20,8 +20,8 @@ private const val ARG_PARAM2 = "param2"
  */
 class ConnectorDialogFragment : DialogFragment() {
 
-    protected var cbinding: ConnectorFragmentBinding? = null
-    protected val binding get() = cbinding!!
+    private var _binding: ConnectorFragmentBinding? = null
+    private val cbinding get() = _binding!!
     private lateinit var connectHelper: ConnectHelper
 
     // TODO: Rename and change types of parameters
@@ -36,38 +36,22 @@ class ConnectorDialogFragment : DialogFragment() {
         }
     }
 
-//    override fun onStart() {
-//        super.onStart()
-//
-//        val widthInDp = 800
-//        val heightInDp = 500
-//
-//        val width = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, widthInDp.toFloat(), resources.displayMetrics).toInt()
-//        val height = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, heightInDp.toFloat(), resources.displayMetrics).toInt()
-//
-//        val params = dialog?.window?.attributes
-//        params?.width = width
-//        params?.height = height
-//        dialog?.window?.attributes = params
-//    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        cbinding = ConnectorFragmentBinding.inflate(inflater, container, false)
-        val localbinding = cbinding ?: return null
+        _binding = ConnectorFragmentBinding.inflate(inflater, container, false)
 
         connectHelper = ConnectHelper(
-            connectBt = localbinding.connectBt,
-            disconnectBt = localbinding.disconnectBt,
-            stateConnect = localbinding.stateConnect,
-            stateConBox = localbinding.stateConBox,
-            stateRobOperBox = localbinding.stateRobOperBox
+            connectBt = cbinding.connectBt,
+            disconnectBt = cbinding.disconnectBt,
+            stateConnect = cbinding.stateConnect,
+            stateConBox = cbinding.stateConBox,
+            stateRobOperBox = cbinding.stateRobOperBox
         )
 
         //해당 Dialog 는 바깥 배경을 클릭하여 Cancel할 수 없습니다.
-        return binding.root
+        return cbinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -80,7 +64,7 @@ class ConnectorDialogFragment : DialogFragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        cbinding = null
+        _binding = null
     }
     companion object {
         /**
@@ -101,4 +85,6 @@ class ConnectorDialogFragment : DialogFragment() {
                 }
             }
     }
+
+    
 }
