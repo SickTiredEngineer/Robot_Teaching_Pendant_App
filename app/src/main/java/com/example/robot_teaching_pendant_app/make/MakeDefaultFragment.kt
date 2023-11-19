@@ -61,13 +61,11 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener {
         val defOtherBt = defBinding.defOtherBt
         val searchBox = defBinding.searchBox
 
-
         //기능 버튼 아이콘들이 출력 될 레이아웃
         val defIconView = defBinding.defIconView
 
         //Jog Controller를 삽입 할 보여 줄 View 입니다.
         val jogViewer = defBinding.jogControllerView
-
 
         //defaultFragment 하위에 있는 긴급 정지 버튼과 빠른Home 기능 버튼입니다.
         val makeEstopBt = defBinding.makeEstopBt
@@ -96,7 +94,6 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener {
         jogModeTv1.isInvisible = true
         jogModeTv2.isInvisible = true
         jogModeTv3.isInvisible = true
-
 
         //조그(Global, Local, User, Joint) 를 선택하는 버튼들을 변수에 초기화 시킵니다.
         val jogGlobalBt = defBinding.jogGlobalBt
@@ -141,7 +138,6 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener {
                 //트랜잭션을 커밋하여 위에서 정의한 프래그먼트 변경사향들을 적용
                 .commit()
         }
-
 
 
         //Quick Home 버튼의 클릭 리스너입니다. jogFragment의 goHome()메서드를 실행하여 로봇을 영점으로 보내고 editText를 영점 값으로 수정합니다.
@@ -273,45 +269,6 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener {
 
     /*        카테고리를 클릭하면 해당 카테고리에 포함 된 아이콘 버튼을 -> defIconView 라는 스크롤 바 뷰 안에 포함되어 있는 gridLayout에 출력하는
             함수입니다. 아이콘 버튼은 make 디렉토리의 Icon Data Class 를 참조하십시오.*/
-    fun displayIcons(icons: List<Icon>) {
-        val gridLayout = defBinding.gridLayout
-
-        //카테고리 버튼이 클릭되면 먼저 레이아웃에 있는 뷰를 전부 제거합니다.
-        gridLayout.removeAllViews()
-
-        //버튼 추가를 위한 루프 문
-        for (iconData in icons) {
-            val iconButton = ImageButton(context)
-            iconButton.setImageResource(iconData.imageRes)
-
-            //FIT_CENTER는 이미지를 뷰의 중앙에 위치시키면서 뷰에 맞게 이미지를 조절합니다. 이미지의 가로세로 비율은 유지됩니다.
-            //CENTER_INSIDE는 이미지가 뷰의 경계 내에 완전히 들어오도록 이미지 크기를 조절합니다. 이미지의 가로세로 비율 역시 유지됩니다.
-            iconButton.scaleType = ImageView.ScaleType.CENTER_INSIDE
-            iconButton.background = null
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                iconButton.foreground = ContextCompat.getDrawable(requireContext(), R.drawable.icon_frame)
-            }
-
-            val params = GridLayout.LayoutParams()
-            params.width = 150
-            params.height = 150
-            params.setMargins(10, 10, 10, 10)  // 마진 설정: 좌, 상, 우, 하
-
-// 아이콘 버튼의 레이아웃 파라미터에 위에서 설정한 params를 적용합니다.
-            iconButton.layoutParams = params
-            iconButton.background = null
-
-            //아이콘 버튼의 리스너입니다.
-            iconButton.setOnClickListener {
-                Toast.makeText(context, "${iconData.title} 버튼이 눌러졌습니다.", Toast.LENGTH_SHORT).show()
-                iconData.action.invoke() }
-
-            //Gridlayout 에 iconButton 을 추가합니다.
-            gridLayout.addView(iconButton)
-        }
-    }
-
 
     fun filterAndDisplayIcons(query: String) {
         // query를 기반으로 icons 리스트를 필터링
@@ -383,6 +340,45 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener {
             }
     }
 
+
+    fun displayIcons(icons: List<Icon>) {
+        val gridLayout = defBinding.gridLayout
+
+        //카테고리 버튼이 클릭되면 먼저 레이아웃에 있는 뷰를 전부 제거합니다.
+        gridLayout.removeAllViews()
+
+        //버튼 추가를 위한 루프 문
+        for (iconData in icons) {
+            val iconButton = ImageButton(context)
+            iconButton.setImageResource(iconData.imageRes)
+
+            //FIT_CENTER는 이미지를 뷰의 중앙에 위치시키면서 뷰에 맞게 이미지를 조절합니다. 이미지의 가로세로 비율은 유지됩니다.
+            //CENTER_INSIDE는 이미지가 뷰의 경계 내에 완전히 들어오도록 이미지 크기를 조절합니다. 이미지의 가로세로 비율 역시 유지됩니다.
+            iconButton.scaleType = ImageView.ScaleType.CENTER_INSIDE
+            iconButton.background = null
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                iconButton.foreground = ContextCompat.getDrawable(requireContext(), R.drawable.icon_frame)
+            }
+
+            val params = GridLayout.LayoutParams()
+            params.width = 150
+            params.height = 150
+            params.setMargins(10, 10, 10, 10)  // 마진 설정: 좌, 상, 우, 하
+
+// 아이콘 버튼의 레이아웃 파라미터에 위에서 설정한 params를 적용합니다.
+            iconButton.layoutParams = params
+            iconButton.background = null
+
+            //아이콘 버튼의 리스너입니다.
+            iconButton.setOnClickListener {
+                Toast.makeText(context, "${iconData.title} 버튼이 눌러졌습니다.", Toast.LENGTH_SHORT).show()
+                iconData.action.invoke() }
+
+            //Gridlayout 에 iconButton 을 추가합니다.
+            gridLayout.addView(iconButton)
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
