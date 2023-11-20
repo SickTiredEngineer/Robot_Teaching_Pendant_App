@@ -41,6 +41,17 @@ class JogFragment : Fragment() {
     var listener: GoHomeListener? = null
 
 
+    interface refreshEtListener {
+        fun refreshET()
+    }
+    var etListener: refreshEtListener? = null
+
+
+    interface refreshJogListener{
+        fun refreshJog()
+    }
+
+
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -116,68 +127,70 @@ class JogFragment : Fragment() {
 
         //MakeDefaultFragment 에서 Global, Local, User, Joint  를 누를 때 UI 동작 코드입니다.
         //MakeDefaultFragment 에서 4가지 조그 중 하나를 선택하면, Fragment를 새로고침 하여 변경된 사항을 적용하게 됩니다.
+        setJog()
+
 
 
         // JOINT 모드일 경우 INFO 창을 JOINT1~4로 바꾸고 5~6번 버튼과 정보창을 Invisible 합니다.
-        if (JogState.jogSelected == JogState.JOG_JOINT_SELECTED) {
-            for (i in jogInfoList.indices) {
-                jogInfoList[i].setText(jointStrList[i])
-                if (i > 3) {
-                    jogInfoList[i].setBackgroundResource(R.drawable.color_gray_frame)
-                    jogInfoList[i].isEnabled = false
-
-                }
-
-                for (j in changeBtList.indices) {
-                    changeBtList[j].setBackgroundResource(R.drawable.color_gray_frame)
-                    changeBtList[j].isEnabled = false
-                }
-
-                jogViewList[0].setText(RobotPosition.joint1.toString())
-                jogViewList[1].setText(RobotPosition.joint2.toString())
-                jogViewList[2].setText(RobotPosition.joint3.toString())
-                jogViewList[3].setText(RobotPosition.joint4.toString())
-                jogViewList[4].setText("-")
-                jogViewList[5].setText("-")
-
-                jogView5.isEnabled = false
-                jogView5.setBackgroundResource(R.drawable.color_gray_frame)
-
-                jogView6.isEnabled = false
-                jogView6.setBackgroundResource(R.drawable.color_gray_frame)
-
-
-            }
-        } else {
-            //아닌 경우 INFO를 좌표계 문자열로 바꾸고 5~6번 버튼과 정보창을 Visible 합니다.
-            for (i in jogInfoList.indices) {
-                jogInfoList[i].setText(coordStrList[i])
-                if (i > 3) {
-                    jogInfoList[i].setBackgroundResource(R.drawable.public_button)
-                    jogInfoList[i].isEnabled = true
-
-                }
-            }
-
-            for (j in changeBtList.indices) {
-
-                changeBtList[j].setBackgroundResource(R.drawable.public_button)
-                changeBtList[j].isEnabled = true
-            }
-
-            jogViewList[0].setText(RobotPosition.x.toString())
-            jogViewList[1].setText(RobotPosition.y.toString())
-            jogViewList[2].setText(RobotPosition.z.toString())
-            jogViewList[3].setText(RobotPosition.Rx.toString())
-            jogViewList[4].setText(RobotPosition.Ry.toString())
-            jogViewList[5].setText(RobotPosition.Rz.toString())
-
-            jogView5.isEnabled = true
-            jogView5.setBackgroundResource(R.drawable.public_button)
-
-            jogView6.isEnabled = true
-            jogView6.setBackgroundResource(R.drawable.public_button)
-        }
+//        if (JogState.jogSelected == JogState.JOG_JOINT_SELECTED) {
+//            for (i in jogInfoList.indices) {
+//                jogInfoList[i].setText(jointStrList[i])
+//                if (i > 3) {
+//                    jogInfoList[i].setBackgroundResource(R.drawable.color_gray_frame)
+//                    jogInfoList[i].isEnabled = false
+//
+//                }
+//
+//                for (j in changeBtList.indices) {
+//                    changeBtList[j].setBackgroundResource(R.drawable.color_gray_frame)
+//                    changeBtList[j].isEnabled = false
+//                }
+//
+//                jogViewList[0].setText(RobotPosition.joint1.toString())
+//                jogViewList[1].setText(RobotPosition.joint2.toString())
+//                jogViewList[2].setText(RobotPosition.joint3.toString())
+//                jogViewList[3].setText(RobotPosition.joint4.toString())
+//                jogViewList[4].setText("-")
+//                jogViewList[5].setText("-")
+//
+//                jogView5.isEnabled = false
+//                jogView5.setBackgroundResource(R.drawable.color_gray_frame)
+//
+//                jogView6.isEnabled = false
+//                jogView6.setBackgroundResource(R.drawable.color_gray_frame)
+//
+//
+//            }
+//        } else {
+//            //아닌 경우 INFO를 좌표계 문자열로 바꾸고 5~6번 버튼과 정보창을 Visible 합니다.
+//            for (i in jogInfoList.indices) {
+//                jogInfoList[i].setText(coordStrList[i])
+//                if (i > 3) {
+//                    jogInfoList[i].setBackgroundResource(R.drawable.public_button)
+//                    jogInfoList[i].isEnabled = true
+//
+//                }
+//            }
+//
+//            for (j in changeBtList.indices) {
+//
+//                changeBtList[j].setBackgroundResource(R.drawable.public_button)
+//                changeBtList[j].isEnabled = true
+//            }
+//
+//            jogViewList[0].setText(RobotPosition.x.toString())
+//            jogViewList[1].setText(RobotPosition.y.toString())
+//            jogViewList[2].setText(RobotPosition.z.toString())
+//            jogViewList[3].setText(RobotPosition.Rx.toString())
+//            jogViewList[4].setText(RobotPosition.Ry.toString())
+//            jogViewList[5].setText(RobotPosition.Rz.toString())
+//
+//            jogView5.isEnabled = true
+//            jogView5.setBackgroundResource(R.drawable.public_button)
+//
+//            jogView6.isEnabled = true
+//            jogView6.setBackgroundResource(R.drawable.public_button)
+//        }
 
 
         //JOG의 상승 버튼 리스너
@@ -365,6 +378,8 @@ class JogFragment : Fragment() {
 
 
 
+
+
     //Jog의 + 버튼을 눌렀을때 최대 값을 지정하고, 이 이상이 될 경우 값을 상승시키지 않습니다.
     fun increaseValueAndSet(maxValue: Float, currentValue: Float, increment: Float): Float {
         val newValue = currentValue + increment
@@ -378,6 +393,28 @@ class JogFragment : Fragment() {
         return newValue.coerceAtLeast(minValue)
     }
 
+
+
+    fun refreshEditText(){
+
+        when (jogSelected) {
+            JOG_JOINT_SELECTED -> {
+                binding.jogView1.setText("%.2f".format(RobotPosition.joint1))
+                binding.jogView2.setText("%.2f".format(RobotPosition.joint2))
+                binding.jogView3.setText("%.2f".format(RobotPosition.joint3))
+                binding.jogView4.setText("%.2f".format(RobotPosition.joint4))
+            }
+
+            JOG_GLOBAL_SELECTED -> {
+                binding.jogView1.setText("%.2f".format(RobotPosition.x))
+                binding.jogView2.setText("%.2f".format(RobotPosition.y))
+                binding.jogView3.setText("%.2f".format(RobotPosition.z))
+                binding.jogView4.setText("%.2f".format(RobotPosition.Rx))
+                binding.jogView5.setText("%.2f".format(RobotPosition.Ry))
+                binding.jogView6.setText("%.2f".format(RobotPosition.Rz))
+            }
+        }
+    }
 
     //makeDefaultFragment에서 Quick Home 버튼을 클릭 시, 로봇을 영점으로 움직이는 명령어입니다. 이름 수정 예정
     fun goHome() {
@@ -412,6 +449,77 @@ class JogFragment : Fragment() {
             }
         }
     }
+
+    fun setJog(){
+        val incBtList = listOf<Button>(binding.jogInc1, binding.jogInc2, binding.jogInc3, binding.jogInc4, binding.jogInc5, binding.jogInc6)
+        val decBtList = listOf<Button>(binding.jogDec1, binding.jogDec2, binding.jogDec3, binding.jogDec4, binding.jogDec5, binding.jogDec6)
+        val jogViewList = listOf<EditText>(binding.jogView1, binding.jogView2, binding.jogView3, binding.jogView4, binding.jogView5, binding.jogView6)
+
+        val jogInfoList =
+            listOf<TextView>(binding.jogInfo1, binding.jogInfo2, binding.jogInfo3, binding.jogInfo4,binding. jogInfo5, binding.jogInfo6)
+        val coordStrList = listOf(R.string.str_x, R.string.str_y, R.string.str_z, R.string.str_rx, R.string.str_ry, R.string.str_rz)
+        //관절 값 리소스 이름 수정 필요.
+        val jointStrList = listOf(R.string.str_joint1, R.string.str_joint2, R.string.str_joint3, R.string.str_joint4, R.string.str_joint_null1, R.string.str_joint_null2)
+        val changeBtList = listOf<Button>(binding.jogInc5, binding.jogInc6, binding.jogDec5, binding.jogDec6)
+        if (JogState.jogSelected == JogState.JOG_JOINT_SELECTED) {
+
+            for (i in jogInfoList.indices) {
+                jogInfoList[i].setText(jointStrList[i])
+                if (i > 3) {
+                    jogInfoList[i].setBackgroundResource(R.drawable.color_gray_frame)
+                    jogInfoList[i].isEnabled = false
+
+                }
+
+                for (j in changeBtList.indices) {
+                    changeBtList[j].setBackgroundResource(R.drawable.color_gray_frame)
+                    changeBtList[j].isEnabled = false
+                }
+
+                jogViewList[0].setText(RobotPosition.joint1.toString())
+                jogViewList[1].setText(RobotPosition.joint2.toString())
+                jogViewList[2].setText(RobotPosition.joint3.toString())
+                jogViewList[3].setText(RobotPosition.joint4.toString())
+                jogViewList[4].setText("-")
+                jogViewList[5].setText("-")
+
+                binding.jogView5.isEnabled = false
+                binding.jogView5.setBackgroundResource(R.drawable.color_gray_frame)
+
+                binding.jogView6.isEnabled = false
+                binding.jogView6.setBackgroundResource(R.drawable.color_gray_frame)
+            }
+        } else {
+            //아닌 경우 INFO를 좌표계 문자열로 바꾸고 5~6번 버튼과 정보창을 Visible 합니다.
+            for (i in jogInfoList.indices) {
+                jogInfoList[i].setText(coordStrList[i])
+                if (i > 3) {
+                    jogInfoList[i].setBackgroundResource(R.drawable.public_button)
+                    jogInfoList[i].isEnabled = true
+
+                }
+            }
+
+            for (j in changeBtList.indices) {
+
+                changeBtList[j].setBackgroundResource(R.drawable.public_button)
+                changeBtList[j].isEnabled = true
+            }
+            jogViewList[0].setText(RobotPosition.x.toString())
+            jogViewList[1].setText(RobotPosition.y.toString())
+            jogViewList[2].setText(RobotPosition.z.toString())
+            jogViewList[3].setText(RobotPosition.Rx.toString())
+            jogViewList[4].setText(RobotPosition.Ry.toString())
+            jogViewList[5].setText(RobotPosition.Rz.toString())
+
+            binding.jogView5.isEnabled = true
+            binding.jogView5.setBackgroundResource(R.drawable.public_button)
+
+            binding.jogView6.isEnabled = true
+            binding.jogView6.setBackgroundResource(R.drawable.public_button)
+        }
+    }
+
 
 
     //EditText에 입력된 값이 유효한지(0~360) 검사하고, 해당 값을 로봇 위치를 저장하는 RobotPosition 전역변수에 저장합니다.

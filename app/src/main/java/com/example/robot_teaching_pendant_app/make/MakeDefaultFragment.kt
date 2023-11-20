@@ -28,7 +28,7 @@ import com.example.robot_teaching_pendant_app.system.RobotPosition
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener {
+class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener,JogFragment.refreshEtListener, JogFragment.refreshJogListener {
 
     private var _binding: MakeDefaultFragmentBinding? = null
     private val defBinding get() = _binding!!
@@ -143,14 +143,15 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener {
         //Quick Home 버튼의 클릭 리스너입니다. jogFragment의 goHome()메서드를 실행하여 로봇을 영점으로 보내고 editText를 영점 값으로 수정합니다.
         makeQhomeBt.setOnClickListener {
             onGoHome()
+            refreshET()
         }
 
 
         //조그를 선택하는 4가지 버튼을 함수를 활용하여 그에 맞는 모드와 UI 로직을 가지게 합니다.
-        jogGlobalBt.assignJogState(JogState.JOG_GLOBAL_SELECTED, jogButtonList, jogViewer.id)
-        jogLocalBt.assignJogState(JogState.JOG_LOCAL_SELECTED, jogButtonList, jogViewer.id)
-        jogUserBt.assignJogState(JogState.JOG_USER_SELECTED, jogButtonList, jogViewer.id)
-        jogJointBt.assignJogState(JogState.JOG_JOINT_SELECTED, jogButtonList, jogViewer.id)
+        jogGlobalBt.assignJogState(JogState.JOG_GLOBAL_SELECTED, jogButtonList)
+        jogLocalBt.assignJogState(JogState.JOG_LOCAL_SELECTED, jogButtonList)
+        jogUserBt.assignJogState(JogState.JOG_USER_SELECTED, jogButtonList)
+        jogJointBt.assignJogState(JogState.JOG_JOINT_SELECTED, jogButtonList)
 
 
         // 아래는 우측 상단의 기능 카테고리 버튼들(all, move, func 등)을 클릭 시 리스너 동작들입니다.
@@ -280,8 +281,17 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener {
     }
 
 
+    override fun refreshJog() {
+        val jogFragment = childFragmentManager.findFragmentById(defBinding.jogControllerView.id) as JogFragment
+
+        activity?.runOnUiThread {
+            jogFragment?.setJog()
+        }
+//        jogFragment?.goHome()
+    }
+
     //조그를 선택하는 버튼들에 대한 UI 로직입니다. 본인은 비활성화 시키고, 나머지 3가지 버튼은 활성화 시켜줍니다. (중복 클릭 방지)
-    fun Button.assignJogState(value: Int, buttonList: List<Button>, fragmentContainer: Int) {
+    fun Button.assignJogState(value: Int, buttonList: List<Button>) {
         //조그 모드 버튼들에 대한 클릭 리스너
         this.setOnClickListener {
 
@@ -305,19 +315,29 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener {
                     otherButton.setBackgroundResource(R.drawable.public_button) // 기본 배경 리소스
                 }
             }
-
-            // 버튼을 클릭하면 프래그먼트를 새로고침합니다.
-            val fragment = JogFragment()
-            (it.context as FragmentActivity).supportFragmentManager.beginTransaction()
-                .replace(fragmentContainer, fragment)
-                .commit()
+            refreshJog()
         }
     }
+
+    override fun refreshET() {
+        val jogFragment = childFragmentManager.findFragmentById(defBinding.jogControllerView.id) as JogFragment
+
+        activity?.runOnUiThread {
+            jogFragment?.refreshEditText()
+        }
+//        jogFragment?.goHome()
+    }
+
+
 
     //JogFragment 인터페이스의 onGoHome 메서드를 override하고 goHome() 메서드를 불러와 사용합니다. 로봇을 영점으로 이동시킵니다.
     override fun onGoHome() {
         val jogFragment = childFragmentManager.findFragmentById(defBinding.jogControllerView.id) as JogFragment
-        jogFragment?.goHome()
+
+        activity?.runOnUiThread {
+            jogFragment?.goHome()
+        }
+//        jogFragment?.goHome()
     }
 
     companion object {
