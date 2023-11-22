@@ -40,7 +40,8 @@ open class ConnectorFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        //Connect Helper Class 를 통하여 연결 동작을 실행합니다. 자세한 코드는 해당 Class를 참고 하십시오.
+        //Connect Helper Class 를 통하여 연결 동작을 실행합니다.
+        //연결 UI 동작들은 Connect Helper Class에서 실행되며, 자세한 코드는 해당 Class를 참고 하십시오.
         cbinding = ConnectorFragmentBinding.inflate(inflater, container, false)
         val localbinding = cbinding ?: return null
 

@@ -27,9 +27,6 @@ class PlayActivity : AppCompatActivity() {
         val connectBt = binding.playConnectBt
 
 
-
-
-
         //좌측 상단에 위치한 Menu 버튼 동작, Dialog 형식으로 해당 화면으로 이동할 수 있는 기능
         playMenuBt.setOnClickListener{
             val menuDialog = AlertDialog.Builder(this)

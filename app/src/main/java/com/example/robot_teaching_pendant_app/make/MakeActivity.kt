@@ -101,14 +101,14 @@ class MakeActivity : AppCompatActivity() {
             menuDialog.show()
         }
 
+        //우측 하단의 연결UI(Dialog)를 불러오는 버튼의 동작입니다.
         makeConnectBt.setOnClickListener{
             val dialogFragment = ConnectorDialogFragment()
             dialogFragment.show(supportFragmentManager,null)
         }
 
 
-
-        //우측 하단에 위치한 파워 버튼을 클릭 시 동작입니다.
+        //우측 하단에 위치한 전원UI(Dialog) 버튼의 동작입니다.
         makePowerBt.setOnClickListener{
             val dialogFragment = PowerOffDialogFragment()
             dialogFragment.show(supportFragmentManager,null)

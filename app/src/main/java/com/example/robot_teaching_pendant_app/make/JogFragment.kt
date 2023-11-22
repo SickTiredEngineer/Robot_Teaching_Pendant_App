@@ -15,6 +15,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import com.example.robot_teaching_pendant_app.R
 import com.example.robot_teaching_pendant_app.databinding.JogFragmentBinding
 import com.example.robot_teaching_pendant_app.system.JogState
@@ -121,76 +122,16 @@ class JogFragment : Fragment() {
         val decBtList = listOf<Button>(jogDec1, jogDec2, jogDec3, jogDec4, jogDec5, jogDec6)
         val jogViewList = listOf<EditText>(jogView1, jogView2, jogView3, jogView4, jogView5, jogView6)
 
-
         //JOINT 조그 사용 시, 사용하지 않는 버튼 리스트 입니다.
         val changeBtList = listOf<Button>(jogInc5, jogInc6, jogDec5, jogDec6)
 
+
         //MakeDefaultFragment 에서 Global, Local, User, Joint  를 누를 때 UI 동작 코드입니다.
         //MakeDefaultFragment 에서 4가지 조그 중 하나를 선택하면, Fragment를 새로고침 하여 변경된 사항을 적용하게 됩니다.
-        setJog()
-
-
-
-        // JOINT 모드일 경우 INFO 창을 JOINT1~4로 바꾸고 5~6번 버튼과 정보창을 Invisible 합니다.
-//        if (JogState.jogSelected == JogState.JOG_JOINT_SELECTED) {
-//            for (i in jogInfoList.indices) {
-//                jogInfoList[i].setText(jointStrList[i])
-//                if (i > 3) {
-//                    jogInfoList[i].setBackgroundResource(R.drawable.color_gray_frame)
-//                    jogInfoList[i].isEnabled = false
-//
-//                }
-//
-//                for (j in changeBtList.indices) {
-//                    changeBtList[j].setBackgroundResource(R.drawable.color_gray_frame)
-//                    changeBtList[j].isEnabled = false
-//                }
-//
-//                jogViewList[0].setText(RobotPosition.joint1.toString())
-//                jogViewList[1].setText(RobotPosition.joint2.toString())
-//                jogViewList[2].setText(RobotPosition.joint3.toString())
-//                jogViewList[3].setText(RobotPosition.joint4.toString())
-//                jogViewList[4].setText("-")
-//                jogViewList[5].setText("-")
-//
-//                jogView5.isEnabled = false
-//                jogView5.setBackgroundResource(R.drawable.color_gray_frame)
-//
-//                jogView6.isEnabled = false
-//                jogView6.setBackgroundResource(R.drawable.color_gray_frame)
-//
-//
-//            }
-//        } else {
-//            //아닌 경우 INFO를 좌표계 문자열로 바꾸고 5~6번 버튼과 정보창을 Visible 합니다.
-//            for (i in jogInfoList.indices) {
-//                jogInfoList[i].setText(coordStrList[i])
-//                if (i > 3) {
-//                    jogInfoList[i].setBackgroundResource(R.drawable.public_button)
-//                    jogInfoList[i].isEnabled = true
-//
-//                }
-//            }
-//
-//            for (j in changeBtList.indices) {
-//
-//                changeBtList[j].setBackgroundResource(R.drawable.public_button)
-//                changeBtList[j].isEnabled = true
-//            }
-//
-//            jogViewList[0].setText(RobotPosition.x.toString())
-//            jogViewList[1].setText(RobotPosition.y.toString())
-//            jogViewList[2].setText(RobotPosition.z.toString())
-//            jogViewList[3].setText(RobotPosition.Rx.toString())
-//            jogViewList[4].setText(RobotPosition.Ry.toString())
-//            jogViewList[5].setText(RobotPosition.Rz.toString())
-//
-//            jogView5.isEnabled = true
-//            jogView5.setBackgroundResource(R.drawable.public_button)
-//
-//            jogView6.isEnabled = true
-//            jogView6.setBackgroundResource(R.drawable.public_button)
-//        }
+        //안전한 UI 업데이트를 위해, UI THREAD에서 조그를 세팅하는 함수를 호출합니다.
+        activity?.runOnUiThread {
+            setJog()
+        }
 
 
         //JOG의 상승 버튼 리스너
@@ -337,9 +278,13 @@ class JogFragment : Fragment() {
 
                     //handle Input 참고
                     handleInput(i,jogViewList, jogViewList[i].text.toString())
+                    refreshEditText()
+
                     true // 이벤트 처리 완료
                 }
                 else {
+
+
                     false // 이벤트 처리 안 함
                 }
             }
@@ -354,7 +299,6 @@ class JogFragment : Fragment() {
             })
         }
     }
-
 
     companion object {
         /**
@@ -376,10 +320,6 @@ class JogFragment : Fragment() {
             }
     }
 
-
-
-
-
     //Jog의 + 버튼을 눌렀을때 최대 값을 지정하고, 이 이상이 될 경우 값을 상승시키지 않습니다.
     fun increaseValueAndSet(maxValue: Float, currentValue: Float, increment: Float): Float {
         val newValue = currentValue + increment
@@ -394,15 +334,16 @@ class JogFragment : Fragment() {
     }
 
 
-
+    //EditText 값을 선택된 조그에 맞게, 다시 불러올때 사용하는 함수입니다.
     fun refreshEditText(){
-
         when (jogSelected) {
             JOG_JOINT_SELECTED -> {
                 binding.jogView1.setText("%.2f".format(RobotPosition.joint1))
                 binding.jogView2.setText("%.2f".format(RobotPosition.joint2))
                 binding.jogView3.setText("%.2f".format(RobotPosition.joint3))
                 binding.jogView4.setText("%.2f".format(RobotPosition.joint4))
+                binding.jogView5.setText("-")
+                binding.jogView6.setText("-")
             }
 
             JOG_GLOBAL_SELECTED -> {
@@ -418,6 +359,7 @@ class JogFragment : Fragment() {
 
     //makeDefaultFragment에서 Quick Home 버튼을 클릭 시, 로봇을 영점으로 움직이는 명령어입니다. 이름 수정 예정
     fun goHome() {
+        Toast.makeText(context, "로봇을 영점으로 이동시킵니다", Toast.LENGTH_SHORT).show()
 
         RobotPosition.joint1 = 0f
         RobotPosition.joint2 = 0f
@@ -431,24 +373,10 @@ class JogFragment : Fragment() {
         RobotPosition.Ry = 0f
         RobotPosition.Rz = 0f
 
-        when (jogSelected) {
-            JOG_JOINT_SELECTED -> {
-                binding.jogView1.setText("%.2f".format(RobotPosition.joint1))
-                binding.jogView2.setText("%.2f".format(RobotPosition.joint2))
-                binding.jogView3.setText("%.2f".format(RobotPosition.joint3))
-                binding.jogView4.setText("%.2f".format(RobotPosition.joint4))
-            }
-
-            JOG_GLOBAL_SELECTED -> {
-                binding.jogView1.setText("%.2f".format(RobotPosition.x))
-                binding.jogView2.setText("%.2f".format(RobotPosition.y))
-                binding.jogView3.setText("%.2f".format(RobotPosition.z))
-                binding.jogView4.setText("%.2f".format(RobotPosition.Rx))
-                binding.jogView5.setText("%.2f".format(RobotPosition.Ry))
-                binding.jogView6.setText("%.2f".format(RobotPosition.Rz))
-            }
-        }
+        //EditText를 새로고침 하는 함수입니다.
+        refreshEditText()
     }
+
 
     fun setJog(){
         val incBtList = listOf<Button>(binding.jogInc1, binding.jogInc2, binding.jogInc3, binding.jogInc4, binding.jogInc5, binding.jogInc6)
@@ -476,18 +404,14 @@ class JogFragment : Fragment() {
                     changeBtList[j].isEnabled = false
                 }
 
-                jogViewList[0].setText(RobotPosition.joint1.toString())
-                jogViewList[1].setText(RobotPosition.joint2.toString())
-                jogViewList[2].setText(RobotPosition.joint3.toString())
-                jogViewList[3].setText(RobotPosition.joint4.toString())
-                jogViewList[4].setText("-")
-                jogViewList[5].setText("-")
-
                 binding.jogView5.isEnabled = false
                 binding.jogView5.setBackgroundResource(R.drawable.color_gray_frame)
 
                 binding.jogView6.isEnabled = false
                 binding.jogView6.setBackgroundResource(R.drawable.color_gray_frame)
+
+                //EditText를 새로고침 하는 함수입니다.
+                refreshEditText()
             }
         } else {
             //아닌 경우 INFO를 좌표계 문자열로 바꾸고 5~6번 버튼과 정보창을 Visible 합니다.
@@ -496,7 +420,6 @@ class JogFragment : Fragment() {
                 if (i > 3) {
                     jogInfoList[i].setBackgroundResource(R.drawable.public_button)
                     jogInfoList[i].isEnabled = true
-
                 }
             }
 
@@ -505,90 +428,51 @@ class JogFragment : Fragment() {
                 changeBtList[j].setBackgroundResource(R.drawable.public_button)
                 changeBtList[j].isEnabled = true
             }
-            jogViewList[0].setText(RobotPosition.x.toString())
-            jogViewList[1].setText(RobotPosition.y.toString())
-            jogViewList[2].setText(RobotPosition.z.toString())
-            jogViewList[3].setText(RobotPosition.Rx.toString())
-            jogViewList[4].setText(RobotPosition.Ry.toString())
-            jogViewList[5].setText(RobotPosition.Rz.toString())
 
             binding.jogView5.isEnabled = true
             binding.jogView5.setBackgroundResource(R.drawable.public_button)
 
             binding.jogView6.isEnabled = true
             binding.jogView6.setBackgroundResource(R.drawable.public_button)
+
+            //EditText를 새로고침 하는 함수입니다.
+            refreshEditText()
         }
     }
-
-
 
     //EditText에 입력된 값이 유효한지(0~360) 검사하고, 해당 값을 로봇 위치를 저장하는 RobotPosition 전역변수에 저장합니다.
     fun handleInput(index: Int,array: List<EditText>, input: String) {
         try {
             val newValue = input.toFloat()
 
-            //유효값
+            //EditText에 입력된 값이 유효할 경우, 해당 값을 RobotPosition에 대입합니다.
             if (newValue in 0.0..360.0) {
-//                     newValue가 0과 360 사이일 때
-//                     RobotPosition 업데이트 로직
-
                 //선택된 조그가 GLOBAL 일때
                 if (JogState.jogSelected == JogState.JOG_GLOBAL_SELECTED) {
                     when(index) {
-                        0 -> RobotPosition.x = newValue
-                        1 -> RobotPosition.y = newValue
-                        2 -> RobotPosition.z = newValue
-                        3 -> RobotPosition.Rx = newValue
-                        4 -> RobotPosition.Ry = newValue
-                        5 -> RobotPosition.Rz = newValue
-                    }
-                }
-
-                //선택된 조그가 JOINT 일때
-            }
-            else if (JogState.jogSelected == JogState.JOG_JOINT_SELECTED) {
-                when (index) {
-                    0 -> RobotPosition.joint1 = newValue
-                    1 -> RobotPosition.joint2 = newValue
-                    2 -> RobotPosition.joint3 = newValue
-                    3 -> RobotPosition.joint4 = newValue
-                    // 4, 5번은 비활성화되므로 값 변경 로직은 필요하지 않습니다.
-                }
-            }
-
-            //0~360이 아닐 경우, 적용 시키지 않습니다. (EditText를 변경 전으로 돌려놓습니다.
-            //선택된 조그가 GLOBAL 일때
-            else {
-                if (JogState.jogSelected == JogState.JOG_GLOBAL_SELECTED) {
-                    when (index) {
-                        0 -> {
-                            RobotPosition.x = RobotPosition.x
-                            array[index].setText("%.2f".format(RobotPosition.x))
+                        0 ->{
+                            RobotPosition.x = newValue
+                            Toast.makeText(context, "X좌표를 $newValue 로 이동시킵니다.", Toast.LENGTH_LONG).show()
                         }
-
-                        1 -> {
-                            RobotPosition.y = RobotPosition.y
-                            array[index].setText("%.2f".format(RobotPosition.y))
+                        1 ->{
+                            RobotPosition.x = newValue
+                            Toast.makeText(context, "Y좌표를 $newValue 로 이동시킵니다.", Toast.LENGTH_LONG).show()
                         }
-
-                        2 -> {
-                            RobotPosition.z = RobotPosition.z
-                            array[index].setText("%.2f".format(RobotPosition.z))
+                        2 ->{
+                            RobotPosition.x = newValue
+                            Toast.makeText(context, "Z좌표를 $newValue 로 이동시킵니다.", Toast.LENGTH_LONG).show()
                         }
-
-                        3 -> {
-                            RobotPosition.Rx = RobotPosition.Rx
-                            array[index].setText("%.2f".format(RobotPosition.Rx))
+                        3 ->{
+                            RobotPosition.x = newValue
+                            Toast.makeText(context, "Rx좌표를 $newValue 로 이동시킵니다.", Toast.LENGTH_LONG).show()
                         }
-
-                        4 -> {
-                            RobotPosition.Ry = RobotPosition.Ry
-                            array[index].setText("%.2f".format(RobotPosition.Ry))
+                        4 ->{
+                            RobotPosition.x = newValue
+                            Toast.makeText(context, "Ry좌표를 $newValue 로 이동시킵니다.", Toast.LENGTH_LONG).show()
                         }
-
-                        5 -> {
-                            RobotPosition.Rz = RobotPosition.Rz
-                            array[index].setText("%.2f".format(RobotPosition.Rz))
+                        5 ->{
+                            RobotPosition.x = newValue
+                            Toast.makeText(context, "Rz좌표를 $newValue 로 이동시킵니다.", Toast.LENGTH_LONG).show()
                         }
                     }
                 }
@@ -596,24 +480,96 @@ class JogFragment : Fragment() {
                 //선택된 조그가 JOINT 일때
                 else if (JogState.jogSelected == JogState.JOG_JOINT_SELECTED) {
                     when (index) {
+                        0 ->{
+                            RobotPosition.joint1 = newValue
+                            Toast.makeText(context, "joint1을 $newValue 로 이동시킵니다.", Toast.LENGTH_LONG).show()
+                        }
+                        1 ->{
+                            RobotPosition.joint2 = newValue
+                            Toast.makeText(context, "joint2을 $newValue 로 이동시킵니다.", Toast.LENGTH_LONG).show()
+                        }
+                        2 ->{
+                            RobotPosition.joint3 = newValue
+                            Toast.makeText(context, "joint3을 $newValue 로 이동시킵니다.", Toast.LENGTH_LONG).show()
+                        }
+                        3 ->{
+                            RobotPosition.joint4 = newValue
+                            Toast.makeText(context, "joint4을 $newValue 로 이동시킵니다.", Toast.LENGTH_LONG).show()
+                        }
+                        // 4, 5번은 비활성화되므로 값 변경 로직은 필요하지 않습니다.
+
+                    }
+                }
+            }
+
+            //0~360이 아닐 경우, 적용 시키지 않습니다. (EditText를 변경 전으로 돌려놓습니다.
+            //선택된 조그가 GLOBAL && 유효한 값이 아닐 때 동작입니다. RobotPosition이 바뀌지 않았음으로, EditText에 다시 해당 값을 반영합니다.
+            else {
+                if (JogState.jogSelected == JogState.JOG_GLOBAL_SELECTED) {
+                    when (index) {
+                        0 -> {
+                            RobotPosition.x = RobotPosition.x
+                            array[index].setText("%.2f".format(RobotPosition.x))
+                            Toast.makeText(context, " X좌표의 $newValue 는 유효한 값이 아닙니다. 실행을 취소합니다.", Toast.LENGTH_LONG).show()
+                        }
+
+                        1 -> {
+                            RobotPosition.y = RobotPosition.y
+                            array[index].setText("%.2f".format(RobotPosition.y))
+                            Toast.makeText(context, " Y좌표의 $newValue 는 유효한 값이 아닙니다. 실행을 취소합니다.", Toast.LENGTH_LONG).show()
+                        }
+
+                        2 -> {
+                            RobotPosition.z = RobotPosition.z
+                            array[index].setText("%.2f".format(RobotPosition.z))
+                            Toast.makeText(context, " Z좌표의 $newValue 는 유효한 값이 아닙니다. 실행을 취소합니다.", Toast.LENGTH_LONG).show()
+                        }
+
+                        3 -> {
+                            RobotPosition.Rx = RobotPosition.Rx
+                            array[index].setText("%.2f".format(RobotPosition.Rx))
+                            Toast.makeText(context, " Rx좌표의 $newValue 는 유효한 값이 아닙니다. 실행을 취소합니다.", Toast.LENGTH_LONG).show()
+                        }
+
+                        4 -> {
+                            RobotPosition.Ry = RobotPosition.Ry
+                            array[index].setText("%.2f".format(RobotPosition.Ry))
+                            Toast.makeText(context, " Ry좌표의 $newValue 는 유효한 값이 아닙니다. 실행을 취소합니다.", Toast.LENGTH_LONG).show()
+                        }
+
+                        5 -> {
+                            RobotPosition.Rz = RobotPosition.Rz
+                            array[index].setText("%.2f".format(RobotPosition.Rz))
+                            Toast.makeText(context, " Rz좌표의 $newValue 는 유효한 값이 아닙니다. 실행을 취소합니다.", Toast.LENGTH_LONG).show()
+                        }
+                    }
+                }
+
+                //선택된 조그가 JOINT && 유효한 값이 아닐 때 동작입니다. RobotPosition이 바뀌지 않았음으로, EditText에 다시 해당 값을 반영합니다.
+                else if (JogState.jogSelected == JogState.JOG_JOINT_SELECTED) {
+                    when (index) {
                         0 -> {
                             RobotPosition.joint1 = RobotPosition.joint1
                             array[index].setText("%.2f".format(RobotPosition.joint1))
+                            Toast.makeText(context, " Joint1의 $newValue 는 유효한 값이 아닙니다. 실행을 취소합니다.", Toast.LENGTH_LONG).show()
                         }
 
                         1 -> {
                             RobotPosition.joint2 = RobotPosition.joint2
                             array[index].setText("%.2f".format(RobotPosition.joint2))
+                            Toast.makeText(context, " Joint2의 $newValue 는 유효한 값이 아닙니다. 실행을 취소합니다.", Toast.LENGTH_LONG).show()
                         }
 
                         2 -> {
                             RobotPosition.joint3 = RobotPosition.joint3
                             array[index].setText("%.2f".format(RobotPosition.joint3))
+                            Toast.makeText(context, " Joint3의 $newValue 는 유효한 값이 아닙니다. 실행을 취소합니다.", Toast.LENGTH_LONG).show()
                         }
 
                         3 -> {
                             RobotPosition.joint4 = RobotPosition.joint4
                             array[index].setText("%.2f".format(RobotPosition.joint4))
+                            Toast.makeText(context, " Joint4의 $newValue 는 유효한 값이 아닙니다. 실행을 취소합니다.", Toast.LENGTH_LONG).show()
                         }
                     }
                 }

@@ -177,7 +177,7 @@
     <ImageButton
         android:id="@+id/tree_search_bt"
         style="@style/style_tree_bt"
-        android:layout_height="84dp"
+        android:layout_height="85dp"
 
         android:src="@drawable/bt_search_icon"
         app:layout_constraintStart_toStartOf="parent"

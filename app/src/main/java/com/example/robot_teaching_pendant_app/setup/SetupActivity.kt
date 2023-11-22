@@ -48,8 +48,7 @@ class SetupActivity : AppCompatActivity() {
         val setupButtonList = listOf(setupCobotBt, setupToolBt, setupSystemBt, setupLogBt, setupUtilityBt, setupSerialBt, setupIo1Bt, setupIo2Bt,
             setupInboxBt, setupInterfaceBt, setupCoordBt, setupSecurityBt, setupDevicesBt, setupToolListBt, setupProgramTableBt)
 
-        //각 버튼에 맞는 Fragment를 불러옵니다. 중복 클릭을 방지하기 위한 로직이 있습니다.
-
+        //각 버튼에 해당하는 Fragment를 불러오며, 중복 클릭을 방지하기 위한 로직이 있습니다.
         for(button in setupButtonList){
             button.setOnClickListener { clickedButton ->
                 // 버튼에 따라서 적절한 프래그먼트를 로드
@@ -80,10 +79,13 @@ class SetupActivity : AppCompatActivity() {
 
                 // 선택된 버튼은 연두색 배경이 되며 Disable, 나머지는 public_button 상태로 돌아옵니다.
                 for (otherButton in setupButtonList){
+                    //클릭된 버튼은 Enable= False 상태가 되고, 초록색 배경으로 선택되었음을 나타냅니다.
                     if(otherButton == clickedButton){
                         otherButton.isEnabled = false
                         otherButton.setBackgroundResource(R.drawable.color_green_frame)
                     }
+
+                    //클릭되지 않은 버튼들은 Enable = True 상태가 되고, 배경을 기본 버튼으로 설정합니다.(선택 되었던 버튼이 되돌려집니다.)
                     else{
                         otherButton.isEnabled = true
                         otherButton.setBackgroundResource(R.drawable.public_button)

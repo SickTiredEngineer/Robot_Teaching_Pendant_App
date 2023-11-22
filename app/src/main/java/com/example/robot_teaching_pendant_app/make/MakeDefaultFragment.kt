@@ -126,7 +126,6 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener,JogFragment.r
             }
         }
 
-
 //        Jog Fragment 를 childFragment 형태로 불러옵니다.
         if (savedInstanceState == null) { // <- saveInstanceState 가 Null 이면 프래그먼트가 처음 생성됨을 의미.
 
@@ -139,13 +138,11 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener,JogFragment.r
                 .commit()
         }
 
-
         //Quick Home 버튼의 클릭 리스너입니다. jogFragment의 goHome()메서드를 실행하여 로봇을 영점으로 보내고 editText를 영점 값으로 수정합니다.
         makeQhomeBt.setOnClickListener {
             onGoHome()
             refreshET()
         }
-
 
         //조그를 선택하는 4가지 버튼을 함수를 활용하여 그에 맞는 모드와 UI 로직을 가지게 합니다.
         jogGlobalBt.assignJogState(JogState.JOG_GLOBAL_SELECTED, jogButtonList)
@@ -165,6 +162,8 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener,JogFragment.r
         }
 
 
+        //우측상단에 위치한 검색창 (EditText)기능을 정의합니다. ->검색한 결과에 맞는 ICON BUTTON들을 출력합니다.
+        // Icon.kt에 있는 ICON BUTTON의 태그를 통해 검색
         searchBox.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
                 // 입력 전
@@ -177,7 +176,7 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener,JogFragment.r
                     val newText = currentText.replace("\n", "").replace("\r", "")
                     searchBox.setText(newText)
 
-                    // 커서를 텍스트의 끝으로 이동
+                    //커서를 텍스트의 끝으로 이동
                     searchBox.setSelection(newText.length)
 
                     // 필요하다면 사용자에게 경고 메시지 표시
@@ -187,12 +186,10 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener,JogFragment.r
                 }
 
             }
-
             override fun afterTextChanged(s: Editable) {
                 // 입력 후
             }
         })
-
 
         //Activity 에서도 접근 하려면 필요한 코드, 임시로 남겨 둠, 해당 파일은 Fragment 라 사용하지 않아서 주석으로만 남겨둠.
 //        if (savedInstanceState == null) {
@@ -267,77 +264,115 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener,JogFragment.r
         }
     }
 
-
-    /*        카테고리를 클릭하면 해당 카테고리에 포함 된 아이콘 버튼을 -> defIconView 라는 스크롤 바 뷰 안에 포함되어 있는 gridLayout에 출력하는
-            함수입니다. 아이콘 버튼은 make 디렉토리의 Icon Data Class 를 참조하십시오.*/
-
+    //검색한 ICON BUTTON들을 필터링하는 메서드입니다.
     fun filterAndDisplayIcons(query: String) {
         // query를 기반으로 icons 리스트를 필터링
         val filteredIcons = allIcons.filter { icon ->
             icon.title.contains(query, ignoreCase = true)  // 대소문자를 무시하고 포함 여부 확인
         }
-
-        displayIcons(filteredIcons)  // 필터링된 아이콘 리스트를 출력
+        // 필터링된 아이콘 버튼들의 크기 등을 설정 한 뒤, 출력합니다.
+        displayIcons(filteredIcons)
     }
 
+    //각 기능의 ICON BUTTON들을 우측 상단의 SCROLL Layout에 생성하는 함수입니다. 인자값으로 Icon.kt 에 있는 ICON BUTTON 정보들의 리스트를 받게 됩니다.
+    fun displayIcons(icons: List<Icon>) {
+        val gridLayout = defBinding.gridLayout
 
+        //카테고리 버튼이 클릭되면 먼저 레이아웃에 있는 뷰를 전부 제거합니다.
+        gridLayout.removeAllViews()
+
+        for (iconData in icons) {
+            val iconButton = ImageButton(context)
+            iconButton.setImageResource(iconData.imageRes)
+
+            //FIT_CENTER는 이미지를 뷰의 중앙에 위치시키면서 뷰에 맞게 이미지를 조절합니다. 이미지의 가로세로 비율은 유지됩니다.
+            //CENTER_INSIDE는 이미지가 뷰의 경계 내에 완전히 들어오도록 이미지 크기를 조절합니다. 이미지의 가로세로 비율 역시 유지됩니다.
+            iconButton.scaleType = ImageView.ScaleType.CENTER_INSIDE
+            iconButton.background = null
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                iconButton.foreground = ContextCompat.getDrawable(requireContext(), R.drawable.icon_frame)
+            }
+
+            //아이콘의 사이즈, Margin 등, 필요한 파라미터 값을 정합니다.
+            val params = GridLayout.LayoutParams()
+            params.width = 150
+            params.height = 150
+            params.setMargins(10, 10, 10, 10)  // 마진 설정: 좌, 상, 우, 하
+
+            // 아이콘 버튼의 레이아웃 파라미터에 위에서 설정한 params를 적용합니다.
+            iconButton.layoutParams = params
+            iconButton.background = null
+
+            //아이콘 버튼의 리스너입니다. 아이콘 버튼들의 Action에 있는 동작을 취합니다.
+            iconButton.setOnClickListener {
+                Toast.makeText(context, "${iconData.title} 버튼이 눌러졌습니다.", Toast.LENGTH_SHORT).show()
+                iconData.action.invoke() }
+
+            //Gridlayout 에 iconButton 을 추가합니다.
+            gridLayout.addView(iconButton)
+        }
+    }
+
+    //JogFragment 의 UI 갱신을 위해, refreshJogListener 인터페이스를 구현합니다. 해당 메서드는 JogFragment 의 setJog()메서드를 호출하여, 유저의 선택과 상황에 맞게 UI를 업데이트 해줍니다.
     override fun refreshJog() {
         val jogFragment = childFragmentManager.findFragmentById(defBinding.jogControllerView.id) as JogFragment
 
         activity?.runOnUiThread {
             jogFragment?.setJog()
         }
-//        jogFragment?.goHome()
     }
 
-    //조그를 선택하는 버튼들에 대한 UI 로직입니다. 본인은 비활성화 시키고, 나머지 3가지 버튼은 활성화 시켜줍니다. (중복 클릭 방지)
-    fun Button.assignJogState(value: Int, buttonList: List<Button>) {
-        //조그 모드 버튼들에 대한 클릭 리스너
-        this.setOnClickListener {
-
-            //Object Jogstate 의 jogSelected(조그 선택상태) 변수를 value인자값으로 변경합니다.
-            JogState.jogSelected = value
-
-            for (otherButton in buttonList) {
-                //버튼 리스트에 있는 것이 자기 자신이면 자기 자신을 비활성화 하고 회색 배경으로 변경하는 루프문입니다.
-                if (otherButton == this) {
-                    otherButton.isEnabled = false
-                    otherButton.setBackgroundResource(R.drawable.color_gray_frame) // 회색 배경 리소스
-
-                    //눌러진 버튼의 이름을 출력하는 토스트문
-                    val buttonText = otherButton.text
-                    Toast.makeText(it.context, "$buttonText 버튼을 눌렀습니다.", Toast.LENGTH_SHORT).show()
-
-
-                    //눌러진 버튼이 자기 자신이 아니면 활성화 되며 배경을 기본 버튼 프레임으로 변경합니다.
-                } else {
-                    otherButton.isEnabled = true
-                    otherButton.setBackgroundResource(R.drawable.public_button) // 기본 배경 리소스
-                }
-            }
-            refreshJog()
-        }
-    }
-
+    //JogFragment 의 조그 값을 입력하는 EditText 갱신을 위해, refreshETListener 인터페이스를 구현합니다. 해당 메서드는 JogFragment 의 refreshEditText()메서드를 호출하여, 유저의 선택과 상황에 맞게 EditText를 고칩니다.
+    //setJog()를 사용하면 되어서 추후 상황을 보고 삭제할 예정입니다.
     override fun refreshET() {
         val jogFragment = childFragmentManager.findFragmentById(defBinding.jogControllerView.id) as JogFragment
 
         activity?.runOnUiThread {
             jogFragment?.refreshEditText()
         }
-//        jogFragment?.goHome()
     }
 
-
-
-    //JogFragment 인터페이스의 onGoHome 메서드를 override하고 goHome() 메서드를 불러와 사용합니다. 로봇을 영점으로 이동시킵니다.
+    interface GoHomeListener
+    //JogFragment 의 GoHoneListener 인터페이스를 구현합니다. onGoHome() 메서드를 override하고 , 이 메서드는 goHome() 메서드를 불러와 실행합니다. 로봇을 지정한 영점으로 이동 시킵니다.
     override fun onGoHome() {
         val jogFragment = childFragmentManager.findFragmentById(defBinding.jogControllerView.id) as JogFragment
 
         activity?.runOnUiThread {
             jogFragment?.goHome()
         }
-//        jogFragment?.goHome()
+    }
+
+    //조그를 선택하는 버튼들에 대한 UI 로직입니다. 본인은 비활성화 시키고, 나머지 3가지 버튼은 활성화 시켜줍니다. (중복 클릭 방지)
+    //JOG UI는 JogFragment의 RefreshJogListener Interface를 구현하여, 그 안에 있는 setJog() 라는 메서드를 호출하여 업데이트 시킵니다.
+    //Value(jogSelected가 어떤게 될 것인지, 사용할 버튼은 어떤 것들인지 리스트 형태로 받아오게 되고 로직을 수행합니다.
+    fun Button.assignJogState(value: Int, buttonList: List<Button>) {
+        //조그 버튼들에 대한 클릭 리스너
+        this.setOnClickListener {
+
+            //Object Jogstate 의 jogSelected(조그 선택상태) 변수를 value인자값으로 변경합니다.
+            JogState.jogSelected = value
+
+            for (otherButton in buttonList) {
+                //버튼 리스트에 있는 버튼 중, 자기 자신이 클릭되면 Enable= False 하고, 배경색을 회색으로 변경하여 선택 되었음을 표시합니다.
+                if (otherButton == this) {
+                    otherButton.isEnabled = false
+                    otherButton.setBackgroundResource(R.drawable.color_gray_frame) // 회색 배경 리소스
+
+                    //눌러진 버튼의 이름을 출력하는 토스트 코드입니다.
+                    val buttonText = otherButton.text
+                    Toast.makeText(it.context, "$buttonText 버튼을 눌렀습니다.", Toast.LENGTH_SHORT).show()
+
+
+                    //눌러진 버튼을 제외한 나머지 버튼들을 Enable = True 시키고, 배경색을 바꾸어 클릭할 수 있음을 표시합니다.
+                } else {
+                    otherButton.isEnabled = true
+                    otherButton.setBackgroundResource(R.drawable.public_button) // 기본 배경 리소스
+                }
+            }
+            //Jog Fragment 에 있는 setJog()를 불러오는 함수입니다.
+            refreshJog()
+        }
     }
 
     companion object {
@@ -358,46 +393,6 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener,JogFragment.r
                     putString(ARG_PARAM2, param2)
                 }
             }
-    }
-
-
-    fun displayIcons(icons: List<Icon>) {
-        val gridLayout = defBinding.gridLayout
-
-        //카테고리 버튼이 클릭되면 먼저 레이아웃에 있는 뷰를 전부 제거합니다.
-        gridLayout.removeAllViews()
-
-        //버튼 추가를 위한 루프 문
-        for (iconData in icons) {
-            val iconButton = ImageButton(context)
-            iconButton.setImageResource(iconData.imageRes)
-
-            //FIT_CENTER는 이미지를 뷰의 중앙에 위치시키면서 뷰에 맞게 이미지를 조절합니다. 이미지의 가로세로 비율은 유지됩니다.
-            //CENTER_INSIDE는 이미지가 뷰의 경계 내에 완전히 들어오도록 이미지 크기를 조절합니다. 이미지의 가로세로 비율 역시 유지됩니다.
-            iconButton.scaleType = ImageView.ScaleType.CENTER_INSIDE
-            iconButton.background = null
-
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                iconButton.foreground = ContextCompat.getDrawable(requireContext(), R.drawable.icon_frame)
-            }
-
-            val params = GridLayout.LayoutParams()
-            params.width = 150
-            params.height = 150
-            params.setMargins(10, 10, 10, 10)  // 마진 설정: 좌, 상, 우, 하
-
-// 아이콘 버튼의 레이아웃 파라미터에 위에서 설정한 params를 적용합니다.
-            iconButton.layoutParams = params
-            iconButton.background = null
-
-            //아이콘 버튼의 리스너입니다.
-            iconButton.setOnClickListener {
-                Toast.makeText(context, "${iconData.title} 버튼이 눌러졌습니다.", Toast.LENGTH_SHORT).show()
-                iconData.action.invoke() }
-
-            //Gridlayout 에 iconButton 을 추가합니다.
-            gridLayout.addView(iconButton)
-        }
     }
 
     override fun onDestroyView() {

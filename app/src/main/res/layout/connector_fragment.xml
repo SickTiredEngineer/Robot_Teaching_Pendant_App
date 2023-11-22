@@ -4,20 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/style_bg"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="480dp"
     tools:context=".connect.ConnectorFragment">
-
-    <TextView
-        android:id="@+id/state_connect"
-        style="@style/style_tvc"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="45dp"
-        android:text="@string/state_disconnected"
-        app:layout_constraintBottom_toTopOf="@+id/state_robot_operation"
-        app:layout_constraintEnd_toStartOf="@+id/connect_list"
-        app:layout_constraintStart_toEndOf="@+id/state_con_box"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/state_robot_operation"
@@ -25,20 +13,49 @@
         android:layout_width="300dp"
 
         android:layout_height="60dp"
-        android:layout_marginEnd="45dp"
-        android:layout_marginBottom="230dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="35dp"
         android:text="@string/state_robot_operation"
         app:layout_constraintBottom_toTopOf="@+id/connect_bt"
-        app:layout_constraintEnd_toStartOf="@+id/connect_list"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/state_rob_Oper_box"
         app:layout_constraintTop_toBottomOf="@+id/state_connect" />
+
+    <TextView
+        android:id="@+id/state_connect"
+        style="@style/style_tvc"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="5dp"
+        android:text="@string/state_disconnected"
+        app:layout_constraintBottom_toTopOf="@+id/state_robot_operation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/state_con_box"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <View
+        android:id="@+id/state_con_box"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="6dp"
+        android:background="@drawable/main_frame"
+        app:layout_constraintBottom_toTopOf="@+id/state_rob_Oper_box"
+        app:layout_constraintEnd_toStartOf="@+id/state_connect"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <View
         android:id="@+id/state_rob_Oper_box"
         android:layout_width="100dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="230dp"
 
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginBottom="30dp"
         android:background="@drawable/main_frame"
         app:layout_constraintBottom_toTopOf="@+id/connect_bt"
         app:layout_constraintEnd_toStartOf="@+id/state_robot_operation"
@@ -52,12 +69,14 @@
         android:layout_width="400dp"
         android:layout_height="65dp"
 
-        android:layout_marginEnd="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="8dp"
         android:text="@string/str_connect"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/disconnect_bt"
-        app:layout_constraintEnd_toStartOf="@+id/textView3"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/state_robot_operation" />
 
     <Button
         android:id="@+id/disconnect_bt"
@@ -65,48 +84,27 @@
         android:layout_width="400dp"
         android:layout_height="65dp"
 
-        android:layout_marginEnd="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="5dp"
         android:text="@string/str_disconnect"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView3"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ScrollView
-        android:id="@+id/connect_list"
-        android:layout_width="350dp"
-        android:layout_height="344dp"
-        android:layout_marginEnd="3dp"
-        android:background="@drawable/main_frame"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/connect_bt" />
 
     <TextView
         android:id="@+id/textView3"
         style="@style/style_tvc"
         android:layout_width="350dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="3dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="33dp"
         android:text="컨트롤 박스 정보를 나타내는 창입니다."
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/connect_list" />
-
-    <View
-        android:id="@+id/state_con_box"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
-        android:background="@drawable/main_frame"
-
-        app:layout_constraintBottom_toTopOf="@+id/state_rob_Oper_box"
-        app:layout_constraintEnd_toStartOf="@+id/state_connect"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

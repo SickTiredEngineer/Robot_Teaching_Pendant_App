@@ -120,4 +120,11 @@
 
 
 
+    <style name="style_dialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowBackground">@drawable/dialog_frame</item>
+        <!-- 다른 스타일 속성들 -->
+    </style>
+
+
+
 </resources>

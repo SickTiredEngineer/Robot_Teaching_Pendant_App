@@ -27,7 +27,7 @@
             <LinearLayout
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
-                android:layout_height="265dp"
+                android:layout_height="280dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/main_frame">
 
@@ -43,7 +43,7 @@
                         android:id="@+id/def_all_bt"
                         style="@style/style_button"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="70dp"
                         android:layout_weight="1"
                         android:text="@string/str_all" />
 
@@ -51,7 +51,7 @@
                         android:id="@+id/def_move_bt"
                         style="@style/style_button"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="70dp"
                         android:layout_weight="1"
                         android:text="@string/str_move" />
 
@@ -59,7 +59,7 @@
                         android:id="@+id/def_func_bt"
                         style="@style/style_button"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="70dp"
                         android:layout_weight="1"
                         android:text="@string/str_func" />
 
@@ -67,7 +67,7 @@
                         android:id="@+id/def_other_bt"
                         style="@style/style_button"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="70dp"
                         android:layout_weight="1"
                         android:text="@string/str_other" />
 
@@ -75,9 +75,9 @@
 
                 <ScrollView
                     android:id="@+id/def_icon_view"
+                    style="@style/style_bg"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    style = "@style/style_bg">
+                    android:layout_height="match_parent">
 
                     <GridLayout
                         android:id="@+id/grid_layout"
@@ -279,7 +279,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <LinearLayout
-                    android:layout_width="166dp"
+                    android:layout_width="160dp"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 

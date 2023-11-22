@@ -51,8 +51,6 @@
             <Button
                 android:id="@+id/setup_cobot_bt"
                 style="@style/style_setup_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
                 android:text="@string/str_cobot"
                 android:textSize="20sp"
                 tools:ignore="VisualLintButtonSize" />
@@ -60,8 +58,6 @@
             <Button
                 android:id="@+id/setup_tool_bt"
                 style="@style/style_setup_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
                 android:text="@string/str_tool"
                 android:textSize="20sp"
                 tools:ignore="VisualLintButtonSize" />
@@ -69,8 +65,7 @@
             <Button
                 android:id="@+id/setup_system_bt"
                 style="@style/style_setup_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+
                 android:text="@string/str_system"
                 android:textSize="20sp"
                 tools:ignore="VisualLintButtonSize" />
@@ -78,8 +73,7 @@
             <Button
                 android:id="@+id/setup_log_bt"
                 style="@style/style_setup_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+
                 android:text="@string/str_log"
                 android:textSize="20sp"
                 tools:ignore="VisualLintButtonSize" />
@@ -87,8 +81,7 @@
             <Button
                 android:id="@+id/setup_utility_bt"
                 style="@style/style_setup_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+
                 android:text="@string/str_utility"
                 android:textSize="20sp"
                 tools:ignore="VisualLintButtonSize" />
@@ -96,8 +89,7 @@
             <Button
                 android:id="@+id/setup_serial_bt"
                 style="@style/style_setup_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+
                 android:text="@string/str_serial"
                 android:textSize="20sp"
                 tools:ignore="VisualLintButtonSize" />
@@ -105,8 +97,7 @@
             <Button
                 android:id="@+id/setup_io1_bt"
                 style="@style/style_setup_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+
                 android:text="@string/str_io1"
                 android:textSize="20sp"
                 tools:ignore="VisualLintButtonSize" />
@@ -114,8 +105,7 @@
             <Button
                 android:id="@+id/setup_io2_bt"
                 style="@style/style_setup_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+
                 android:text="@string/str_io2"
                 android:textSize="20sp"
                 tools:ignore="VisualLintButtonSize" />
@@ -123,8 +113,7 @@
             <Button
                 android:id="@+id/setup_inbox_bt"
                 style="@style/style_setup_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+
                 android:text="@string/str_inbox"
                 android:textSize="20sp"
                 tools:ignore="VisualLintButtonSize" />
@@ -132,8 +121,7 @@
             <Button
                 android:id="@+id/setup_interface_bt"
                 style="@style/style_setup_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+
                 android:text="@string/str_interface"
                 android:textSize="20sp"
                 tools:ignore="VisualLintButtonSize" />
@@ -141,8 +129,7 @@
             <Button
                 android:id="@+id/setup_coord_bt"
                 style="@style/style_setup_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+
                 android:text="@string/str_coord"
                 android:textSize="20sp"
                 tools:ignore="VisualLintButtonSize" />
@@ -150,8 +137,7 @@
             <Button
                 android:id="@+id/setup_security_bt"
                 style="@style/style_setup_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+
                 android:text="@string/str_security"
                 android:textSize="20sp"
                 tools:ignore="VisualLintButtonSize" />
@@ -159,8 +145,7 @@
             <Button
                 android:id="@+id/setup_devices_bt"
                 style="@style/style_setup_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+
                 android:text="@string/str_devices"
                 android:textSize="20sp"
                 tools:ignore="VisualLintButtonSize" />
@@ -168,8 +153,7 @@
             <Button
                 android:id="@+id/setup_tool_list_bt"
                 style="@style/style_setup_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+
                 android:text="@string/str_tool_list"
                 android:textSize="20sp"
                 tools:ignore="VisualLintButtonSize" />
@@ -177,8 +161,6 @@
             <Button
                 android:id="@+id/setup_program_table_bt"
                 style="@style/style_setup_button"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
 
                 android:text="@string/str_program_table"
                 android:textSize="20sp"

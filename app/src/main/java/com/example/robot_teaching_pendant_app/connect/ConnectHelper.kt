@@ -133,6 +133,7 @@ class ConnectHelper(
     }
 
     private fun disconnectClick(){
+
         stateConnect.setText(R.string.state_disconnected)
         stateConBox.setBackgroundResource(R.drawable.color_red_frame)
 

@@ -28,7 +28,6 @@ class MakeExtFragment : Fragment() {
     private var param2: String? = null
 
     init{
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
