@@ -21,13 +21,15 @@ class SetupActivity : AppCompatActivity() {
         val binding = SetupActivityBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
+
+        //설정화면을 출력할 Layout의 아이디입니다.
         val setupViewer = binding.setupViewer
 
         //버튼 변수 등록
         val setupPowerBt = binding.setupPowerBt
         val setupConnectBt = binding.setupConnectBt
 
-        //좌측에 위치한 설정 종류 버튼으로, 클릭 시 해당 설정을 위한 화면을 setupViewer에 출력합니다.
+        //좌측에 위치한 설정 항목들을 불러오는 버튼으로, 클릭 시 해당 설정을 위한 Fragment 들을 setupViewer 에 출력합니다.
         val setupCobotBt = binding.setupCobotBt
         val setupToolBt = binding.setupToolBt
         val setupSystemBt = binding.setupSystemBt
@@ -44,7 +46,7 @@ class SetupActivity : AppCompatActivity() {
         val setupToolListBt = binding.setupToolListBt
         val setupProgramTableBt = binding.setupProgramTableBt
 
-        //Setup목록 버튼들을 리스트 화 하고 바로 아래에 위치한 로직에 사용합니다.
+        //Setup의 좌측에 위치한, 설정 항목들을 불러오는 버튼을 리스트화 하여 로직에 사용합니다.
         val setupButtonList = listOf(setupCobotBt, setupToolBt, setupSystemBt, setupLogBt, setupUtilityBt, setupSerialBt, setupIo1Bt, setupIo2Bt,
             setupInboxBt, setupInterfaceBt, setupCoordBt, setupSecurityBt, setupDevicesBt, setupToolListBt, setupProgramTableBt)
 
@@ -71,14 +73,17 @@ class SetupActivity : AppCompatActivity() {
                     else -> null
                 }
 
+                //선택된 Fragment를 Commit() 합니다.
                 fragment?.let {
                     supportFragmentManager.beginTransaction()
                         .replace(setupViewer.id, it)
                         .commit()
                 }
 
-                // 선택된 버튼은 연두색 배경이 되며 Disable, 나머지는 public_button 상태로 돌아옵니다.
+                // 선택된 버튼은 연두색 배경이 되며 중복 클릭 방지를 위해 Disable 상태가 됩니다.
+                // 선택되지 않은 버튼들과, 이전에 선택되었던 버튼들은 Enable 상태가 되어 클릭할 수 있게 됩니다.
                 for (otherButton in setupButtonList){
+
                     //클릭된 버튼은 Enable= False 상태가 되고, 초록색 배경으로 선택되었음을 나타냅니다.
                     if(otherButton == clickedButton){
                         otherButton.isEnabled = false
@@ -126,13 +131,15 @@ class SetupActivity : AppCompatActivity() {
             menuDialog.show()
         }
 
-        //우측 하단에 위치한 연결 버튼 클릭 시 connect 디렉토리에 있는 ConnectDialogFragment를 Dialog로 출력합니다.
+        //우측 하단에 위치한 연결 버튼을 누를 시, ConnectorDialogFragment 를 Dialog 형식으로 출력합니다.
+        //자세한 내용은 Connect 디렉토리의 ConnectorDialogFragment를 참고하십시요.
         setupConnectBt.setOnClickListener{
             val dialogFragment = ConnectorDialogFragment()
             dialogFragment.show(supportFragmentManager,null)
         }
 
-        //우측 하단에 위치한 파워 버튼을 클릭 시 동작으로 system 디렉토리에 있는 PowerOffFragment를 Dialog로 출력합니다.
+        //우측 하단에 위치한 전원 버튼을 누를 시, PowerOffDialogFragment 를 Dialog 형식으로 출력합니다.
+        //자세한 내용은 System 디렉토리의 PowerOffDialogFragment를 참고하십시요.
         setupPowerBt.setOnClickListener{
             val dialogFragment = PowerOffDialogFragment()
             dialogFragment.show(supportFragmentManager,null)

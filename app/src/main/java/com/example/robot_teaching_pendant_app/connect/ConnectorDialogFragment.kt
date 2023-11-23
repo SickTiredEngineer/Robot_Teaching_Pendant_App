@@ -7,6 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import com.example.robot_teaching_pendant_app.databinding.ConnectorFragmentBinding
+//ConnectorFragment를 Dialog 형식으로 보여주는 Fragment 입니다.
+//ConnectorHelper Class를 이용합니다.
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -42,6 +45,7 @@ class ConnectorDialogFragment : DialogFragment() {
     ): View? {
         _binding = ConnectorFragmentBinding.inflate(inflater, container, false)
 
+        //ConnectHelper 클래스의 생성자에 맞게, 위젯을 추가해줍니다.
         connectHelper = ConnectHelper(
             connectBt = cbinding.connectBt,
             disconnectBt = cbinding.disconnectBt,

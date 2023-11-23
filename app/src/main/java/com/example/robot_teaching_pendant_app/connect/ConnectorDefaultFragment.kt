@@ -1,5 +1,7 @@
 package com.example.robot_teaching_pendant_app.connect
 
+//사용하지 않을 예정의 Fragment 입니다.
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.View

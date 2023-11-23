@@ -38,22 +38,22 @@ class MakeActivity : AppCompatActivity() {
         val fragmentExt = MakeExtFragment()
         val fragmentDefault = MakeDefaultFragment()
 
-        //Ext,  Default 모드에 맞게 초기 상태를 설정합니다.
+        //토글 형식의 트리 확장 버튼(EXT)이 꺼져있으면 MakeDefaultFragment를, 켜져있으면 MakeExtFragment를 불러옵니다.
         val initialFragment = if (treeExtBt.isChecked) fragmentExt else fragmentDefault
+
         supportFragmentManager.beginTransaction()
             .add(sideViewer.id, initialFragment)
             .commit()
 
 
-        // 처음 액티비티가 생성되었을 때 프래그먼트 추가
+        // 처음 액티비티가 생성되면 우측의 Layout에 MakeDefaultFragment를 삽입합니다.
+        //자세한 내용은 Make 디렉토리의 MakeDefaultFragment를 참고하십시요.
         if (savedInstanceState == null) {
             val fragment = MakeDefaultFragment()
             supportFragmentManager.beginTransaction()
                 .replace(sideViewer.id, fragment)
                 .commit()
         }
-
-
 
         //Ext tree 토글 버튼 클릭 시 동작입니다.
         treeExtBt.setOnCheckedChangeListener { _, isChecked ->
@@ -68,8 +68,6 @@ class MakeActivity : AppCompatActivity() {
                         .replace(sideViewer.id, fragment)
                         .commit()
                 }
-
-
 
 
         //좌측 상단에 위치한 Menu 버튼 동작, Dialog 형식으로 해당 화면으로 이동할 수 있는 기능
@@ -101,14 +99,16 @@ class MakeActivity : AppCompatActivity() {
             menuDialog.show()
         }
 
-        //우측 하단의 연결UI(Dialog)를 불러오는 버튼의 동작입니다.
+        //우측 하단에 위치한 연결 버튼을 누를 시, ConnectorDialogFragment 를 Dialog 형식으로 출력합니다.
+        //자세한 내용은 Connect 디렉토리의 ConnectorDialogFragment를 참고하십시요.
         makeConnectBt.setOnClickListener{
             val dialogFragment = ConnectorDialogFragment()
             dialogFragment.show(supportFragmentManager,null)
         }
 
 
-        //우측 하단에 위치한 전원UI(Dialog) 버튼의 동작입니다.
+        //우측 하단에 위치한 전원 버튼을 누를 시, PowerOffDialogFragment 를 Dialog 형식으로 출력합니다.
+        //자세한 내용은 System 디렉토리의 PowerOffDialogFragment를 참고하십시요.
         makePowerBt.setOnClickListener{
             val dialogFragment = PowerOffDialogFragment()
             dialogFragment.show(supportFragmentManager,null)

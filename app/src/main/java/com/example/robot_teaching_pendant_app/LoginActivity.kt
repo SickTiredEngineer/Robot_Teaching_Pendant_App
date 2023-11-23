@@ -51,7 +51,8 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
-        //우측 하단에 위치한 파워버튼 클릭 시, system 디렉토리에 위치한
+        //우측 하단에 위치한 전원 버튼을 누를 시, PowerOffDialogFragment 를 Dialog 형식으로 출력합니다.
+        //자세한 내용은 System 디렉토리의 PowerOffDialogFragment를 참고하십시요.
         loginPowerBt.setOnClickListener{
             val dialogFragment = PowerOffDialogFragment()
             dialogFragment.show(supportFragmentManager,null)

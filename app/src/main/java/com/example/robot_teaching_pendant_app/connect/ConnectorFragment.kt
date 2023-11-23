@@ -6,6 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.robot_teaching_pendant_app.databinding.ConnectorFragmentBinding
+//ConnectorHelper Class를 이용한 연결 UI Fragment 입니다.
+//Main의 Layout에 삽입됩니다.
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

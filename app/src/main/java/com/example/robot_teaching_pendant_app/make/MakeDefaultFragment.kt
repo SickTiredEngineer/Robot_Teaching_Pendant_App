@@ -199,7 +199,6 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener,JogFragment.r
 //                .commit()
 //        }
 
-
         //Object JogState 의 jogModeSelected 변수 값에 따라 조그 모드 (Smooth, Tick) 의 초기 상태를 표현합니다.
         when(JogState.jogModeSelected){
             JogState.JOG_SMOOTH_SELECTED->{
@@ -333,11 +332,10 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener,JogFragment.r
         }
     }
 
-    interface GoHomeListener
     //JogFragment 의 GoHoneListener 인터페이스를 구현합니다. onGoHome() 메서드를 override하고 , 이 메서드는 goHome() 메서드를 불러와 실행합니다. 로봇을 지정한 영점으로 이동 시킵니다.
+    interface GoHomeListener
     override fun onGoHome() {
         val jogFragment = childFragmentManager.findFragmentById(defBinding.jogControllerView.id) as JogFragment
-
         activity?.runOnUiThread {
             jogFragment?.goHome()
         }

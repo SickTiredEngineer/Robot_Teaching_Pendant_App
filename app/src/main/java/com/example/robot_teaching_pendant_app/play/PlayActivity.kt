@@ -56,13 +56,15 @@ class PlayActivity : AppCompatActivity() {
             menuDialog.show()
         }
 
-        //우측 하단에 위치한 연결 버튼 동작입니다.
+        //우측 하단에 위치한 연결 버튼을 누를 시, ConnectorDialogFragment 를 Dialog 형식으로 출력합니다.
+        //자세한 내용은 Connect 디렉토리의 ConnectorDialogFragment를 참고하십시요.
         connectBt.setOnClickListener{
             val dialogFragment = ConnectorDialogFragment()
             dialogFragment.show(supportFragmentManager,null)
         }
 
-        //우측 하단에 위치한 파워 버튼을 클릭 시 동작입니다.
+        //우측 하단에 위치한 전원 버튼을 누를 시, PowerOffDialogFragment 를 Dialog 형식으로 출력합니다.
+        //자세한 내용은 System 디렉토리의 PowerOffDialogFragment를 참고하십시요.
         playPowerBt.setOnClickListener{
             val dialogFragment = PowerOffDialogFragment()
             dialogFragment.show(supportFragmentManager,null)

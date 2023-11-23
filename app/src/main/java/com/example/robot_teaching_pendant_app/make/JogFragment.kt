@@ -122,12 +122,11 @@ class JogFragment : Fragment() {
         val decBtList = listOf<Button>(jogDec1, jogDec2, jogDec3, jogDec4, jogDec5, jogDec6)
         val jogViewList = listOf<EditText>(jogView1, jogView2, jogView3, jogView4, jogView5, jogView6)
 
-        //JOINT 조그 사용 시, 사용하지 않는 버튼 리스트 입니다.
+        //선택된 조그에 따라 상태가 바뀌게 되는 버튼들을 모아놓은 리스트입니다.
         val changeBtList = listOf<Button>(jogInc5, jogInc6, jogDec5, jogDec6)
 
 
-        //MakeDefaultFragment 에서 Global, Local, User, Joint  를 누를 때 UI 동작 코드입니다.
-        //MakeDefaultFragment 에서 4가지 조그 중 하나를 선택하면, Fragment를 새로고침 하여 변경된 사항을 적용하게 됩니다.
+        //작업환경(Make)을 호출하면, 현재 프로그램에서 선택된 조그에 따라 Jog를 세팅합니다.
         //안전한 UI 업데이트를 위해, UI THREAD에서 조그를 세팅하는 함수를 호출합니다.
         activity?.runOnUiThread {
             setJog()
@@ -261,6 +260,7 @@ class JogFragment : Fragment() {
         val isUserInput = Array(jogViewList.size) { true }
 
 
+        //Jog의 값을 입력하는 EditText들에 관련된 설정입니다.
         //EditText에 값을 입력 시, 값의 범위를 확인하고 유효한 값이면 갱신, 아닐 시 복원합니다.
         for (i in jogViewList.indices) {
             jogViewList[i].addTextChangedListener(object : TextWatcher {
@@ -276,7 +276,8 @@ class JogFragment : Fragment() {
                 if (actionId == EditorInfo.IME_ACTION_DONE ||
                     (event != null && event.keyCode == KeyEvent.KEYCODE_ENTER && event.action == KeyEvent.ACTION_DOWN)) {
 
-                    //handle Input 참고
+                    //handleInput함수는 Jog에 입력된 값의 범위를 확인하여 반영하거나 되돌리는 역할을 합니다.
+                    //자세한 로직은 아래의 handle Input 함수를 참고하십시요.
                     handleInput(i,jogViewList, jogViewList[i].text.toString())
                     refreshEditText()
 
@@ -383,20 +384,22 @@ class JogFragment : Fragment() {
         val decBtList = listOf<Button>(binding.jogDec1, binding.jogDec2, binding.jogDec3, binding.jogDec4, binding.jogDec5, binding.jogDec6)
         val jogViewList = listOf<EditText>(binding.jogView1, binding.jogView2, binding.jogView3, binding.jogView4, binding.jogView5, binding.jogView6)
 
-        val jogInfoList =
-            listOf<TextView>(binding.jogInfo1, binding.jogInfo2, binding.jogInfo3, binding.jogInfo4,binding. jogInfo5, binding.jogInfo6)
+        val jogInfoList = listOf<TextView>(binding.jogInfo1, binding.jogInfo2, binding.jogInfo3, binding.jogInfo4,binding. jogInfo5, binding.jogInfo6)
         val coordStrList = listOf(R.string.str_x, R.string.str_y, R.string.str_z, R.string.str_rx, R.string.str_ry, R.string.str_rz)
         //관절 값 리소스 이름 수정 필요.
         val jointStrList = listOf(R.string.str_joint1, R.string.str_joint2, R.string.str_joint3, R.string.str_joint4, R.string.str_joint_null1, R.string.str_joint_null2)
-        val changeBtList = listOf<Button>(binding.jogInc5, binding.jogInc6, binding.jogDec5, binding.jogDec6)
-        if (JogState.jogSelected == JogState.JOG_JOINT_SELECTED) {
 
+        //선택된 조그에 따라 상태가 바뀌게 되는 버튼들을 모아놓은 리스트입니다.
+        val changeBtList = listOf<Button>(binding.jogInc5, binding.jogInc6, binding.jogDec5, binding.jogDec6)
+
+
+        //JOINT 조그가 선택되어 있는 경우 수행할 UI 동작입니다.
+        if (JogState.jogSelected == JogState.JOG_JOINT_SELECTED) {
             for (i in jogInfoList.indices) {
                 jogInfoList[i].setText(jointStrList[i])
                 if (i > 3) {
                     jogInfoList[i].setBackgroundResource(R.drawable.color_gray_frame)
                     jogInfoList[i].isEnabled = false
-
                 }
 
                 for (j in changeBtList.indices) {
@@ -413,7 +416,10 @@ class JogFragment : Fragment() {
                 //EditText를 새로고침 하는 함수입니다.
                 refreshEditText()
             }
-        } else {
+        }
+
+        //GLOBAL 조그가 선택되어 있는 경우 수행할 UI 동작입니다.
+        else if(jogSelected== JOG_GLOBAL_SELECTED){
             //아닌 경우 INFO를 좌표계 문자열로 바꾸고 5~6번 버튼과 정보창을 Visible 합니다.
             for (i in jogInfoList.indices) {
                 jogInfoList[i].setText(coordStrList[i])
@@ -449,6 +455,7 @@ class JogFragment : Fragment() {
             if (newValue in 0.0..360.0) {
                 //선택된 조그가 GLOBAL 일때
                 if (JogState.jogSelected == JogState.JOG_GLOBAL_SELECTED) {
+                    //0(x), 1(y)... 5(Rz) 순서입니다.
                     when(index) {
                         0 ->{
                             RobotPosition.x = newValue
@@ -480,6 +487,7 @@ class JogFragment : Fragment() {
                 //선택된 조그가 JOINT 일때
                 else if (JogState.jogSelected == JogState.JOG_JOINT_SELECTED) {
                     when (index) {
+                        //0(joint1)~3(joint4) 순서입니다.
                         0 ->{
                             RobotPosition.joint1 = newValue
                             Toast.makeText(context, "joint1을 $newValue 로 이동시킵니다.", Toast.LENGTH_LONG).show()
@@ -507,6 +515,7 @@ class JogFragment : Fragment() {
             else {
                 if (JogState.jogSelected == JogState.JOG_GLOBAL_SELECTED) {
                     when (index) {
+                        //0(x), 1(y)... 5(Rz) 순서입니다.
                         0 -> {
                             RobotPosition.x = RobotPosition.x
                             array[index].setText("%.2f".format(RobotPosition.x))
@@ -548,6 +557,7 @@ class JogFragment : Fragment() {
                 //선택된 조그가 JOINT && 유효한 값이 아닐 때 동작입니다. RobotPosition이 바뀌지 않았음으로, EditText에 다시 해당 값을 반영합니다.
                 else if (JogState.jogSelected == JogState.JOG_JOINT_SELECTED) {
                     when (index) {
+                        //0(joint1)~3(joint4) 순서입니다.
                         0 -> {
                             RobotPosition.joint1 = RobotPosition.joint1
                             array[index].setText("%.2f".format(RobotPosition.joint1))
