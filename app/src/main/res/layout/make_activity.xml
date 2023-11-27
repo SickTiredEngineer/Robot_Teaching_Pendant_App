@@ -226,17 +226,31 @@
         app:layout_constraintStart_toEndOf="@+id/tree_del_bt"
         app:layout_constraintTop_toBottomOf="@+id/make_tree_view" />
 
-    <LinearLayout
+    <FrameLayout
         android:id="@+id/make_tree_view"
-        style="@style/style_make_tree"
-        android:layout_marginStart="3dp"
+        android:layout_width="450dp"
 
+        android:layout_height="600dp"
+        android:layout_marginStart="3dp"
         android:layout_marginTop="1dp"
+        android:layout_marginEnd="11dp"
         android:orientation="vertical"
+        app:layout_constraintEnd_toStartOf="@+id/side_view"
         app:layout_constraintStart_toEndOf="@+id/tree_refresh_bt"
         app:layout_constraintTop_toBottomOf="@+id/make_line2">
 
-    </LinearLayout>
+        <ScrollView
+            android:id="@+id/tree_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/command_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
+    </FrameLayout>
 
     <FrameLayout
         android:id="@+id/side_view"

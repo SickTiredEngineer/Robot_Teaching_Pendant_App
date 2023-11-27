@@ -1,15 +1,22 @@
 package com.example.robot_teaching_pendant_app.make
 
-import android.graphics.drawable.Icon
-import android.widget.Toast
 import com.example.robot_teaching_pendant_app.R
+import com.example.robot_teaching_pendant_app.command_tree.CommandTree
+import com.example.robot_teaching_pendant_app.command.CommandType
+import com.example.robot_teaching_pendant_app.command.RobotCommand
 
 data class Icon(val imageRes: Int, val title: String, val action:() -> Unit)
 
 
 //전체 아이콘 버튼들의 리스트 입니다.
 val allIcons = listOf(
-    Icon(R.drawable.bt_move_icon, "Move", { }),
+    Icon(R.drawable.bt_move_icon, "MoveJ", {
+        val newCommand = RobotCommand(CommandType.MOVEJ)
+        CommandTree.commandList.add(newCommand)
+
+    }),
+
+
     Icon(R.drawable.bt_movej_icon, "동작J", { /* 동작 처리 */ }),
     Icon(R.drawable.bt_movel_icon, "동작L", { /* 동작 처리 */ }),
     Icon(R.drawable.bt_circlemove_icon, "Circle", { /* 동작 처리 */ }),

@@ -306,6 +306,7 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener,JogFragment.r
             //아이콘 버튼의 리스너입니다. 아이콘 버튼들의 Action에 있는 동작을 취합니다.
             iconButton.setOnClickListener {
                 Toast.makeText(context, "${iconData.title} 버튼이 눌러졌습니다.", Toast.LENGTH_SHORT).show()
+
                 iconData.action.invoke() }
 
             //Gridlayout 에 iconButton 을 추가합니다.
