@@ -1,14 +1,19 @@
 package com.example.robot_teaching_pendant_app.command_tree
 
+import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import com.example.robot_teaching_pendant_app.R
+import com.example.robot_teaching_pendant_app.command.RobotCommand
 import com.example.robot_teaching_pendant_app.databinding.CommandTreeFragmentBinding
 import com.example.robot_teaching_pendant_app.databinding.JogFragmentBinding
 import com.example.robot_teaching_pendant_app.databinding.MakeDefaultFragmentBinding
+import com.example.robot_teaching_pendant_app.make.MakeActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -45,6 +50,97 @@ class CommandTreeFragment : Fragment() {
         // Inflate the layout for this fragment
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val scrollView = binding.commandTreeScrollView
+
+        //Fragment 가 불러와지면, 현재 CommandTree 의 리스트에 있는 명령어들을 TextView 형태로 출력합니다.
+        activity?.runOnUiThread {
+            refreshCommandTree()
+        }
+
+
+        //ViewModel -> 이후 필요한 부분마다 추가 적용하며 , 계속 변경할 예정.
+        //Tree 기초 틀만 구현 한 상태이고, 해당 메서드만 호출되는 상태입니다.
+        (activity as? MakeActivity)?.commandTreeViewModel?.updateEvent?.observe(viewLifecycleOwner) {
+            refreshCommandTree()
+        }
+    }
+
+
+    private fun createTextViewForCommand(index: Int, command: RobotCommand): TextView {
+        val textView = TextView(context).apply {
+            layoutParams = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+            )
+
+            typeface = Typeface.create("sans-serif", Typeface.BOLD)
+
+            // 해당 인스턴스의 순서와 내용을 표시합니다.
+            text = "[$index] [${command.type}] ${command.toString()}" // 순서와 내용을 함께 표시
+
+            // 추가적인 스타일링을 할 수 있습니다.
+            background = context.getDrawable(R.drawable.main_frame)
+        }
+
+        return textView
+    }
+
+
+    fun refreshCommandTree() {
+        binding.commandTreeScrollView.removeAllViews()
+
+        CommandTree.commandList.forEachIndexed { index, command ->
+            val textView = createTextViewForCommand(index, command)
+            binding.commandTreeScrollView.addView(textView)
+        }
+    }
+
+//    fun addCommandToTree(command: RobotCommand) {
+//        val index = CommandTree.commandList.size
+//        val textView = createTextViewForCommand(index, command)
+//        binding.commandTreeScrollView.addView(textView)
+//
+//        // CommandTree에 해당 명령어 추가
+//        CommandTree.commandList.add(command)
+//    }
+
+
+
+//    fun refreshCommandTree(){
+//        binding.commandTreeScrollView.removeAllViews()
+//
+//        CommandTree.commandList.forEachIndexed() { index, command ->
+//            val textView = TextView(context).apply {
+//                layoutParams = ViewGroup.LayoutParams(
+//                    ViewGroup.LayoutParams.MATCH_PARENT,
+//                    ViewGroup.LayoutParams.WRAP_CONTENT
+//                )
+//
+//                text = "[$index] ${command.toString()}"
+//
+//                // 추가적인 스타일링을 할 수 있습니다.
+//                background = context.getDrawable(R.drawable.main_frame)
+//            }
+//
+//
+//            // ScrollView의 자식 뷰인 LinearLayout에 TextView를 추가합니다.
+//            // 바인딩을 통해 scrollView 내에 있는 LinearLayout에 접근한다고 가정합니다.
+//            binding.commandTreeScrollView.addView(textView)
+//        }
+//    }
+
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+
 
     companion object {
         /**

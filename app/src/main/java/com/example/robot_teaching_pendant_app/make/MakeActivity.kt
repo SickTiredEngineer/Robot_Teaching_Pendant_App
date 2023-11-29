@@ -3,8 +3,11 @@ package com.example.robot_teaching_pendant_app.make
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import com.example.robot_teaching_pendant_app.MainActivity
+import com.example.robot_teaching_pendant_app.command_tree.CommandTreeViewModel
+import com.example.robot_teaching_pendant_app.command_tree.CommandTreeFragment
 import com.example.robot_teaching_pendant_app.connect.ConnectorDialogFragment
 import com.example.robot_teaching_pendant_app.databinding.MakeActivityBinding
 import com.example.robot_teaching_pendant_app.play.PlayActivity
@@ -12,6 +15,12 @@ import com.example.robot_teaching_pendant_app.setup.SetupActivity
 import com.example.robot_teaching_pendant_app.system.PowerOffDialogFragment
 
 class MakeActivity : AppCompatActivity() {
+
+
+    //데이터 변화를 감지하고, 이에 맞게 UI를 업데이트 시켜주는 ViewModel을 멤버 변수로 선언합니다.
+    //프래그먼트간의 데이터 공유를 위해 Activity 를 거칩니다(?)
+    val commandTreeViewModel: CommandTreeViewModel by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,7 +62,15 @@ class MakeActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction()
                 .replace(sideViewer.id, fragment)
                 .commit()
+
+
+            //트리 프래그먼트를 삽입하는 코드입니다.
+            val treeFragment = CommandTreeFragment()
+            supportFragmentManager.beginTransaction()
+                .replace(makeTreeView.id, treeFragment)
+                .commit()
         }
+
 
         //Ext tree 토글 버튼 클릭 시 동작입니다.
         treeExtBt.setOnCheckedChangeListener { _, isChecked ->

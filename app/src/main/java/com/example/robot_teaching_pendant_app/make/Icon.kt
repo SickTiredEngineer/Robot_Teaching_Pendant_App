@@ -10,15 +10,14 @@ data class Icon(val imageRes: Int, val title: String, val action:() -> Unit)
 
 //전체 아이콘 버튼들의 리스트 입니다.
 val allIcons = listOf(
-    Icon(R.drawable.bt_move_icon, "MoveJ", {
+    Icon(R.drawable.bt_movej_icon, "MoveJ", {
         val newCommand = RobotCommand(CommandType.MOVEJ)
-        CommandTree.commandList.add(newCommand)
+        CommandTree.commandList.add(newCommand) }),
 
-    }),
+    Icon(R.drawable.bt_movel_icon, "동작L", {
+        val newCommand = RobotCommand(CommandType.MOVEL)
+        CommandTree.commandList.add(newCommand)}),
 
-
-    Icon(R.drawable.bt_movej_icon, "동작J", { /* 동작 처리 */ }),
-    Icon(R.drawable.bt_movel_icon, "동작L", { /* 동작 처리 */ }),
     Icon(R.drawable.bt_circlemove_icon, "Circle", { /* 동작 처리 */ }),
     Icon(R.drawable.bt_pinpoint_icon, "Wait", { /* 동작 처리 */ }),
 
@@ -30,3 +29,5 @@ val moveIcons = listOf(
     Icon(R.drawable.bt_movel_icon, "동작L", { /* 동작 처리 */ }),
     // ... other icons for '이동' category
 )
+
+

@@ -307,7 +307,10 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener,JogFragment.r
             iconButton.setOnClickListener {
                 Toast.makeText(context, "${iconData.title} 버튼이 눌러졌습니다.", Toast.LENGTH_SHORT).show()
 
-                iconData.action.invoke() }
+                iconData.action.invoke()
+                (activity as? MakeActivity)?.commandTreeViewModel?.triggerUpdateEvent()
+
+            }
 
             //Gridlayout 에 iconButton 을 추가합니다.
             gridLayout.addView(iconButton)

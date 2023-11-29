@@ -228,6 +228,7 @@
 
     <FrameLayout
         android:id="@+id/make_tree_view"
+        style = "@style/style_bg"
         android:layout_width="450dp"
 
         android:layout_height="600dp"
@@ -237,20 +238,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toStartOf="@+id/side_view"
         app:layout_constraintStart_toEndOf="@+id/tree_refresh_bt"
-        app:layout_constraintTop_toBottomOf="@+id/make_line2">
-
-        <ScrollView
-            android:id="@+id/tree_scroll_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:id="@+id/command_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
-        </ScrollView>
-    </FrameLayout>
+        app:layout_constraintTop_toBottomOf="@+id/make_line2"/>
 
     <FrameLayout
         android:id="@+id/side_view"
