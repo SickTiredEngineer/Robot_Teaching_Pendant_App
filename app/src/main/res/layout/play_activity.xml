@@ -17,20 +17,6 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <View
-        android:id="@+id/play_line"
-        style="@style/style_line_v"
-
-        android:layout_width="3dp"
-        android:layout_height="700dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/play_tree_view"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <View
         android:id="@+id/play_line3"
         style="@style/style_line_h"
 
@@ -109,40 +95,37 @@
         app:layout_constraintEnd_toStartOf="@+id/play_load_bt"
         app:layout_constraintStart_toEndOf="@+id/play_menu_bt" />
 
-    <LinearLayout
-        android:id="@+id/play_tree_view"
+    <ScrollView
         style = "@style/style_bg"
-        android:layout_width="637dp"
-        android:layout_height="692dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
-        android:orientation="vertical"
+        android:layout_width="450dp"
+        android:layout_height="600dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="47dp"
+        android:layout_marginBottom="47dp"
         app:layout_constraintBottom_toTopOf="@+id/play_line1"
-        app:layout_constraintEnd_toStartOf="@+id/play_line"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/play_line3">
 
-        <ImageView
-            android:id="@+id/imageView3"
+        <LinearLayout
+            android:id="@+id/play_tree_view"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:srcCompat="@drawable/tree_ex" />
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        </LinearLayout>
+    </ScrollView>
 
     <LinearLayout
+        android:id="@+id/linearLayout6"
         style="@style/style_bg"
         android:layout_width="636dp"
         android:layout_height="692dp"
-        android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
         android:layout_marginBottom="1dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/play_line1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/play_line"
         app:layout_constraintTop_toBottomOf="@+id/play_line3">
 
         <LinearLayout
@@ -168,7 +151,7 @@
                 android:id="@+id/imageView7"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src ="@drawable/myrinfo" />
+                android:src="@drawable/myrinfo" />
             />
         </LinearLayout>
     </LinearLayout>

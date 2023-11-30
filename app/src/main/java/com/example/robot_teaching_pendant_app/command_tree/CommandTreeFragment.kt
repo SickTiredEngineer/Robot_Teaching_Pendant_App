@@ -14,6 +14,7 @@ import com.example.robot_teaching_pendant_app.databinding.CommandTreeFragmentBin
 import com.example.robot_teaching_pendant_app.databinding.JogFragmentBinding
 import com.example.robot_teaching_pendant_app.databinding.MakeDefaultFragmentBinding
 import com.example.robot_teaching_pendant_app.make.MakeActivity
+import java.util.Collections
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,6 +27,11 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class CommandTreeFragment : Fragment() {
+
+    private var previouslySelectedTextView: TextView? = null
+    private var selectedIndex: Int? = null
+
+
 
     private var _binding: CommandTreeFragmentBinding? = null
     private val binding get() = _binding!!
@@ -70,68 +76,190 @@ class CommandTreeFragment : Fragment() {
     }
 
 
+    /**
+     * CommandTree에 있는 각 명령어에 대해 TextView를 생성하고 설정하는 함수입니다.
+     * @param index 명령어의 순서를 나타내는 인덱스입니다.
+     * @param command 현재 명령어의 인스턴스입니다.
+     * @return 설정이 완료된 TextView를 반환합니다.
+     */
+
     private fun createTextViewForCommand(index: Int, command: RobotCommand): TextView {
         val textView = TextView(context).apply {
+
+            // TextView의 레이아웃 파라미터를 설정합니다. 여기서는 너비는 match_parent, 높이는 wrap_content를 사용합니다.
             layoutParams = ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
             )
 
+            // TextView의 폰트 스타일을 설정합니다. 여기서는 sans-serif 글꼴에 굵은 스타일을 적용합니다.
             typeface = Typeface.create("sans-serif", Typeface.BOLD)
 
-            // 해당 인스턴스의 순서와 내용을 표시합니다.
-            text = "[$index] [${command.type}] ${command.toString()}" // 순서와 내용을 함께 표시
+            // TextView에 표시될 텍스트를 설정합니다. 여기서는 명령어의 인덱스와 타입을 표시합니다.
+            text = "[$index] [${command.type}] "
 
-            // 추가적인 스타일링을 할 수 있습니다.
+            // TextView의 배경을 설정합니다. 여기서는 main_frame이라는 리소스를 사용합니다.
             background = context.getDrawable(R.drawable.main_frame)
+
+
+            setOnClickListener {
+                if (previouslySelectedTextView == this) {
+                    // 이미 선택된 TextView가 다시 클릭되었으므로 선택을 해제합니다.
+                    this.background = context.getDrawable(R.drawable.main_frame)
+                    // 선택된 TextView와 인덱스를 null로 초기화합니다.
+                    previouslySelectedTextView = null
+                    selectedIndex = null
+                }
+
+                else {
+                    // 다른 TextView가 클릭되었으므로, 이전 선택을 해제하고 새로운 선택을 강조 표시합니다.
+                    previouslySelectedTextView?.background = context.getDrawable(R.drawable.main_frame)
+                    this.background = context.getDrawable(R.drawable.color_green_frame)
+
+                    // 새로운 TextView를 현재 선택된 TextView로 설정합니다.
+                    previouslySelectedTextView = this
+                    // 선택된 명령의 인덱스를 업데이트합니다.
+                    selectedIndex = index
+                }
+            }
         }
 
         return textView
     }
 
 
+//    private fun createTextViewForCommand(index: Int, command: RobotCommand): TextView {
+//        // 새 TextView 인스턴스를 생성하고 적용 범위 내에서 설정합니다.
+//        val textView = TextView(context).apply {
+//
+//            // TextView의 레이아웃 파라미터를 설정합니다. 여기서는 너비는 match_parent, 높이는 wrap_content를 사용합니다.
+//            layoutParams = ViewGroup.LayoutParams(
+//                ViewGroup.LayoutParams.MATCH_PARENT,
+//                ViewGroup.LayoutParams.WRAP_CONTENT,
+//            )
+//
+//            // TextView의 폰트 스타일을 설정합니다. 여기서는 sans-serif 글꼴에 굵은 스타일을 적용합니다.
+//            typeface = Typeface.create("sans-serif", Typeface.BOLD)
+//
+//            // TextView에 표시될 텍스트를 설정합니다. 여기서는 명령어의 인덱스와 타입을 표시합니다.
+//            text = "[$index] [${command.type}] "
+//
+//            // TextView의 배경을 설정합니다. 여기서는 main_frame이라는 리소스를 사용합니다.
+//            background = context.getDrawable(R.drawable.main_frame)
+//
+//            // TextView를 클릭했을 때 실행할 리스너를 설정합니다.
+//            setOnClickListener {
+//
+//                // 이전에 선택된 TextView가 있으면 그 배경색을 기본 프레임 색상으로 되돌립니다.
+//                previouslySelectedTextView?.background = context.getDrawable(R.drawable.main_frame)
+//
+//                // 현재 클릭된 TextView의 배경색을 변경하여 선택된 것을 표시합니다.
+//                background = context.getDrawable(R.drawable.color_green_frame)
+//
+//                // 현재 클릭된 TextView를 'previouslySelectedTextView'로 설정하여, 다음 클릭 이벤트에서 참조할 수 있게 합니다.
+//                previouslySelectedTextView = this
+//
+//                // 현재 선택된 명령어의 인덱스를 'selectedIndex'에 저장합니다.
+//                selectedIndex = index
+//            }
+//        }
+//
+//        // 설정이 완료된 TextView를 반환합니다.
+//        return textView
+//    }
+
+
+    /**
+     * CommandTree의 명령어 리스트를 UI에 반영하여 갱신하는 함수입니다.
+     * 이 함수는 명령어 리스트에 변경이 있을 때 호출됩니다.
+     */
     fun refreshCommandTree() {
+        // ScrollView 내의 모든 뷰를 제거하여 새로 갱신할 준비를 합니다.
         binding.commandTreeScrollView.removeAllViews()
 
+        // CommandTree의 명령어 리스트를 순회하면서 각 명령어에 대한 TextView를 생성하고 ScrollView에 추가합니다.
         CommandTree.commandList.forEachIndexed { index, command ->
             val textView = createTextViewForCommand(index, command)
             binding.commandTreeScrollView.addView(textView)
         }
     }
 
-//    fun addCommandToTree(command: RobotCommand) {
-//        val index = CommandTree.commandList.size
-//        val textView = createTextViewForCommand(index, command)
-//        binding.commandTreeScrollView.addView(textView)
-//
-//        // CommandTree에 해당 명령어 추가
-//        CommandTree.commandList.add(command)
-//    }
 
 
+    /**
+     * 현재 선택된 명령을 리스트에서 한 칸 위로 이동시키는 함수입니다.
+     * `selectedIndex`는 현재 선택된 `RobotCommand`의 리스트 내 인덱스를 가리킵니다.
+     */
+    fun moveCommandUp() {
+        // 'let' 스코프 함수를 사용하여 'selectedIndex'가 null이 아닐 경우에만 코드 블록을 실행합니다.
+        selectedIndex?.let { currentIndex ->
 
-//    fun refreshCommandTree(){
-//        binding.commandTreeScrollView.removeAllViews()
-//
-//        CommandTree.commandList.forEachIndexed() { index, command ->
-//            val textView = TextView(context).apply {
-//                layoutParams = ViewGroup.LayoutParams(
-//                    ViewGroup.LayoutParams.MATCH_PARENT,
-//                    ViewGroup.LayoutParams.WRAP_CONTENT
-//                )
-//
-//                text = "[$index] ${command.toString()}"
-//
-//                // 추가적인 스타일링을 할 수 있습니다.
-//                background = context.getDrawable(R.drawable.main_frame)
-//            }
-//
-//
-//            // ScrollView의 자식 뷰인 LinearLayout에 TextView를 추가합니다.
-//            // 바인딩을 통해 scrollView 내에 있는 LinearLayout에 접근한다고 가정합니다.
-//            binding.commandTreeScrollView.addView(textView)
-//        }
-//    }
+            // 현재 인덱스가 0보다 큰 경우에만 위로 이동이 가능합니다.
+            // 이는 첫 번째 요소가 이미 가장 위에 있으므로 더 이상 위로 갈 수 없기 때문입니다.
+            if (currentIndex > 0) {
+                // Collections.swap 메서드를 사용하여 현재 선택된 명령과 바로 위에 있는 명령의 위치를 교환합니다.
+                // currentIndex는 선택된 명령의 현재 위치이며, currentIndex - 1은 바로 위의 위치입니다.
+                Collections.swap(CommandTree.commandList, currentIndex, currentIndex - 1)
+
+                // 선택된 명령이 위로 이동했으므로, selectedIndex를 현재 인덱스에서 1 감소시켜 업데이트합니다.
+                // 이는 다음에 동일한 명령을 조작할 때 올바른 위치를 참조하도록 합니다.
+                selectedIndex = currentIndex - 1
+
+                // 명령의 위치가 변경되었으므로, 이 변경을 사용자에게 반영하기 위해 UI를 새로고침합니다.
+                // refreshCommandTree 함수는 전체 명령 리스트를 다시 그려서 ScrollView에 추가합니다.
+                refreshCommandTree()
+            }
+        }
+    }
+
+
+    /**
+     * 현재 선택된 명령을 아래로 이동시키는 함수입니다.
+     * `selectedIndex`는 현재 선택된 `RobotCommand`의 리스트 내 인덱스입니다.
+     */
+    fun moveCommandDown() {
+        // 'let' 스코프 함수를 사용하여 'selectedIndex'가 null이 아닐 경우에만 코드 블록을 실행합니다.
+        selectedIndex?.let { currentIndex ->
+
+            // 리스트의 마지막 인덱스보다 작은지 확인하여, 마지막 요소가 아닐 경우에만 아래로 이동이 가능하도록 합니다.
+            if (currentIndex < CommandTree.commandList.size - 1) {
+
+                // Collections.swap 메서드를 호출하여 현재 인덱스의 명령과 바로 아래 인덱스의 명령의 위치를 교환합니다.
+                // 이를 통해 사용자 인터페이스에서 선택한 명령을 리스트에서 아래로 이동시킵니다.
+                Collections.swap(CommandTree.commandList, currentIndex, currentIndex + 1)
+
+                // 명령어 순서를 아래로 내린 후에는, 'selectedIndex'를 업데이트하여
+                // 이동된 위치 (현재 위치 + 1)를 반영합니다.
+                selectedIndex = currentIndex + 1
+
+                // 리스트의 순서가 변경되었으므로 UI를 새로고침하여 변경 사항을 사용자에게 보여줍니다.
+                // 이 함수는 커맨드 리스트를 다시 그리고, 각 명령에 대한 TextView를 다시 생성합니다.
+                refreshCommandTree()
+            }
+        }
+    }
+
+    fun deleteSelectedCommand() {
+        // 'let' 스코프 함수를 사용하여 'selectedIndex'가 null이 아닐 경우에만 코드 블록을 실행합니다.
+        selectedIndex?.let { currentIndex ->
+
+            // CommandTree.commandList에서 현재 선택된 명령을 제거합니다.
+            CommandTree.commandList.removeAt(currentIndex)
+
+            // 선택된 명령을 제거한 후에는 selectedIndex를 null로 초기화합니다.
+            selectedIndex = null
+            previouslySelectedTextView?.let {
+                // 이전에 선택된 TextView의 배경색을 기본 프레임으로 되돌립니다.
+                it.background = context?.getDrawable(R.drawable.main_frame)
+                // 이전 선택된 TextView 참조도 제거합니다.
+                previouslySelectedTextView = null
+            }
+
+            // 명령 리스트에서 명령을 제거한 후 UI를 새로고침하여 변경 사항을 반영합니다.
+            refreshCommandTree()
+        }
+    }
+
 
 
 

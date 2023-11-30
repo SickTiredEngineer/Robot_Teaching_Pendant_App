@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import com.example.robot_teaching_pendant_app.MainActivity
+import com.example.robot_teaching_pendant_app.command_tree.CommandTreeFragment
 import com.example.robot_teaching_pendant_app.connect.ConnectorDialogFragment
 import com.example.robot_teaching_pendant_app.databinding.PlayActivityBinding
 import com.example.robot_teaching_pendant_app.make.MakeActivity
+import com.example.robot_teaching_pendant_app.make.MakeDefaultFragment
 import com.example.robot_teaching_pendant_app.setup.SetupActivity
 import com.example.robot_teaching_pendant_app.system.PowerOffDialogFragment
 
@@ -25,6 +27,17 @@ class PlayActivity : AppCompatActivity() {
         val playMenuBt = binding.playMenuBt
 
         val connectBt = binding.playConnectBt
+        val playTreeView = binding.playTreeView
+
+
+        if (savedInstanceState == null) {
+            //트리 프래그먼트를 삽입하는 코드입니다.
+            val treeFragment = CommandTreeFragment()
+            supportFragmentManager.beginTransaction()
+                .replace(playTreeView.id, treeFragment)
+                .commit()
+        }
+
 
 
         //좌측 상단에 위치한 Menu 버튼 동작, Dialog 형식으로 해당 화면으로 이동할 수 있는 기능
