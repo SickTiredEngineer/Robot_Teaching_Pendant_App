@@ -39,7 +39,7 @@ class SetupLogFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = SetupLogFragmentBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
         return binding.root

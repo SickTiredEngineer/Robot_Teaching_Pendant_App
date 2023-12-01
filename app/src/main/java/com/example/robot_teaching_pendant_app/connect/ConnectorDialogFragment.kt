@@ -42,7 +42,7 @@ class ConnectorDialogFragment : DialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = ConnectorFragmentBinding.inflate(inflater, container, false)
 
         //ConnectHelper 클래스의 생성자에 맞게, 위젯을 추가해줍니다.

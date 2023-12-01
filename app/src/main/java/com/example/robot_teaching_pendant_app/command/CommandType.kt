@@ -6,6 +6,9 @@ enum class CommandType {
     MOVEJ,
     MOVEL,
 
+    POINT,
+    CIRCLE,
+
     STOP,
     ROTATE
 }

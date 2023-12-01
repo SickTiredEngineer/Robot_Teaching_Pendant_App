@@ -1,17 +1,14 @@
 package com.example.robot_teaching_pendant_app.make
 
-import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -42,13 +39,13 @@ class JogFragment : Fragment() {
     var listener: GoHomeListener? = null
 
 
-    interface refreshEtListener {
+    interface RefreshEtListener {
         fun refreshET()
     }
-    var etListener: refreshEtListener? = null
+    var etListener: RefreshEtListener? = null
 
 
-    interface refreshJogListener{
+    interface RefreshJogListener{
         fun refreshJog()
     }
 
@@ -71,7 +68,7 @@ class JogFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = JogFragmentBinding.inflate(inflater, container, false)
         return binding.root
@@ -136,7 +133,7 @@ class JogFragment : Fragment() {
         //JOG의 상승 버튼 리스너
         incBtList.forEachIndexed { index, button ->
             button.setOnClickListener {
-                when (JogState.jogSelected) {
+                when (jogSelected) {
                     JOG_GLOBAL_SELECTED -> {
                         //감소 버튼 순서는 제일 위에 0번부터 마지막 제일 아래 5번까지 순서입니다.
                         when (index) {
@@ -197,7 +194,7 @@ class JogFragment : Fragment() {
         //Jog의 감소 버튼 리스너
         decBtList.forEachIndexed { index, button ->
             button.setOnClickListener {
-                when (JogState.jogSelected) {
+                when (jogSelected) {
                     JOG_GLOBAL_SELECTED -> {
                         //감소 버튼 순서는 제일 위에 0번부터 마지막 제일 아래 5번까지 순서입니다.
                         when (index) {
@@ -322,14 +319,14 @@ class JogFragment : Fragment() {
     }
 
     //Jog의 + 버튼을 눌렀을때 최대 값을 지정하고, 이 이상이 될 경우 값을 상승시키지 않습니다.
-    fun increaseValueAndSet(maxValue: Float, currentValue: Float, increment: Float): Float {
+    private fun increaseValueAndSet(maxValue: Float, currentValue: Float, increment: Float): Float {
         val newValue = currentValue + increment
         return newValue.coerceAtMost(maxValue)
     }
 
 
     //Jog의 - 버튼을 눌렀을때 최소 값을 지정하고, 이 이하가 될 경우 값을 감소시키지 않습니다.
-    fun decreaseValueAndSet(minValue: Float, currentValue: Float, decrement: Float): Float {
+    private fun decreaseValueAndSet(minValue: Float, currentValue: Float, decrement: Float): Float {
         val newValue = currentValue - decrement
         return newValue.coerceAtLeast(minValue)
     }
@@ -394,7 +391,7 @@ class JogFragment : Fragment() {
 
 
         //JOINT 조그가 선택되어 있는 경우 수행할 UI 동작입니다.
-        if (JogState.jogSelected == JogState.JOG_JOINT_SELECTED) {
+        if (jogSelected == JOG_JOINT_SELECTED) {
             for (i in jogInfoList.indices) {
                 jogInfoList[i].setText(jointStrList[i])
                 if (i > 3) {
@@ -447,14 +444,14 @@ class JogFragment : Fragment() {
     }
 
     //EditText에 입력된 값이 유효한지(0~360) 검사하고, 해당 값을 로봇 위치를 저장하는 RobotPosition 전역변수에 저장합니다.
-    fun handleInput(index: Int,array: List<EditText>, input: String) {
+    private fun handleInput(index: Int,array: List<EditText>, input: String) {
         try {
             val newValue = input.toFloat()
 
             //EditText에 입력된 값이 유효할 경우, 해당 값을 RobotPosition에 대입합니다.
             if (newValue in 0.0..360.0) {
                 //선택된 조그가 GLOBAL 일때
-                if (JogState.jogSelected == JogState.JOG_GLOBAL_SELECTED) {
+                if (jogSelected == JOG_GLOBAL_SELECTED) {
                     //0(x), 1(y)... 5(Rz) 순서입니다.
                     when(index) {
                         0 ->{
@@ -485,7 +482,7 @@ class JogFragment : Fragment() {
                 }
 
                 //선택된 조그가 JOINT 일때
-                else if (JogState.jogSelected == JogState.JOG_JOINT_SELECTED) {
+                else if (jogSelected == JOG_JOINT_SELECTED) {
                     when (index) {
                         //0(joint1)~3(joint4) 순서입니다.
                         0 ->{
@@ -513,7 +510,7 @@ class JogFragment : Fragment() {
             //0~360이 아닐 경우, 적용 시키지 않습니다. (EditText를 변경 전으로 돌려놓습니다.
             //선택된 조그가 GLOBAL && 유효한 값이 아닐 때 동작입니다. RobotPosition이 바뀌지 않았음으로, EditText에 다시 해당 값을 반영합니다.
             else {
-                if (JogState.jogSelected == JogState.JOG_GLOBAL_SELECTED) {
+                if (jogSelected == JOG_GLOBAL_SELECTED) {
                     when (index) {
                         //0(x), 1(y)... 5(Rz) 순서입니다.
                         0 -> {
@@ -555,7 +552,7 @@ class JogFragment : Fragment() {
                 }
 
                 //선택된 조그가 JOINT && 유효한 값이 아닐 때 동작입니다. RobotPosition이 바뀌지 않았음으로, EditText에 다시 해당 값을 반영합니다.
-                else if (JogState.jogSelected == JogState.JOG_JOINT_SELECTED) {
+                else if (jogSelected == JogState.JOG_JOINT_SELECTED) {
                     when (index) {
                         //0(joint1)~3(joint4) 순서입니다.
                         0 -> {

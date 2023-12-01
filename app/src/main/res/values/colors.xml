@@ -12,8 +12,14 @@
     <color name = "blue">#0223F6</color>
     <color name ="red">#FB050C</color>
 
-    <color name="main_black">#5C5A5A</color>
-    <color name="main_white">#EBE5E5</color>
+
+    //기존 5C5A5A
+    <color name="main_black">#5C5C5C</color>
+
+    //기존 EBE5E5
+    <color name="main_white">#FFFFFF</color>
+
+
 
     <color name="disable_color">#BABABA</color>
     <color name="able_color">#AFF3AF</color>
@@ -21,5 +27,7 @@
     <color name="color_text">@color/black</color>
     <color name="color_frame">@color/main_black</color>
     <color name="color_bg">@color/main_white</color>
+
+    //#0086B3
 
 </resources>

@@ -17,8 +17,9 @@ import com.example.robot_teaching_pendant_app.system.PowerOffDialogFragment
 class MakeActivity : AppCompatActivity() {
 
 
-    //데이터 변화를 감지하고, 이에 맞게 UI를 업데이트 시켜주는 ViewModel을 멤버 변수로 선언합니다.
-    //프래그먼트간의 데이터 공유를 위해 Activity 를 거칩니다(?)
+    //CommandTreeViewModel인스턴스를 참조합니다.
+    //ViewModel->인스턴스는 데이터 변경사항을 관찰하고 이에 따라 Ui 업데이트를 진행합니다.
+    //by viewModels() -> viewModel 인스턴스는 액티비티의 생명주기와 연결되고 필요에 따라 자동 생성됩니다.
     val commandTreeViewModel: CommandTreeViewModel by viewModels()
 
 

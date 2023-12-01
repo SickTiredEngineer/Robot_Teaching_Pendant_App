@@ -41,7 +41,7 @@ class MakeExtFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = MakeExtFragmentBinding.inflate(inflater, container, false)
         return extBinding.root
     }

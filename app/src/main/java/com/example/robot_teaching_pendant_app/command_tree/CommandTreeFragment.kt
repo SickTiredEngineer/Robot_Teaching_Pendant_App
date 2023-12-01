@@ -1,18 +1,17 @@
 package com.example.robot_teaching_pendant_app.command_tree
 
-import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
+import android.util.TypedValue
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.content.res.AppCompatResources
 import com.example.robot_teaching_pendant_app.R
 import com.example.robot_teaching_pendant_app.command.RobotCommand
 import com.example.robot_teaching_pendant_app.databinding.CommandTreeFragmentBinding
-import com.example.robot_teaching_pendant_app.databinding.JogFragmentBinding
-import com.example.robot_teaching_pendant_app.databinding.MakeDefaultFragmentBinding
 import com.example.robot_teaching_pendant_app.make.MakeActivity
 import java.util.Collections
 
@@ -28,9 +27,10 @@ private const val ARG_PARAM2 = "param2"
  */
 class CommandTreeFragment : Fragment() {
 
+    //이전에 선택된 TextView
     private var previouslySelectedTextView: TextView? = null
+    //현재 선택된 TextView
     private var selectedIndex: Int? = null
-
 
 
     private var _binding: CommandTreeFragmentBinding? = null
@@ -51,7 +51,7 @@ class CommandTreeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = CommandTreeFragmentBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
         return binding.root
@@ -60,9 +60,8 @@ class CommandTreeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val scrollView = binding.commandTreeScrollView
 
-        //Fragment 가 불러와지면, 현재 CommandTree 의 리스트에 있는 명령어들을 TextView 형태로 출력합니다.
+        //Fragment가 불러와지면, 현재 CommandTree의 전역 리스트에 있는 명령어들을 순서대로 TextView 형태로 표시해줍니다.
         activity?.runOnUiThread {
             refreshCommandTree()
         }
@@ -70,7 +69,7 @@ class CommandTreeFragment : Fragment() {
 
         //ViewModel -> 이후 필요한 부분마다 추가 적용하며 , 계속 변경할 예정.
         //Tree 기초 틀만 구현 한 상태이고, 해당 메서드만 호출되는 상태입니다.
-        (activity as? MakeActivity)?.commandTreeViewModel?.updateEvent?.observe(viewLifecycleOwner) {
+        (activity as? MakeActivity)?.commandTreeViewModel?.updateTextViewEvent?.observe(viewLifecycleOwner) {
             refreshCommandTree()
         }
     }
@@ -95,17 +94,20 @@ class CommandTreeFragment : Fragment() {
             // TextView의 폰트 스타일을 설정합니다. 여기서는 sans-serif 글꼴에 굵은 스타일을 적용합니다.
             typeface = Typeface.create("sans-serif", Typeface.BOLD)
 
+            //TextSize를 설정합니다.
+            setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
+
             // TextView에 표시될 텍스트를 설정합니다. 여기서는 명령어의 인덱스와 타입을 표시합니다.
             text = "[$index] [${command.type}] "
 
             // TextView의 배경을 설정합니다. 여기서는 main_frame이라는 리소스를 사용합니다.
-            background = context.getDrawable(R.drawable.main_frame)
+            background = AppCompatResources.getDrawable(context,R.drawable.main_frame)
 
 
             setOnClickListener {
                 if (previouslySelectedTextView == this) {
                     // 이미 선택된 TextView가 다시 클릭되었으므로 선택을 해제합니다.
-                    this.background = context.getDrawable(R.drawable.main_frame)
+                    this.background = AppCompatResources.getDrawable(context,R.drawable.main_frame)
                     // 선택된 TextView와 인덱스를 null로 초기화합니다.
                     previouslySelectedTextView = null
                     selectedIndex = null
@@ -113,8 +115,8 @@ class CommandTreeFragment : Fragment() {
 
                 else {
                     // 다른 TextView가 클릭되었으므로, 이전 선택을 해제하고 새로운 선택을 강조 표시합니다.
-                    previouslySelectedTextView?.background = context.getDrawable(R.drawable.main_frame)
-                    this.background = context.getDrawable(R.drawable.color_green_frame)
+                    previouslySelectedTextView?.background = AppCompatResources.getDrawable(context,R.drawable.main_frame)
+                    this.background = AppCompatResources.getDrawable(context,R.drawable.color_green_frame)
 
                     // 새로운 TextView를 현재 선택된 TextView로 설정합니다.
                     previouslySelectedTextView = this
@@ -126,47 +128,6 @@ class CommandTreeFragment : Fragment() {
 
         return textView
     }
-
-
-//    private fun createTextViewForCommand(index: Int, command: RobotCommand): TextView {
-//        // 새 TextView 인스턴스를 생성하고 적용 범위 내에서 설정합니다.
-//        val textView = TextView(context).apply {
-//
-//            // TextView의 레이아웃 파라미터를 설정합니다. 여기서는 너비는 match_parent, 높이는 wrap_content를 사용합니다.
-//            layoutParams = ViewGroup.LayoutParams(
-//                ViewGroup.LayoutParams.MATCH_PARENT,
-//                ViewGroup.LayoutParams.WRAP_CONTENT,
-//            )
-//
-//            // TextView의 폰트 스타일을 설정합니다. 여기서는 sans-serif 글꼴에 굵은 스타일을 적용합니다.
-//            typeface = Typeface.create("sans-serif", Typeface.BOLD)
-//
-//            // TextView에 표시될 텍스트를 설정합니다. 여기서는 명령어의 인덱스와 타입을 표시합니다.
-//            text = "[$index] [${command.type}] "
-//
-//            // TextView의 배경을 설정합니다. 여기서는 main_frame이라는 리소스를 사용합니다.
-//            background = context.getDrawable(R.drawable.main_frame)
-//
-//            // TextView를 클릭했을 때 실행할 리스너를 설정합니다.
-//            setOnClickListener {
-//
-//                // 이전에 선택된 TextView가 있으면 그 배경색을 기본 프레임 색상으로 되돌립니다.
-//                previouslySelectedTextView?.background = context.getDrawable(R.drawable.main_frame)
-//
-//                // 현재 클릭된 TextView의 배경색을 변경하여 선택된 것을 표시합니다.
-//                background = context.getDrawable(R.drawable.color_green_frame)
-//
-//                // 현재 클릭된 TextView를 'previouslySelectedTextView'로 설정하여, 다음 클릭 이벤트에서 참조할 수 있게 합니다.
-//                previouslySelectedTextView = this
-//
-//                // 현재 선택된 명령어의 인덱스를 'selectedIndex'에 저장합니다.
-//                selectedIndex = index
-//            }
-//        }
-//
-//        // 설정이 완료된 TextView를 반환합니다.
-//        return textView
-//    }
 
 
     /**
@@ -250,7 +211,10 @@ class CommandTreeFragment : Fragment() {
             selectedIndex = null
             previouslySelectedTextView?.let {
                 // 이전에 선택된 TextView의 배경색을 기본 프레임으로 되돌립니다.
-                it.background = context?.getDrawable(R.drawable.main_frame)
+                context?.let { ctx ->
+                    it.background = AppCompatResources.getDrawable(ctx, R.drawable.main_frame)
+                }
+
                 // 이전 선택된 TextView 참조도 제거합니다.
                 previouslySelectedTextView = null
             }

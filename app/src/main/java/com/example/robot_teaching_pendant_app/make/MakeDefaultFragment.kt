@@ -28,7 +28,7 @@ import com.example.robot_teaching_pendant_app.system.RobotPosition
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener,JogFragment.refreshEtListener, JogFragment.refreshJogListener {
+class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener,JogFragment.RefreshEtListener, JogFragment.RefreshJogListener {
 
     private var _binding: MakeDefaultFragmentBinding? = null
     private val defBinding get() = _binding!!
@@ -44,7 +44,7 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener,JogFragment.r
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         _binding = MakeDefaultFragmentBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
@@ -191,13 +191,6 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener,JogFragment.r
             }
         })
 
-        //Activity 에서도 접근 하려면 필요한 코드, 임시로 남겨 둠, 해당 파일은 Fragment 라 사용하지 않아서 주석으로만 남겨둠.
-//        if (savedInstanceState == null) {
-//            val fragment = JogFragment()
-//            activity?.supportFragmentManager?.beginTransaction()
-//                .replace(jogViewer.id, fragment)
-//                .commit()
-//        }
 
         //Object JogState 의 jogModeSelected 변수 값에 따라 조그 모드 (Smooth, Tick) 의 초기 상태를 표현합니다.
         when(JogState.jogModeSelected){
@@ -307,9 +300,11 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener,JogFragment.r
             iconButton.setOnClickListener {
                 Toast.makeText(context, "${iconData.title} 버튼이 눌러졌습니다.", Toast.LENGTH_SHORT).show()
 
+                //아이콘에 할당되니 특정 액션(람다 함수)를 실행합니다.
                 iconData.action.invoke()
-                (activity as? MakeActivity)?.commandTreeViewModel?.triggerUpdateEvent()
-
+                //MakeActivity에 있는 commandTreeViewModel의 triggerUpdateEvenet 메서드를 호출합니다.
+                //ViewModel 내의 _updateEvent를 업데이트하여 관련된 데이터가 변경되었음을 알림.
+                (activity as? MakeActivity)?.commandTreeViewModel?.triggerUpdateTextViewEvent()
             }
 
             //Gridlayout 에 iconButton 을 추가합니다.
@@ -322,7 +317,7 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener,JogFragment.r
         val jogFragment = childFragmentManager.findFragmentById(defBinding.jogControllerView.id) as JogFragment
 
         activity?.runOnUiThread {
-            jogFragment?.setJog()
+            jogFragment.setJog()
         }
     }
 
@@ -332,7 +327,7 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener,JogFragment.r
         val jogFragment = childFragmentManager.findFragmentById(defBinding.jogControllerView.id) as JogFragment
 
         activity?.runOnUiThread {
-            jogFragment?.refreshEditText()
+            jogFragment.refreshEditText()
         }
     }
 
@@ -341,7 +336,7 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener,JogFragment.r
     override fun onGoHome() {
         val jogFragment = childFragmentManager.findFragmentById(defBinding.jogControllerView.id) as JogFragment
         activity?.runOnUiThread {
-            jogFragment?.goHome()
+            jogFragment.goHome()
         }
     }
 
