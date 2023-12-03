@@ -2,6 +2,12 @@ import com.example.robot_teaching_pendant_app.command.CommandType
 import com.example.robot_teaching_pendant_app.command.Point
 import com.example.robot_teaching_pendant_app.command.RobotCommand
 
+/**
+명령어들을 구현하는 Class들이 모여있습니다. 명령어 Class는 RobotCommand 클래스를 상속받게 되며 이는 CommandTree의 리스트에 들어가기 위함입니다.
+ 명령어의 파라미터 값으로 들어갈 멤버 변수들과 해당 명령어를 실행하기 위한 실행 관련 메서드가 선언되어 있습니다.
+*/
+
+
 /** 아래 클래스는 명령어 MoveL입니다.
 API robot function:
 
@@ -76,4 +82,25 @@ class CommandMoveL(robotCommand: CommandType) : RobotCommand(robotCommand){
         // 여기에 실행 로직 구현
     }
 }
+
+
+class CommandCircle(robotCommand: CommandType) : RobotCommand(robotCommand){
+    var allMotion: Boolean? = null
+    var indexAxis: Int? = null
+    var velocity: Int? = null
+    var point: List<Point?>? =null
+    var blend: Boolean? = null
+    var blendValue: UInt? = null
+
+
+    //명령어를 실행하는 메서드입니다.
+    fun Circle() {
+        if (allMotion == null || indexAxis == null || velocity == null || point == null || blend == null || blendValue == null) {
+            throw IllegalStateException("All properties must be initialized before execution")
+        }
+
+        // 여기에 실행 로직 구현
+    }
+}
+
 

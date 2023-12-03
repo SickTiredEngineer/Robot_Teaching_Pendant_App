@@ -298,7 +298,7 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener,JogFragment.R
 
             //아이콘 버튼의 리스너입니다. 아이콘 버튼들의 Action에 있는 동작을 취합니다.
             iconButton.setOnClickListener {
-                Toast.makeText(context, "${iconData.title} 버튼이 눌러졌습니다.", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(context, "${iconData.title} 버튼이 눌러졌습니다.", Toast.LENGTH_SHORT).show()
 
                 //아이콘에 할당되니 특정 액션(람다 함수)를 실행합니다.
                 iconData.action.invoke()

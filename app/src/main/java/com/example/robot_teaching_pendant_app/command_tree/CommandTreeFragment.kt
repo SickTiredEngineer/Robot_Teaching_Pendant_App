@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
 import com.example.robot_teaching_pendant_app.R
 import com.example.robot_teaching_pendant_app.command.RobotCommand
@@ -27,9 +28,9 @@ private const val ARG_PARAM2 = "param2"
  */
 class CommandTreeFragment : Fragment() {
 
-    //이전에 선택된 TextView
+    //이전에 선택된 TextView를 표시합니다.
     private var previouslySelectedTextView: TextView? = null
-    //현재 선택된 TextView
+    //현재 선택된 TextView를 표시합니다.
     private var selectedIndex: Int? = null
 
 
@@ -76,7 +77,7 @@ class CommandTreeFragment : Fragment() {
 
 
     /**
-     * CommandTree에 있는 각 명령어에 대해 TextView를 생성하고 설정하는 함수입니다.
+     * CommandTree에 있는 각 명령어에 대해 TextView를 생성하고, TextView들에 대한 세밀한 설정을 하는 함수입니다.
      * @param index 명령어의 순서를 나타내는 인덱스입니다.
      * @param command 현재 명령어의 인스턴스입니다.
      * @return 설정이 완료된 TextView를 반환합니다.
@@ -104,6 +105,9 @@ class CommandTreeFragment : Fragment() {
             background = AppCompatResources.getDrawable(context,R.drawable.main_frame)
 
 
+
+            //TextView의 클릭 리스너를 설정합니다. 선택된 TextView는 초록색 바탕을 가지며 강조되고
+            //같은 TextView를 다시 선택하거나 다른 TextTextView가 선택되면 기존에 선택된 TextView의 강조가 해제됩니다.
             setOnClickListener {
                 if (previouslySelectedTextView == this) {
                     // 이미 선택된 TextView가 다시 클릭되었으므로 선택을 해제합니다.
@@ -114,7 +118,7 @@ class CommandTreeFragment : Fragment() {
                 }
 
                 else {
-                    // 다른 TextView가 클릭되었으므로, 이전 선택을 해제하고 새로운 선택을 강조 표시합니다.
+                    //다른 TextView가 클릭되었으므로, 이전 선택을 해제하고 새로운 선택을 강조 표시합니다.
                     previouslySelectedTextView?.background = AppCompatResources.getDrawable(context,R.drawable.main_frame)
                     this.background = AppCompatResources.getDrawable(context,R.drawable.color_green_frame)
 
@@ -124,10 +128,43 @@ class CommandTreeFragment : Fragment() {
                     selectedIndex = index
                 }
             }
+
+
+            //TextView를 LongClick할 시, TextView를 강조하는 로직은 일반 OnCLickListener와 동일합니다.
+            //추가적으로 LongClickListener은 해당 명령어를 수정할 수 있는 Dialog Fragment를 출력합니다.
+            setOnLongClickListener {
+
+                //LongClick 확인을 위한 토스트 메시지 설정입니다.
+                Toast.makeText(context, "${index} 번째 ${command.type} 버튼이 눌러졌습니다. 해당 메시지는 확인용 토스트 입니다", Toast.LENGTH_SHORT).show()
+
+                if (previouslySelectedTextView == this) {
+                    // 이미 선택된 TextView가 다시 클릭되었으므로 선택을 해제합니다.
+                    this.background = AppCompatResources.getDrawable(context,R.drawable.main_frame)
+                    // 선택된 TextView와 인덱스를 null로 초기화합니다.
+                    previouslySelectedTextView = null
+                    selectedIndex = null
+                }
+
+                else {
+                    //다른 TextView가 클릭되었으므로, 이전 선택을 해제하고 새로운 선택을 강조 표시합니다.
+                    previouslySelectedTextView?.background = AppCompatResources.getDrawable(context,R.drawable.main_frame)
+                    this.background = AppCompatResources.getDrawable(context,R.drawable.color_green_frame)
+
+                    // 새로운 TextView를 현재 선택된 TextView로 설정합니다.
+                    previouslySelectedTextView = this
+                    // 선택된 명령의 인덱스를 업데이트합니다.
+                    selectedIndex = index
+                }
+                true
+
+            }
         }
 
         return textView
     }
+
+
+
 
 
     /**
@@ -225,14 +262,10 @@ class CommandTreeFragment : Fragment() {
     }
 
 
-
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
-
 
     companion object {
         /**

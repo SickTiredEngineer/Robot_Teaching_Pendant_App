@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 
 class CommandTreeViewModel: ViewModel() {
 
-    //MakeDefaultFragment에 있는 아이콘 버튼을 클릭하면 TextView를 업데이트 해주는 이벤트입니다.
+    //MakeDefaultFragment에 있는 아이콘 버튼을 클릭하면 TextView(UI 요소)를 업데이트 해주는 이벤트입니다.
     private val _updateTextViewEvent = MutableLiveData<Unit>()
     val updateTextViewEvent: LiveData<Unit> get() = _updateTextViewEvent
 

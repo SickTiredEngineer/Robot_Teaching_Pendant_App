@@ -17,67 +17,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/main_make_bt"
-        style="@style/style_button"
-        android:text="@string/str_main_make"
-        android:textSize="30sp"
-
-        android:layout_width="350dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="220dp"
-
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="10dp"
-
-        app:layout_constraintBottom_toTopOf="@+id/main_play_bt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <Button
-        android:id="@+id/main_play_bt"
-        style="@style/style_button"
-        android:text="@string/str_main_play"
-        android:textSize="30sp"
-
-        android:layout_width="350dp"
-        android:layout_height="150dp"
-
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="3dp"
-
-        app:layout_constraintBottom_toTopOf="@+id/main_setup_bt"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_make_bt" />
-
-    <Button
-        android:id="@+id/main_setup_bt"
-        style="@style/style_button"
-        android:text="@string/str_main_setup"
-        android:textSize="30sp"
-
-        android:layout_width="350dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="150dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_play_bt" />
-
 
     <TextView
         android:id="@+id/main_title"
-        style = "@style/style_tvc2"
-        android:text="@string/str_main_t"
-        android:textSize="50sp"
-
+        style="@style/style_tvc2"
         android:layout_width="460dp"
         android:layout_height="86dp"
+
         android:layout_marginStart="410dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="410dp"
+        android:layout_marginBottom="57dp"
+        android:text="@string/str_main_t"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toTopOf="@+id/main_viewer"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,17 +38,17 @@
 
     <Switch
         android:id="@+id/main_dark_switch"
-        android:layout_width="133dp"
-        android:layout_height="37dp"
-        android:layout_marginTop="150dp"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="210dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="100dp"
-        android:layout_marginBottom="30dp"
-        android:scaleX="2"
-        android:scaleY="2"
+
         android:text="@string/str_dark_mode"
 
-        app:layout_constraintBottom_toTopOf="@+id/main_make_bt"
+        android:textSize="30px"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/main_title"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
@@ -108,23 +61,64 @@
         app:srcCompat="@android:drawable/ic_lock_power_off" />
 
 
-    <FrameLayout
-        android:id="@+id/connect_viewer"
+    <LinearLayout
+        android:id="@+id/main_viewer"
+        style="@style/style_bg"
         android:layout_width="800dp"
         android:layout_height="480dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="77dp"
-        android:layout_marginEnd="90dp"
+        android:layout_marginStart="240dp"
+        android:layout_marginEnd="240dp"
         android:layout_marginBottom="74dp"
-        android:orientation="vertical"
-        style= "@style/style_bg"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/main_underline"
-        app:layout_constraintEnd_toStartOf="@+id/main_make_bt"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_title"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-    </FrameLayout>
+        <FrameLayout
+            android:id="@+id/connect_viewer"
+            style="@style/style_bg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="480dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/main_make_bt"
+                style="@style/style_button"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+
+                android:text="@string/str_main_make"
+                android:textSize="30sp"
+
+                />
+
+            <Button
+                android:id="@+id/main_play_bt"
+                style="@style/style_button"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+
+                android:text="@string/str_main_play"
+                android:textSize="30sp"
+
+                />
+
+            <Button
+                android:id="@+id/main_setup_bt"
+                style="@style/style_button"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+
+                android:text="@string/str_main_setup"
+                android:textSize="30sp" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
