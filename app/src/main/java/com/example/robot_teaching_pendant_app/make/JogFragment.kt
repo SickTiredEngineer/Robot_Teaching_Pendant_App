@@ -33,6 +33,8 @@ private const val ARG_PARAM2 = "param2"
  */
 class JogFragment : Fragment() {
 
+    //해야 할 것: InterFace 정리
+
     interface GoHomeListener {
         fun onGoHome()
     }

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.FragmentManager
 import com.example.robot_teaching_pendant_app.MainActivity
 import com.example.robot_teaching_pendant_app.command_tree.CommandTreeViewModel
 import com.example.robot_teaching_pendant_app.command_tree.CommandTreeFragment
@@ -14,12 +15,15 @@ import com.example.robot_teaching_pendant_app.play.PlayActivity
 import com.example.robot_teaching_pendant_app.setup.SetupActivity
 import com.example.robot_teaching_pendant_app.system.PowerOffDialogFragment
 
-class MakeActivity : AppCompatActivity() {
+class MakeActivity : AppCompatActivity(),CommandTreeFragment.treeEditorListener {
 
+    private lateinit var binding: MakeActivityBinding
 
-    //CommandTreeViewModel인스턴스를 참조합니다.
-    //ViewModel->인스턴스는 데이터 변경사항을 관찰하고 이에 따라 Ui 업데이트를 진행합니다.
-    //by viewModels() -> viewModel 인스턴스는 액티비티의 생명주기와 연결되고 필요에 따라 자동 생성됩니다.
+    /*
+    MakeDefaultFragment에서 생성된 Icon Button을 누르면 ViewModel을 이용하여 CommandTree와 통신 및 UI 갱신을 진행합니다. ViewModel 인스턴스는 데이터 변경사항을 관찰하고 이에 따라 Ui 업데이트를 진행.
+    여기선 CommandTreeViewModel인스턴스를 참조합니다.
+    by viewModels() -> viewModel 인스턴스는 액티비티의 생명주기와 연결되고 필요에 따라 자동 생성됩니다.
+     */
     val commandTreeViewModel: CommandTreeViewModel by viewModels()
 
 
@@ -27,7 +31,7 @@ class MakeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         //Make(작업 환경) 화면을 바인딩 합니다.
-        val binding = MakeActivityBinding.inflate(layoutInflater)
+        binding = MakeActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         //좌측 상단에 위치한 화면 이동 메뉴 버튼
@@ -42,6 +46,24 @@ class MakeActivity : AppCompatActivity() {
         val sideViewer = binding.sideView
 
         val makeConnectBt = binding.makeConnectBt
+
+        val treeDelBt = binding.treeDelBt
+        val treeUpBt = binding.treeUpBt
+        val treeDownBt = binding.treeDownBt
+
+
+
+        treeDelBt.setOnClickListener{
+            doCommandDelect()
+        }
+
+        treeUpBt.setOnClickListener{
+            doCommandUp()
+        }
+
+        treeDownBt.setOnClickListener{
+            doCommandDown()
+        }
 
 
         //Ext, Default Fragment 를 변수에 초기화합니다.
@@ -71,6 +93,10 @@ class MakeActivity : AppCompatActivity() {
                 .replace(makeTreeView.id, treeFragment)
                 .commit()
         }
+
+
+
+
 
 
         //Ext tree 토글 버튼 클릭 시 동작입니다.
@@ -132,4 +158,27 @@ class MakeActivity : AppCompatActivity() {
             dialogFragment.show(supportFragmentManager,null)
         }
     }
+
+    override fun doCommandDelect() {
+        val treeEditor = supportFragmentManager.findFragmentById(binding.makeTreeView.id) as CommandTreeFragment
+        runOnUiThread {
+            treeEditor.deleteSelectedCommand()
+        }
+    }
+
+    override fun doCommandDown() {
+        val treeEditor = supportFragmentManager.findFragmentById(binding.makeTreeView.id) as CommandTreeFragment
+        runOnUiThread {
+            treeEditor.moveCommandDown()
+        }
+    }
+
+    override fun doCommandUp() {
+        val treeEditor = supportFragmentManager.findFragmentById(binding.makeTreeView.id) as CommandTreeFragment
+        runOnUiThread {
+            treeEditor.moveCommandUp()
+        }
+    }
+
+
 }

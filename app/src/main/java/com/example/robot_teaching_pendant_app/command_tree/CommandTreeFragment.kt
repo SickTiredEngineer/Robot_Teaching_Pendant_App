@@ -11,6 +11,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
 import com.example.robot_teaching_pendant_app.R
+import com.example.robot_teaching_pendant_app.command.CommandType
 import com.example.robot_teaching_pendant_app.command.RobotCommand
 import com.example.robot_teaching_pendant_app.databinding.CommandTreeFragmentBinding
 import com.example.robot_teaching_pendant_app.make.MakeActivity
@@ -28,8 +29,23 @@ private const val ARG_PARAM2 = "param2"
  */
 class CommandTreeFragment : Fragment() {
 
+
+    //MakeActivity에서 트리를 수정하는 버튼들(삭제, 위, 아래 등..)을 위한 인터페이스 입니다.
+    //
+    interface treeEditorListener{
+
+        fun doCommandDelect()
+
+        fun doCommandUp()
+
+        fun doCommandDown()
+    }
+
+
+
     //이전에 선택된 TextView를 표시합니다.
     private var previouslySelectedTextView: TextView? = null
+
     //현재 선택된 TextView를 표시합니다.
     private var selectedIndex: Int? = null
 
@@ -83,6 +99,7 @@ class CommandTreeFragment : Fragment() {
      * @return 설정이 완료된 TextView를 반환합니다.
      */
 
+    //참고: 해당 함수 코드의 길이가 길어짐에 따라, 해당 함수를 기능별로 분리할 필요가 있습니다.
     private fun createTextViewForCommand(index: Int, command: RobotCommand): TextView {
         val textView = TextView(context).apply {
 
@@ -103,6 +120,41 @@ class CommandTreeFragment : Fragment() {
 
             // TextView의 배경을 설정합니다. 여기서는 main_frame이라는 리소스를 사용합니다.
             background = AppCompatResources.getDrawable(context,R.drawable.main_frame)
+
+
+            //TextView 에 들어갈 아이콘을 선언하는 변수입니다. command의 Type에 따라 사용될 ICON을 결정합니다.
+            val iconResId = when(command.type) {
+                CommandType.MOVE_J -> R.drawable.bt_movej_icon
+                CommandType.MOVE_L -> R.drawable.bt_movel_icon
+                CommandType.CIRCLE -> R.drawable.bt_circlemove_icon
+
+                else->0
+            }
+
+
+            //IconResId의 값이 0이 아닐경우(유요한 아이콘이 있는 경우에) 해당 로직을 수행합니다.
+            if(iconResId !=0){
+
+                // AppCompatResources를 사용하여 context와 iconResId에 해당하는 Drawable 객체를 가져옵니다.
+                val drawable = AppCompatResources.getDrawable(context, iconResId)
+
+                //ICon의 사이즈를 선언한 변수입니다. 지금은 정사각형 모양으로 하나의 변수만 사용하지만 필요 시 가로, 세로 사이즈를 따로 정할 변수를 선언할 수 있습니다.
+                val iconSize = 50
+
+                // drawable이 null이 아닌 경우에만, 즉 실제로 Drawable 객체가 성공적으로 로드된 경우에만 다음 로직을 수행합니다.
+                // SetBound() -> (0,0)의 위치에 iconSize 크기로 아이콘을 배치합니다.
+                drawable?.setBounds(0,0,iconSize,iconSize)
+
+                // setCompoundDrawables 메서드를 사용하여 아이콘을 TextView의 왼쪽에 추가합니다.
+                // 이 메서드는 네 개의 인자를 받으며, 각각 왼쪽, 위, 오른쪽, 아래 위치에 배치할 Drawable을 지정합니다.
+                // 여기서는 아이콘을 왼쪽에만 배치하고 나머지는 null로 설정하여 배치하지 않습니다.
+                setCompoundDrawables(drawable, null, null, null)
+
+                // compoundDrawablePadding 속성을 설정하여 아이콘과 텍스트 사이에 패딩을 추가합니다.
+                // 이 값은 아이콘과 텍스트 사이에 적절한 간격을 제공하여 시각적으로 더 깔끔하게 표시될 수 있도록 합니다.
+                compoundDrawablePadding = 15  // 아이콘과 텍스트 사이의 패딩 (필요에 따라 조절)
+
+            }
 
 
 

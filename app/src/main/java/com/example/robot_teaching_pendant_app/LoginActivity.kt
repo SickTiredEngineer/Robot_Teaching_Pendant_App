@@ -16,10 +16,12 @@ import com.example.robot_teaching_pendant_app.system.PowerOffDialogFragment
 
 
 class LoginActivity : AppCompatActivity() {
+
+    private lateinit var binding: LoginActivityBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding = LoginActivityBinding.inflate(layoutInflater)
+        binding = LoginActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         //비밀번호가 들어갈 EditText 4개를 변수에 초기화 시킵니다. 순서는 제일 좌측이 1번이며 4번까지 존재합니다.

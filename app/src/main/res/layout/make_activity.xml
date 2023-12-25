@@ -183,52 +183,85 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tree_marking_bt" />
 
-    <Button
+    <ImageButton
         android:id="@+id/tree_copy_bt"
         style="@style/style_tree_bt2"
         android:layout_marginStart="3dp"
+        android:src="@drawable/bt_copy_icon"
+        android:scaleType="fitCenter"
 
-        android:text="@string/str_copy"
+
         app:layout_constraintStart_toEndOf="@+id/tree_search_bt"
-        app:layout_constraintTop_toBottomOf="@+id/make_tree_view" />
+        app:layout_constraintTop_toBottomOf="@+id/make_tree_view"
+        tools:src="@drawable/bt_copy_icon" />
 
-    <Button
+    <ImageButton
         android:id="@+id/tree_paste_bt"
         style="@style/style_tree_bt2"
+        android:src="@drawable/bt_paste_icon"
+        android:scaleType="fitCenter"
 
         android:text="@string/str_paste"
         app:layout_constraintStart_toEndOf="@+id/tree_copy_bt"
         app:layout_constraintTop_toBottomOf="@+id/make_tree_view" />
 
-    <Button
+    <ImageButton
         android:id="@+id/tree_cut_bt"
         style="@style/style_tree_bt2"
+
+        android:src="@drawable/bt_cut_icon"
+        android:scaleType="fitCenter"
 
         android:text="@string/str_cut"
         app:layout_constraintStart_toEndOf="@+id/tree_paste_bt"
         app:layout_constraintTop_toBottomOf="@+id/make_tree_view" />
 
-    <Button
+    <ImageButton
         android:id="@+id/tree_del_bt"
         style="@style/style_tree_bt2"
+
+        android:src="@drawable/bt_delete_icon"
+        android:scaleType="fitCenter"
 
         android:text="@string/str_del"
         app:layout_constraintStart_toEndOf="@+id/tree_cut_bt"
         app:layout_constraintTop_toBottomOf="@+id/make_tree_view" />
 
-    <ToggleButton
-        android:id="@+id/tree_ext_bt"
-        style="@style/style_toggle_button"
-        android:text="@string/str_ext"
-        android:textOff="@string/str_ext"
-        android:textOn="@string/str_ext"
+
+    <FrameLayout
+        android:layout_width="90dp"
+        android:layout_height="75dp"
+
+        android:background="@drawable/public_button"
 
         app:layout_constraintStart_toEndOf="@+id/tree_del_bt"
-        app:layout_constraintTop_toBottomOf="@+id/make_tree_view" />
+        app:layout_constraintTop_toBottomOf="@+id/make_tree_view">
+
+        <ImageView
+            android:id="@+id/tree_ext_image"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:src="@drawable/bt_extension"
+            android:scaleType="fitCenter" />
+
+        <ToggleButton
+            android:id="@+id/tree_ext_bt"
+
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:background="@android:color/transparent"
+            android:textOff=""
+            android:textOn="" />
+
+    </FrameLayout>
 
     <FrameLayout
         android:id="@+id/make_tree_view"
-        style="@style/style_bg"
+
         android:layout_width="450dp"
 
         android:layout_height="600dp"
@@ -239,7 +272,12 @@
         app:layout_constraintEnd_toStartOf="@+id/side_view"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tree_refresh_bt"
-        app:layout_constraintTop_toBottomOf="@+id/make_line2" />
+        app:layout_constraintTop_toBottomOf="@+id/make_line2">
+
+
+    </FrameLayout>
+
+
 
     <FrameLayout
         android:id="@+id/side_view"
@@ -262,5 +300,6 @@
         android:text="@string/str_connect"
         app:layout_constraintEnd_toStartOf="@+id/make_power_bt"
         app:layout_constraintTop_toBottomOf="@+id/make_line1" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -38,6 +38,10 @@ class CommandMoveJ(robotCommand: CommandType) : RobotCommand(robotCommand){
         if (allMotion == null || indexAxis == null || velocity == null || point == null || blend == null || blendValue == null) {
             throw IllegalStateException("All properties must be initialized before execution")
         }
+
+
+
+
         // 여기에 실행 로직 구현
     }
 }

@@ -15,10 +15,12 @@ import com.example.robot_teaching_pendant_app.system.PowerOffDialogFragment
 
 class SetupActivity : AppCompatActivity() {
 
+    private lateinit var binding: SetupActivityBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding = SetupActivityBinding.inflate(layoutInflater)
+        binding = SetupActivityBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
 

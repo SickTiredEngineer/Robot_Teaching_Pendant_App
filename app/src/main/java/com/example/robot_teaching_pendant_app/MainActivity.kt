@@ -21,6 +21,7 @@ import com.example.robot_teaching_pendant_app.system.PowerOffDialogFragment
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: MainActivityBinding
     private lateinit var connectHelper: ConnectHelper
     private lateinit var darkModeManager:DarkModeManager
 
@@ -29,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         //Main Activity 바인딩
-        val binding = MainActivityBinding.inflate(layoutInflater)
+        binding = MainActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         //Main 화면의 버튼 연결

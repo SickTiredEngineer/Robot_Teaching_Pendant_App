@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 버튼이 체크되었을 때의 배경색 -->
+    <item android:color="@color/green" android:state_checked="true"/>
+    <!-- 버튼이 체크되지 않았을 때의 배경색 -->
+    <item android:color="@color/color_bg" android:state_checked="false"/>
+</selector>
