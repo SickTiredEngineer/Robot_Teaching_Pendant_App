@@ -29,26 +29,21 @@ private const val ARG_PARAM2 = "param2"
  */
 class CommandTreeFragment : Fragment() {
 
-
     //MakeActivity에서 트리를 수정하는 버튼들(삭제, 위, 아래 등..)을 위한 인터페이스 입니다.
-    //
     interface treeEditorListener{
-
         fun doCommandDelect()
-
         fun doCommandUp()
-
         fun doCommandDown()
     }
-
-
 
     //이전에 선택된 TextView를 표시합니다.
     private var previouslySelectedTextView: TextView? = null
 
-    //현재 선택된 TextView를 표시합니다.
+    //현재 선택된 TextView의 Index를 표시합니다.
     private var selectedIndex: Int? = null
 
+    //현재 선택된 TextView를 표시합니다.
+    private var selectedTextView: TextView? = null
 
     private var _binding: CommandTreeFragmentBinding? = null
     private val binding get() = _binding!!
@@ -83,7 +78,6 @@ class CommandTreeFragment : Fragment() {
             refreshCommandTree()
         }
 
-
         //ViewModel -> 이후 필요한 부분마다 추가 적용하며 , 계속 변경할 예정.
         //Tree 기초 틀만 구현 한 상태이고, 해당 메서드만 호출되는 상태입니다.
         (activity as? MakeActivity)?.commandTreeViewModel?.updateTextViewEvent?.observe(viewLifecycleOwner) {
@@ -92,6 +86,8 @@ class CommandTreeFragment : Fragment() {
     }
 
 
+
+    /* -------------------------------------------------------------------------*/
     /**
      * CommandTree에 있는 각 명령어에 대해 TextView를 생성하고, TextView들에 대한 세밀한 설정을 하는 함수입니다.
      * @param index 명령어의 순서를 나타내는 인덱스입니다.
@@ -99,125 +95,146 @@ class CommandTreeFragment : Fragment() {
      * @return 설정이 완료된 TextView를 반환합니다.
      */
 
-    //참고: 해당 함수 코드의 길이가 길어짐에 따라, 해당 함수를 기능별로 분리할 필요가 있습니다.
     private fun createTextViewForCommand(index: Int, command: RobotCommand): TextView {
-        val textView = TextView(context).apply {
+        val textView = TextView(context)
 
-            // TextView의 레이아웃 파라미터를 설정합니다. 여기서는 너비는 match_parent, 높이는 wrap_content를 사용합니다.
-            layoutParams = ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-            )
+        //기존 TextView 생성 함수의 기능들을 4단계로 분리한 상태입니다. 해당 함수들은 현재 함수의 바로 아래에 순서대로 나열되어 있습니다.
 
-            // TextView의 폰트 스타일을 설정합니다. 여기서는 sans-serif 글꼴에 굵은 스타일을 적용합니다.
-            typeface = Typeface.create("sans-serif", Typeface.BOLD)
+        //TextView의 기본적인 설정을 담당하는 함수입니다.
+        setupTextView(textView, index, command)
 
-            //TextSize를 설정합니다.
-            setTextSize(TypedValue.COMPLEX_UNIT_SP, 20f)
+        //CommandType 에 따라 TextView의 제일 좌측에 들어갈 Icon을 정하는 함수입니다.
+        setCommandIcon(textView, command.type)
 
-            // TextView에 표시될 텍스트를 설정합니다. 여기서는 명령어의 인덱스와 타입을 표시합니다.
-            text = "[$index] [${command.type}] "
+        //TextView의 클릭 리스너입니다.
+        setClickListener(textView, index, command)
 
-            // TextView의 배경을 설정합니다. 여기서는 main_frame이라는 리소스를 사용합니다.
-            background = AppCompatResources.getDrawable(context,R.drawable.main_frame)
-
-
-            //TextView 에 들어갈 아이콘을 선언하는 변수입니다. command의 Type에 따라 사용될 ICON을 결정합니다.
-            val iconResId = when(command.type) {
-                CommandType.MOVE_J -> R.drawable.bt_movej_icon
-                CommandType.MOVE_L -> R.drawable.bt_movel_icon
-                CommandType.CIRCLE -> R.drawable.bt_circlemove_icon
-
-                else->0
-            }
-
-
-            //IconResId의 값이 0이 아닐경우(유요한 아이콘이 있는 경우에) 해당 로직을 수행합니다.
-            if(iconResId !=0){
-
-                // AppCompatResources를 사용하여 context와 iconResId에 해당하는 Drawable 객체를 가져옵니다.
-                val drawable = AppCompatResources.getDrawable(context, iconResId)
-
-                //ICon의 사이즈를 선언한 변수입니다. 지금은 정사각형 모양으로 하나의 변수만 사용하지만 필요 시 가로, 세로 사이즈를 따로 정할 변수를 선언할 수 있습니다.
-                val iconSize = 50
-
-                // drawable이 null이 아닌 경우에만, 즉 실제로 Drawable 객체가 성공적으로 로드된 경우에만 다음 로직을 수행합니다.
-                // SetBound() -> (0,0)의 위치에 iconSize 크기로 아이콘을 배치합니다.
-                drawable?.setBounds(0,0,iconSize,iconSize)
-
-                // setCompoundDrawables 메서드를 사용하여 아이콘을 TextView의 왼쪽에 추가합니다.
-                // 이 메서드는 네 개의 인자를 받으며, 각각 왼쪽, 위, 오른쪽, 아래 위치에 배치할 Drawable을 지정합니다.
-                // 여기서는 아이콘을 왼쪽에만 배치하고 나머지는 null로 설정하여 배치하지 않습니다.
-                setCompoundDrawables(drawable, null, null, null)
-
-                // compoundDrawablePadding 속성을 설정하여 아이콘과 텍스트 사이에 패딩을 추가합니다.
-                // 이 값은 아이콘과 텍스트 사이에 적절한 간격을 제공하여 시각적으로 더 깔끔하게 표시될 수 있도록 합니다.
-                compoundDrawablePadding = 15  // 아이콘과 텍스트 사이의 패딩 (필요에 따라 조절)
-
-            }
-
-
-
-            //TextView의 클릭 리스너를 설정합니다. 선택된 TextView는 초록색 바탕을 가지며 강조되고
-            //같은 TextView를 다시 선택하거나 다른 TextTextView가 선택되면 기존에 선택된 TextView의 강조가 해제됩니다.
-            setOnClickListener {
-                if (previouslySelectedTextView == this) {
-                    // 이미 선택된 TextView가 다시 클릭되었으므로 선택을 해제합니다.
-                    this.background = AppCompatResources.getDrawable(context,R.drawable.main_frame)
-                    // 선택된 TextView와 인덱스를 null로 초기화합니다.
-                    previouslySelectedTextView = null
-                    selectedIndex = null
-                }
-
-                else {
-                    //다른 TextView가 클릭되었으므로, 이전 선택을 해제하고 새로운 선택을 강조 표시합니다.
-                    previouslySelectedTextView?.background = AppCompatResources.getDrawable(context,R.drawable.main_frame)
-                    this.background = AppCompatResources.getDrawable(context,R.drawable.color_green_frame)
-
-                    // 새로운 TextView를 현재 선택된 TextView로 설정합니다.
-                    previouslySelectedTextView = this
-                    // 선택된 명령의 인덱스를 업데이트합니다.
-                    selectedIndex = index
-                }
-            }
-
-
-            //TextView를 LongClick할 시, TextView를 강조하는 로직은 일반 OnCLickListener와 동일합니다.
-            //추가적으로 LongClickListener은 해당 명령어를 수정할 수 있는 Dialog Fragment를 출력합니다.
-            setOnLongClickListener {
-
-                //LongClick 확인을 위한 토스트 메시지 설정입니다.
-                Toast.makeText(context, "${index} 번째 ${command.type} 버튼이 눌러졌습니다. 해당 메시지는 확인용 토스트 입니다", Toast.LENGTH_SHORT).show()
-
-                if (previouslySelectedTextView == this) {
-                    // 이미 선택된 TextView가 다시 클릭되었으므로 선택을 해제합니다.
-                    this.background = AppCompatResources.getDrawable(context,R.drawable.main_frame)
-                    // 선택된 TextView와 인덱스를 null로 초기화합니다.
-                    previouslySelectedTextView = null
-                    selectedIndex = null
-                }
-
-                else {
-                    //다른 TextView가 클릭되었으므로, 이전 선택을 해제하고 새로운 선택을 강조 표시합니다.
-                    previouslySelectedTextView?.background = AppCompatResources.getDrawable(context,R.drawable.main_frame)
-                    this.background = AppCompatResources.getDrawable(context,R.drawable.color_green_frame)
-
-                    // 새로운 TextView를 현재 선택된 TextView로 설정합니다.
-                    previouslySelectedTextView = this
-                    // 선택된 명령의 인덱스를 업데이트합니다.
-                    selectedIndex = index
-                }
-                true
-
-            }
-        }
-
+        //TextView의 롱클릭 리스너입니다.
+        setLongClickListener(textView, index, command)
+        
         return textView
     }
 
 
+    /* -------------------------------------------------------------------------*/
+
+    //해당 주석을 기준으로 다음에 나올 4의개 함수들은 위의 createTextView 에서 textView를 생성할 때 사용할 함수들입니다.
+
+    //1. TextView의 폰트, 사이즈 등을 설정하는 함수입니다.
+    private fun setupTextView(textView: TextView, index: Int, command: RobotCommand) {
+        textView.apply {
+            layoutParams = ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+            )
+            typeface = Typeface.create("sans-serif", Typeface.BOLD)
+            setTextSize(TypedValue.COMPLEX_UNIT_SP, 18f)
+            text = "[$index] [${command.type}] "
+            background = AppCompatResources.getDrawable(context, R.drawable.main_frame)
+        }
+    }
 
 
+    //2. 명령어의 Type에 따라 TextView 좌측에 생성될 아이콘을 정합니다.
+    private fun setCommandIcon(textView: TextView, commandType: CommandType) {
+
+        //CommandType에 따라 설정에 사용될 아이콘을 지정합니다.
+
+        val iconResId = when(commandType) {
+            CommandType.MOVE_J -> R.drawable.bt_movej_icon
+            CommandType.MOVE_JB -> R.drawable.bt_move_jb_icon
+
+            CommandType.MOVE_L -> R.drawable.bt_movel_icon
+            CommandType.MOVE_LB-> R.drawable.bt_move_lb_icon
+
+            CommandType.CIRCLE -> R.drawable.bt_circlemove_icon
+            else->0
+        }
+
+
+        //iconResId 가 Else 가 아닐 경우에만 아래의 로직을 실행합니다.
+        if (iconResId != 0) {
+            //Context가 Null이 아닐 경우에만 App.CompatResource.getDrawable을 호출합니다.
+            val drawable = context?.let { AppCompatResources.getDrawable(it, iconResId) }
+
+            //현재 가로, 세로 사이즈를 동일하게 사용하기 때문에 하나의 값만 필요하나, 필요 시 변수를 더 선언하여 값을 사용할 수 있습니다.
+            val iconSize = 50
+
+            drawable?.setBounds(0, 0, iconSize, iconSize)
+
+            textView.setCompoundDrawables(drawable, null, null, null)
+
+            //TextView의 글자와 아이콘의 간격을 설정합니다.
+            textView.compoundDrawablePadding = 15
+        }
+    }
+
+
+    //3. TextView의 클릭 리스너를 설정합니다.
+    private fun setClickListener(textView: TextView, index: Int, command:RobotCommand) {
+        textView.setOnClickListener {
+            // context가 null이면 리스너를 종료합니다.
+            val context = context ?: return@setOnClickListener
+
+
+            // 현재 클릭된 TextView가 이전에 선택된 TextView와 다른 경우
+            if (previouslySelectedTextView != textView) {
+
+                // 이전에 선택된 TextView의 배경을 원래대로 되돌립니다.
+                previouslySelectedTextView?.background = AppCompatResources.getDrawable(context, R.drawable.main_frame)
+
+                // 현재 TextView의 배경을 강조색으로 설정합니다.
+                textView.background = AppCompatResources.getDrawable(context, R.drawable.color_green_frame)
+
+                // 새로운 TextView를 현재 선택된 TextView로 설정합니다.
+                previouslySelectedTextView = textView
+
+                // 선택된 명령의 인덱스를 업데이트합니다.
+                selectedIndex = index
+
+
+            } else {
+                // 이미 선택된 TextView를 다시 클릭한 경우, 선택을 해제합니다.
+                textView.background = AppCompatResources.getDrawable(context, R.drawable.main_frame)
+                previouslySelectedTextView = null
+                selectedIndex = null
+            }
+        }
+    }
+
+
+    //4. TextView의 롱클릭 리스너를 설정합니다. 롱클릭 리스너는 이후 해당 명령어를 수정할 수 있는 Fragment를 Dialog 형식으로 출력하는 역할을 합니다.
+    private fun setLongClickListener(textView: TextView, index: Int, command:RobotCommand) {
+        textView.setOnLongClickListener {
+            // context가 null이면 리스너를 종료합니다.
+            val context = context ?: return@setOnLongClickListener true
+
+            // 롱 클릭 확인을 위한 토스트 메시지를 표시합니다.
+            Toast.makeText(context, "${index} 번째 ${command.type} 버튼이 눌러졌습니다. 해당 메시지는 확인용 토스트 입니다", Toast.LENGTH_SHORT).show()
+
+            // 현재 클릭된 TextView가 이전에 선택된 TextView와 다른 경우
+            if (previouslySelectedTextView != textView) {
+
+                // 이전에 선택된 TextView의 배경을 원래대로 되돌립니다.
+                previouslySelectedTextView?.background = AppCompatResources.getDrawable(context, R.drawable.main_frame)
+
+                // 현재 TextView의 배경을 강조색으로 설정합니다.
+                textView.background = AppCompatResources.getDrawable(context, R.drawable.color_green_frame)
+
+                // 새로운 TextView를 현재 선택된 TextView로 설정합니다.
+                previouslySelectedTextView = textView
+
+                // 선택된 명령의 인덱스를 업데이트합니다.
+                selectedIndex = index
+            }
+
+            // 롱 클릭 이벤트가 처리되었음을 나타내기 위해 true를 반환합니다.
+            true
+        }
+    }
+
+
+    /* -------------------------------------------------------------------------*/
 
     /**
      * CommandTree의 명령어 리스트를 UI에 반영하여 갱신하는 함수입니다.
@@ -231,6 +248,14 @@ class CommandTreeFragment : Fragment() {
         CommandTree.commandList.forEachIndexed { index, command ->
             val textView = createTextViewForCommand(index, command)
             binding.commandTreeScrollView.addView(textView)
+
+
+            if (index == selectedIndex) {
+                textView.background = context?.let { ctx ->
+                    AppCompatResources.getDrawable(ctx, R.drawable.color_green_frame)
+                }
+                selectedTextView = textView  // 현재 선택된 TextView를 업데이트합니다.
+            }
         }
     }
 

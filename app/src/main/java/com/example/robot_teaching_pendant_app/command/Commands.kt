@@ -1,5 +1,6 @@
 import com.example.robot_teaching_pendant_app.command.CommandType
-import com.example.robot_teaching_pendant_app.command.Point
+import com.example.robot_teaching_pendant_app.command.PointJ
+import com.example.robot_teaching_pendant_app.command.PointL
 import com.example.robot_teaching_pendant_app.command.RobotCommand
 
 /**
@@ -29,7 +30,7 @@ class CommandMoveJ(robotCommand: CommandType) : RobotCommand(robotCommand){
     var allMotion: Boolean? = null
     var indexAxis: Int? = null
     var velocity: Int? = null
-    var point: List<Point?>? =null
+    var point: List<PointJ?>? =null
     var blend: Boolean? = null
     var blendValue: UInt? = null
 
@@ -40,6 +41,25 @@ class CommandMoveJ(robotCommand: CommandType) : RobotCommand(robotCommand){
         }
 
 
+
+
+        // 여기에 실행 로직 구현
+    }
+}
+
+class CommandMoveJB(robotCommand: CommandType) : RobotCommand(robotCommand){
+    var allMotion: Boolean? = null
+    var indexAxis: Int? = null
+    var velocity: Int? = null
+    var point: List<PointJ?>? =null
+    var blend: Boolean? = null
+    var blendValue: UInt? = null
+
+    //명령어를 실행하는 메서드입니다.
+    fun MoveJB() {
+        if (allMotion == null || indexAxis == null || velocity == null || point == null || blend == null || blendValue == null) {
+            throw IllegalStateException("All properties must be initialized before execution")
+        }
 
 
         // 여기에 실행 로직 구현
@@ -72,7 +92,7 @@ class CommandMoveL(robotCommand: CommandType) : RobotCommand(robotCommand){
     var allMotion: Boolean? = null
     var indexAxis: Int? = null
     var velocity: Int? = null
-    var point: List<Point?>? =null
+    var point: List<PointL?>? =null
     var blend: Boolean? = null
     var blendValue: UInt? = null
 
@@ -87,12 +107,31 @@ class CommandMoveL(robotCommand: CommandType) : RobotCommand(robotCommand){
     }
 }
 
+class CommandMoveLB(robotCommand: CommandType) : RobotCommand(robotCommand){
+    var allMotion: Boolean? = null
+    var indexAxis: Int? = null
+    var velocity: Int? = null
+    var point: List<PointL?>? =null
+    var blend: Boolean? = null
+    var blendValue: UInt? = null
+
+
+    //명령어를 실행하는 메서드입니다.
+    fun MoveLB() {
+        if (allMotion == null || indexAxis == null || velocity == null || point == null || blend == null || blendValue == null) {
+            throw IllegalStateException("All properties must be initialized before execution")
+        }
+
+        // 여기에 실행 로직 구현
+    }
+}
+
 
 class CommandCircle(robotCommand: CommandType) : RobotCommand(robotCommand){
     var allMotion: Boolean? = null
     var indexAxis: Int? = null
     var velocity: Int? = null
-    var point: List<Point?>? =null
+    var point: List<PointL?>? =null
     var blend: Boolean? = null
     var blendValue: UInt? = null
 

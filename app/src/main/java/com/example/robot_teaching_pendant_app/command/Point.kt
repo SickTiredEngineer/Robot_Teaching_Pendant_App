@@ -5,4 +5,7 @@ package com.example.robot_teaching_pendant_app.command
  * 이후 필요에 따라 파라미터가 늘어날 수 있습니다.
  */
 
-data class Point(val x: Float, val y: Float, val z: Float, val roll: Float)
+data class PointJ(val joint1: Float, val joint2: Float, val joint3: Float, val joint4: Float)
+
+
+data class PointL(val x: Float, val y: Float, val z: Float, val roll: Float)

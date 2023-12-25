@@ -6,7 +6,14 @@ enum class CommandType {
     MOVE,
 
     MOVE_J,
+    MOVE_JB,
+
     MOVE_L,
+    MOVE_LB,
+    MOVE_JL,
+
+    MOVE_ITPL,
+
 
     POINT,
     CIRCLE,
