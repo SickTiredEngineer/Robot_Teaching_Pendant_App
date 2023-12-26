@@ -237,23 +237,13 @@
         app:layout_constraintStart_toEndOf="@+id/tree_del_bt"
         app:layout_constraintTop_toBottomOf="@+id/make_tree_view">
 
-        <ImageView
-            android:id="@+id/tree_ext_image"
-
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-
-            android:src="@drawable/bt_extension"
-            android:scaleType="fitCenter" />
-
         <ToggleButton
             android:id="@+id/tree_ext_bt"
 
-
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/bt_extension"
 
-            android:background="@android:color/transparent"
             android:textOff=""
             android:textOn="" />
 
