@@ -1,11 +1,13 @@
 package com.example.robot_teaching_pendant_app.make
 
 import android.os.Bundle
+import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
@@ -190,6 +192,85 @@ class JogFragment : Fragment() {
                     }
                 }
             }
+
+            val handler = Handler()
+
+            val autoIncrementRunnable = object : Runnable {
+                override fun run() {
+                    when (jogSelected) {
+                        JOG_GLOBAL_SELECTED -> {
+                            //감소 버튼 순서는 제일 위에 0번부터 마지막 제일 아래 5번까지 순서입니다.
+                            when (index) {
+                                0 -> {
+                                    RobotPosition.x = increaseValueAndSet(360.0f, RobotPosition.x, 0.1f)
+                                    jogViewList[index].setText("%.2f".format(RobotPosition.x))
+                                }
+                                1 -> {
+                                    RobotPosition.y = increaseValueAndSet(360.0f, RobotPosition.y, 0.1f)
+                                    jogViewList[index].setText("%.2f".format(RobotPosition.y))
+                                }
+                                2 -> {
+                                    RobotPosition.z = increaseValueAndSet(360.0f, RobotPosition.z, 0.1f)
+                                    jogViewList[index].setText("%.2f".format(RobotPosition.z))
+                                }
+                                3 -> {
+                                    RobotPosition.Rx = increaseValueAndSet(360.0f, RobotPosition.Rx, 0.1f)
+                                    jogViewList[index].setText("%.2f".format(RobotPosition.Rx))
+                                }
+                                4 -> {
+                                    RobotPosition.Ry = increaseValueAndSet(360.0f, RobotPosition.Ry, 0.1f)
+                                    jogViewList[index].setText("%.2f".format(RobotPosition.Ry))
+                                }
+                                5 -> {
+                                    RobotPosition.Rz = increaseValueAndSet(360.0f, RobotPosition.Rz, 0.1f)
+                                    jogViewList[index].setText("%.2f".format(RobotPosition.Rz))
+                                }
+                            }
+                        }
+
+                        //관절값은 4개만 필요하기 때문에 0~3까지만 사용합니다.
+                        JOG_JOINT_SELECTED -> {
+                            when (index) {
+                                0 -> {
+                                    RobotPosition.joint1 = increaseValueAndSet(360.0f, RobotPosition.joint1, 0.1f)
+                                    jogViewList[index].setText("%.2f".format(RobotPosition.joint1))
+                                }
+                                1 -> {
+                                    RobotPosition.joint2 = increaseValueAndSet(360.0f, RobotPosition.joint2, 0.1f)
+                                    jogViewList[index].setText("%.2f".format(RobotPosition.joint2))
+                                }
+                                2 -> {
+                                    RobotPosition.joint3 = increaseValueAndSet(360.0f, RobotPosition.joint3, 0.1f)
+                                    jogViewList[index].setText("%.2f".format(RobotPosition.joint3))
+                                }
+                                3 -> {
+                                    RobotPosition.joint4 = increaseValueAndSet(360.0f, RobotPosition.joint4, 0.1f)
+                                    jogViewList[index].setText("%.2f".format(RobotPosition.joint4))
+                                }
+                                // 4, 5는 해당 관절값이 없으므로 아무 처리도 하지 않습니다.
+                            }
+                        }
+                    }
+
+                    // Handler를 사용하여 자기 자신을 0.1초 후에 다시 실행하도록 합니다.
+                    handler.postDelayed(this, 100)  // 0.1초 후에 다시 실행
+                }
+            }
+
+
+            button.setOnTouchListener { _, event ->
+                when (event.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        // 버튼이 눌려졌을 때 Runnable 객체를 실행합니다.
+                        handler.post(autoIncrementRunnable)
+                    }
+                    MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                        // 버튼에서 손을 떼거나 취소되었을 때 Runnable 객체의 실행을 중단합니다.
+                        handler.removeCallbacks(autoIncrementRunnable)
+                    }
+                }
+                true  // 이벤트가 처리되었음을 나타냅니다.
+            }
         }
 
 
@@ -251,12 +332,90 @@ class JogFragment : Fragment() {
                     }
                 }
             }
+
+            val handler = Handler()
+
+            val autoDecrementRunnable = object : Runnable {
+                override fun run() {
+                    when (jogSelected) {
+                        JOG_GLOBAL_SELECTED -> {
+                            //감소 버튼 순서는 제일 위에 0번부터 마지막 제일 아래 5번까지 순서입니다.
+                            when (index) {
+                                0 -> {
+                                    RobotPosition.x = decreaseValueAndSet(0.0f, RobotPosition.x, 0.1f)
+                                    jogViewList[index].setText("%.2f".format(RobotPosition.x))
+                                }
+                                1 -> {
+                                    RobotPosition.y = decreaseValueAndSet(0.0f, RobotPosition.y, 0.1f)
+                                    jogViewList[index].setText("%.2f".format(RobotPosition.y))
+                                }
+                                2 -> {
+                                    RobotPosition.z = decreaseValueAndSet(0.0f, RobotPosition.z, 0.1f)
+                                    jogViewList[index].setText("%.2f".format(RobotPosition.z))
+                                }
+                                3 -> {
+                                    RobotPosition.Rx = decreaseValueAndSet(0.0f, RobotPosition.Rx, 0.1f)
+                                    jogViewList[index].setText("%.2f".format(RobotPosition.Rx))
+                                }
+                                4 -> {
+                                    RobotPosition.Ry = decreaseValueAndSet(0.0f, RobotPosition.Ry, 0.1f)
+                                    jogViewList[index].setText("%.2f".format(RobotPosition.Ry))
+                                }
+                                5 -> {
+                                    RobotPosition.Rz = decreaseValueAndSet(0.0f, RobotPosition.Rz, 0.1f)
+                                    jogViewList[index].setText("%.2f".format(RobotPosition.Rz))
+                                }
+                            }
+                        }
+
+                        //관절값은 4개만 필요하기 때문에 0~3까지만 사용합니다.
+                        JOG_JOINT_SELECTED -> {
+                            when (index) {
+                                0 -> {
+                                    RobotPosition.joint1 = decreaseValueAndSet(0.0f, RobotPosition.joint1, 0.1f)
+                                    jogViewList[index].setText("%.2f".format(RobotPosition.joint1))
+                                }
+                                1 -> {
+                                    RobotPosition.joint2 = decreaseValueAndSet(0.0f, RobotPosition.joint2, 0.1f)
+                                    jogViewList[index].setText("%.2f".format(RobotPosition.joint2))
+                                }
+                                2 -> {
+                                    RobotPosition.joint3 = decreaseValueAndSet(0.0f, RobotPosition.joint3, 0.1f)
+                                    jogViewList[index].setText("%.2f".format(RobotPosition.joint3))
+                                }
+                                3 -> {
+                                    RobotPosition.joint4 = decreaseValueAndSet(0.0f, RobotPosition.joint4, 0.1f)
+                                    jogViewList[index].setText("%.2f".format(RobotPosition.joint4))
+                                }
+                                // 4, 5는 해당 관절값이 없으므로 아무 처리도 하지 않습니다.
+                            }
+                        }
+                    }
+
+                    // Handler를 사용하여 자기 자신을 0.1초 후에 다시 실행하도록 합니다.
+                    handler.postDelayed(this, 100)  // 0.1초 후에 다시 실행
+                }
+            }
+
+            button.setOnTouchListener { _, event ->
+                when (event.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        // 버튼이 눌려졌을 때 Runnable 객체를 실행합니다.
+                        handler.post(autoDecrementRunnable)
+                    }
+                    MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
+                        // 버튼에서 손을 떼거나 취소되었을 때 Runnable 객체의 실행을 중단합니다.
+                        handler.removeCallbacks(autoDecrementRunnable)
+                    }
+                }
+                true  // 이벤트가 처리되었음을 나타냅니다.
+            }
         }
 
 
-        //유효값이 아닐 경우를 대비한 복원 배열입니다.(현재 사용x)
-        val previousValues = Array(jogViewList.size) { "" }
-        val isUserInput = Array(jogViewList.size) { true }
+//        //유효값이 아닐 경우를 대비한 복원 배열입니다.(현재 사용x)
+//        val previousValues = Array(jogViewList.size) { "" }
+//        val isUserInput = Array(jogViewList.size) { true }
 
 
         //Jog의 값을 입력하는 EditText들에 관련된 설정입니다.

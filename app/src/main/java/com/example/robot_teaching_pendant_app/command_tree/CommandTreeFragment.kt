@@ -141,13 +141,13 @@ class CommandTreeFragment : Fragment() {
         //CommandType에 따라 설정에 사용될 아이콘을 지정합니다.
 
         val iconResId = when(commandType) {
-            CommandType.MOVE_J -> R.drawable.bt_movej_icon
-            CommandType.MOVE_JB -> R.drawable.bt_move_jb_icon
+            CommandType.MOVE_J -> R.drawable.tree_move_j_icon
+            CommandType.MOVE_JB -> R.drawable.tree_move_jb_icon
 
-            CommandType.MOVE_L -> R.drawable.bt_movel_icon
-            CommandType.MOVE_LB-> R.drawable.bt_move_lb_icon
+            CommandType.MOVE_L -> R.drawable.tree_move_l_icon
+            CommandType.MOVE_LB-> R.drawable.tree_move_lb_icon
 
-            CommandType.CIRCLE -> R.drawable.bt_circlemove_icon
+            CommandType.CIRCLE -> R.drawable.tree_circlemove_icon
             else->0
         }
 
@@ -241,6 +241,12 @@ class CommandTreeFragment : Fragment() {
      * 이 함수는 명령어 리스트에 변경이 있을 때 호출됩니다.
      */
     fun refreshCommandTree() {
+        // ScrollView 내의 모든 뷰를 제거하기 전에 기존 선택된 강조를 해제합니다.
+        previouslySelectedTextView?.background = context?.let { ctx ->
+            AppCompatResources.getDrawable(ctx, R.drawable.main_frame)
+        }
+        previouslySelectedTextView = null
+
         // ScrollView 내의 모든 뷰를 제거하여 새로 갱신할 준비를 합니다.
         binding.commandTreeScrollView.removeAllViews()
 
@@ -249,12 +255,12 @@ class CommandTreeFragment : Fragment() {
             val textView = createTextViewForCommand(index, command)
             binding.commandTreeScrollView.addView(textView)
 
-
+            // 새로 생성된 TextView 중에서 현재 선택된 인덱스와 일치하는 경우 강조를 적용합니다.
             if (index == selectedIndex) {
                 textView.background = context?.let { ctx ->
                     AppCompatResources.getDrawable(ctx, R.drawable.color_green_frame)
                 }
-                selectedTextView = textView  // 현재 선택된 TextView를 업데이트합니다.
+                previouslySelectedTextView = textView  // 현재 선택된 TextView를 업데이트합니다.
             }
         }
     }

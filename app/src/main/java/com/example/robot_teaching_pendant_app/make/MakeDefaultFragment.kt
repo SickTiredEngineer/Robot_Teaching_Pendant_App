@@ -144,6 +144,7 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener,JogFragment.R
             refreshET()
         }
 
+
         //조그를 선택하는 4가지 버튼을 함수를 활용하여 그에 맞는 모드와 UI 로직을 가지게 합니다.
         jogGlobalBt.assignJogState(JogState.JOG_GLOBAL_SELECTED, jogButtonList)
         jogLocalBt.assignJogState(JogState.JOG_LOCAL_SELECTED, jogButtonList)
@@ -343,7 +344,7 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener,JogFragment.R
     //조그를 선택하는 버튼들에 대한 UI 로직입니다. 본인은 비활성화 시키고, 나머지 3가지 버튼은 활성화 시켜줍니다. (중복 클릭 방지)
     //JOG UI는 JogFragment의 RefreshJogListener Interface를 구현하여, 그 안에 있는 setJog() 라는 메서드를 호출하여 업데이트 시킵니다.
     //Value(jogSelected가 어떤게 될 것인지, 사용할 버튼은 어떤 것들인지 리스트 형태로 받아오게 되고 로직을 수행합니다.
-    fun Button.assignJogState(value: Int, buttonList: List<Button>) {
+    fun ImageButton.assignJogState(value: Int, buttonList: List<ImageButton>) {
         //조그 버튼들에 대한 클릭 리스너
         this.setOnClickListener {
 
@@ -356,9 +357,13 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener,JogFragment.R
                     otherButton.isEnabled = false
                     otherButton.setBackgroundResource(R.drawable.color_gray_frame) // 회색 배경 리소스
 
-                    //눌러진 버튼의 이름을 출력하는 토스트 코드입니다.
-                    val buttonText = otherButton.text
-                    Toast.makeText(it.context, "$buttonText 버튼을 눌렀습니다.", Toast.LENGTH_SHORT).show()
+                    //어떤 좌표계의 조그가 선택되었는지 알려주는 Toast 메시지를 출력합니다.
+                    when(JogState.jogSelected){
+                        JogState.JOG_GLOBAL_SELECTED-> Toast.makeText(it.context, "Global 좌표계 Jog가 선택되었습니다.", Toast.LENGTH_SHORT).show()
+                        JogState.JOG_LOCAL_SELECTED-> Toast.makeText(it.context, "LOCAL 좌표계 Jog가 선택되었습니다.", Toast.LENGTH_SHORT).show()
+                        JogState.JOG_USER_SELECTED-> Toast.makeText(it.context, "USER 좌표계 Jog가 선택되었습니다.", Toast.LENGTH_SHORT).show()
+                        JogState.JOG_JOINT_SELECTED-> Toast.makeText(it.context, "JOINT 좌표계 Jog가 선택되었습니다.", Toast.LENGTH_SHORT).show()
+                    }
 
 
                     //눌러진 버튼을 제외한 나머지 버튼들을 Enable = True 시키고, 배경색을 바꾸어 클릭할 수 있음을 표시합니다.
