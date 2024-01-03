@@ -96,9 +96,6 @@ class MakeActivity : AppCompatActivity(),CommandTreeFragment.treeEditorListener 
 
 
 
-
-
-
         //Ext tree 토글 버튼 클릭 시 동작입니다.
         treeExtBt.setOnCheckedChangeListener { _, isChecked ->
 

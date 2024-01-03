@@ -18,5 +18,9 @@ object JogState {
     const val JOG_TICK_SELECTED: Int =1
 
 
+    var jogModeDist: Float = 0.0f;
+    var jogModeOri: Float = 0.0f;
+    var jogModeJoint: Float = 0.0f;
+
 
 }

@@ -8,27 +8,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.GridLayout
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.core.view.isInvisible
-import androidx.core.view.isVisible
-import androidx.fragment.app.FragmentActivity
 import com.example.robot_teaching_pendant_app.R
-import com.example.robot_teaching_pendant_app.databinding.JogFragmentBinding
 import com.example.robot_teaching_pendant_app.databinding.MakeDefaultFragmentBinding
+import com.example.robot_teaching_pendant_app.make.JogFragment
+import com.example.robot_teaching_pendant_app.make.JogModeFragment
 import com.example.robot_teaching_pendant_app.system.JogState
-import com.example.robot_teaching_pendant_app.system.RobotPosition
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener,JogFragment.RefreshEtListener, JogFragment.RefreshJogListener {
+class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener, JogFragment.RefreshEtListener, JogFragment.RefreshJogListener {
 
     private var _binding: MakeDefaultFragmentBinding? = null
     private val defBinding get() = _binding!!
@@ -71,29 +67,8 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener,JogFragment.R
         val makeEstopBt = defBinding.makeEstopBt
         val makeQhomeBt = defBinding.makeQhomeBt
 
+        val jogModeView = defBinding.jogModeView
 
-        //Jog Mode -> Smooth , Tick 을 선택할 때 사용하는 버튼입니다.
-        val makeSmoothBt = defBinding.makeSmoothBt
-        val makeTickBt = defBinding.makeTickBt
-
-
-        //Tick 모드 활성화 시 나오는 EditText 입니다.
-        val tickJoint = defBinding.tickJoint
-        val tickOri = defBinding.tickOri
-        val tickDist = defBinding.tickDist
-
-        //Tick 모드 활성화 시 나오는 EditText 설명 TextView 입니다.
-        val jogModeTv1 = defBinding.jogModeTv1
-        val jogModeTv2 = defBinding.jogModeTv2
-        val jogModeTv3 = defBinding.jogModeTv3
-
-        //기본적으로 Tick 모드에서 사용하는 요소들은 가려지게 설정합니다.
-        tickDist.isInvisible = true
-        tickJoint.isInvisible = true
-        tickOri.isInvisible = true
-        jogModeTv1.isInvisible = true
-        jogModeTv2.isInvisible = true
-        jogModeTv3.isInvisible = true
 
         //조그(Global, Local, User, Joint) 를 선택하는 버튼들을 변수에 초기화 시킵니다.
         val jogGlobalBt = defBinding.jogGlobalBt
@@ -126,17 +101,26 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener,JogFragment.R
             }
         }
 
-//        Jog Fragment 를 childFragment 형태로 불러옵니다.
+
+
         if (savedInstanceState == null) { // <- saveInstanceState 가 Null 이면 프래그먼트가 처음 생성됨을 의미.
 
-            //처움 생성되는 프래그먼트면 새로운 JogFragment 인스턴스를 생성합니다.
+            //Jog Fragment 를 childFragment 형태로 불러옵니다.
             val fragment = JogFragment()
             childFragmentManager.beginTransaction()
                 .replace(jogViewer.id, fragment)
+                .commit()
 
-                //트랜잭션을 커밋하여 위에서 정의한 프래그먼트 변경사향들을 적용
+
+            //Jog Mode Fragment 를 childFragment 형태로 불러옵니다.
+            val jogModeFragment = JogModeFragment()
+            childFragmentManager.beginTransaction()
+                .replace(jogModeView.id, jogModeFragment)
                 .commit()
         }
+
+
+
 
         //Quick Home 버튼의 클릭 리스너입니다. jogFragment의 goHome()메서드를 실행하여 로봇을 영점으로 보내고 editText를 영점 값으로 수정합니다.
         makeQhomeBt.setOnClickListener {
@@ -192,69 +176,6 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener,JogFragment.R
             }
         })
 
-
-        //Object JogState 의 jogModeSelected 변수 값에 따라 조그 모드 (Smooth, Tick) 의 초기 상태를 표현합니다.
-        when(JogState.jogModeSelected){
-            JogState.JOG_SMOOTH_SELECTED->{
-                makeSmoothBt.setBackgroundResource(R.drawable.color_red_frame)
-                makeSmoothBt.isEnabled=false
-            }
-
-            JogState.JOG_TICK_SELECTED-> {
-                makeTickBt.setBackgroundResource(R.drawable.color_red_frame)
-                makeTickBt.isEnabled = false
-
-                tickDist.isVisible = true
-                tickJoint.isVisible = true
-                tickOri.isVisible = true
-                jogModeTv1.isVisible = true
-                jogModeTv2.isVisible= true
-                jogModeTv3.isVisible = true
-            }
-        }
-
-        //Jog mode Smooth 버튼 리스너
-        makeSmoothBt.setOnClickListener{
-            //중복 클릭 방지를 위해 본인 버튼을 비활성화 시키고 붉은 배경으로 교체합니다.
-            makeSmoothBt.isEnabled = false
-            makeSmoothBt.setBackgroundResource(R.drawable.color_red_frame)
-
-            //Tick 버튼은 활성화 시키고 배경을 기본 프레임으로 설정합니다.
-            makeTickBt.isEnabled = true
-            makeTickBt.setBackgroundResource(R.drawable.public_button)
-
-            //Tick에 관련된 요소들이 보이지 않게 가립니다.
-            tickDist.isInvisible = true
-            tickJoint.isInvisible = true
-            tickOri.isInvisible = true
-            jogModeTv1.isInvisible = true
-            jogModeTv2.isInvisible = true
-            jogModeTv3.isInvisible = true
-
-            JogState.jogModeSelected = JogState.JOG_SMOOTH_SELECTED
-        }
-
-
-        //Jog Mode TIck 버튼 리스너
-        makeTickBt.setOnClickListener{
-            //중복 클릭 방지를 위해 본인 버튼을 비활성화 시키고 붉은 배경으로 교체합니다.
-            makeTickBt.isEnabled = false
-            makeTickBt.setBackgroundResource(R.drawable.color_red_frame)
-
-            //SMooth 버튼을 활성화 시키고 배경을 기본 프레임으로 설정합니다.
-            makeSmoothBt.isEnabled = true
-            makeSmoothBt.setBackgroundResource(R.drawable.public_button)
-
-            //Tick에 관련된 요소들을 활성화 시킵니다.
-            tickDist.isVisible = true
-            tickJoint.isVisible = true
-            tickOri.isVisible = true
-            jogModeTv1.isVisible = true
-            jogModeTv2.isVisible= true
-            jogModeTv3.isVisible = true
-
-            JogState.jogModeSelected = JogState.JOG_TICK_SELECTED
-        }
     }
 
     //검색한 ICON BUTTON들을 필터링하는 메서드입니다.

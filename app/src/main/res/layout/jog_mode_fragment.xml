@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".jog.JogModeFragment">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="185dp"
+        android:layout_height="200dp">
+
+        <Button
+            android:id="@+id/make_smooth_bt"
+            style="@style/style_button"
+
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="33dp"
+            android:text="@string/str_smooth"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/jog_mode_tv" />
+
+        <Button
+            android:id="@+id/make_tick_bt"
+            style="@style/style_button"
+
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="33dp"
+            android:text="@string/str_tick"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/make_smooth_bt" />
+
+        <EditText
+            android:id="@+id/tick_dist"
+            style="@style/style_jogmode_edtx"
+
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="6dp"
+            android:autofillHints="0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/tick_ori"
+            style="@style/style_jogmode_edtx"
+
+            android:layout_marginBottom="6dp"
+            android:autofillHints="0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/tick_joint"
+            app:layout_constraintStart_toEndOf="@+id/tick_dist" />
+
+        <EditText
+            android:id="@+id/tick_joint"
+            style="@style/style_jogmode_edtx"
+
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="6dp"
+            android:autofillHints="0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tick_ori" />
+
+        <TextView
+            android:id="@+id/jog_mode_tv"
+            style="@style/style_tvc2"
+
+            android:layout_width="80dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="53dp"
+            android:text="@string/str_mode"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/jog_mode_tv1"
+            style="@style/style_jogmode_tx"
+
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="18dp"
+            android:text="@string/str_dist_mm"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/make_tick_bt" />
+
+        <TextView
+            android:id="@+id/jog_mode_tv2"
+            style="@style/style_jogmode_tx"
+
+            android:layout_marginTop="18dp"
+            android:text="@string/str_ori_dgr"
+            app:layout_constraintBottom_toTopOf="@+id/tick_ori"
+            app:layout_constraintEnd_toStartOf="@+id/jog_mode_tv3"
+            app:layout_constraintStart_toEndOf="@+id/jog_mode_tv1"
+            app:layout_constraintTop_toBottomOf="@+id/make_tick_bt" />
+
+        <TextView
+            android:id="@+id/jog_mode_tv3"
+            style="@style/style_jogmode_tx"
+
+            android:layout_marginEnd="10dp"
+            android:text="@string/str_joint_dgr"
+            app:layout_constraintBottom_toTopOf="@+id/tick_joint"
+            app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
