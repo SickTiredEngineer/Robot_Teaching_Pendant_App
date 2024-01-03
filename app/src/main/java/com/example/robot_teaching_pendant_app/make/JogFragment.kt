@@ -33,7 +33,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [JogFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class JogFragment : Fragment() {
+class JogFragment : Fragment(){
 
     //해야 할 것: InterFace 정리
 
@@ -747,6 +747,10 @@ class JogFragment : Fragment() {
             // 입력된 값이 유효한 float 값이 아닐 때 예외 처리
         }
     }
+
+
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()

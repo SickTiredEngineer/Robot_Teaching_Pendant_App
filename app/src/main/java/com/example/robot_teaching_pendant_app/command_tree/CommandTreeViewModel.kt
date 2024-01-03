@@ -14,10 +14,4 @@ class CommandTreeViewModel: ViewModel() {
     fun triggerUpdateTextViewEvent() {
         _updateTextViewEvent.value = Unit
     }
-
-
-
-
-
-
 }

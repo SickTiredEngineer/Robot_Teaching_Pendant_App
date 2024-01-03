@@ -10,6 +10,7 @@ import com.example.robot_teaching_pendant_app.connect.ConnectorDialogFragment
 import com.example.robot_teaching_pendant_app.databinding.PlayActivityBinding
 import com.example.robot_teaching_pendant_app.make.MakeActivity
 import com.example.robot_teaching_pendant_app.make.MakeDefaultFragment
+import com.example.robot_teaching_pendant_app.make.PositionViewerFragment
 import com.example.robot_teaching_pendant_app.setup.SetupActivity
 import com.example.robot_teaching_pendant_app.system.PowerOffDialogFragment
 
@@ -31,12 +32,19 @@ class PlayActivity : AppCompatActivity() {
         val connectBt = binding.playConnectBt
         val playTreeView = binding.playTreeView
 
+        val positionView = binding.positionView
+
 
         if (savedInstanceState == null) {
             //트리 프래그먼트를 삽입하는 코드입니다.
             val treeFragment = CommandTreeFragment()
             supportFragmentManager.beginTransaction()
                 .replace(playTreeView.id, treeFragment)
+                .commit()
+
+            val positionViewerFragment = PositionViewerFragment()
+            supportFragmentManager.beginTransaction()
+                .replace(positionView.id, positionViewerFragment)
                 .commit()
         }
 

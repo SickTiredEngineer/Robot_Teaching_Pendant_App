@@ -24,7 +24,7 @@ import com.example.robot_teaching_pendant_app.system.JogState
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener, JogFragment.RefreshEtListener, JogFragment.RefreshJogListener {
+class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener, JogFragment.RefreshEtListener, JogFragment.RefreshJogListener, PositionViewerFragment.refreshEditTextListener {
 
     private var _binding: MakeDefaultFragmentBinding? = null
     private val defBinding get() = _binding!!
@@ -68,7 +68,7 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener, JogFragment.
         val makeQhomeBt = defBinding.makeQhomeBt
 
         val jogModeView = defBinding.jogModeView
-
+        val positionView = defBinding.positionViewer
 
         //조그(Global, Local, User, Joint) 를 선택하는 버튼들을 변수에 초기화 시킵니다.
         val jogGlobalBt = defBinding.jogGlobalBt
@@ -117,9 +117,13 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener, JogFragment.
             childFragmentManager.beginTransaction()
                 .replace(jogModeView.id, jogModeFragment)
                 .commit()
+
+
+            val positionViewerFragment = PositionViewerFragment()
+            childFragmentManager.beginTransaction()
+                .replace(positionView.id, positionViewerFragment)
+                .commit()
         }
-
-
 
 
         //Quick Home 버튼의 클릭 리스너입니다. jogFragment의 goHome()메서드를 실행하여 로봇을 영점으로 보내고 editText를 영점 값으로 수정합니다.
@@ -261,6 +265,14 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener, JogFragment.
             jogFragment.goHome()
         }
     }
+
+    override fun refreshEt() {
+        val positionViewerFragment = childFragmentManager.findFragmentById(defBinding.positionViewer.id) as PositionViewerFragment
+        activity?.runOnUiThread {
+            positionViewerFragment.setTextView()
+        }
+    }
+
 
     //조그를 선택하는 버튼들에 대한 UI 로직입니다. 본인은 비활성화 시키고, 나머지 3가지 버튼은 활성화 시켜줍니다. (중복 클릭 방지)
     //JOG UI는 JogFragment의 RefreshJogListener Interface를 구현하여, 그 안에 있는 setJog() 라는 메서드를 호출하여 업데이트 시킵니다.

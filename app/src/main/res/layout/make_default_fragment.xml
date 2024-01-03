@@ -93,10 +93,10 @@
 
             <LinearLayout
                 android:id="@+id/jog_view"
+                style="@style/style_bg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                style = "@style/style_bg">
+                android:layout_marginTop="5dp">
 
                 <LinearLayout
                     android:id="@+id/jog_mode_layout"
@@ -132,9 +132,9 @@
 
                 <LinearLayout
                     android:id="@+id/jog_3d_view"
+                    style="@style/style_bg"
                     android:layout_width="190dp"
                     android:layout_height="335dp"
-                    style = "@style/style_bg"
                     android:orientation="vertical">
 
                     <ImageView
@@ -146,33 +146,26 @@
 
                 <FrameLayout
                     android:id="@+id/jog_controller_view"
-                    style = "@style/style_bg"
+                    style="@style/style_bg"
                     android:layout_width="190dp"
                     android:layout_height="match_parent">
 
                 </FrameLayout>
 
-                <LinearLayout
-
-                    android:id="@+id/linearLayout2"
+                <FrameLayout
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/position_viewer"
+                    style="@style/style_bg"
                     android:layout_width="185dp"
                     android:layout_height="match_parent"
-                    android:background="@drawable/main_frame"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/imageView6"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/roboinfo" />
-                </LinearLayout>
+                    android:background="@drawable/main_frame" />
 
             </LinearLayout>
 
             <LinearLayout
+                style="@style/style_bg"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                style ="@style/style_bg"
                 android:layout_marginTop="15dp">
 
                 <FrameLayout
@@ -180,10 +173,6 @@
                     android:layout_width="185dp"
                     android:layout_height="200dp"
                     android:background="@drawable/main_frame">
-
-
-
-
 
 
                 </FrameLayout>
@@ -203,10 +192,10 @@
                     <ImageButton
                         android:id="@+id/make_qhome_bt"
                         style="@style/style_button"
-                        android:src="@drawable/bt_home_icon"
-
                         android:layout_width="match_parent"
+
                         android:layout_height="wrap_content"
+                        android:src="@drawable/bt_home_icon"
                         android:text="@string/str_qHome" />
                 </LinearLayout>
             </LinearLayout>
