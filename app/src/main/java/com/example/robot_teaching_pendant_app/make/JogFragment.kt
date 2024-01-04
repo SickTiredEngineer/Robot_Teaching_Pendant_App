@@ -15,6 +15,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.robot_teaching_pendant_app.R
 import com.example.robot_teaching_pendant_app.databinding.JogFragmentBinding
 import com.example.robot_teaching_pendant_app.system.JogState
@@ -34,6 +36,7 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class JogFragment : Fragment(){
+
 
     //해야 할 것: InterFace 정리
 
@@ -66,6 +69,7 @@ class JogFragment : Fragment(){
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
+
         }
     }
 
@@ -73,6 +77,8 @@ class JogFragment : Fragment(){
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
+
 
         _binding = JogFragmentBinding.inflate(inflater, container, false)
         return binding.root
@@ -137,6 +143,7 @@ class JogFragment : Fragment(){
         //JOG의 상승 버튼 리스너
         incBtList.forEachIndexed { index, button ->
             button.setOnClickListener {
+
                 when (jogSelected) {
                     JOG_GLOBAL_SELECTED -> {
                         //감소 버튼 순서는 제일 위에 0번부터 마지막 제일 아래 5번까지 순서입니다.
@@ -191,6 +198,8 @@ class JogFragment : Fragment(){
                         }
                     }
                 }
+                refreshViewerTextView()
+
             }
 
             val handler = Handler()
@@ -251,6 +260,8 @@ class JogFragment : Fragment(){
                             }
                         }
                     }
+
+                    refreshViewerTextView()
 
                     // Handler를 사용하여 자기 자신을 0.1초 후에 다시 실행하도록 합니다.
                     handler.postDelayed(this, 100)  // 0.1초 후에 다시 실행
@@ -331,6 +342,8 @@ class JogFragment : Fragment(){
                         }
                     }
                 }
+
+                refreshViewerTextView()
             }
 
             val handler = Handler()
@@ -392,6 +405,8 @@ class JogFragment : Fragment(){
                         }
                     }
 
+                    refreshViewerTextView()
+
                     // Handler를 사용하여 자기 자신을 0.1초 후에 다시 실행하도록 합니다.
                     handler.postDelayed(this, 100)  // 0.1초 후에 다시 실행
                 }
@@ -402,10 +417,12 @@ class JogFragment : Fragment(){
                     MotionEvent.ACTION_DOWN -> {
                         // 버튼이 눌려졌을 때 Runnable 객체를 실행합니다.
                         handler.post(autoDecrementRunnable)
+
                     }
                     MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
                         // 버튼에서 손을 떼거나 취소되었을 때 Runnable 객체의 실행을 중단합니다.
                         handler.removeCallbacks(autoDecrementRunnable)
+
                     }
                 }
                 true  // 이벤트가 처리되었음을 나타냅니다.
@@ -438,6 +455,8 @@ class JogFragment : Fragment(){
                     //자세한 로직은 아래의 handle Input 함수를 참고하십시요.
                     handleInput(i,jogViewList, jogViewList[i].text.toString())
                     refreshEditText()
+
+                    refreshViewerTextView()
 
                     true // 이벤트 처리 완료
                 }
@@ -493,6 +512,10 @@ class JogFragment : Fragment(){
     }
 
 
+
+
+
+
     //EditText 값을 선택된 조그에 맞게, 다시 불러올때 사용하는 함수입니다.
     fun refreshEditText(){
         when (jogSelected) {
@@ -534,6 +557,8 @@ class JogFragment : Fragment(){
 
         //EditText를 새로고침 하는 함수입니다.
         refreshEditText()
+
+        refreshViewerTextView()
     }
 
 
@@ -603,6 +628,9 @@ class JogFragment : Fragment(){
             refreshEditText()
         }
     }
+
+
+
 
     //EditText에 입력된 값이 유효한지(0~360) 검사하고, 해당 값을 로봇 위치를 저장하는 RobotPosition 전역변수에 저장합니다.
     private fun handleInput(index: Int,array: List<EditText>, input: String) {
@@ -749,6 +777,9 @@ class JogFragment : Fragment(){
     }
 
 
+    fun refreshViewerTextView(){
+        (parentFragment as? PositionViewerFragment.FragmentCommunicationInterface)?.refreshTextView()
+    }
 
 
 

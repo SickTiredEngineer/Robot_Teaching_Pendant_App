@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.robot_teaching_pendant_app.R
 import com.example.robot_teaching_pendant_app.databinding.PositionViewerFragmentBinding
 import com.example.robot_teaching_pendant_app.system.RobotPosition
@@ -22,8 +24,9 @@ private const val ARG_PARAM2 = "param2"
 class PositionViewerFragment : Fragment() {
 
 
-    interface refreshEditTextListener{
-        fun refreshEt()
+
+    interface FragmentCommunicationInterface{
+        fun refreshTextView()
     }
 
 
@@ -47,6 +50,8 @@ class PositionViewerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+
+
         _binding = PositionViewerFragmentBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
         return binding.root
@@ -55,6 +60,10 @@ class PositionViewerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+//
+//        viewModel = ViewModelProviders.of(requireActivity()).get(RobotPositionViewModel::class.java)
+
+
 
         val xTv = binding.xTv
         val yTv = binding.yTv

@@ -24,7 +24,7 @@ import com.example.robot_teaching_pendant_app.system.JogState
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener, JogFragment.RefreshEtListener, JogFragment.RefreshJogListener, PositionViewerFragment.refreshEditTextListener {
+class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener, JogFragment.RefreshEtListener, JogFragment.RefreshJogListener, PositionViewerFragment.FragmentCommunicationInterface {
 
     private var _binding: MakeDefaultFragmentBinding? = null
     private val defBinding get() = _binding!!
@@ -49,6 +49,7 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener, JogFragment.
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         //우측 상단 기능 카테고리 버튼들
         val defAllBt = defBinding.defAllBt
@@ -266,10 +267,10 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener, JogFragment.
         }
     }
 
-    override fun refreshEt() {
-        val positionViewerFragment = childFragmentManager.findFragmentById(defBinding.positionViewer.id) as PositionViewerFragment
+    override fun refreshTextView() {
+        val positionViewerFragment = childFragmentManager.findFragmentById(defBinding.positionViewer.id) as? PositionViewerFragment
         activity?.runOnUiThread {
-            positionViewerFragment.setTextView()
+            positionViewerFragment?.setTextView()
         }
     }
 
