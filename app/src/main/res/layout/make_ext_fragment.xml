@@ -8,11 +8,12 @@
 
     <LinearLayout
         android:id="@+id/second_tree_view"
+        style = "@style/style_bg"
         android:layout_width="450dp"
         android:layout_height="675dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
-        android:background="@drawable/main_frame"
+
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

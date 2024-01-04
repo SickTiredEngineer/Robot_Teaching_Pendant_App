@@ -648,23 +648,23 @@ class JogFragment : Fragment(){
                             Toast.makeText(context, "X좌표를 $newValue 로 이동시킵니다.", Toast.LENGTH_LONG).show()
                         }
                         1 ->{
-                            RobotPosition.x = newValue
+                            RobotPosition.y = newValue
                             Toast.makeText(context, "Y좌표를 $newValue 로 이동시킵니다.", Toast.LENGTH_LONG).show()
                         }
                         2 ->{
-                            RobotPosition.x = newValue
+                            RobotPosition.z = newValue
                             Toast.makeText(context, "Z좌표를 $newValue 로 이동시킵니다.", Toast.LENGTH_LONG).show()
                         }
                         3 ->{
-                            RobotPosition.x = newValue
+                            RobotPosition.Rx = newValue
                             Toast.makeText(context, "Rx좌표를 $newValue 로 이동시킵니다.", Toast.LENGTH_LONG).show()
                         }
                         4 ->{
-                            RobotPosition.x = newValue
+                            RobotPosition.Ry = newValue
                             Toast.makeText(context, "Ry좌표를 $newValue 로 이동시킵니다.", Toast.LENGTH_LONG).show()
                         }
                         5 ->{
-                            RobotPosition.x = newValue
+                            RobotPosition.Rz = newValue
                             Toast.makeText(context, "Rz좌표를 $newValue 로 이동시킵니다.", Toast.LENGTH_LONG).show()
                         }
                     }
