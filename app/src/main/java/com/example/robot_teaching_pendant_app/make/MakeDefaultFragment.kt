@@ -204,6 +204,7 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener, JogFragment.
             val iconButton = ImageButton(context)
             iconButton.setImageResource(iconData.imageRes)
 
+
             //FIT_CENTER는 이미지를 뷰의 중앙에 위치시키면서 뷰에 맞게 이미지를 조절합니다. 이미지의 가로세로 비율은 유지됩니다.
             //CENTER_INSIDE는 이미지가 뷰의 경계 내에 완전히 들어오도록 이미지 크기를 조절합니다. 이미지의 가로세로 비율 역시 유지됩니다.
             iconButton.scaleType = ImageView.ScaleType.CENTER_INSIDE
@@ -267,6 +268,7 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener, JogFragment.
         }
     }
 
+    //PosotionViewerFragment의 setTextView()를 통해 TextView를 최신화 시키기 위한 함수입니다.
     override fun refreshTextView() {
         val positionViewerFragment = childFragmentManager.findFragmentById(defBinding.positionViewer.id) as? PositionViewerFragment
         activity?.runOnUiThread {

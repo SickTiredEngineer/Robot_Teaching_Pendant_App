@@ -21,10 +21,16 @@ private const val ARG_PARAM2 = "param2"
  * Use the [PositionViewerFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
+
 class PositionViewerFragment : Fragment() {
 
+    /**
+    해당 Fragment는 로봇의 위치(ROBOT POSITION)을 TextView 형식으로 사용자에게 보여줍니다.
+     View Model 을 적용하려고 하였으나 현재 해결하지 못하여, setTextView() 함수를 이용하여 갱신중입니다.
+     이후 자료를 더 찾아서 View Model을 적용하고, 출력을 최적화시킬 예정입니다.
+     */
 
-
+    //MakeDefaultFragment 에서 TextView 최신화를 위해 현재 프래그먼트와 통신하기 위한 인터페이스로 부모 Activity가 중계합니다.
     interface FragmentCommunicationInterface{
         fun refreshTextView()
     }
@@ -51,7 +57,6 @@ class PositionViewerFragment : Fragment() {
     ): View? {
 
 
-
         _binding = PositionViewerFragmentBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
         return binding.root
@@ -60,11 +65,12 @@ class PositionViewerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//
+
+
 //        viewModel = ViewModelProviders.of(requireActivity()).get(RobotPositionViewModel::class.java)
 
 
-
+        //로봇 좌표들을 보여주는 TextView입니다.
         val xTv = binding.xTv
         val yTv = binding.yTv
         val zTv = binding.zTv
@@ -77,6 +83,7 @@ class PositionViewerFragment : Fragment() {
         val joint4Tv = binding.joint4Tv
 
 
+        //TextView에 넣을 변수 값을 Object RobotPosition 에서 불러와서 소숫점 2째자리 까지 출력하도록 설정합니다.
         xTv.setText(" x: %.2f".format(RobotPosition.x))
         yTv.setText(" y: %.2f".format(RobotPosition.y))
         zTv.setText(" z: %.2f".format(RobotPosition.z))
@@ -92,6 +99,7 @@ class PositionViewerFragment : Fragment() {
 
 
 
+    //TextView 전체를 최신화 시키는 함수입니다. ViewModel 적용이 가능하다면 사용하지 않을수도 있습니다.
     fun setTextView(){
         binding.xTv.setText(" x: %.2f".format(RobotPosition.x))
         binding.yTv.setText(" y: %.2f".format(RobotPosition.y))

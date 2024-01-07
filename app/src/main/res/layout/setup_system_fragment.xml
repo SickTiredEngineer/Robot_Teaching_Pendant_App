@@ -38,6 +38,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ip_edit_text" />
 
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="156dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="29dp"
+        android:text="Second Port"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/port_edit_text" />
+
     <EditText
         android:id="@+id/ip_edit_text"
         style="@style/style_tv"
@@ -63,6 +73,20 @@
         android:layout_marginStart="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <EditText
+        android:id="@+id/second_port_edit_text"
+        style="@style/style_tv"
+        android:layout_width="156dp"
+
+        android:layout_height="27dp"
+        android:layout_marginStart="16dp"
+
+        android:hint="Enter Port"
+        android:inputType="number"
+        android:maxLength="5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

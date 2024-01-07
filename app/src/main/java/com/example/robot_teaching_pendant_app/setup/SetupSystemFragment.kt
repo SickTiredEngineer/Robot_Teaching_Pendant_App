@@ -55,12 +55,17 @@ class SetupSystemFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
+        //IP를 입력받는 EditText 입니다.
         val getIpEditText = binding.ipEditText
+
+        //첫 번째 PORT를 입력받는 EditText 입니다.
         val getPortEditText = binding.portEditText
 
+        //두 번째 PORT를 입력받는 EditText 입니다.
+        val getSecondPortEditText = binding.secondPortEditText
 
+
+        //클릭 시, 저장을 수행하는 버튼입니다.
         val saveBt = binding.systemSaveBt
 
 
@@ -68,46 +73,92 @@ class SetupSystemFragment : Fragment() {
         getIpEditText.filters = arrayOf(IpAddressInputFilter())
 
 
+        //저장 버튼의 클릭 리스너로 저장 로직을 실행합니다.
         saveBt.setOnClickListener{
 
+            //모든 설정 값이 정상인 경우, True 상태를 유지하고, 문제가 있을 경우 False가 되며 설정이 저장되지 않습니다.
             var allValid = true
 
+
+            /**
+            ===================================================================================================================================
+            설정 값들에 대한 유효성을 검사합니다.
+            */
+
+
+            //IP와 PORT1, PORT2를 YAML 파일 형식으로 저장하기 위해 EditText를 통해서 가져옵니다.
             val ip = getIpEditText.text.toString()
             val portStr = getPortEditText.text.toString()
+            val secondPortStr = getSecondPortEditText.text.toString()
 
-            //입력된 IP 주소값의 범주가 정상적인지 확인하고 이를 YAML 형식으로 저장합니다.
+
+            //ValidateIpAddress 함수를 통해 EditText에서 불러온 값이 IP형식과 맞는지 검사합니다.
+            //검사 후 문제가 없을 시, 토스트 메시지를 출력합니다.
             if (validateIpAddress(ip)) {
-                Toast.makeText(context, "IP Address is valid!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "IP주소의 형식이 올바릅니다.", Toast.LENGTH_SHORT).show()
+
+            //IP형식이 올바르지 않으면 설정을 저장하지 않습니다.
             } else {
-                Toast.makeText(context, "정상적인 IP주소 형식이 아닙니다.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Port1: 정상적인 IP주소 형식이 아닙니다.", Toast.LENGTH_SHORT).show()
                 allValid = false
             }
 
+            //ValidatePort 함수를 통해 EditText에서 불러온 값이 Port형식을 갖추고 있는지 검사합니다.
+            //검사 후 문제가 없을 시, 토스트 메시지를 출력합니다.
             if (validatePort(portStr)) {
-                Toast.makeText(context, "Port is valid!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "첫 번째 포트값의 형식이 올바릅니다.", Toast.LENGTH_SHORT).show()
+
+            //PORT형식이 올바르지 않으면 설정을 저장하지 않습니다.
             } else {
-                Toast.makeText(context, "정상적인 포트 형식이 아닙니다.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Port1: 정상적인 포트 형식이 아닙니다.", Toast.LENGTH_SHORT).show()
                 allValid = false
             }
 
+            //ValidatePort 함수를 통해 EditText에서 불러온 값이 Port형식을 갖추고 있는지 검사합니다.
+            //검사 후 문제가 없을 시, 토스트 메시지를 출력합니다.
+            if (validatePort(secondPortStr)) {
+                Toast.makeText(context, "두 번째 포트값의 형식이 올바릅니다.", Toast.LENGTH_SHORT).show()
+
+            //PORT형식이 올바르지 않으면 설정을 저장하지 않습니다.
+            } else {
+                Toast.makeText(context, "Port2: 정상적인 포트 형식이 아닙니다.", Toast.LENGTH_SHORT).show()
+                allValid = false
+            }
+
+
+
+            /**
+            ===================================================================================================================================
+            이 이후의 코드는 저장에 대한 작업을 수행합니다.
+             */
+
+            //최종적으로 모든 설정 값들에 대한 문제가 없으면 (allValid 변수가 True일 경우) 설정 값들을 저장합니다.
             if (allValid) {
-                val data = mapOf("ip" to ip, "port" to portStr)
+
+                //연결에 사용되는 IP, PORT 1~2 의 정보를 저장하는 YAML 파일의 형식을 설정합니다.
+                val data = mapOf("ip" to ip, "port" to portStr, "secondPort" to secondPortStr)
                 val yaml = Yaml()
                 val yamlString = yaml.dump(data)
 
-                // 파일 저장 위치와 이름을 지정합니다. 예: /data/user/0/패키지명/files/config.yaml
+
+                /*
+                아래 코드는 YAML 파일의 저장 위치와 이름을 설정합니다.
+                기본 위치(context?.filesDir) 는 View-> Tool Windows -> Device Explorer-> data-> data-> 프로젝트 패키지->files 에 위치하고 있습니다.
+                필요시 위치를 변경할 수 있습니다. (아래 주석 처리된 코드는 기기의 download 디렉토리에 저장됩니다.)
+                 */
                 val file = File(context?.filesDir, "config.yaml")
 
+                //Device Download Directory
                 val downloadPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
 //                val file = File(downloadPath, "config.yaml")
+
                 file.writeText(yamlString)
 
+                //최종 저장이 끝났음을 토스트 메시지로 출력합니다.
                 Toast.makeText(context, "Settings saved to YAML file!", Toast.LENGTH_SHORT).show()
             }
 
         }
-
-
     }
 
 
@@ -137,7 +188,7 @@ class SetupSystemFragment : Fragment() {
     }
 
 
-    // 사용자 정의 InputFilter 클래스
+    //IP의 유효성을 검사하는 필터입니다.
     class IpAddressInputFilter : InputFilter {
         // IP 주소의 각 부분을 검증하는 정규 표현식.
         // 1~3자리 숫자를 허용합니다.
