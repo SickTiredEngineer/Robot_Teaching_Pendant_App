@@ -12,6 +12,16 @@ import com.example.robot_teaching_pendant_app.command.RobotCommand
 
 data class Icon(val imageRes: Int, val title: String, val action:() -> Unit)
 
+    /**
+     해당 파일은 MakeDefaultFragment에서 명령어를 Tree에 추가하기 위해 각 명령어에 맞는 아이콘을 설정 및 출력 해줍니다.
+     또한 생성된 아이콘을 클릭 시, CommandTree로 RobotCommand형의 인스턴스를 생성하여 삽입합니다.
+     여기서 RobotCommand형의 Classl는 Commands.kt 파일을 참고하십시오.
+
+     MakeDefaultFragment 에 출력되는 명령어 아이콘의 형식은 MakeDefaultFragment의 displayIcons() 함수를 참고하십시오.
+
+     추가적으로 아이콘을 나누는 카테고리를 더 추가할 예정이며, 이에 필요한 테그 또한 추가 할것입니다.
+    */
+
 
 //전체 아이콘 버튼들의 리스트 입니다.
 val allIcons = listOf(

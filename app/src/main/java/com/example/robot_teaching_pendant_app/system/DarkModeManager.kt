@@ -6,6 +6,11 @@ import androidx.appcompat.app.AppCompatDelegate
 
 class DarkModeManager(context: Context, private val switch: Switch) {
 
+    /**
+    LightMode 와 DarkMode 전환을 관리하는 클래스 파일입니다.
+     */
+
+
     private val sharedPreferences = context.getSharedPreferences("MODE", Context.MODE_PRIVATE)
 
     init {

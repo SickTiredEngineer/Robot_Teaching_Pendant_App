@@ -25,6 +25,13 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class JogModeFragment : Fragment() {
+
+    /**
+    JogModeFragment는 MackDefaultFragment에 ChildFragment 형식으로 삽입되는 Fragment로, Jog의 Smooth, Tick 모드와, Tick 모드에 필요한 값들을 저장할 수 있습니다.
+    현재 Interface가 불필요하게 나누어져 있는 상태로, 이후 일괄 정리할 예정입니다.
+     */
+
+
     private var _binding:  JogModeFragmentBinding? = null
     private val binding get() = _binding!!
 

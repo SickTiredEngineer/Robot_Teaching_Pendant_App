@@ -6,7 +6,16 @@ import java.net.Socket
 
 object SocketManager {
 
+    /**
+    싱글턴 패턴을 사용한 연결 소켓을 관리하는 파일입니다.
+    프로그램 계획에 따라 총 2개의 소켓을 열어서 사용할 예정입니다.
+    -> 명령을 보내는 소켓, 0.5초마다 로봇의 값을 받아오는 소켓 등...
+    다른 좋은 연결 설계가 있다면 변경될 수 있습니다.
+     */
+
     private var socket: Socket? = null
+
+    //연결에 필요한 IP, PORT1, PORT2
     private var configPath = "path/to/your/config.yaml"
 
     fun initiateConnection() {
