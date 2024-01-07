@@ -17,6 +17,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.robot_teaching_pendant_app.Client
 import com.example.robot_teaching_pendant_app.R
 import com.example.robot_teaching_pendant_app.databinding.JogFragmentBinding
 import com.example.robot_teaching_pendant_app.system.JogState
@@ -262,9 +263,11 @@ class JogFragment : Fragment(){
                     }
 
                     refreshViewerTextView()
+                    Client().execute()
 
                     // Handler를 사용하여 자기 자신을 0.1초 후에 다시 실행하도록 합니다.
                     handler.postDelayed(this, 100)  // 0.1초 후에 다시 실행
+
                 }
             }
 
@@ -457,6 +460,8 @@ class JogFragment : Fragment(){
                     refreshEditText()
 
                     refreshViewerTextView()
+                    Client().execute()
+
 
                     true // 이벤트 처리 완료
                 }
