@@ -39,7 +39,11 @@ private const val ARG_PARAM2 = "param2"
 class JogFragment : Fragment(){
 
 
-    //해야 할 것: InterFace 정리
+    /**
+    JogFragment는 MackDefaultFragment에 ChildFragment 형식으로 삽입되는 Fragment로, 버튼 혹은 EditText를 통해 변경되는 로봇의 값을 실시간으로 서버에 전송하는 기능이 있습니다.
+     현재 Interface가 불필요하게 나누어져 있는 상태로, 이후 일괄 정리할 예정입니다.
+     */
+
 
     interface GoHomeListener {
         fun onGoHome()
@@ -125,24 +129,40 @@ class JogFragment : Fragment(){
         val jogDec6 = binding.jogDec6
 
 
-        //로직에 사용될 버튼과 EditText의 리스트입니다.
+        /**
+         효율적인 동작 관리를 위해 버튼들을 List로 만들어서 로직을 구현합니다.
+         */
         val incBtList = listOf<Button>(jogInc1, jogInc2, jogInc3, jogInc4, jogInc5, jogInc6)
         val decBtList = listOf<Button>(jogDec1, jogDec2, jogDec3, jogDec4, jogDec5, jogDec6)
         val jogViewList = listOf<EditText>(jogView1, jogView2, jogView3, jogView4, jogView5, jogView6)
 
-        //선택된 조그에 따라 상태가 바뀌게 되는 버튼들을 모아놓은 리스트입니다.
+        //선택된 좌표계에 따라 사용하지 않을수도 있는 버튼들의 리스트 입니다. 현재 로직에 사용되지는 않고 임시적으로 남겨 놓았습니다.
         val changeBtList = listOf<Button>(jogInc5, jogInc6, jogDec5, jogDec6)
 
 
-        //작업환경(Make)을 호출하면, 현재 프로그램에서 선택된 조그에 따라 Jog를 세팅합니다.
-        //안전한 UI 업데이트를 위해, UI THREAD에서 조그를 세팅하는 함수를 호출합니다.
+
+        /**
+        작업환경(Make)을 호출하면, 현재 프로그램에서 선택된 조그에 따라 Jog를 세팅합니다.
+        안전한 UI 업데이트를 위해, UI THREAD에서 조그를 세팅하는 함수를 호출합니다.
+        */
         activity?.runOnUiThread {
             setJog()
         }
 
 
-        //JOG의 상승 버튼 리스너
+
+        /**
+        ===================================================================================================================================
+        아래 리스너들은 Jog 의 +,- 버튼들에 대한 로직입니다.
+         0-> 첫 번째(제일 위의 버튼)
+         5-> 6 번째(제일 아래 버튼) 순서입니다.
+         Joint 좌표계 사용시, 관절이 총 4개이기 때문에 0~3만 사용하게 됩니다.
+         */
+
+        //JOG의 상승 버튼(+) 들에 대한 리스너입니다.
         incBtList.forEachIndexed { index, button ->
+
+            //버튼을 한 번 클릭했을 때의 동작입니다.
             button.setOnClickListener {
 
                 when (jogSelected) {
@@ -199,12 +219,21 @@ class JogFragment : Fragment(){
                         }
                     }
                 }
+
+                //변경된 값들을 TextView에 반영하기위해 함수를 호출합니다.
                 refreshViewerTextView()
+
+                //서버로 현재 값을 전송합니다.
+                Client().execute()
 
             }
 
-            val handler = Handler()
 
+            /**
+            Jog 상승 버튼(+)을 누른 상태를 유지할 때, 0.1초 간격으로 값을 갱신하고 서버로 데이터를 보냅니다.
+             */
+
+            val handler = Handler()
             val autoIncrementRunnable = object : Runnable {
                 override fun run() {
                     when (jogSelected) {
@@ -288,6 +317,7 @@ class JogFragment : Fragment(){
         }
 
 
+
         //Jog의 감소 버튼 리스너
         decBtList.forEachIndexed { index, button ->
             button.setOnClickListener {
@@ -346,8 +376,15 @@ class JogFragment : Fragment(){
                     }
                 }
 
+                Client().execute()
                 refreshViewerTextView()
             }
+
+
+            /**
+            Jog 감소 버튼(-)을 누른 상태를 유지할 때, 0.1초 간격으로 값을 갱신하고 서버로 데이터를 보냅니다.
+             */
+
 
             val handler = Handler()
 
@@ -408,6 +445,7 @@ class JogFragment : Fragment(){
                         }
                     }
 
+                    Client().execute()
                     refreshViewerTextView()
 
                     // Handler를 사용하여 자기 자신을 0.1초 후에 다시 실행하도록 합니다.
@@ -437,6 +475,12 @@ class JogFragment : Fragment(){
 //        val previousValues = Array(jogViewList.size) { "" }
 //        val isUserInput = Array(jogViewList.size) { true }
 
+
+
+        /**
+        ===================================================================================================================================
+        아래 코드는 조그의 EditText에 값을 입력 후 Enter 클릭 시, 값을 반영하고 전송하는 로직입니다.
+         */
 
         //Jog의 값을 입력하는 EditText들에 관련된 설정입니다.
         //EditText에 값을 입력 시, 값의 범위를 확인하고 유효한 값이면 갱신, 아닐 시 복원합니다.
@@ -518,9 +562,6 @@ class JogFragment : Fragment(){
 
 
 
-
-
-
     //EditText 값을 선택된 조그에 맞게, 다시 불러올때 사용하는 함수입니다.
     fun refreshEditText(){
         when (jogSelected) {
@@ -567,10 +608,14 @@ class JogFragment : Fragment(){
     }
 
 
+
+    //조그값을 세팅하는 함수입니다.
     fun setJog(){
-        val incBtList = listOf<Button>(binding.jogInc1, binding.jogInc2, binding.jogInc3, binding.jogInc4, binding.jogInc5, binding.jogInc6)
-        val decBtList = listOf<Button>(binding.jogDec1, binding.jogDec2, binding.jogDec3, binding.jogDec4, binding.jogDec5, binding.jogDec6)
-        val jogViewList = listOf<EditText>(binding.jogView1, binding.jogView2, binding.jogView3, binding.jogView4, binding.jogView5, binding.jogView6)
+        //onViewCreated()에 있는 버튼들의 리스트와 동일하지만, 사용하지는 않아 임시적으로 주석으로 남겨두었습니다.
+//        val incBtList = listOf<Button>(binding.jogInc1, binding.jogInc2, binding.jogInc3, binding.jogInc4, binding.jogInc5, binding.jogInc6)
+//        val decBtList = listOf<Button>(binding.jogDec1, binding.jogDec2, binding.jogDec3, binding.jogDec4, binding.jogDec5, binding.jogDec6)
+//        val jogViewList = listOf<EditText>(binding.jogView1, binding.jogView2, binding.jogView3, binding.jogView4, binding.jogView5, binding.jogView6)
+
 
         val jogInfoList = listOf<TextView>(binding.jogInfo1, binding.jogInfo2, binding.jogInfo3, binding.jogInfo4,binding. jogInfo5, binding.jogInfo6)
         val coordStrList = listOf(R.string.str_x, R.string.str_y, R.string.str_z, R.string.str_rx, R.string.str_ry, R.string.str_rz)
@@ -579,7 +624,6 @@ class JogFragment : Fragment(){
 
         //선택된 조그에 따라 상태가 바뀌게 되는 버튼들을 모아놓은 리스트입니다.
         val changeBtList = listOf<Button>(binding.jogInc5, binding.jogInc6, binding.jogDec5, binding.jogDec6)
-
 
         //JOINT 조그가 선택되어 있는 경우 수행할 UI 동작입니다.
         if (jogSelected == JOG_JOINT_SELECTED) {
@@ -635,9 +679,7 @@ class JogFragment : Fragment(){
     }
 
 
-
-
-    //EditText에 입력된 값이 유효한지(0~360) 검사하고, 해당 값을 로봇 위치를 저장하는 RobotPosition 전역변수에 저장합니다.
+    //EditText에 입력된 값이 유효한지(0~360) 검사하고, 해당 값을 로봇 위치를 저장하는 RobotPosition 전역변수에 저장하는 함수입니다.
     private fun handleInput(index: Int,array: List<EditText>, input: String) {
         try {
             val newValue = input.toFloat()
