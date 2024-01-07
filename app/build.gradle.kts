@@ -48,8 +48,6 @@ dependencies {
 
     //YAML 파일 이용을 위한 snakeyaml 추가
     implementation ("org.yaml:snakeyaml:1.29")
-
-    
     implementation("androidx.core:core-ktx:1.9.0")
 //    implementation ("com.google.android:flexbox:3.0.0")
 

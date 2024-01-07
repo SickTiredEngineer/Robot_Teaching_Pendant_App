@@ -96,10 +96,10 @@ class SetupSystemFragment : Fragment() {
                 val yamlString = yaml.dump(data)
 
                 // 파일 저장 위치와 이름을 지정합니다. 예: /data/user/0/패키지명/files/config.yaml
-//                val file = File(context?.filesDir, "config.yaml")
+                val file = File(context?.filesDir, "config.yaml")
 
                 val downloadPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-                val file = File(downloadPath, "config.yaml")
+//                val file = File(downloadPath, "config.yaml")
                 file.writeText(yamlString)
 
                 Toast.makeText(context, "Settings saved to YAML file!", Toast.LENGTH_SHORT).show()
