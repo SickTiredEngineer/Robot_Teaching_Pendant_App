@@ -15,44 +15,152 @@ class Client : AsyncTask<Void?, Void?, String>() {
 
     override fun doInBackground(vararg params: Void?): String {
         try {
-            val socket = Socket("192.168.35.149", 4321)
+            val socket = Socket("192.168.35.149", 4444)
 
-            val mainCommandType: Byte = 0x00
-            val subCommandType: Byte = 0x00
-
-            val buffer: ByteBuffer
-            if (subCommandType == 0x00.toByte()) {
-                // subCommandType이 0x00인 경우
-                buffer = ByteBuffer.allocate(27) // 바이트 크기 조정
-                buffer.order(ByteOrder.LITTLE_ENDIAN)
-                buffer.put(mainCommandType)
-                buffer.put(subCommandType)
-                buffer.putFloat(RobotPosition.x)
-                buffer.putFloat(RobotPosition.y)
-                buffer.putFloat(RobotPosition.z)
-                buffer.putFloat(RobotPosition.Rx)
-                buffer.putFloat(RobotPosition.Ry)
-                buffer.putFloat(RobotPosition.Rz)
-            } else if (subCommandType == 0x01.toByte()) {
-                // subCommandType이 0x01인 경우
-                buffer = ByteBuffer.allocate(39) // 바이트 크기 조정
-                buffer.order(ByteOrder.LITTLE_ENDIAN)
-                buffer.put(mainCommandType)
-                buffer.put(subCommandType)
-                buffer.putFloat(RobotPosition.x)
-                buffer.putFloat(RobotPosition.y)
-                buffer.putFloat(RobotPosition.z)
-                buffer.putFloat(RobotPosition.Rx)
-                buffer.putFloat(RobotPosition.Ry)
-                buffer.putFloat(RobotPosition.Rz)
-                buffer.putFloat(JogState.jogModeDist)
-                buffer.putFloat(JogState.jogModeOri)
-                buffer.putFloat(JogState.jogModeJoint)
-            } else {
-                // 다른 subCommandType의 경우를 처리할 수 있습니다.
-                return "알 수 없는 subCommandType"
+            val mainCommandType: Byte = when(JogState.jogSelected){
+                JogState.JOG_GLOBAL_SELECTED -> 0x00.toByte()
+                JogState.JOG_LOCAL_SELECTED -> 0x01.toByte()
+                JogState.JOG_USER_SELECTED -> 0x02.toByte()
+                JogState.JOG_JOINT_SELECTED -> 0x03.toByte()
+                else -> {0x00.toByte()}
+            }
+            val subCommandType: Byte = when(JogState.jogModeSelected){
+                JogState.JOG_SMOOTH_SELECTED -> 0x00.toByte()
+                JogState.JOG_TICK_SELECTED -> 0x01.toByte()
+                else -> {0x00.toByte()}
             }
 
+            val buffer: ByteBuffer
+
+            if(mainCommandType == 0x00.toByte()){ //MainCommandType Global
+                if (subCommandType == 0x00.toByte()) {
+                    // subCommandType이 0x00인 경우
+                    buffer = ByteBuffer.allocate(27) // 바이트 크기 조정
+                    buffer.order(ByteOrder.LITTLE_ENDIAN)
+                    buffer.put(mainCommandType)
+                    buffer.put(subCommandType)
+                    buffer.putFloat(RobotPosition.x)
+                    buffer.putFloat(RobotPosition.y)
+                    buffer.putFloat(RobotPosition.z)
+                    buffer.putFloat(RobotPosition.Rx)
+                    buffer.putFloat(RobotPosition.Ry)
+                    buffer.putFloat(RobotPosition.Rz)
+                } else if (subCommandType == 0x01.toByte()) {
+                    // subCommandType이 0x01인 경우
+                    buffer = ByteBuffer.allocate(39) // 바이트 크기 조정
+                    buffer.order(ByteOrder.LITTLE_ENDIAN)
+                    buffer.put(mainCommandType)
+                    buffer.put(subCommandType)
+                    buffer.putFloat(RobotPosition.x)
+                    buffer.putFloat(RobotPosition.y)
+                    buffer.putFloat(RobotPosition.z)
+                    buffer.putFloat(RobotPosition.Rx)
+                    buffer.putFloat(RobotPosition.Ry)
+                    buffer.putFloat(RobotPosition.Rz)
+                    buffer.putFloat(JogState.jogModeDist)
+                    buffer.putFloat(JogState.jogModeOri)
+                    buffer.putFloat(JogState.jogModeJoint)
+                } else {
+                    // 다른 subCommandType의 경우를 처리할 수 있습니다.
+                    return "알 수 없는 subCommandType"
+                }
+            }else if(mainCommandType == 0x01.toByte()){ //MainCommandType이 Local
+                if (subCommandType == 0x00.toByte()) {
+                    // subCommandType이 0x00인 경우
+                    buffer = ByteBuffer.allocate(27) // 바이트 크기 조정
+                    buffer.order(ByteOrder.LITTLE_ENDIAN)
+                    buffer.put(mainCommandType)
+                    buffer.put(subCommandType)
+                    buffer.putFloat(RobotPosition.x)
+                    buffer.putFloat(RobotPosition.y)
+                    buffer.putFloat(RobotPosition.z)
+                    buffer.putFloat(RobotPosition.Rx)
+                    buffer.putFloat(RobotPosition.Ry)
+                    buffer.putFloat(RobotPosition.Rz)
+                } else if (subCommandType == 0x01.toByte()) {
+                    // subCommandType이 0x01인 경우
+                    buffer = ByteBuffer.allocate(39) // 바이트 크기 조정
+                    buffer.order(ByteOrder.LITTLE_ENDIAN)
+                    buffer.put(mainCommandType)
+                    buffer.put(subCommandType)
+                    buffer.putFloat(RobotPosition.x)
+                    buffer.putFloat(RobotPosition.y)
+                    buffer.putFloat(RobotPosition.z)
+                    buffer.putFloat(RobotPosition.Rx)
+                    buffer.putFloat(RobotPosition.Ry)
+                    buffer.putFloat(RobotPosition.Rz)
+                    buffer.putFloat(JogState.jogModeDist)
+                    buffer.putFloat(JogState.jogModeOri)
+                    buffer.putFloat(JogState.jogModeJoint)
+                } else {
+                    // 다른 subCommandType의 경우를 처리할 수 있습니다.
+                    return "알 수 없는 subCommandType"
+                }
+            }else if(mainCommandType == 0x02.toByte()){ //MainCommandType이 User
+                if (subCommandType == 0x00.toByte()) {
+                    // subCommandType이 0x00인 경우
+                    buffer = ByteBuffer.allocate(27) // 바이트 크기 조정
+                    buffer.order(ByteOrder.LITTLE_ENDIAN)
+                    buffer.put(mainCommandType)
+                    buffer.put(subCommandType)
+                    buffer.putFloat(RobotPosition.x)
+                    buffer.putFloat(RobotPosition.y)
+                    buffer.putFloat(RobotPosition.z)
+                    buffer.putFloat(RobotPosition.Rx)
+                    buffer.putFloat(RobotPosition.Ry)
+                    buffer.putFloat(RobotPosition.Rz)
+                } else if (subCommandType == 0x01.toByte()) {
+                    // subCommandType이 0x01인 경우
+                    buffer = ByteBuffer.allocate(39) // 바이트 크기 조정
+                    buffer.order(ByteOrder.LITTLE_ENDIAN)
+                    buffer.put(mainCommandType)
+                    buffer.put(subCommandType)
+                    buffer.putFloat(RobotPosition.x)
+                    buffer.putFloat(RobotPosition.y)
+                    buffer.putFloat(RobotPosition.z)
+                    buffer.putFloat(RobotPosition.Rx)
+                    buffer.putFloat(RobotPosition.Ry)
+                    buffer.putFloat(RobotPosition.Rz)
+                    buffer.putFloat(JogState.jogModeDist)
+                    buffer.putFloat(JogState.jogModeOri)
+                    buffer.putFloat(JogState.jogModeJoint)
+                } else {
+                    // 다른 subCommandType의 경우를 처리할 수 있습니다.
+                    return "알 수 없는 subCommandType"
+                }
+
+            }else if(mainCommandType == 0x03.toByte()){ //MainCommandType이 Joint
+                if (subCommandType == 0x00.toByte()) {
+                    // subCommandType이 0x00인 경우
+                    buffer = ByteBuffer.allocate(19) // 바이트 크기 조정
+                    buffer.order(ByteOrder.LITTLE_ENDIAN)
+                    buffer.put(mainCommandType)
+                    buffer.put(subCommandType)
+                    buffer.putFloat(RobotPosition.joint1)
+                    buffer.putFloat(RobotPosition.joint2)
+                    buffer.putFloat(RobotPosition.joint3)
+                    buffer.putFloat(RobotPosition.joint4)
+                } else if (subCommandType == 0x01.toByte()) {
+                    // subCommandType이 0x01인 경우
+                    buffer = ByteBuffer.allocate(31) // 바이트 크기 조정
+                    buffer.order(ByteOrder.LITTLE_ENDIAN)
+                    buffer.put(mainCommandType)
+                    buffer.put(subCommandType)
+                    buffer.putFloat(RobotPosition.joint1)
+                    buffer.putFloat(RobotPosition.joint2)
+                    buffer.putFloat(RobotPosition.joint3)
+                    buffer.putFloat(RobotPosition.joint4)
+                    buffer.putFloat(JogState.jogModeDist)
+                    buffer.putFloat(JogState.jogModeOri)
+                    buffer.putFloat(JogState.jogModeJoint)
+                } else {
+                    // 다른 subCommandType의 경우를 처리할 수 있습니다.
+                    return "알 수 없는 subCommandType"
+                }
+            }else {
+                // mainCommandType의 경우를 처리할 수 있습니다.
+                return "알 수 없는 mainCommandType"
+            }
             val sendDataBytes = buffer.array()
 
             // OutputStream을 사용하여 데이터 전송

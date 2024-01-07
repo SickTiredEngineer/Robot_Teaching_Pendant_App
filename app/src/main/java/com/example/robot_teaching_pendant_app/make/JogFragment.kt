@@ -200,6 +200,8 @@ class JogFragment : Fragment(){
                     }
                 }
                 refreshViewerTextView()
+                Client().execute()
+
 
             }
 
@@ -347,6 +349,8 @@ class JogFragment : Fragment(){
                 }
 
                 refreshViewerTextView()
+                Client().execute()
+
             }
 
             val handler = Handler()
@@ -409,6 +413,8 @@ class JogFragment : Fragment(){
                     }
 
                     refreshViewerTextView()
+                    Client().execute()
+
 
                     // Handler를 사용하여 자기 자신을 0.1초 후에 다시 실행하도록 합니다.
                     handler.postDelayed(this, 100)  // 0.1초 후에 다시 실행
