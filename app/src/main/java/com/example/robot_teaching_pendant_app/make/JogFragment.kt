@@ -222,8 +222,6 @@ class JogFragment : Fragment(){
 
                 //변경된 값들을 TextView에 반영하기위해 함수를 호출합니다.
                 refreshViewerTextView()
-                Client().execute()
-
 
                 //서버로 현재 값을 전송합니다.
                 Client().execute()
@@ -378,7 +376,6 @@ class JogFragment : Fragment(){
                     }
                 }
 
-                Client().execute()
                 refreshViewerTextView()
                 Client().execute()
 
@@ -449,7 +446,7 @@ class JogFragment : Fragment(){
                         }
                     }
 
-                    Client().execute()
+
                     refreshViewerTextView()
                     Client().execute()
 
@@ -507,8 +504,8 @@ class JogFragment : Fragment(){
                     //handleInput함수는 Jog에 입력된 값의 범위를 확인하여 반영하거나 되돌리는 역할을 합니다.
                     //자세한 로직은 아래의 handle Input 함수를 참고하십시요.
                     handleInput(i,jogViewList, jogViewList[i].text.toString())
-                    refreshEditText()
 
+                    refreshEditText()
                     refreshViewerTextView()
                     Client().execute()
 
