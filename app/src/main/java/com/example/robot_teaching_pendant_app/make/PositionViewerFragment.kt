@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.robot_teaching_pendant_app.R
 import com.example.robot_teaching_pendant_app.databinding.PositionViewerFragmentBinding
+import com.example.robot_teaching_pendant_app.system.JogState
 import com.example.robot_teaching_pendant_app.system.RobotPosition
 
 // TODO: Rename parameter arguments, choose names that match
@@ -66,47 +67,51 @@ class PositionViewerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
 //        viewModel = ViewModelProviders.of(requireActivity()).get(RobotPositionViewModel::class.java)
 
-
-        //로봇 좌표들을 보여주는 TextView입니다.
-        val xTv = binding.xTv
-        val yTv = binding.yTv
-        val zTv = binding.zTv
-        val rxTv = binding.rxTv
-        val ryTv = binding.ryTv
-        val rzTv = binding.rzTv
-        val joint1Tv = binding.joint1Tv
-        val joint2Tv = binding.joint2Tv
-        val joint3Tv = binding.joint3Tv
-        val joint4Tv = binding.joint4Tv
-
-
-        //TextView에 넣을 변수 값을 Object RobotPosition 에서 불러와서 소숫점 2째자리 까지 출력하도록 설정합니다.
-        xTv.setText(" x: %.2f".format(RobotPosition.x))
-        yTv.setText(" y: %.2f".format(RobotPosition.y))
-        zTv.setText(" z: %.2f".format(RobotPosition.z))
-        rxTv.setText(" Rx: %.2f".format(RobotPosition.Rx))
-        ryTv.setText(" Ry: %.2f".format(RobotPosition.Ry))
-        rzTv.setText(" Rz: %.2f".format(RobotPosition.Rz))
-        joint1Tv.setText(" joint1: %.2f".format(RobotPosition.joint1))
-        joint2Tv.setText(" joint2: %.2f".format(RobotPosition.joint2))
-        joint3Tv.setText(" joint3: %.2f".format(RobotPosition.joint3))
-        joint4Tv.setText(" joint4: %.2f".format(RobotPosition.joint4))
+        //Fragment가 불러와 졌을 때, 초기 상태는 아래의 setTextView()함수를 이용하여 설정합니다.
+        setTextView()
 
     }
 
 
 
-    //TextView 전체를 최신화 시키는 함수입니다. ViewModel 적용이 가능하다면 사용하지 않을수도 있습니다.
+    /**
+    선택된 좌표계에 따라 TextView 전체를 최신화 시키는 함수입니다. -> ViewModel 적용이 가능하다면 사용하지 않을수도 있습니다.
+    TextView에 넣을 변수 값을 Object RobotPosition 에서 불러와서 소숫점 2째자리 까지 출력하도록 설정합니다.
+     */
+
     fun setTextView(){
-        binding.xTv.setText(" x: %.2f".format(RobotPosition.x))
-        binding.yTv.setText(" y: %.2f".format(RobotPosition.y))
-        binding.zTv.setText(" z: %.2f".format(RobotPosition.z))
-        binding.rxTv.setText(" Rx: %.2f".format(RobotPosition.Rx))
-        binding.ryTv.setText(" Ry: %.2f".format(RobotPosition.Ry))
-        binding.rzTv.setText(" Rz: %.2f".format(RobotPosition.Rz))
+        when(JogState.jogSelected){
+            JogState.JOG_GLOBAL_SELECTED->{
+                binding.xTv.setText(" x: %.2f".format(RobotPosition.global_x))
+                binding.yTv.setText(" y: %.2f".format(RobotPosition.global_y))
+                binding.zTv.setText(" z: %.2f".format(RobotPosition.global_z))
+                binding.rxTv.setText(" Rx: %.2f".format(RobotPosition.global_Rx))
+                binding.ryTv.setText(" Ry: %.2f".format(RobotPosition.global_Ry))
+                binding.rzTv.setText(" Rz: %.2f".format(RobotPosition.global_Rz))
+            }
+
+            JogState.JOG_LOCAL_SELECTED->{
+                binding.xTv.setText(" x: %.2f".format(RobotPosition.local_x))
+                binding.yTv.setText(" y: %.2f".format(RobotPosition.local_y))
+                binding.zTv.setText(" z: %.2f".format(RobotPosition.local_z))
+                binding.rxTv.setText(" Rx: %.2f".format(RobotPosition.local_Rx))
+                binding.ryTv.setText(" Ry: %.2f".format(RobotPosition.local_Ry))
+                binding.rzTv.setText(" Rz: %.2f".format(RobotPosition.local_Rz))
+            }
+
+            JogState.JOG_USER_SELECTED->{
+                binding.xTv.setText(" x: %.2f".format(RobotPosition.user_x))
+                binding.yTv.setText(" y: %.2f".format(RobotPosition.user_y))
+                binding.zTv.setText(" z: %.2f".format(RobotPosition.user_z))
+                binding.rxTv.setText(" Rx: %.2f".format(RobotPosition.user_Rx))
+                binding.ryTv.setText(" Ry: %.2f".format(RobotPosition.user_Ry))
+                binding.rzTv.setText(" Rz: %.2f".format(RobotPosition.user_Rz))
+            }
+        }
+
+
         binding.joint1Tv.setText(" joint1: %.2f".format(RobotPosition.joint1))
         binding.joint2Tv.setText(" joint2: %.2f".format(RobotPosition.joint2))
         binding.joint3Tv.setText(" joint3: %.2f".format(RobotPosition.joint3))

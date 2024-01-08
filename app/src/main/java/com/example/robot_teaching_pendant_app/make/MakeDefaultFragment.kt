@@ -284,9 +284,11 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener, JogFragment.
     }
 
 
-    //조그를 선택하는 버튼들에 대한 UI 로직입니다. 본인은 비활성화 시키고, 나머지 3가지 버튼은 활성화 시켜줍니다. (중복 클릭 방지)
-    //JOG UI는 JogFragment의 RefreshJogListener Interface를 구현하여, 그 안에 있는 setJog() 라는 메서드를 호출하여 업데이트 시킵니다.
-    //Value(jogSelected가 어떤게 될 것인지, 사용할 버튼은 어떤 것들인지 리스트 형태로 받아오게 되고 로직을 수행합니다.
+    /**
+    조그를 선택하는 버튼들에 대한 UI 로직입니다. 본인은 비활성화 시키고, 나머지 3가지 버튼은 활성화 시켜줍니다. (중복 클릭 방지)
+    JOG UI는 JogFragment의 RefreshJogListener Interface를 구현하여, 그 안에 있는 setJog() 라는 메서드를 호출하여 업데이트 시킵니다.
+    Value(jogSelected)가 어떤게 될 것인지, 사용할 버튼은 어떤 것들인지 리스트 형태로 받아오게 되고 로직을 수행합니다.
+     */
     fun ImageButton.assignJogState(value: Int, buttonList: List<ImageButton>) {
         //조그 버튼들에 대한 클릭 리스너
         this.setOnClickListener {
@@ -315,8 +317,12 @@ class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener, JogFragment.
                     otherButton.setBackgroundResource(R.drawable.public_button) // 기본 배경 리소스
                 }
             }
-            //Jog Fragment 에 있는 setJog()를 불러오는 함수입니다.
+
+            //Jog Fragment 에 있는 setJog()를 불러오는 함수입니다. -> (선택된 좌표계에 맞게 JOG UI를 갱신하는 함수)
             refreshJog()
+
+            //Jog Fragment 에 있는 setJog()를 불러오는 함수입니다. -> (선택된 좌표계에 맞게 PositionViewerFragment의 UI를 갱신하는 함수)
+            refreshTextView()
         }
     }
 

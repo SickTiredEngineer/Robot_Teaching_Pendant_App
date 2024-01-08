@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/green" android:state_pressed="true"/> <!-- Pressed state (버튼을 눌렀을 때의 색상) -->
+    <item android:drawable="@color/color_bg"/> <!-- Default state (기본 색상) -->
+</selector>
