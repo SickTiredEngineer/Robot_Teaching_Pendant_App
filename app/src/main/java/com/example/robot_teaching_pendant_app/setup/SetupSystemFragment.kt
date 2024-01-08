@@ -65,6 +65,8 @@ class SetupSystemFragment : Fragment() {
         val getSecondPortEditText = binding.secondPortEditText
 
 
+        val getpasswardEditText = binding.passwdEditText
+
         //클릭 시, 저장을 수행하는 버튼입니다.
         val saveBt = binding.systemSaveBt
 
@@ -90,6 +92,15 @@ class SetupSystemFragment : Fragment() {
             val ip = getIpEditText.text.toString()
             val portStr = getPortEditText.text.toString()
             val secondPortStr = getSecondPortEditText.text.toString()
+
+            val passwdStr = getpasswardEditText.text.toString()
+
+
+            //Port1, Port2가 동일하면, AllValid를 False시킵니다.
+            if(portStr == secondPortStr){
+                allValid = false
+                Toast.makeText(context, "Port1, Port2의 번호가 중복됩니다.", Toast.LENGTH_SHORT).show()
+            }
 
 
             //ValidateIpAddress 함수를 통해 EditText에서 불러온 값이 IP형식과 맞는지 검사합니다.
@@ -135,29 +146,46 @@ class SetupSystemFragment : Fragment() {
             //최종적으로 모든 설정 값들에 대한 문제가 없으면 (allValid 변수가 True일 경우) 설정 값들을 저장합니다.
             if (allValid) {
 
-                //연결에 사용되는 IP, PORT 1~2 의 정보를 저장하는 YAML 파일의 형식을 설정합니다.
-                val data = mapOf("ip" to ip, "port" to portStr, "secondPort" to secondPortStr)
-                val yaml = Yaml()
-                val yamlString = yaml.dump(data)
 
-
-                /*
-                아래 코드는 YAML 파일의 저장 위치와 이름을 설정합니다.
+                /**
+                아래 코드는 PASSWARD와 관련된 YAML 파일의 저장 위치와 이름을 설정하고, 이를 저장하는 동작을 수행합니다..
                 기본 위치(context?.filesDir) 는 View-> Tool Windows -> Device Explorer-> data-> data-> 프로젝트 패키지->files 에 위치하고 있습니다.
                 필요시 위치를 변경할 수 있습니다. (아래 주석 처리된 코드는 기기의 download 디렉토리에 저장됩니다.)
                  */
-                val file = File(context?.filesDir, "config.yaml")
+
+                val passwdData = mapOf("password" to passwdStr)
+                val passwdYaml = Yaml()
+                val passwdYamlString = passwdYaml.dump(passwdData)
+                val passwdFile = File(context?.filesDir,"password.yaml")
+                passwdFile.writeText(passwdYamlString)
+
+
+
+                /**
+                아래 코드는 연결에 관련된 YAML 파일의 저장 위치와 이름을 설정하고, 이를 저장하는 동작을 수행합니다..
+                기본 위치(context?.filesDir) 는 View-> Tool Windows -> Device Explorer-> data-> data-> 프로젝트 패키지->files 에 위치하고 있습니다.
+                필요시 위치를 변경할 수 있습니다. (아래 주석 처리된 코드는 기기의 download 디렉토리에 저장됩니다.)
+                 */
+
+                //연결에 사용되는 IP, PORT 1~2 의 정보를 저장하는 YAML 파일의 형식을 설정합니다.
+                val connectData = mapOf("ip" to ip, "port" to portStr, "secondPort" to secondPortStr)
+                val connectYaml = Yaml()
+                val connectYamlString = connectYaml.dump(connectData)
+
+                val connectFile = File(context?.filesDir, "config.yaml")
 
                 //Device Download Directory
                 val downloadPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
 //                val file = File(downloadPath, "config.yaml")
 
-                file.writeText(yamlString)
+                connectFile.writeText(connectYamlString)
+
+
+
 
                 //최종 저장이 끝났음을 토스트 메시지로 출력합니다.
                 Toast.makeText(context, "Settings saved to YAML file!", Toast.LENGTH_SHORT).show()
             }
-
         }
     }
 

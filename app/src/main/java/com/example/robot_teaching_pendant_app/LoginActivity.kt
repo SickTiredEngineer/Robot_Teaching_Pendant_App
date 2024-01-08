@@ -13,6 +13,8 @@ import android.widget.EditText
 import android.widget.Toast
 import com.example.robot_teaching_pendant_app.databinding.LoginActivityBinding
 import com.example.robot_teaching_pendant_app.system.PowerOffDialogFragment
+import org.yaml.snakeyaml.Yaml
+import java.io.File
 
 
 class LoginActivity : AppCompatActivity() {
@@ -40,18 +42,22 @@ class LoginActivity : AppCompatActivity() {
         val loginLoadingBar = binding.loginLoadingBar
 
 
-
         // 메인 메뉴로 이동
         loginBt.setOnClickListener{
-            val nextIntent = Intent(this, MainActivity::class.java)
+            val enteredPassword = arrayOf(passBox1, passBox2, passBox3, passBox4).joinToString(separator = "") { it.text.toString() }
+            val savedPassword = readPasswordFromYaml()
 
-            //시스템 변수 전송 내용 추후 추가
-            startActivity(nextIntent)
-            Toast.makeText(this@LoginActivity, "로그인 완료", Toast.LENGTH_SHORT ).show()
-            //로그인 화면 종료
-            finish()
-
+            if (enteredPassword == savedPassword) {
+                val nextIntent = Intent(this, MainActivity::class.java)
+                startActivity(nextIntent)
+                Toast.makeText(this@LoginActivity, "로그인 완료", Toast.LENGTH_SHORT).show()
+                finish()
+            } else {
+                Toast.makeText(this@LoginActivity, "비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT).show()
+            }
         }
+
+
 
         //우측 하단에 위치한 전원 버튼을 누를 시, PowerOffDialogFragment 를 Dialog 형식으로 출력합니다.
         //자세한 내용은 System 디렉토리의 PowerOffDialogFragment를 참고하십시요.
@@ -62,35 +68,54 @@ class LoginActivity : AppCompatActivity() {
         }
 
     }
-}
+
+    private fun readPasswordFromYaml(): String {
+        val yaml = Yaml()
+        val file = File(filesDir, "password.yaml")
+        // 파일이 존재하지 않으면 초기 설정 생성
+        if (!file.exists()) {
+            val initialConfig = mapOf("password" to "0000")
+            file.writeText(yaml.dump(initialConfig))
+            return "0000"
+        }
+        // 파일이 존재하면 설정 읽기
+        val inputStream = file.inputStream()
+        val data = yaml.load<Map<String, Any>>(inputStream)
+        return data["password"] as? String ?: "0000" // 기본값으로 '0000'을 반환
+    }
 
 
-
-//EditText에 숫자를 작성하면 자동으로 Focus를 바꿔주는 함수입니다.
-private fun setupAutoFocusEditTexts(vararg editTexts: EditText) {
-    for (i in editTexts.indices) {
-        editTexts[i].addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-                // no-op
-            }
-
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                if (s.length == 1 && i + 1 < editTexts.size) { // if current EditText has 1 character and is not the last one
-                    editTexts[i + 1].requestFocus()
+    //EditText에 숫자를 작성하면 자동으로 Focus를 바꿔주는 함수입니다.
+    private fun setupAutoFocusEditTexts(vararg editTexts: EditText) {
+        for (i in editTexts.indices) {
+            editTexts[i].addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+                    // no-op
                 }
-            }
 
-            override fun afterTextChanged(s: Editable) {
-                // no-op
-            }
-        })
+                override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                    if (s.length == 1 && i + 1 < editTexts.size) { // if current EditText has 1 character and is not the last one
+                        editTexts[i + 1].requestFocus()
+                    }
+                }
 
-        //현재의 EditText가 지워질 때 (내용이 제거될 때) 이전 EditText로 포커스가 이동하길 원한다면 사용하는 코드
-        editTexts[i].setOnKeyListener { _, _, event ->
-            if (event.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_DEL && editTexts[i].text.isEmpty() && i - 1 >= 0) {
-                editTexts[i - 1].requestFocus()
+                override fun afterTextChanged(s: Editable) {
+                    // no-op
+                }
+            })
+
+            //현재의 EditText가 지워질 때 (내용이 제거될 때) 이전 EditText로 포커스가 이동하길 원한다면 사용하는 코드
+            editTexts[i].setOnKeyListener { _, _, event ->
+                if (event.action == KeyEvent.ACTION_DOWN && event.keyCode == KeyEvent.KEYCODE_DEL && editTexts[i].text.isEmpty() && i - 1 >= 0) {
+                    editTexts[i - 1].requestFocus()
+                }
+                false
             }
-            false
         }
     }
+
+
 }
+
+
+

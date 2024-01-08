@@ -39,33 +39,46 @@
                     android:background="@drawable/main_frame"
                     android:orientation="vertical">
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/def_all_bt"
                         style="@style/style_button"
+                        android:src="@drawable/make_default_all"
+
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
                         android:layout_weight="1"
                         android:text="@string/str_all" />
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/def_move_bt"
                         style="@style/style_button"
+                        android:src="@drawable/make_default_move"
+
+
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
                         android:layout_weight="1"
                         android:text="@string/str_move" />
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/def_func_bt"
                         style="@style/style_button"
+
+                        android:src="@drawable/make_default_function"
+
+
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
                         android:layout_weight="1"
                         android:text="@string/str_func" />
 
-                    <Button
+                    <ImageButton
                         android:id="@+id/def_other_bt"
                         style="@style/style_button"
+
+                        android:src="@drawable/make_default_other"
+
+
                         android:layout_width="match_parent"
                         android:layout_height="70dp"
                         android:layout_weight="1"
@@ -152,13 +165,32 @@
 
                 </FrameLayout>
 
-                <FrameLayout
-                    android:layout_marginLeft="5dp"
-                    android:id="@+id/position_viewer"
-                    style="@style/style_bg"
+                <LinearLayout
+                    android:id="@+id/linear_for_jog"
+                    android:orientation="vertical"
                     android:layout_width="185dp"
                     android:layout_height="match_parent"
-                    android:background="@drawable/main_frame" />
+                    android:layout_marginLeft="5dp"
+                    android:background="@drawable/main_frame" >
+
+                    <FrameLayout
+                        android:id="@+id/position_viewer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/jog_mode_view"
+
+                        android:layout_width="185dp"
+                        android:layout_height="200dp"
+                        android:background="@drawable/main_frame">
+
+
+                    </FrameLayout>
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -167,15 +199,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginTop="15dp">
-
-                <FrameLayout
-                    android:id="@+id/jog_mode_view"
-                    android:layout_width="185dp"
-                    android:layout_height="200dp"
-                    android:background="@drawable/main_frame">
-
-
-                </FrameLayout>
 
                 <LinearLayout
                     android:layout_width="160dp"
