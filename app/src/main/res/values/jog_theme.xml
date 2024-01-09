@@ -6,9 +6,8 @@
         <item name = "android:text">+</item>
         <item name = "android:layout_width">50dp</item>
         <item name = "android:layout_height">50dp</item>
-        <item name = "android:background">@drawable/public_button</item>
+        <item name = "android:background">@drawable/bt_jog</item>
         <item name = "android:textColor">@color/color_text</item>
-        <item name = "android:gravity">center</item>
     </style>
 
     //Jog Decrease Button -> 조그 UI의 ( - ) 버튼 모양
@@ -16,9 +15,8 @@
         <item name = "android:text">-</item>
         <item name = "android:layout_width">50dp</item>
         <item name = "android:layout_height">50dp</item>
-        <item name = "android:background">@drawable/public_button</item>
+        <item name = "android:background">@drawable/bt_jog</item>
         <item name = "android:textColor">@color/color_text</item>
-        <item name = "android:gravity">center|top</item>
     </style>
 
     <style name = "style_jog_info">

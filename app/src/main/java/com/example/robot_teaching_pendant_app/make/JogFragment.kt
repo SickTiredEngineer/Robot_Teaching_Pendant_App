@@ -50,13 +50,10 @@ class JogFragment : Fragment(){
     interface GoHomeListener {
         fun onGoHome()
     }
-    var listener: GoHomeListener? = null
-
 
     interface RefreshEtListener {
         fun refreshET()
     }
-    var etListener: RefreshEtListener? = null
 
 
     interface RefreshJogListener{
@@ -84,8 +81,6 @@ class JogFragment : Fragment(){
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-
 
         _binding = JogFragmentBinding.inflate(inflater, container, false)
         return binding.root
@@ -151,8 +146,6 @@ class JogFragment : Fragment(){
             setJog()
         }
 
-
-
         /**
         ===================================================================================================================================
         아래 리스너들은 Jog 의 +,- 버튼들에 대한 로직입니다.
@@ -164,132 +157,133 @@ class JogFragment : Fragment(){
         //JOG의 상승 버튼(+) 들에 대한 리스너입니다.
         incBtList.forEachIndexed { index, button ->
 
-            //버튼을 한 번 클릭했을 때의 동작입니다.
-            button.setOnClickListener {
 
-                when (jogSelected) {
-                    JOG_GLOBAL_SELECTED -> {
-                        //감소 버튼 순서는 제일 위에 0번부터 마지막 제일 아래 5번까지 순서입니다.
-                        when (index) {
-                            0 -> {
-                                RobotPosition.global_x = increaseValueAndSet(360.0f, RobotPosition.global_x, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.global_x))
-                            }
-                            1 -> {
-                                RobotPosition.global_y = increaseValueAndSet(360.0f, RobotPosition.global_y, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.global_y))
-                            }
-                            2 -> {
-                                RobotPosition.global_z = increaseValueAndSet(360.0f, RobotPosition.global_z, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.global_z))
-                            }
-                            3 -> {
-                                RobotPosition.global_Rx = increaseValueAndSet(360.0f, RobotPosition.global_Rx, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.global_Rx))
-                            }
-                            4 -> {
-                                RobotPosition.global_Ry = increaseValueAndSet(360.0f, RobotPosition.global_Ry, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.global_Ry))
-                            }
-                            5 -> {
-                                RobotPosition.global_Rz = increaseValueAndSet(360.0f, RobotPosition.global_Rz, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.global_Rz))
-                            }
-                        }
-                    }
-
-
-                    JOG_LOCAL_SELECTED->{
-                        when (index) {
-                            0 -> {
-                                RobotPosition.local_x = increaseValueAndSet(360.0f, RobotPosition.local_x, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.local_x))
-                            }
-                            1 -> {
-                                RobotPosition.local_y = increaseValueAndSet(360.0f, RobotPosition.local_y, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.local_y))
-                            }
-                            2 -> {
-                                RobotPosition.local_z = increaseValueAndSet(360.0f, RobotPosition.local_z, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.local_z))
-                            }
-                            3 -> {
-                                RobotPosition.local_Rx = increaseValueAndSet(360.0f, RobotPosition.local_Rx, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.local_Rx))
-                            }
-                            4 -> {
-                                RobotPosition.local_Ry = increaseValueAndSet(360.0f, RobotPosition.local_Ry, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.local_Ry))
-                            }
-                            5 -> {
-                                RobotPosition.local_Rz = increaseValueAndSet(360.0f, RobotPosition.local_Rz, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.local_Rz))
-                            }
-                        }
-                    }
-
-
-
-                    JOG_USER_SELECTED->{
-                        when (index) {
-                            0 -> {
-                                RobotPosition.user_x = increaseValueAndSet(360.0f, RobotPosition.user_x, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.user_x))
-                            }
-                            1 -> {
-                                RobotPosition.user_y = increaseValueAndSet(360.0f, RobotPosition.user_y, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.user_y))
-                            }
-                            2 -> {
-                                RobotPosition.user_z = increaseValueAndSet(360.0f, RobotPosition.user_z, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.user_z))
-                            }
-                            3 -> {
-                                RobotPosition.user_Rx = increaseValueAndSet(360.0f, RobotPosition.user_Rx, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.user_Rx))
-                            }
-                            4 -> {
-                                RobotPosition.user_Ry = increaseValueAndSet(360.0f, RobotPosition.user_Ry, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.user_Ry))
-                            }
-                            5 -> {
-                                RobotPosition.user_Rz = increaseValueAndSet(360.0f, RobotPosition.user_Rz, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.user_Rz))
-                            }
-                        }
-                    }
-
-
-                    //관절값은 4개만 필요하기 때문에 0~3까지만 사용합니다.
-                    JOG_JOINT_SELECTED -> {
-                        when (index) {
-                            0 -> {
-                                RobotPosition.joint1 = increaseValueAndSet(360.0f, RobotPosition.joint1, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.joint1))
-                            }
-                            1 -> {
-                                RobotPosition.joint2 = increaseValueAndSet(360.0f, RobotPosition.joint2, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.joint2))
-                            }
-                            2 -> {
-                                RobotPosition.joint3 = increaseValueAndSet(360.0f, RobotPosition.joint3, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.joint3))
-                            }
-                            3 -> {
-                                RobotPosition.joint4 = increaseValueAndSet(360.0f, RobotPosition.joint4, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.joint4))
-                            }
-                            // 4, 5는 해당 관절값이 없으므로 아무 처리도 하지 않습니다.
-                        }
-                    }
-                }
-
-                //변경된 값들을 TextView에 반영하기위해 함수를 호출합니다.
-                refreshViewerTextView()
-
-                //서버로 현재 값을 전송합니다.
-                Client().execute()
-            }
+//            //버튼을 한 번 클릭했을 때의 동작입니다.
+//            button.setOnClickListener {
+//
+//                when (jogSelected) {
+//                    JOG_GLOBAL_SELECTED -> {
+//                        //감소 버튼 순서는 제일 위에 0번부터 마지막 제일 아래 5번까지 순서입니다.
+//                        when (index) {
+//                            0 -> {
+//                                RobotPosition.global_x = increaseValueAndSet(360.0f, RobotPosition.global_x, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.global_x))
+//                            }
+//                            1 -> {
+//                                RobotPosition.global_y = increaseValueAndSet(360.0f, RobotPosition.global_y, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.global_y))
+//                            }
+//                            2 -> {
+//                                RobotPosition.global_z = increaseValueAndSet(360.0f, RobotPosition.global_z, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.global_z))
+//                            }
+//                            3 -> {
+//                                RobotPosition.global_Rx = increaseValueAndSet(360.0f, RobotPosition.global_Rx, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.global_Rx))
+//                            }
+//                            4 -> {
+//                                RobotPosition.global_Ry = increaseValueAndSet(360.0f, RobotPosition.global_Ry, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.global_Ry))
+//                            }
+//                            5 -> {
+//                                RobotPosition.global_Rz = increaseValueAndSet(360.0f, RobotPosition.global_Rz, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.global_Rz))
+//                            }
+//                        }
+//                    }
+//
+//
+//                    JOG_LOCAL_SELECTED->{
+//                        when (index) {
+//                            0 -> {
+//                                RobotPosition.local_x = increaseValueAndSet(360.0f, RobotPosition.local_x, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.local_x))
+//                            }
+//                            1 -> {
+//                                RobotPosition.local_y = increaseValueAndSet(360.0f, RobotPosition.local_y, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.local_y))
+//                            }
+//                            2 -> {
+//                                RobotPosition.local_z = increaseValueAndSet(360.0f, RobotPosition.local_z, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.local_z))
+//                            }
+//                            3 -> {
+//                                RobotPosition.local_Rx = increaseValueAndSet(360.0f, RobotPosition.local_Rx, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.local_Rx))
+//                            }
+//                            4 -> {
+//                                RobotPosition.local_Ry = increaseValueAndSet(360.0f, RobotPosition.local_Ry, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.local_Ry))
+//                            }
+//                            5 -> {
+//                                RobotPosition.local_Rz = increaseValueAndSet(360.0f, RobotPosition.local_Rz, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.local_Rz))
+//                            }
+//                        }
+//                    }
+//
+//
+//
+//                    JOG_USER_SELECTED->{
+//                        when (index) {
+//                            0 -> {
+//                                RobotPosition.user_x = increaseValueAndSet(360.0f, RobotPosition.user_x, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.user_x))
+//                            }
+//                            1 -> {
+//                                RobotPosition.user_y = increaseValueAndSet(360.0f, RobotPosition.user_y, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.user_y))
+//                            }
+//                            2 -> {
+//                                RobotPosition.user_z = increaseValueAndSet(360.0f, RobotPosition.user_z, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.user_z))
+//                            }
+//                            3 -> {
+//                                RobotPosition.user_Rx = increaseValueAndSet(360.0f, RobotPosition.user_Rx, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.user_Rx))
+//                            }
+//                            4 -> {
+//                                RobotPosition.user_Ry = increaseValueAndSet(360.0f, RobotPosition.user_Ry, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.user_Ry))
+//                            }
+//                            5 -> {
+//                                RobotPosition.user_Rz = increaseValueAndSet(360.0f, RobotPosition.user_Rz, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.user_Rz))
+//                            }
+//                        }
+//                    }
+//
+//
+//                    //관절값은 4개만 필요하기 때문에 0~3까지만 사용합니다.
+//                    JOG_JOINT_SELECTED -> {
+//                        when (index) {
+//                            0 -> {
+//                                RobotPosition.joint1 = increaseValueAndSet(360.0f, RobotPosition.joint1, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.joint1))
+//                            }
+//                            1 -> {
+//                                RobotPosition.joint2 = increaseValueAndSet(360.0f, RobotPosition.joint2, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.joint2))
+//                            }
+//                            2 -> {
+//                                RobotPosition.joint3 = increaseValueAndSet(360.0f, RobotPosition.joint3, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.joint3))
+//                            }
+//                            3 -> {
+//                                RobotPosition.joint4 = increaseValueAndSet(360.0f, RobotPosition.joint4, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.joint4))
+//                            }
+//                            // 4, 5는 해당 관절값이 없으므로 아무 처리도 하지 않습니다.
+//                        }
+//                    }
+//                }
+//
+//                //변경된 값들을 TextView에 반영하기위해 함수를 호출합니다.
+//                refreshViewerTextView()
+//
+//                //서버로 현재 값을 전송합니다.
+//                Client().execute()
+//            }
 
 
             /**
@@ -426,7 +420,8 @@ class JogFragment : Fragment(){
             }
 
 
-            button.setOnTouchListener { _, event ->
+            button.setOnTouchListener {_, event ->
+
                 when (event.action) {
                     MotionEvent.ACTION_DOWN -> {
                         // 버튼이 눌려졌을 때 Runnable 객체를 실행합니다.
@@ -437,7 +432,7 @@ class JogFragment : Fragment(){
                         handler.removeCallbacks(autoIncrementRunnable)
                     }
                 }
-                true  // 이벤트가 처리되었음을 나타냅니다.
+                false  // 이벤트가 처리되었음을 나타냅니다.
             }
         }
 
@@ -445,130 +440,130 @@ class JogFragment : Fragment(){
 
         //Jog의 감소 버튼 리스너
         decBtList.forEachIndexed { index, button ->
-            button.setOnClickListener {
-                when (jogSelected) {
-                    JOG_GLOBAL_SELECTED -> {
-                        //감소 버튼 순서는 제일 위에 0번부터 마지막 제일 아래 5번까지 순서입니다.
-                        when (index) {
-                            0 -> {
-                                RobotPosition.global_x = decreaseValueAndSet(0.0f, RobotPosition.global_x, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.global_x))
-                            }
-                            1 -> {
-                                RobotPosition.global_y = decreaseValueAndSet(0.0f, RobotPosition.global_y, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.global_y))
-                            }
-                            2 -> {
-                                RobotPosition.global_z = decreaseValueAndSet(0.0f, RobotPosition.global_z, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.global_z))
-                            }
-                            3 -> {
-                                RobotPosition.global_Rx = decreaseValueAndSet(0.0f, RobotPosition.global_Rx, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.global_Rx))
-                            }
-                            4 -> {
-                                RobotPosition.global_Ry = decreaseValueAndSet(0.0f, RobotPosition.global_Ry, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.global_Ry))
-                            }
-                            5 -> {
-                                RobotPosition.global_Rz = decreaseValueAndSet(0.0f, RobotPosition.global_Rz, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.global_Rz))
-                            }
-                        }
-                    }
-
-
-                    JOG_LOCAL_SELECTED -> {
-                        //감소 버튼 순서는 제일 위에 0번부터 마지막 제일 아래 5번까지 순서입니다.
-                        when (index) {
-                            0 -> {
-                                RobotPosition.local_x = decreaseValueAndSet(0.0f, RobotPosition.local_x, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.global_x))
-                            }
-                            1 -> {
-                                RobotPosition.local_y = decreaseValueAndSet(0.0f, RobotPosition.local_y, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.local_y))
-                            }
-                            2 -> {
-                                RobotPosition.local_z = decreaseValueAndSet(0.0f, RobotPosition.local_z, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.local_z))
-                            }
-                            3 -> {
-                                RobotPosition.local_Rx = decreaseValueAndSet(0.0f, RobotPosition.local_Rx, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.local_Rx))
-                            }
-                            4 -> {
-                                RobotPosition.local_Ry = decreaseValueAndSet(0.0f, RobotPosition.local_Ry, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.local_Ry))
-                            }
-                            5 -> {
-                                RobotPosition.local_Rz = decreaseValueAndSet(0.0f, RobotPosition.local_Rz, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.local_Rz))
-                            }
-                        }
-                    }
-
-
-
-                    JOG_USER_SELECTED -> {
-                        //감소 버튼 순서는 제일 위에 0번부터 마지막 제일 아래 5번까지 순서입니다.
-                        when (index) {
-                            0 -> {
-                                RobotPosition.user_x = decreaseValueAndSet(0.0f, RobotPosition.user_x, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.user_x))
-                            }
-                            1 -> {
-                                RobotPosition.user_y = decreaseValueAndSet(0.0f, RobotPosition.user_y, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.user_y))
-                            }
-                            2 -> {
-                                RobotPosition.user_z = decreaseValueAndSet(0.0f, RobotPosition.user_z, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.user_z))
-                            }
-                            3 -> {
-                                RobotPosition.user_Rx = decreaseValueAndSet(0.0f, RobotPosition.user_Rx, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.user_Rx))
-                            }
-                            4 -> {
-                                RobotPosition.user_Ry = decreaseValueAndSet(0.0f, RobotPosition.user_Ry, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.user_Ry))
-                            }
-                            5 -> {
-                                RobotPosition.user_Rz = decreaseValueAndSet(0.0f, RobotPosition.user_Rz, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.user_Rz))
-                            }
-                        }
-                    }
-
-
-                    //관절값은 4개만 필요하기 때문에 0~3까지만 사용합니다.
-                    JOG_JOINT_SELECTED -> {
-                        when (index) {
-                            0 -> {
-                                RobotPosition.joint1 = decreaseValueAndSet(0.0f, RobotPosition.joint1, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.joint1))
-                            }
-                            1 -> {
-                                RobotPosition.joint2 = decreaseValueAndSet(0.0f, RobotPosition.joint2, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.joint2))
-                            }
-                            2 -> {
-                                RobotPosition.joint3 = decreaseValueAndSet(0.0f, RobotPosition.joint3, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.joint3))
-                            }
-                            3 -> {
-                                RobotPosition.joint4 = decreaseValueAndSet(0.0f, RobotPosition.joint4, 0.1f)
-                                jogViewList[index].setText("%.2f".format(RobotPosition.joint4))
-                            }
-                            // 4, 5는 해당 관절값이 없으므로 아무 처리도 하지 않습니다.
-                        }
-                    }
-                }
-
-                refreshViewerTextView()
-                Client().execute()
-
-            }
+//            button.setOnClickListener {
+//                when (jogSelected) {
+//                    JOG_GLOBAL_SELECTED -> {
+//                        //감소 버튼 순서는 제일 위에 0번부터 마지막 제일 아래 5번까지 순서입니다.
+//                        when (index) {
+//                            0 -> {
+//                                RobotPosition.global_x = decreaseValueAndSet(0.0f, RobotPosition.global_x, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.global_x))
+//                            }
+//                            1 -> {
+//                                RobotPosition.global_y = decreaseValueAndSet(0.0f, RobotPosition.global_y, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.global_y))
+//                            }
+//                            2 -> {
+//                                RobotPosition.global_z = decreaseValueAndSet(0.0f, RobotPosition.global_z, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.global_z))
+//                            }
+//                            3 -> {
+//                                RobotPosition.global_Rx = decreaseValueAndSet(0.0f, RobotPosition.global_Rx, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.global_Rx))
+//                            }
+//                            4 -> {
+//                                RobotPosition.global_Ry = decreaseValueAndSet(0.0f, RobotPosition.global_Ry, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.global_Ry))
+//                            }
+//                            5 -> {
+//                                RobotPosition.global_Rz = decreaseValueAndSet(0.0f, RobotPosition.global_Rz, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.global_Rz))
+//                            }
+//                        }
+//                    }
+//
+//
+//                    JOG_LOCAL_SELECTED -> {
+//                        //감소 버튼 순서는 제일 위에 0번부터 마지막 제일 아래 5번까지 순서입니다.
+//                        when (index) {
+//                            0 -> {
+//                                RobotPosition.local_x = decreaseValueAndSet(0.0f, RobotPosition.local_x, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.global_x))
+//                            }
+//                            1 -> {
+//                                RobotPosition.local_y = decreaseValueAndSet(0.0f, RobotPosition.local_y, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.local_y))
+//                            }
+//                            2 -> {
+//                                RobotPosition.local_z = decreaseValueAndSet(0.0f, RobotPosition.local_z, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.local_z))
+//                            }
+//                            3 -> {
+//                                RobotPosition.local_Rx = decreaseValueAndSet(0.0f, RobotPosition.local_Rx, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.local_Rx))
+//                            }
+//                            4 -> {
+//                                RobotPosition.local_Ry = decreaseValueAndSet(0.0f, RobotPosition.local_Ry, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.local_Ry))
+//                            }
+//                            5 -> {
+//                                RobotPosition.local_Rz = decreaseValueAndSet(0.0f, RobotPosition.local_Rz, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.local_Rz))
+//                            }
+//                        }
+//                    }
+//
+//
+//
+//                    JOG_USER_SELECTED -> {
+//                        //감소 버튼 순서는 제일 위에 0번부터 마지막 제일 아래 5번까지 순서입니다.
+//                        when (index) {
+//                            0 -> {
+//                                RobotPosition.user_x = decreaseValueAndSet(0.0f, RobotPosition.user_x, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.user_x))
+//                            }
+//                            1 -> {
+//                                RobotPosition.user_y = decreaseValueAndSet(0.0f, RobotPosition.user_y, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.user_y))
+//                            }
+//                            2 -> {
+//                                RobotPosition.user_z = decreaseValueAndSet(0.0f, RobotPosition.user_z, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.user_z))
+//                            }
+//                            3 -> {
+//                                RobotPosition.user_Rx = decreaseValueAndSet(0.0f, RobotPosition.user_Rx, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.user_Rx))
+//                            }
+//                            4 -> {
+//                                RobotPosition.user_Ry = decreaseValueAndSet(0.0f, RobotPosition.user_Ry, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.user_Ry))
+//                            }
+//                            5 -> {
+//                                RobotPosition.user_Rz = decreaseValueAndSet(0.0f, RobotPosition.user_Rz, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.user_Rz))
+//                            }
+//                        }
+//                    }
+//
+//
+//                    //관절값은 4개만 필요하기 때문에 0~3까지만 사용합니다.
+//                    JOG_JOINT_SELECTED -> {
+//                        when (index) {
+//                            0 -> {
+//                                RobotPosition.joint1 = decreaseValueAndSet(0.0f, RobotPosition.joint1, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.joint1))
+//                            }
+//                            1 -> {
+//                                RobotPosition.joint2 = decreaseValueAndSet(0.0f, RobotPosition.joint2, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.joint2))
+//                            }
+//                            2 -> {
+//                                RobotPosition.joint3 = decreaseValueAndSet(0.0f, RobotPosition.joint3, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.joint3))
+//                            }
+//                            3 -> {
+//                                RobotPosition.joint4 = decreaseValueAndSet(0.0f, RobotPosition.joint4, 0.1f)
+//                                jogViewList[index].setText("%.2f".format(RobotPosition.joint4))
+//                            }
+//                            // 4, 5는 해당 관절값이 없으므로 아무 처리도 하지 않습니다.
+//                        }
+//                    }
+//                }
+//
+//                refreshViewerTextView()
+//                Client().execute()
+//
+//            }
 
 
             /**
@@ -719,7 +714,7 @@ class JogFragment : Fragment(){
 
                     }
                 }
-                true  // 이벤트가 처리되었음을 나타냅니다.
+                false  // 이벤트가 처리되었음을 나타냅니다.
             }
         }
 
@@ -922,7 +917,7 @@ class JogFragment : Fragment(){
                 }
 
                 for (j in changeBtList.indices) {
-                    changeBtList[j].setBackgroundResource(R.drawable.color_gray_frame)
+//                    changeBtList[j].setBackgroundResource(R.drawable.color_gray_frame)
                     changeBtList[j].isEnabled = false
                 }
 
@@ -943,22 +938,22 @@ class JogFragment : Fragment(){
             for (i in jogInfoList.indices) {
                 jogInfoList[i].setText(coordStrList[i])
                 if (i > 3) {
-                    jogInfoList[i].setBackgroundResource(R.drawable.public_button)
+                    jogInfoList[i].setBackgroundResource(R.drawable.main_frame)
                     jogInfoList[i].isEnabled = true
                 }
             }
 
             for (j in changeBtList.indices) {
 
-                changeBtList[j].setBackgroundResource(R.drawable.public_button)
+//                changeBtList[j].setBackgroundResource(R.drawable.bt_jog)
                 changeBtList[j].isEnabled = true
             }
 
             binding.jogView5.isEnabled = true
-            binding.jogView5.setBackgroundResource(R.drawable.public_button)
+            binding.jogView5.setBackgroundResource(R.drawable.main_frame)
 
             binding.jogView6.isEnabled = true
-            binding.jogView6.setBackgroundResource(R.drawable.public_button)
+            binding.jogView6.setBackgroundResource(R.drawable.main_frame)
 
             //EditText를 새로고침 하는 함수입니다.
             refreshEditText()

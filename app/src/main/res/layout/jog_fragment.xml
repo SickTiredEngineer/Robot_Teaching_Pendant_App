@@ -3,10 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    tools:context=".jog.JogFragment">
+    android:layout_height="wrap_content">
 
-    <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/jog_controller_view"
         style="@style/style_bg"
@@ -36,12 +34,12 @@
             android:inputType="number|numberDecimal"
             android:imeOptions="actionDone"
 
-            app:layout_constraintEnd_toStartOf="@+id/jogDec1"
-            app:layout_constraintStart_toEndOf="@+id/jogInc1"
+            app:layout_constraintEnd_toStartOf="@+id/jog_dec1"
+            app:layout_constraintStart_toEndOf="@+id/jog_inc1"
             app:layout_constraintTop_toBottomOf="@+id/jogInfo1" />
 
         <Button
-            android:id="@+id/jogInc1"
+            android:id="@+id/jog_inc1"
             style="@style/style_jog_inc"
 
             app:layout_constraintEnd_toStartOf="@+id/jogView1"
@@ -49,7 +47,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/jogDec1"
+            android:id="@+id/jog_dec1"
             style="@style/style_jog_dec"
 
             app:layout_constraintEnd_toEndOf="parent"
@@ -64,8 +62,8 @@
             android:text="@string/str_y"
             android:textColor="@color/green"
 
-            app:layout_constraintEnd_toStartOf="@+id/jogDec2"
-            app:layout_constraintStart_toEndOf="@+id/jogInc2"
+            app:layout_constraintEnd_toStartOf="@+id/jog_dec2"
+            app:layout_constraintStart_toEndOf="@+id/jog_inc2"
             app:layout_constraintTop_toBottomOf="@+id/jogView1" />
 
         <EditText
@@ -80,20 +78,20 @@
             app:layout_constraintTop_toBottomOf="@+id/jogInfo2" />
 
         <Button
-            android:id="@+id/jogInc2"
+            android:id="@+id/jog_inc2"
             style="@style/style_jog_inc"
 
             app:layout_constraintEnd_toStartOf="@+id/jogView2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/jogInc1" />
+            app:layout_constraintTop_toBottomOf="@+id/jog_inc1" />
 
         <Button
-            android:id="@+id/jogDec2"
+            android:id="@+id/jog_dec2"
             style="@style/style_jog_dec"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/jogView2"
-            app:layout_constraintTop_toBottomOf="@+id/jogDec1" />
+            app:layout_constraintTop_toBottomOf="@+id/jog_dec1" />
 
 
         <!--Z, Elbow-->
@@ -115,24 +113,25 @@
             android:inputType="number|numberDecimal"
 
 
-            app:layout_constraintEnd_toStartOf="@+id/jogDec3"
-            app:layout_constraintStart_toEndOf="@+id/jogInc3"
+            app:layout_constraintEnd_toStartOf="@+id/jog_dec3"
+            app:layout_constraintStart_toEndOf="@+id/jog_inc3"
             app:layout_constraintTop_toBottomOf="@+id/jogInfo3" />
 
         <Button
-            android:id="@+id/jogInc3"
+            android:id="@+id/jog_inc3"
             style="@style/style_jog_inc"
+
             app:layout_constraintEnd_toStartOf="@+id/jogView3"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/jogInc2" />
+            app:layout_constraintTop_toBottomOf="@+id/jog_inc2" />
 
         <Button
-            android:id="@+id/jogDec3"
+            android:id="@+id/jog_dec3"
             style="@style/style_jog_dec"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/jogView3"
-            app:layout_constraintTop_toBottomOf="@+id/jogDec2" />
+            app:layout_constraintTop_toBottomOf="@+id/jog_dec2" />
 
 
         <!--Rx, Wrist1-->
@@ -155,25 +154,25 @@
             android:imeOptions="actionDone"
 
 
-            app:layout_constraintEnd_toStartOf="@+id/jogDec4"
-            app:layout_constraintStart_toEndOf="@+id/jogInc4"
+            app:layout_constraintEnd_toStartOf="@+id/jog_dec4"
+            app:layout_constraintStart_toEndOf="@+id/jog_inc4"
             app:layout_constraintTop_toBottomOf="@+id/jogInfo4" />
 
         <Button
-            android:id="@+id/jogInc4"
+            android:id="@+id/jog_inc4"
             style="@style/style_jog_inc"
 
             app:layout_constraintEnd_toStartOf="@+id/jogView4"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/jogInc3" />
+            app:layout_constraintTop_toBottomOf="@+id/jog_inc3" />
 
         <Button
-            android:id="@+id/jogDec4"
+            android:id="@+id/jog_dec4"
             style="@style/style_jog_dec"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/jogView4"
-            app:layout_constraintTop_toBottomOf="@+id/jogDec3" />
+            app:layout_constraintTop_toBottomOf="@+id/jog_dec3" />
 
         <!--Ry, Wrist2-->
         <TextView
@@ -192,25 +191,25 @@
             android:imeOptions="actionDone"
 
 
-            app:layout_constraintEnd_toStartOf="@+id/jogDec5"
-            app:layout_constraintStart_toEndOf="@+id/jogInc5"
+            app:layout_constraintEnd_toStartOf="@+id/jog_dec5"
+            app:layout_constraintStart_toEndOf="@+id/jog_inc5"
             app:layout_constraintTop_toBottomOf="@+id/jogInfo5" />
 
         <Button
-            android:id="@+id/jogInc5"
+            android:id="@+id/jog_inc5"
             style="@style/style_jog_inc"
 
             app:layout_constraintEnd_toStartOf="@+id/jogView5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/jogInc4" />
+            app:layout_constraintTop_toBottomOf="@+id/jog_inc4" />
 
         <Button
-            android:id="@+id/jogDec5"
+            android:id="@+id/jog_dec5"
             style="@style/style_jog_dec"
 
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/jogView5"
-            app:layout_constraintTop_toBottomOf="@+id/jogDec4" />
+            app:layout_constraintTop_toBottomOf="@+id/jog_dec4" />
 
 
         <!--Rx, Wrist3-->
@@ -233,30 +232,30 @@
 
             android:inputType="number|numberDecimal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/jogDec6"
-            app:layout_constraintStart_toEndOf="@+id/jogInc6"
+            app:layout_constraintEnd_toStartOf="@+id/jog_dec6"
+            app:layout_constraintStart_toEndOf="@+id/jog_inc6"
             app:layout_constraintTop_toBottomOf="@+id/jogInfo6"
             app:layout_constraintVertical_bias="0.0" />
 
         <Button
-            android:id="@+id/jogInc6"
+            android:id="@+id/jog_inc6"
             style="@style/style_jog_inc"
 
             android:layout_marginBottom="35dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/jogView6"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/jogInc5" />
+            app:layout_constraintTop_toBottomOf="@+id/jog_inc5" />
 
         <Button
-            android:id="@+id/jogDec6"
+            android:id="@+id/jog_dec6"
             style="@style/style_jog_dec"
 
             android:layout_marginBottom="35dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/jogView6"
-            app:layout_constraintTop_toBottomOf="@+id/jogDec5" />
+            app:layout_constraintTop_toBottomOf="@+id/jog_dec5" />
 
         <Button
             android:id="@+id/button"

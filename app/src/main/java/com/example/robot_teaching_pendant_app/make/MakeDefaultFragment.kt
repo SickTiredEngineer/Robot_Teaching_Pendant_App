@@ -26,13 +26,6 @@ private const val ARG_PARAM2 = "param2"
 
 class MakeDefaultFragment : Fragment(), JogFragment.GoHomeListener, JogFragment.RefreshEtListener, JogFragment.RefreshJogListener, PositionViewerFragment.FragmentCommunicationInterface {
 
-
-
-
-
-
-
-
     private var _binding: MakeDefaultFragmentBinding? = null
     private val defBinding get() = _binding!!
 
